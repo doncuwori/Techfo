@@ -38,4 +38,8 @@ Route::get('/dashboardAdmin', function () {
     return Inertia::render('DashboardAdmin');
 });
 
+Route::get('/loginUser', function () {
+    return Inertia::render('LoginUser');
+});
+
 require __DIR__ . '/auth.php';
