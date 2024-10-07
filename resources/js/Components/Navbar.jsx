@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ApplicationLogo from "@/Components/ApplicationLogo"; // Adjust the path as needed
 
 const Navbar = () => {
     const [isPendataanDropdownOpen, setIsPendataanDropdownOpen] =
@@ -35,20 +36,17 @@ const Navbar = () => {
                 {/* Logo and Branding */}
                 <div className="flex items-center gap-2 md:gap-4">
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center overflow-hidden">
-                        <img
-                            src="img/naruto.jpeg"
-                            alt="Logo"
-                            className="w-full h-full object-cover"
-                        />
+                        <ApplicationLogo className="w-full h-full object-cover" />
                     </div>
-                    <div className="flex items-center gap-0.5">
+
+                    <a href="/dashboard" className="flex items-center">
                         <span className="text-gray-900 text-lg md:text-2xl font-semibold">
-                            i
+                            Tech
                         </span>
                         <span className="text-[#fe632e] text-lg md:text-2xl font-semibold">
-                            Prestasi
+                            fo
                         </span>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div className="flex-grow flex items-center justify-center">

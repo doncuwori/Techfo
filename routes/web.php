@@ -46,4 +46,12 @@ Route::get('/dashboardUser', function () {
     return Inertia::render('DashboardUser');
 });
 
+Route::get('/detailBeasiswa', function () {
+    return Inertia::render('DetailBeasiswa');
+});
+
+Route::get('/lomba', function () {
+    return Inertia::render('Lomba');
+});
+
 require __DIR__ . '/auth.php';
