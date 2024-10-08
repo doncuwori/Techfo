@@ -24,7 +24,11 @@ Route::get('/test', function () {
 
 
 Route::get('/pendataanLomba', function () {
-    return Inertia::render('PendataanLomba');
+    return Inertia::render('Pendataan/PendataanLomba');
+});
+
+Route::get('/pendataanBeasiswa', function () {
+    return Inertia::render('Pendataan/PendataanBeasiswa');
 });
 
 
@@ -36,6 +40,10 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/dashboardAdmin', function () {
     return Inertia::render('DashboardAdmin');
+});
+
+Route::get('/daftarAbdimas', function () {
+    return Inertia::render('Abdimas/DaftarAbdimas');
 });
 
 require __DIR__ . '/auth.php';
