@@ -1,10 +1,10 @@
 import Navbar from "@/Components/Navbar";
 import HeaderSection from "@/Components/HeaderSection";
 import SearchBox from "@/Components/SearchBoxKegiatan";
-import Procedure from "@/Components/Lomba/ProcedureLomba";
-import CardLomba from "@/Components/Lomba/CardLomba";
+import Procedure from "@/Components/Beasiswa/ProcedureBeasiswa";
+import CardLomba from "@/Components/Beasiswa/CardBeasiswa";
 
-const Lomba = () => {
+const Beasiswa = () => {
     return (
         <div>
             <Navbar />
@@ -15,7 +15,7 @@ const Lomba = () => {
                     className="w-full max-h-[750px] rounded-md"
                 />
             </div>
-            <HeaderSection />
+            <HeaderSection pageType="beasiswa" />
             <SearchBox />
             <Procedure />
             <div className="absolute inset-x-0 mt-6 z-0 flex justify-center">
@@ -30,4 +30,4 @@ const Lomba = () => {
     );
 };
 
-export default Lomba;
+export default Beasiswa;

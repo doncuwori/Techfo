@@ -1,4 +1,5 @@
 import React from 'react';
+import { Clock4 } from 'lucide-react';
 
 const CardAbdimas = () => {
     const communityServices = [
@@ -75,8 +76,10 @@ const CardAbdimas = () => {
                                 <h2 className="text-black text-lg font-medium">{service.title}</h2>
                                 <p className="text-gray-500 text-sm">{service.description}</p>
                                 <div className="flex items-center gap-2">
-                                    <img src="img/waktu.png" alt="Jam" className="w-4 h-4 object-contain" />
-                                    <span className="text-orange-500 text-xs font-medium leading-tight">{service.date}</span>
+                                    <Clock4 size={18} className="text-orange-500" />{" "}
+                                    <span className="text-orange-500 text-xs font-medium leading-tight">
+                                        {service.date}
+                                    </span>
                                 </div>
                             </div>
                         </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Clock4 } from 'lucide-react';
 
 const CardBeasiswa = () => {
     const scholarships = [
@@ -82,11 +83,7 @@ const CardBeasiswa = () => {
                                 {scholarship.description}
                             </p>
                             <div className="flex items-center gap-2">
-                                <img
-                                    src="img/waktu.png"
-                                    alt="Jam"
-                                    className="w-4 h-4 object-contain"
-                                />
+                                <Clock4 size={18} className="text-orange-500" />{" "}
                                 <span className="text-orange-500 text-xs font-medium leading-tight">
                                     {scholarship.date}
                                 </span>

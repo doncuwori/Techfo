@@ -1,7 +1,7 @@
 // resources/js/components/Prosedure/Prosedure.jsx
 import React from "react";
 
-const ProcedureCards = () => {
+const ProcedureBeasiswa = () => {
     return (
         <div className="w-full px-16 py-8 mt-10 mb-12 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -69,4 +69,4 @@ const ProcedureCards = () => {
     );
 };
 
-export default ProcedureCards;
+export default ProcedureBeasiswa;

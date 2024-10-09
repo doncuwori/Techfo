@@ -33,7 +33,7 @@ const SearchWithCategory = () => {
                     <input
                         type="text"
                         placeholder="Cari informasi lomba, beasiswa, pengabdian masyarakat, dan penelitian..."
-                        className="w-full px-2 py-1 text-gray-700 placeholder-gray-400 border-none focus:outline-none"
+                        className="w-full px-2 py-1 text-gray-700 placeholder-gray-400 border-none focus:outline-none focus:ring-0 focus:border-transparent"
                     />
                 </div>
                 <button className="w-12 h-12 bg-white border-l flex items-center justify-center rounded-tr-lg rounded-br-lg transition duration-200 ease-in-out hover:bg-gray-100 focus:outline-none focus:ring-2">

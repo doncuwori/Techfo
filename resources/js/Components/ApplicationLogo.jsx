@@ -1,5 +1,10 @@
-export default function ApplicationLogo(props) {
+export default function LogoTechfo(props) {
     return (
-        <img src="img/LogoTechfo.jpg" alt="" />
+        <img
+            {...props}
+            src="img/LogoTechfo.jpg"
+            alt="Techfo Logo"
+            className="w-full h-auto" 
+        />
     );
 }

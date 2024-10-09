@@ -1,3 +1,4 @@
+import { Search } from 'lucide-react';
 import React from 'react';
 
 const SearchBox = () => {
@@ -12,7 +13,7 @@ const SearchBox = () => {
                     />
                 </div>
                 <button className="w-12 bg-white rounded-tr-lg rounded-br-lg border border-neutral-300 flex items-center justify-center">
-                    <img src="/img/search.png" alt="Search Icon" className="w-5 h-5" />
+                    <Search size={22} color="grey" />
                 </button>
             </div>
         </div>
