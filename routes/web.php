@@ -22,11 +22,14 @@ Route::get('/test', function () {
     return Inertia::render('Test');
 });
 
+Route::get('/pendataanBeasiswa', function () {
+    return Inertia::render('Pendataan/PendataanBeasiswa');
+});
 
 Route::get('/pendataanLomba', function () {
-    return Inertia::render('PendataanLomba');
-})->name('pendataanLomba');
 
+    return Inertia::render('Pendataan/PendataanLomba');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -66,4 +69,7 @@ Route::get('/faq', function () {
     return Inertia::render('FAQ');
 })->name('faq');
 
+Route::get('/daftarAbdimas', function () {
+    return Inertia::render('Abdimas/DaftarAbdimas');
+});
 require __DIR__ . '/auth.php';

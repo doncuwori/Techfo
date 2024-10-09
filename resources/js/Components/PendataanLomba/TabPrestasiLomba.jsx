@@ -1,6 +1,11 @@
-import React from "react";
+import { Plus, Search } from "lucide-react";
+import React, { useState } from "react";
 
 export const TabPrestasiLomba = () => {
+    const [isGroup, setIsGroup] = useState(false);
+    function handleCheckbox(e) {
+        setIsGroup(e.target.checked);
+    }
     return (
         <div>
             <section className="mb-8">
@@ -8,36 +13,47 @@ export const TabPrestasiLomba = () => {
                     Data Prestasi Mahasiswa
                 </h2>
                 <div className="mb-4">
-                    <div className="flex items-center mb-2">
-                        <i className="fas fa-exclamation-circle text-orange-500 mr-2"></i>
-                        <p className="text-orange-500">
-                            Beri tanda Centang untuk kegiatan borang/kelompok
-                            (1keg).
-                        </p>
-                    </div>
-                    <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4">
-                        <p>
-                            Perhatian! Isikan NIM atau NPM anggota yang
-                            diperkenankan menjadi ketua anggota. Untuk anggota
-                            diisikan menghubungi ketua untuk proses memasukkan
-                            data ketanggapan pada form ini prestasi mahasiswa.
-                        </p>
-                    </div>
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
-                        Tuliskan NIM
-                    </label>
-                    <div className="flex">
+                    <div className="flex items-center mb-2 bg-orange-50 gap-3 px-2 py-1 w-fit">
                         <input
-                            type="text"
-                            className="flex-grow border rounded-l-lg p-2"
-                            placeholder="Tuliskan NIM"
+                            type="checkbox"
+                            checked={isGroup}
+                            onClick={handleCheckbox}
                         />
-                        <button className="bg-green-500 text-white p-2 rounded-r-lg">
-                            <i className="fas fa-search"></i>
-                        </button>
+                        <p className="text-black">
+                            Beri tanda Centang untuk kejuaraan beregu/kelompok
+                            (Grup).
+                        </p>
                     </div>
+                    {isGroup && (
+                        // && artinya kalau true tampilkan, kalau false ga ditampilkan
+                        <div className="mt-4 flex flex-col bg-neutral-50 gap-4 p-4">
+                            <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4">
+                                <p>
+                                    Perhatian! Isikan NIM atau NPM anggota yang
+                                    diperkenankan menjadi ketua anggota. Untuk
+                                    anggota diisikan menghubungi ketua untuk
+                                    proses memasukkan data ketanggapan pada form
+                                    ini prestasi mahasiswa.
+                                </p>
+                            </div>
+                            <div className="flex flex-row">
+                                <input
+                                    type="text"
+                                    className="text-sm px-2.5 py-2 rounded-l-lg border-neutral-400 border-[1.5px]"
+                                    placeholder="Tuliskan NIM"
+                                />
+                                <button className="bg-green-500 p-2 rounded-r-lg text-white">
+                                    <Search size={20} />
+                                </button>
+                            </div>
+                            <div>
+                                <button className="bg-green-500 flex gap-2 px-3 py-2 text-white rounded-lg">
+                                    <Plus size={16} />
+                                    <p className="text-xs">Tambahkan Anggota</p>
+                                </button>
+                            </div>
+                        </div>
+                    )}
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
@@ -99,7 +115,12 @@ export const TabPrestasiLomba = () => {
                         Bidang
                     </label>
                     <select className="w-full border rounded-lg p-2">
-                        <option>Pilih Bidang Lomba</option>
+                        <option>-- Pilih Bidang Lomba --</option>
+                        <option>Ilmiah/Penalaran/Akademik</option>
+                        <option>Minat Khusus</option>
+                        <option>Olahraga</option>
+                        <option>Sains</option>
+                        <option>Lainnya</option>
                     </select>
                 </div>
                 <div className="mb-4">
