@@ -57,21 +57,6 @@ export const TabPartisipasiLomba = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Tuliskan NIM
-                    </label>
-                    <div className="flex">
-                        <input
-                            type="text"
-                            className="flex-grow border rounded-l-lg p-2"
-                            placeholder="Tuliskan NIM"
-                        />
-                        <button className="bg-green-500 p-2 rounded-r-lg text-white">
-                            <Search size={20} />
-                        </button>
-                    </div>
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
                         Delegasi ORMAWA
                     </label>
                     <select className="w-full border rounded-lg p-2">
@@ -105,16 +90,7 @@ export const TabPartisipasiLomba = () => {
                         <option>Senat Mahasiswa Fakultas Ilmu Komputer</option>
                     </select>
                 </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
-                        Dosen Pembimbing/Pendamping
-                    </label>
-                    <input
-                        type="text"
-                        className="w-full border rounded-lg p-2"
-                        placeholder="Tuliskan nama dosen pembimbing/pendamping..."
-                    />
-                </div>
+
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Nama Kegiatan
@@ -125,34 +101,65 @@ export const TabPartisipasiLomba = () => {
                         placeholder="Contoh: Lomba Karya Tulis Ilmiah Nasional Tahun 2017"
                     />
                 </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
-                        Bidang
-                    </label>
-                    <select className="w-full border rounded-lg p-2">
-                        <option>Pilih Bidang Lomba</option>
-                    </select>
+                <div className="flex w-full gap-auto">
+                    <div className="flex flex-col w-max">
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-bold mb-2">
+                                Tingkat Prestasi
+                            </label>
+                            <select className="w-full border rounded-lg p-2">
+                                <option>-- Pilih Tingkat Prestasi --</option>
+                                <option>International</option>
+                                <option>Nasional</option>
+                                <option>Regional</option>
+                                <option>Wilayah</option>
+                                <option>Daerah/Provinsi</option>
+                                <option>Kabupaten/Kotan</option>
+                                <option>Kecamatan</option>
+                                <option>UPN "Veteran" Jakarta</option>
+                            </select>
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-bold mb-2">
+                                Gelar
+                            </label>
+                            <select className="w-full border rounded-lg p-2">
+                                <option>-- Pilih Gelar --</option>
+                                <option>Ilmiah/Penalaran/Akademik</option>
+                                <option>Minat Khusus</option>
+                                <option>Olahraga</option>
+                                <option>Sains</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="flex flex-col w-max">
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-bold mb-2">
+                                Bidang
+                            </label>
+                            <select className="w-full border rounded-lg p-2">
+                                <option>-- Pilih Bidang Lomba --</option>
+                                <option>Ilmiah/Penalaran/Akademik</option>
+                                <option>Minat Khusus</option>
+                                <option>Olahraga</option>
+                                <option>Sains</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-bold mb-2">
+                                Dosen Pembimbing/Pendamping
+                            </label>
+                            <input
+                                type="text"
+                                className="w-full border rounded-lg p-2"
+                                placeholder="Tuliskan nama dosen pembimbing/pendamping..."
+                            />
+                        </div>
+                    </div>
                 </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
-                        Prestasi
-                    </label>
-                    <input
-                        type="text"
-                        className="w-full border rounded-lg p-2"
-                        placeholder="Juara 1"
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
-                        Tingkat Prestasi
-                    </label>
-                    <input
-                        type="text"
-                        className="w-full border rounded-lg p-2"
-                        placeholder="Provinsi"
-                    />
-                </div>
+
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Penyelenggara
