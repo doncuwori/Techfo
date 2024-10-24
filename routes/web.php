@@ -77,3 +77,7 @@ require __DIR__ . '/auth.php';
 Route::get('/laporanLomba', function () {
     return Inertia::render('Laporan/LaporanLomba');
 })->name('laporanLomba');
+
+Route::get('/laporanBeasiswa', function () {
+    return Inertia::render('Laporan/LaporanBeasiswa');
+})->name('laporanBeasiswa');

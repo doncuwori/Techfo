@@ -54,7 +54,7 @@ const LaporanLomba = () => {
                                 
                         </div>
                         <div class="flex-col justify-center items-center gap-1 inline-flex">
-                            <div class="text-center text-[#2d3036] text-lg font-medium font-['Inter'] leading-7 ml-8">
+                            <div class="text-center text-[#2d3036] text-lg font-medium leading-7 ml-8">
                                 Prestasi Mahasiswa</div>
                         </div>
                     </div>
@@ -85,24 +85,24 @@ const LaporanLomba = () => {
             <div
                 class="self-stretch h-[360px] p-6 bg-white rounded-lg border-2 border-neutral-100 flex-col justify-start items-start gap-8 flex">
                 <div class="justify-start items-start gap-3 inline-flex">
-                    <div class="text-[#2d3036] text-xl font-medium font-['Inter'] leading-7">REKAP JUARA</div>
+                    <div class="text-[#2d3036] text-xl font-medium leading-7">REKAP JUARA</div>
                 </div>
                 <div class="self-stretch justify-start items-end gap-6 inline-flex">
                     <div class="w-[19px] pb-9 flex-col justify-start items-center gap-[31px] inline-flex">
                         <div
-                            class="self-stretch text-center text-gray-500 text-sm font-normal font-['Inter'] leading-tight">
+                            class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
                             25</div>
                         <div
-                            class="self-stretch text-center text-gray-500 text-sm font-normal font-['Inter'] leading-tight">
+                            class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
                             20</div>
                         <div
-                            class="self-stretch text-center text-gray-500 text-sm font-normal font-['Inter'] leading-tight">
+                            class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
                             15</div>
                         <div
-                            class="self-stretch text-center text-gray-500 text-sm font-normal font-['Inter'] leading-tight">
+                            class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
                             10</div>
                         <div
-                            class="self-stretch text-center text-gray-500 text-sm font-normal font-['Inter'] leading-tight">
+                            class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
                             5</div>
                     </div>
                     <div class="grow shrink basis-0 h-[185px] justify-center items-end gap-[39px] flex">
@@ -114,7 +114,7 @@ const LaporanLomba = () => {
                                 <div class="w-6 h-[35px] bg-[#ffcfbe] rounded-xl"></div>
                             </div>
                             <div
-                                class="self-stretch text-center text-gray-500 text-sm font-normal font-['Inter'] leading-tight">
+                                class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
                                 Juara 1</div>
                         </div>
                         <div class="grow shrink basis-0 flex-col justify-center items-center gap-2 inline-flex">
@@ -125,7 +125,7 @@ const LaporanLomba = () => {
                                 <div class="w-6 h-[35px] bg-[#ffcfbe] rounded-xl"></div>
                             </div>
                             <div
-                                class="self-stretch text-center text-gray-500 text-sm font-normal font-['Inter'] leading-tight">
+                                class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
                                 Juara 2</div>
                         </div>
                         <div class="grow shrink basis-0 flex-col justify-center items-center gap-2 inline-flex">
@@ -136,7 +136,7 @@ const LaporanLomba = () => {
                                 <div class="w-6 h-[35px] bg-[#ffcfbe] rounded-xl"></div>
                             </div>
                             <div
-                                class="self-stretch text-center text-gray-500 text-sm font-normal font-['Inter'] leading-tight">
+                                class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
                                 Juara 3</div>
                         </div>
                         <div class="grow shrink basis-0 flex-col justify-center items-center gap-2 inline-flex">
@@ -147,7 +147,7 @@ const LaporanLomba = () => {
                                 <div class="w-6 h-[35px] bg-[#ffcfbe] rounded-xl"></div>
                             </div>
                             <div
-                                class="self-stretch text-center text-gray-500 text-sm font-normal font-['Inter'] leading-tight">
+                                class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
                                 Juara Umum</div>
                         </div>
                         <div class="grow shrink basis-0 flex-col justify-center items-center gap-2 inline-flex">
@@ -158,7 +158,7 @@ const LaporanLomba = () => {
                                 <div class="w-6 h-[35px] bg-[#ffcfbe] rounded-xl"></div>
                             </div>
                             <div
-                                class="self-stretch text-center text-gray-500 text-sm font-normal font-['Inter'] leading-tight">
+                                class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
                                 Juara Favorit</div>
                         </div>
                         <div class="grow shrink basis-0 flex-col justify-center items-center gap-2 inline-flex">
@@ -169,7 +169,7 @@ const LaporanLomba = () => {
                                 <div class="w-6 h-[35px] bg-[#ffcfbe] rounded-xl"></div>
                             </div>
                             <div
-                                class="self-stretch text-center text-gray-500 text-sm font-normal font-['Inter'] leading-tight">
+                                class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
                                 Juara Harapan</div>
                         </div>
                         <div class="grow shrink basis-0 flex-col justify-center items-center gap-2 inline-flex">
@@ -180,7 +180,7 @@ const LaporanLomba = () => {
                                 <div class="w-6 h-[35px] bg-[#ffcfbe] rounded-xl"></div>
                             </div>
                             <div
-                                class="self-stretch text-center text-gray-500 text-sm font-normal font-['Inter'] leading-tight">
+                                class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
                                 Lainnya</div>
                         </div>
                     </div>
