@@ -61,7 +61,11 @@ const PendataanLomba = () => {
                             onClick={() => {
                                 settabValue("Partisipasi");
                             }}
-                            className="bg-green-500 text-white py-2 px-4 w-[140px] rounded-l-lg"
+                            className={`${
+                                tabValue === "Partisipasi"
+                                    ? "bg-green-500 text-white"
+                                    : "bg-gray-200 text-gray-700"
+                            } py-2 px-4 w-[140px] rounded-l-lg duration-300`}
                         >
                             Partisipasi
                         </button>
@@ -69,16 +73,20 @@ const PendataanLomba = () => {
                             onClick={() => {
                                 settabValue("Prestasi");
                             }}
-                            className="bg-gray-200 text-gray-700 py-2 px-4 w-[140px] rounded-r-lg"
+                            className={`${
+                                tabValue === "Prestasi"
+                                    ? "bg-green-500 text-white"
+                                    : "bg-gray-200 text-gray-700"
+                            } py-2 px-4 w-[140px] rounded-r-lg duration-300`}
                         >
                             Prestasi
                         </button>
                     </div>
-                    <BiodataUser/>
+                    <BiodataUser />
                     {tabValue === "Partisipasi" ? (
-                        <TabPartisipasiLomba/>
+                        <TabPartisipasiLomba />
                     ) : (
-                        <TabPrestasiLomba/>
+                        <TabPrestasiLomba />
                     )}
                 </div>
             </main>
