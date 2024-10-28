@@ -1,7 +1,6 @@
 import React from "react";
 
 const HeaderSection = ({ pageType }) => {
-    // Tentukan teks berdasarkan halaman
     const pageTitle = () => {
         switch (pageType) {
             case "beasiswa":

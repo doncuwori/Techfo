@@ -58,25 +58,25 @@ const Navbar = () => {
                     </Link>
                     <Link
                         href={route('lomba')}
-                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e]"
+                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         Lomba
                     </Link>
                     <Link
                         href={route('beasiswa')}
-                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e]"
+                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         Beasiswa
                     </Link>
                     <Link
-                        // href={route('')}
-                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e]"
+                        href={route('abdimas')}
+                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         Pengabdian Masyarakat
                     </Link>
                     <Link
-                        // href={route('')}
-                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e]"
+                        href={route('penelitian')}
+                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         Penelitian
                     </Link>
@@ -87,7 +87,7 @@ const Navbar = () => {
                     >
                         <button
                             onClick={togglePendataanDropdown}
-                            className="flex items-center text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e]"
+                            className="flex items-center text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                         >
                             <span>Pendataan</span>
                             <svg
@@ -137,7 +137,7 @@ const Navbar = () => {
                     </div>
                     <Link
                         href={route('faq')}
-                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e]"
+                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         FAQ
                     </Link>

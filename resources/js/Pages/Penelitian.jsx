@@ -1,11 +1,11 @@
 import Navbar from "@/Components/Navbar";
 import HeaderSection from "@/Components/HeaderSection";
 import SearchBox from "@/Components/SearchBoxKegiatan";
-import Procedure from "@/Components/Beasiswa/ProcedureBeasiswa";
-import CardLomba from "@/Components/Beasiswa/CardBeasiswa";
-import CardBeasiswa from "@/Components/Beasiswa/CardBeasiswa";
+import Procedure from "@/Components/Penelitian/ProcedurePenelitian";
+import CardLomba from "@/Components/Penelitian/CardPenelitian";
+import CardPenelitian from "@/Components/Penelitian/CardPenelitian";
 
-const Beasiswa = () => {
+const Penelitian = () => {
     return (
         <div>
             <Navbar />
@@ -16,7 +16,7 @@ const Beasiswa = () => {
                     className="w-full max-h-[750px] rounded-md"
                 />
             </div>
-            <HeaderSection pageType="beasiswa" />
+            <HeaderSection pageType="penelitian" />
             <SearchBox />
             <Procedure />
             <div className="absolute inset-x-0 mt-6 z-0 flex justify-center">
@@ -26,9 +26,9 @@ const Beasiswa = () => {
                     className="w-full max-h-[500px] rounded-md"
                 />
             </div>
-            <CardBeasiswa />
+            <CardPenelitian />
         </div>
     );
 };
 
-export default Beasiswa;
+export default Penelitian;

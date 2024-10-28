@@ -58,6 +58,14 @@ Route::get('/beasiswa', function () {
     return Inertia::render('Beasiswa');
 })->name('beasiswa');
 
+Route::get('/abdimas', function () {
+    return Inertia::render('Abdimas');
+})->name('abdimas');
+
+Route::get('/penelitian', function () {
+    return Inertia::render('Penelitian');
+})->name('penelitian');
+
 Route::get('/loginAdmin', function () {
     return Inertia::render('LoginAdmin');
 });
