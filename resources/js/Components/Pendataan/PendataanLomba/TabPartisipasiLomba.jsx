@@ -1,3 +1,4 @@
+import PernyataanLegalitas from "@/Components/PernyataanLegalitas";
 import { Plus, Search } from "lucide-react";
 import React, { useState } from "react";
 
@@ -101,8 +102,8 @@ export const TabPartisipasiLomba = () => {
                         placeholder="Contoh: Lomba Karya Tulis Ilmiah Nasional Tahun 2017"
                     />
                 </div>
-                <div className="flex w-full gap-auto">
-                    <div className="flex flex-col w-max">
+                <div className="flex gap-4">
+                    <div className="flex flex-col w-full">
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">
                                 Tingkat Prestasi
@@ -133,7 +134,7 @@ export const TabPartisipasiLomba = () => {
                             </select>
                         </div>
                     </div>
-                    <div className="flex flex-col w-max">
+                    <div className="flex flex-col w-full">
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">
                                 Bidang
@@ -242,21 +243,7 @@ export const TabPartisipasiLomba = () => {
                     </ul>
                 </div>
             </section>
-            <section className="mb-8">
-                <h2 className="text-xl font-bold mb-4">Pernyataan Legalitas</h2>
-                <div className="border p-4 rounded-lg">
-                    <div className="flex items-center">
-                        <input type="checkbox" className="mr-2" />
-                        <label className="text-gray-700">
-                            Saya menyatakan bahwa data yang terunggah adalah
-                            sesuai dengan aslinya dan data yang saya isikan
-                            benar. Apabila suatu hari ditemukan data yang tidak
-                            benar, saya bersedia menerima sanksi sesuai dengan
-                            ketentuan yang berlaku.
-                        </label>
-                    </div>
-                </div>
-            </section>
+            <PernyataanLegalitas />
             <div className="flex justify-end w-full">
                 <button className="mt-2 bg-orange-500 text-white py-1 px-4 rounded-lg">
                     Submit
