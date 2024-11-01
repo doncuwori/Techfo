@@ -4,14 +4,14 @@ import PernyataanLegalitas from "@/Components/PernyataanLegalitas";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 
-const DaftarAbdimas = () => {
+const DaftarPenelitian = () => {
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col items-center">
             <Navbar />
             <main className="container mx-auto px-4 py-8">
                 <div className="bg-white p-8 rounded-lg shadow-md max-w-[1200px] mx-auto">
                     <h1 className="text-2xl font-semibold mb-6 text-center">
-                        Pendaftaran Pengabdian Masyarakat
+                        Pendaftaran Penelitian
                     </h1>
                     <BiodataUser />
                     <section className="mb-6">
@@ -89,7 +89,9 @@ const DaftarAbdimas = () => {
                                     dengan ukuran file maksimal 1MB.
                                 </p>
                             </div>
+
                             <PernyataanLegalitas />
+
                             <div className="flex justify-end w-full">
                                 <button className="mt-2 bg-orange-500 text-white py-1 px-4 rounded-lg">
                                     Submit
@@ -104,4 +106,4 @@ const DaftarAbdimas = () => {
     );
 };
 
-export default DaftarAbdimas;
+export default DaftarPenelitian;

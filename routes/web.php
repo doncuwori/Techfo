@@ -80,6 +80,11 @@ Route::get('/faq', function () {
 Route::get('/daftarAbdimas', function () {
     return Inertia::render('Abdimas/DaftarAbdimas');
 });
+
+Route::get('/daftarPenelitian', function () {
+    return Inertia::render('Penelitian/DaftarPenelitian');
+});
+
 require __DIR__ . '/auth.php';
 
 Route::get('/laporanLomba', function () {
