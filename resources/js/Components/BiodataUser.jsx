@@ -25,7 +25,7 @@ export const BiodataUser = () => {
                 </div>
             </div> */}
             <div class="grow shrink basis-0 h-[165px] bg-white rounded-lg border border-[#d1d3d8] justify-start items-center flex">
-                <div class="w-[179px] self-stretch px-4 bg-[#ffefea] rounded-tl-lg rounded-bl-lg flex-col justify-start items-start inline-flex">
+                <div class="w-[179px] self-stretch px-4 bg-orange-50 rounded-tl-lg rounded-bl-lg flex-col justify-start items-start inline-flex">
                     <div class="self-stretch grow shrink basis-0 py-3 justify-start items-center gap-2 inline-flex">
                         <div class="text-[#2d3036] text-sm font-semibold font-['Inter'] leading-tight">
                             NIM
