@@ -23,12 +23,12 @@ Route::get('/test', function () {
 });
 
 Route::get('/pendataanBeasiswa', function () {
-    return Inertia::render('Pendataan/PendataanBeasiswa');
+    return Inertia::render('User/Pendataan/PendataanBeasiswa');
 });
 
 Route::get('/pendataanLomba', function () {
 
-    return Inertia::render('Pendataan/PendataanLomba');
+    return Inertia::render('User/Pendataan/PendataanLomba');
 });
 
 Route::middleware('auth')->group(function () {
@@ -38,46 +38,56 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/dashboardAdmin', function () {
-    return Inertia::render('DashboardAdmin');
+    return Inertia::render('Admin/DashboardAdmin');
 });
 
 Route::get('/loginUser', function () {
-    return Inertia::render('LoginUser');
+    return Inertia::render('User/LoginUser');
 })->name('loginUser');
 
 Route::get('/dashboardUser', function () {
-    return Inertia::render('DashboardUser');
+    return Inertia::render('User/DashboardUser');
 })->name('dashboardUser');
 
 Route::get('/detailBeasiswa', function () {
-    return Inertia::render('DetailBeasiswa');
+    return Inertia::render('User/Beasiswa/DetailBeasiswa');
 })->name('detailBeasiswa');
 
 Route::get('/lomba', function () {
-    return Inertia::render('Lomba');
+    return Inertia::render('User/Lomba');
 })->name('lomba');
 
 Route::get('/beasiswa', function () {
-    return Inertia::render('Beasiswa');
+    return Inertia::render('User/Beasiswa/Beasiswa');
 })->name('beasiswa');
 
 Route::get('/loginAdmin', function () {
-    return Inertia::render('LoginAdmin');
+    return Inertia::render('Admin/LoginAdmin');
 });
 
 Route::get('/faq', function () {
-    return Inertia::render('FAQ');
+    return Inertia::render('User/FAQ');
 })->name('faq');
 
 Route::get('/daftarAbdimas', function () {
-    return Inertia::render('Abdimas/DaftarAbdimas');
+    return Inertia::render('User/Abdimas/DaftarAbdimas');
 });
+
+Route::get('/daftarPenelitian', function () {
+    return Inertia::render('User/Penelitian/DaftarPenelitian');
+});
+
 require __DIR__ . '/auth.php';
 
 Route::get('/laporanLomba', function () {
+<<<<<<< HEAD
     return Inertia::render('Laporan/LaporanLomba');
 })->name('laporanLomba');
 
 Route::get('/laporanBeasiswa', function () {
     return Inertia::render('Laporan/LaporanBeasiswa');
 })->name('laporanBeasiswa');
+=======
+    return Inertia::render('Admin/Laporan/LaporanLomba');
+})->name('laporanLomba');
+>>>>>>> origin/master
