@@ -24,12 +24,12 @@ Route::get('/test', function () {
 
 Route::get('/pendataanBeasiswa', function () {
     return Inertia::render('Pendataan/PendataanBeasiswa');
-});
+})->name('pendataanBeasiswa');;
 
 Route::get('/pendataanLomba', function () {
 
     return Inertia::render('Pendataan/PendataanLomba');
-});
+})->name('pendataanLomba');;
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

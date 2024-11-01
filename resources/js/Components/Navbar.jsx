@@ -110,26 +110,26 @@ const Navbar = () => {
                                 onMouseLeave={handlePendataanMouseLeave}
                             >
                                 <Link
-                                    // href={route('')}
-                                    className="block px-4 py-2 hover:bg-orange-100"
-                                >
-                                    <div className="text-black text-base font-semibold leading-normal">
-                                        Lomba Terbaru
-                                    </div>
-                                    <div className="text-gray-500 text-xs font-normal leading-tight">
-                                        Lihat informasi lomba terbaru di sini
-                                    </div>
-                                </Link>
-
-                                <Link
-                                    // href={route('')}
+                                    href={route('pendataanLomba')}
                                     className="block px-4 py-2 hover:bg-orange-100"
                                 >
                                     <div className="text-black text-base font-semibold leading-normal">
                                         Pendataan Lomba
                                     </div>
                                     <div className="text-gray-500 text-xs font-normal leading-tight">
-                                        Lakukan pendataan keaktifan lomba di sini
+                                        Lakukan pendataan lomba disini
+                                    </div>
+                                </Link>
+
+                                <Link
+                                    href={route('pendataanBeasiswa')}
+                                    className="block px-4 py-2 hover:bg-orange-100"
+                                >
+                                    <div className="text-black text-base font-semibold leading-normal">
+                                        Pendataan Beasiswa
+                                    </div>
+                                    <div className="text-gray-500 text-xs font-normal leading-tight">
+                                        Lakukan pendataan besiswa disini
                                     </div>
                                 </Link>
                             </div>

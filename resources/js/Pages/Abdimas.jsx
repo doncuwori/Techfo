@@ -1,6 +1,6 @@
 import Navbar from "@/Components/Navbar";
 import HeaderSection from "@/Components/HeaderSection";
-import SearchBox from "@/Components/SearchBoxKegiatan";
+import SearchBox from "@/Components/SearchBox";
 import Procedure from "@/Components/Abdimas/ProcedureAbdimas";
 import CardLomba from "@/Components/Abdimas/CardAbdimas";
 import CardAbdimas from "@/Components/Abdimas/CardAbdimas";

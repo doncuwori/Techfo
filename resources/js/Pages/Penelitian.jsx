@@ -1,6 +1,6 @@
 import Navbar from "@/Components/Navbar";
 import HeaderSection from "@/Components/HeaderSection";
-import SearchBox from "@/Components/SearchBoxKegiatan";
+import SearchBox from "@/Components/SearchBox";
 import Procedure from "@/Components/Penelitian/ProcedurePenelitian";
 import CardLomba from "@/Components/Penelitian/CardPenelitian";
 import CardPenelitian from "@/Components/Penelitian/CardPenelitian";

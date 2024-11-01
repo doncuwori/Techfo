@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import Navbar from "@/Components/Navbar";
 import { BiodataUser } from "@/components/BiodataUser";
 import { TabPrestasiLomba } from "@/Components/PendataanLomba/TabPrestasiLomba";
 import { TabPartisipasiLomba } from "@/Components/PendataanLomba/TabPartisipasiLomba";
@@ -8,50 +9,7 @@ const PendataanBeasiswa = () => {
     const [tabValue, settabValue] = useState("Partisipasi");
     return (
         <div className="min-h-screen flex flex-col items-center">
-            <header className="w-full bg-white shadow-md">
-                <div className="container mx-auto flex justify-between items-center py-4 px-6">
-                    <div className="flex items-center">
-                        <img
-                            src="https://placehold.co/40x40"
-                            alt="Logo"
-                            className="mr-2"
-                        />
-                        <span className="text-orange-500 text-xl font-bold">
-                            iPrestasi
-                        </span>
-                    </div>
-                    <nav className="flex space-x-4">
-                        <a href="#" className="text-gray-700">
-                            Home
-                        </a>
-                        <a href="#" className="text-gray-700">
-                            Lomba
-                        </a>
-                        <a href="#" className="text-gray-700">
-                            Beasiswa
-                        </a>
-                        <a href="#" className="text-gray-700">
-                            Pengabdian Masyarakat
-                        </a>
-                        <a href="#" className="text-gray-700">
-                            Penelitian
-                        </a>
-                        <a href="#" className="text-orange-500">
-                            Pendataan
-                        </a>
-                        <a href="#" className="text-gray-700">
-                            FAQ
-                        </a>
-                    </nav>
-                    <div className="flex items-center">
-                        <img
-                            src="https://placehold.co/40x40"
-                            alt="User Avatar"
-                            className="rounded-full"
-                        />
-                    </div>
-                </div>
-            </header>
+            <Navbar />
             <main className="container mx-auto flex-grow py-10 px-6">
                 <div className="bg-white shadow-md rounded-lg p-8 max-w-[1200px] mx-auto">
                     <h1 className="text-center text-2xl font-bold mb-6">
