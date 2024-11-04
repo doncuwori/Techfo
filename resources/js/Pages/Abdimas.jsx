@@ -1,8 +1,8 @@
 import Navbar from "@/Components/Navbar";
+import Footer from "@/Components/Footer";
 import HeaderSection from "@/Components/HeaderSection";
 import SearchBox from "@/Components/SearchBox";
 import Procedure from "@/Components/Abdimas/ProcedureAbdimas";
-import CardLomba from "@/Components/Abdimas/CardAbdimas";
 import CardAbdimas from "@/Components/Abdimas/CardAbdimas";
 
 const Abdimas = () => {
@@ -27,6 +27,7 @@ const Abdimas = () => {
                 />
             </div>
             <CardAbdimas />
+            <Footer />
         </div>
     );
 };

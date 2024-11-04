@@ -1,4 +1,5 @@
 import Navbar from "@/Components/Navbar";
+import Footer from "@/Components/Footer";
 import HeaderSection from "@/Components/HeaderSection";
 import SearchBox from "@/Components/SearchBox";
 import Procedure from "@/Components/Lomba/ProcedureLomba";
@@ -26,6 +27,7 @@ const Lomba = () => {
                 />
             </div>
             <CardLomba />
+            <Footer />
         </div>
     );
 };

@@ -1,8 +1,8 @@
 import Navbar from "@/Components/Navbar";
+import Footer from "@/Components/Footer";
 import HeaderSection from "@/Components/HeaderSection";
 import SearchBox from "@/Components/SearchBox";
 import Procedure from "@/Components/Beasiswa/ProcedureBeasiswa";
-import CardLomba from "@/Components/Beasiswa/CardBeasiswa";
 import CardBeasiswa from "@/Components/Beasiswa/CardBeasiswa";
 
 const Beasiswa = () => {
@@ -27,6 +27,7 @@ const Beasiswa = () => {
                 />
             </div>
             <CardBeasiswa />
+            <Footer />
         </div>
     );
 };

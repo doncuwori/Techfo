@@ -1,63 +1,77 @@
-import React from 'react';
+import React from "react";
 
 const Footer = () => {
     return (
-        <div className="w-full max-w-[1917px] h-[350px] px-8 pt-8 pb-16 bg-Background-Default-Default border-t border-Border-Default-Default flex justify-center items-start gap-[200px]">
-            {/* Column 1 */}
-            <div className="w-[262px] h-[83px] flex flex-col justify-end gap-6 mt-20">
-                {/* Logo */}
-                <div className="flex justify-start items-left px-14">
-                    <img src="img/logofigma.png" alt="Icon 1" className="w-7 h-8" />
+        <div className="w-full mx-auto h-[386px] px-8 py-16 bg-[#111111] flex flex-col justify-center items-center gap-12">
+            <div className="flex justify-between w-full">
+                {/* Faculty Info Section */}
+                <div className="flex flex-col gap-6 ml-20 max-w-[353px]">
+                    <div className="flex items-center gap-3.5">
+                        <img
+                            className="w-14 h-14"
+                            src="img/upn.png"
+                            alt="Faculty Logo"
+                        />
+                        <div className="text-[#fe632e] text-base font-bold">
+                            FAKULTAS ILMU KOMPUTER
+                            <br />
+                            UPN VETERAN JAKARTA
+                        </div>
+                    </div>
+                    <div className="text-[#fcfcfc] text-base font-normal leading-snug">
+                        Universitas Pembangunan Nasional Veteran Jakarta
+                        <br />
+                        Jl. RS. Fatmawati, Pondok Labu, Jakarta Selatan, DKI
+                        Jakarta. 12450.
+                        <br />
+                        +6221-765 6971
+                        <br />
+                        upnvj@upnvj.ac.id
+                    </div>
                 </div>
-                {/* Social Icons */}
-                <div className="flex justify-center items-center gap-4">
-                    <img src="img/logox.png" alt="Icon 2" className="w-6 h-6" />
-                    <img src="img/logoinstagram.png" alt="Icon 3" className="w-6 h-6" />
-                    <img src="img/logoyt.png" alt="Icon 4" className="w-7 h-6" />
-                    <img src="img/logolinkedin.png" alt="Icon 5" className="w-6 h-6" />
+
+                {/* Technology Information Section */}
+                <div className="flex flex-col gap-3 max-w-[353px]">
+                    <div className="flex items-center gap-2">
+                        <div className="w-14 h-14 bg-[#d9d9d9] rounded-full flex items-center justify-center border-2 border-[#fcfcfc]">
+                            <img
+                                className="w-12 h-12 rounded-full"
+                                src="/img/LogoTechfo.jpg"
+                                alt="Technology Icon"
+                            />
+                        </div>
+                        <div className="text-xl font-bold">
+                            <span className="text-white">Technology</span>
+                            <span className="text-[#fb8207]"> Information</span>
+                        </div>
+                    </div>
+                    <div className="text-[#fcfcfc] text-base font-bold">
+                        Project Akhir Mahasiswa
+                    </div>
+                    <div className="text-[#fcfcfc] text-base font-normal leading-snug">
+                        Website yang memuat informasi seputar lomba, beasiswa,
+                        penelitian dosen, dan pengabdian masyarakat oleh dosen.
+                    </div>
+                </div>
+
+                {/* Student Project Section */}
+                <div className="flex flex-col gap-6 mr-20 max-w-[262px]">
+                    <div className="text-[#fcfcfc] text-base font-semibold">
+                        Project Akhir Mahasiswa FIK 2021
+                    </div>
+                    <div className="text-[#fcfcfc] text-base font-normal">
+                        Khaliza Fania - 2110512020
+                        <br />
+                        Elmira Ardelia - 2110512046
+                        <br />
+                        Andi Setiawan - 2110512083
+                    </div>
                 </div>
             </div>
 
-            {/* Column 2: Use Cases */}
-            <div className="w-[262px] flex flex-col gap-4">
-                <div className="self-stretch h-[38px] pb-4 flex items-start">
-                    <div className="text-Text-Default-Default text-base font-semibold leading-snug">Use cases</div>
-                </div>
-                <div className="flex flex-col gap-2">
-                    {["UI design", "UX design", "Wireframing", "Diagramming", "Brainstorming", "Online whiteboard", "Team collaboration"].map((item, index) => (
-                        <div key={index} className="w-[89px] h-[22px] flex items-center">
-                            <div className="text-Text-Default-Default text-base font-normal leading-snug whitespace-nowrap">{item}</div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {/* Column 3: Explore */}
-            <div className="w-[262px] flex flex-col gap-3">
-                <div className="self-stretch h-[38px] pb-4 flex items-start">
-                    <div className="text-Text-Default-Default text-base font-semibold leading-snug">Explore</div>
-                </div>
-                <div className="flex flex-col gap-2">
-                    {["Design", "Prototyping", "Development features", "Design systems", "Collaboration features", "Design process", "FigJam"].map((item, index) => (
-                        <div key={index} className="w-[89px] h-[22px] flex items-center">
-                            <div className="text-Text-Default-Default text-base font-normal leading-snug whitespace-nowrap">{item}</div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {/* Column 4: Resources */}
-            <div className="w-[262px] flex flex-col gap-3">
-                <div className="self-stretch h-[38px] pb-4 flex items-start">
-                    <div className="text-Text-Default-Default text-base font-semibold leading-snug">Resources</div>
-                </div>
-                <div className="flex flex-col gap-2">
-                    {["Blog", "Best practices", "Colors", "Color wheel", "Support", "Developers", "Resource library"].map((item, index) => (
-                        <div key={index} className="w-[89px] h-[22px] flex items-center">
-                            <div className="text-Text-Default-Default text-base font-normal leading-snug whitespace-nowrap">{item}</div>
-                        </div>
-                    ))}
-                </div>
+            {/* Footer Section */}
+            <div className="text-[#fcfcfc] text-sm font-normal text-center">
+                Copyright ©2024 Fakultas Ilmu Komputer UPN Veteran Jakarta
             </div>
         </div>
     );

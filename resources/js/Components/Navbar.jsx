@@ -158,7 +158,7 @@ const Navbar = () => {
                         onMouseLeave={handleProfileMouseLeave}
                     >
                         <Link
-                            // href={route('')}
+                            href={route('profile')}
                             className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:font-bold hover:text-[#fe632e]"
                         >
                             Profil Saya

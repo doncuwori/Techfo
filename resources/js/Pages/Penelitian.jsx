@@ -1,8 +1,8 @@
 import Navbar from "@/Components/Navbar";
+import Footer from "@/Components/Footer";
 import HeaderSection from "@/Components/HeaderSection";
 import SearchBox from "@/Components/SearchBox";
 import Procedure from "@/Components/Penelitian/ProcedurePenelitian";
-import CardLomba from "@/Components/Penelitian/CardPenelitian";
 import CardPenelitian from "@/Components/Penelitian/CardPenelitian";
 
 const Penelitian = () => {
@@ -27,6 +27,7 @@ const Penelitian = () => {
                 />
             </div>
             <CardPenelitian />
+            <Footer />
         </div>
     );
 };

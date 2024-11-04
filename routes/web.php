@@ -27,7 +27,6 @@ Route::get('/pendataanBeasiswa', function () {
 })->name('pendataanBeasiswa');;
 
 Route::get('/pendataanLomba', function () {
-
     return Inertia::render('Pendataan/PendataanLomba');
 })->name('pendataanLomba');;
 
@@ -76,6 +75,10 @@ Route::get('/loginAdmin', function () {
 Route::get('/faq', function () {
     return Inertia::render('FAQ');
 })->name('faq');
+
+Route::get('/profile', function () {
+    return Inertia::render('Profile');
+})->name('profile');
 
 Route::get('/daftarAbdimas', function () {
     return Inertia::render('Abdimas/DaftarAbdimas');

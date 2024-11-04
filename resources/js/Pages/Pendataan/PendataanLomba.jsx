@@ -4,16 +4,11 @@ import { BiodataUser } from "@/components/BiodataUser";
 import { TabPrestasiLomba } from "@/Components/Pendataan/PendataanLomba/TabPrestasiLomba";
 import { TabPartisipasiLomba } from "@/Components/Pendataan/PendataanLomba/TabPartisipasiLomba";
 import Footer from "@/Components/Footer";
-import Navbar from "@/Components/Navbar";
 
 const PendataanLomba = () => {
     const [tabValue, settabValue] = useState("Partisipasi");
     return (
-<<<<<<< HEAD
         <div className="min-h-screen flex flex-col items-center">
-=======
-        <div className="min-h-screen flex flex-col items-center bg-gray-100">
->>>>>>> origin/master
             <Navbar />
             <main className="container mx-auto flex-grow py-10 px-6">
                 <div className="bg-white shadow-md rounded-lg p-8 max-w-[1200px] mx-auto">
@@ -58,4 +53,5 @@ const PendataanLomba = () => {
         </div>
     );
 };
+
 export default PendataanLomba;
