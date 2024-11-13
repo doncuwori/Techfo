@@ -27,8 +27,23 @@ Route::get('/pendataanBeasiswa', function () {
 });
 
 Route::get('/pendataanLomba', function () {
-
     return Inertia::render('User/Pendataan/PendataanLomba');
+});
+
+Route::get('/tambahInfoLomba', function () {
+    return Inertia::render('Admin/PusatInformasi/TambahInfoLomba');
+});
+
+Route::get('/tambahInfoBeasiswa', function () {
+    return Inertia::render('Admin/PusatInformasi/TambahInfoBeasiswa');
+});
+
+Route::get('/tambahInfoPenelitian', function () {
+    return Inertia::render('Admin/PusatInformasi/TambahInfoPenelitian');
+});
+
+Route::get('/tambahInfoAbdimas', function () {
+    return Inertia::render('Admin/PusatInformasi/TambahInfoAbdimas');
 });
 
 Route::middleware('auth')->group(function () {
@@ -37,38 +52,96 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/dashboardAdmin', function () {
-    return Inertia::render('Admin/DashboardAdmin');
-});
+// Landing Page
+Route::get('/landingPage', function () {
+    return Inertia::render('LandingPage');
+})->name(name: 'landingPage');
 
+// Login
 Route::get('/loginUser', function () {
     return Inertia::render('User/LoginUser');
 })->name('loginUser');
+
+
+// Dashboard
+Route::get('/dashboardAdmin', function () {
+    return Inertia::render('Admin/DashboardAdmin');
+})->name('dashboardAdmin');
 
 Route::get('/dashboardUser', function () {
     return Inertia::render('User/DashboardUser');
 })->name('dashboardUser');
 
-Route::get('/detailBeasiswa', function () {
-    return Inertia::render('User/Beasiswa/DetailBeasiswa');
-})->name('detailBeasiswa');
 
+// Lomba 
 Route::get('/lomba', function () {
-    return Inertia::render('User/Lomba');
+    return Inertia::render('User/Lomba/Lomba');
 })->name('lomba');
 
+Route::get('/detailLomba', function () {
+    return Inertia::render(component: 'User/Lomba/DetailLomba');
+})->name('detailLomba');
+
+
+// Beasiswa
 Route::get('/beasiswa', function () {
     return Inertia::render('User/Beasiswa/Beasiswa');
 })->name('beasiswa');
+
+Route::get('/detailBeasiswa', function () {
+    return Inertia::render(component: 'User/Beasiswa/DetailBeasiswa');
+})->name('detailBeasiswa');
+
+
+// Abdimas
+Route::get('/abdimas', function () {
+    return Inertia::render('User/Abdimas/Abdimas');
+})->name('abdimas');
+
+Route::get('/detailAbdimas', function () {
+    return Inertia::render(component: 'User/Abdimas/DetailAbdimas');
+})->name('detailAbdimas');
+
+
+// Penelitian
+Route::get('/penelitian', function () {
+    return Inertia::render('User/Penelitian/Penelitian');
+})->name('penelitian');
+
+Route::get('/detailPenelitian', function () {
+    return Inertia::render(component: 'User/Penelitian/DetailPenelitian');
+})->name('detailPenelitian');
+
+
+// Pendataan
+Route::get('/pendataanBeasiswa', function () {
+    return Inertia::render('User/Pendataan/PendataanBeasiswa');
+})->name('pendataanBeasiswa');;
+
+Route::get('/pendataanLomba', function () {
+    return Inertia::render('User/Pendataan/PendataanLomba');
+})->name('pendataanLomba');;
+
+
+// Frequently Asked Question
+Route::get('/faq', function () {
+    return Inertia::render('User/FAQ');
+})->name('faq');
+
+
 
 Route::get('/loginAdmin', function () {
     return Inertia::render('Admin/LoginAdmin');
 });
 
-Route::get('/faq', function () {
-    return Inertia::render('User/FAQ');
-})->name('faq');
 
+// Profile
+Route::get('/profile', function () {
+    return Inertia::render('User/Profile');
+})->name('profile');
+
+
+// Pendaftaran
 Route::get('/daftarAbdimas', function () {
     return Inertia::render('User/Abdimas/DaftarAbdimas');
 });

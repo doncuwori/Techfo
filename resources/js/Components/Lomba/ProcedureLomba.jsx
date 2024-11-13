@@ -1,12 +1,12 @@
-// resources/js/components/Prosedure/Prosedure.jsx
 import React from "react";
+import { Link } from "@inertiajs/react";
 
-const ProcedureCards = () => {
+const ProcedureLomba = () => {
     return (
         <div className="w-full px-16 py-8 mt-10 mb-12 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {/* Card 1 */}
-                <a href="/prosedure" className="CardInformasi">
+                <Link href={route('faq')} className="CardInformasi">
                     <div className="px-6 py-8 bg-white rounded-2xl shadow border flex flex-col items-start gap-3 hover:bg-orange-100 hover:scale-105 transform transition-all duration-300">
                         <img
                             className="w-14 h-11 object-contain"
@@ -23,10 +23,10 @@ const ProcedureCards = () => {
                             </div>
                         </div>
                     </div>
-                </a>
+                </Link>
 
                 {/* Card 2 */}
-                <div className="CardInformasi">
+                <Link href={route('faq')} className="CardInformasi">
                     <div className="px-6 py-8 bg-white rounded-2xl shadow border border-Neutral-neutral-100 flex flex-col items-start gap-3 hover:bg-orange-100 hover:scale-105 transform transition-all duration-300">
                         <img
                             className="w-14 h-11 object-contain"
@@ -43,10 +43,10 @@ const ProcedureCards = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
 
                 {/* Card 3 */}
-                <div className="CardInformasi">
+                <Link href={route('faq')} className="CardInformasi">
                     <div className="px-6 py-8 bg-white rounded-2xl shadow border border-Neutral-neutral-100 flex flex-col items-start gap-3 hover:bg-orange-100 hover:scale-105 transform transition-all duration-300">
                         <img
                             className="w-14 h-11 object-contain"
@@ -63,10 +63,10 @@ const ProcedureCards = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
             </div>
         </div>
     );
 };
 
-export default ProcedureCards;
+export default ProcedureLomba;

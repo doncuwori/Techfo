@@ -214,11 +214,7 @@ export const TabPrestasiLomba = () => {
                         className="w-full border rounded-lg p-2"
                     />
                     <div className="flex items-center mt-2">
-                        <input type="checkbox" className="mr-2" />
-                        <label className="text-gray-700">
-                            Klik jika tidak pada tanggal yang sama apabila waktu
-                            pelaksanaan hanya 1 hari.
-                        </label>
+                        <input type="calendar" className="mr-2" />
                     </div>
                 </div>
                 <div className="mb-4">
