@@ -156,3 +156,15 @@ require __DIR__ . '/auth.php';
 Route::get('/laporanLomba', function () {
     return Inertia::render('Admin/Laporan/LaporanLomba');
 })->name('laporanLomba');
+
+Route::get('/laporanBeasiswa', function () {
+    return Inertia::render('Admin/Laporan/LaporanBeasiswa');
+})->name('laporanBeasiswa');
+
+Route::get('/laporanAbdimas', function () {
+    return Inertia::render('Admin/Laporan/LaporanAbdimas');
+})->name('laporanAbdimas');
+
+Route::get('/laporanPenelitian', function () {
+    return Inertia::render('Admin/Laporan/LaporanPenelitian');
+})->name('laporanPenelitian');

@@ -27,44 +27,44 @@ export const BiodataUser = () => {
             <div class="grow shrink basis-0 h-[165px] bg-white rounded-lg border border-[#d1d3d8] justify-start items-center flex">
                 <div class="w-[179px] self-stretch px-4 bg-orange-50 rounded-tl-lg rounded-bl-lg flex-col justify-start items-start inline-flex">
                     <div class="self-stretch grow shrink basis-0 py-3 justify-start items-center gap-2 inline-flex">
-                        <div class="text-[#2d3036] text-sm font-semibold font-['Inter'] leading-tight">
+                        <div class="text-[#2d3036] text-sm font-semibold leading-tight">
                             NIM
                         </div>
                     </div>
                     <div class="self-stretch grow shrink basis-0 py-3 justify-start items-center gap-2 inline-flex">
-                        <div class="text-[#2d3036] text-sm font-semibold font-['Inter'] leading-tight">
+                        <div class="text-[#2d3036] text-sm font-semibold leading-tight">
                             Nama
                         </div>
                     </div>
                     <div class="self-stretch grow shrink basis-0 py-3 justify-start items-center gap-2 inline-flex">
-                        <div class="text-[#2d3036] text-sm font-semibold font-['Inter'] leading-tight">
+                        <div class="text-[#2d3036] text-sm font-semibold leading-tight">
                             Program Studi
                         </div>
                     </div>
                     <div class="self-stretch grow shrink basis-0 py-3 justify-start items-center gap-2 inline-flex">
-                        <div class="text-[#2d3036] text-sm font-semibold font-['Inter'] leading-tight">
+                        <div class="text-[#2d3036] text-sm font-semibold leading-tight">
                             Angkatan
                         </div>
                     </div>
                 </div>
                 <div class="w-[500px] self-stretch px-4 rounded-md flex-col justify-start items-start inline-flex">
                     <div class="self-stretch grow shrink basis-0 py-3 justify-start items-center gap-2 inline-flex">
-                        <div class="text-[#2d3036] text-sm font-normal font-['Inter'] leading-tight">
+                        <div class="text-[#2d3036] text-sm font-normal leading-tight">
                             2110512020
                         </div>
                     </div>
                     <div class="self-stretch grow shrink basis-0 py-3 justify-start items-center gap-2 inline-flex">
-                        <div class="text-[#2d3036] text-sm font-normal font-['Inter'] leading-tight">
+                        <div class="text-[#2d3036] text-sm font-normal leading-tight">
                             Khaliza Fania
                         </div>
                     </div>
                     <div class="self-stretch grow shrink basis-0 py-3 justify-start items-center gap-2 inline-flex">
-                        <div class="text-[#2d3036] text-sm font-normal font-['Inter'] leading-tight">
+                        <div class="text-[#2d3036] text-sm font-normal leading-tight">
                             S1 Sistem Informasi
                         </div>
                     </div>
                     <div class="self-stretch grow shrink basis-0 py-3 justify-start items-center gap-2 inline-flex">
-                        <div class="text-[#2d3036] text-sm font-normal font-['Inter'] leading-tight">
+                        <div class="text-[#2d3036] text-sm font-normal leading-tight">
                             2021
                         </div>
                     </div>
