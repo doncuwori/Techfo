@@ -20,7 +20,10 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "chart.js": "^4.4.6",
         "lucide-react": "^0.451.0",
-        "react-circular-progressbar": "^2.1.0"
+        "react-chartjs-2": "^5.2.0",
+        "react-circular-progressbar": "^2.1.0",
+        "react-gantt-chart": "^0.3.0-rc.11"
     }
 }

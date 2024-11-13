@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@inertiajs/react";
 import { Clock4 } from "lucide-react";
 
 const CardPenelitian = () => {
@@ -51,12 +52,12 @@ const CardPenelitian = () => {
                 <h1 className="text-black text-2xl font-semibold">
                     Informasi Penelitian
                 </h1>
-                <a
-                    href="#"
-                    className="text-orange-500 text-base font-normal text-right"
+                <Link
+                    href={route("penelitian")}
+                    className="text-orange-500 text-base font-normal text-right hover:font-bold"
                 >
                     Lihat Semua
-                </a>
+                </Link>
             </div>
 
             <div className="w-full px-16 flex gap-6 overflow-x-auto">

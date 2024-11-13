@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from '@inertiajs/react';
 import { Clock4 } from "lucide-react";
 
 const CardLomba = () => {
@@ -62,12 +63,12 @@ const CardLomba = () => {
                     <h1 className="text-black text-2xl font-semibold">
                         Informasi Lomba
                     </h1>
-                    <a
-                        href="/lomba"
-                        className="text-orange-500 text-base font-normal text-right"
+                    <Link
+                        href={route('lomba')}
+                        className="text-orange-500 text-base font-normal text-right hover:font-bold"
                     >
                         Lihat Semua
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="w-full px-16 flex gap-6 overflow-x-auto">
