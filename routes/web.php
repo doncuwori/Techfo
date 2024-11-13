@@ -27,8 +27,23 @@ Route::get('/pendataanBeasiswa', function () {
 });
 
 Route::get('/pendataanLomba', function () {
-
     return Inertia::render('User/Pendataan/PendataanLomba');
+});
+
+Route::get('/tambahInfoLomba', function () {
+    return Inertia::render('Admin/PusatInformasi/TambahInfoLomba');
+});
+
+Route::get('/tambahInfoBeasiswa', function () {
+    return Inertia::render('Admin/PusatInformasi/TambahInfoBeasiswa');
+});
+
+Route::get('/tambahInfoPenelitian', function () {
+    return Inertia::render('Admin/PusatInformasi/TambahInfoPenelitian');
+});
+
+Route::get('/tambahInfoAbdimas', function () {
+    return Inertia::render('Admin/PusatInformasi/TambahInfoAbdimas');
 });
 
 Route::middleware('auth')->group(function () {

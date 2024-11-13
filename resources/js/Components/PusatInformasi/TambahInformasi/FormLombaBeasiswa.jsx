@@ -1,34 +1,22 @@
-import PernyataanLegalitas from "@/Components/PernyataanLegalitas";
+import React from "react";
 
-export const TabDaftarBeasiswa = () => {
+export const FormLombaBeasiswa = () => {
     return (
         <div>
             <section className="mb-8">
                 <h2 className="text-xl font-bold mb-4">
-                    Data Pendaftar Beasiswa
+                    Tambah Informasi Lomba
                 </h2>
+
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Nama Beasiswa
+                        Nama Kegiatan
                     </label>
                     <input
                         type="text"
                         className="w-full border rounded-lg p-2"
                         placeholder="Contoh: Lomba Karya Tulis Ilmiah Nasional Tahun 2017"
                     />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
-                        Jenis Beasiswa
-                    </label>
-                    <select className="w-full border rounded-lg p-2">
-                        <option>-- Pilih Jenis Beasiswa --</option>
-                        <option>Beasiswa dari Pemerintah</option>
-                        <option>Beasiswa Swasta</option>
-                        <option>Beasiswa dari Negara Maju</option>
-                        <option>Beasiswa dari Komunitas</option>
-                        <option>Beasiswa dari Perguruan Tinggi</option>
-                    </select>
                 </div>
 
                 <div className="mb-4">
@@ -44,15 +32,6 @@ export const TabDaftarBeasiswa = () => {
 
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Negara Penyelenggara
-                    </label>
-                    <select className="w-full border rounded-lg p-2">
-                        <option>Pilih Negara Penyelenggara</option>
-                    </select>
-                </div>
-
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
                         Waktu Pelaksanaan
                     </label>
                     <input
@@ -63,7 +42,6 @@ export const TabDaftarBeasiswa = () => {
                         <input type="calendar" className="mr-2" />
                     </div>
                 </div>
-
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Deskripsi Kegiatan
@@ -75,7 +53,6 @@ export const TabDaftarBeasiswa = () => {
                 </div>
             </section>
             <section className="mb-8">
-                <h2 className="text-xl font-bold mb-4">Dokumen Pendukung</h2>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Poster Kegiatan
@@ -106,7 +83,7 @@ export const TabDaftarBeasiswa = () => {
                     </ul>
                 </div>
             </section>
-            <PernyataanLegalitas />
+
             <div className="flex justify-end w-full">
                 <button
                     type="submit"
