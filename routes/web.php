@@ -80,14 +80,26 @@ Route::get('/daftarPenelitian', function () {
 require __DIR__ . '/auth.php';
 
 Route::get('/laporanLomba', function () {
-<<<<<<< HEAD
-    return Inertia::render('Laporan/LaporanLomba');
+    return Inertia::render('Admin/Laporan/LaporanLomba');
 })->name('laporanLomba');
 
 Route::get('/laporanBeasiswa', function () {
-    return Inertia::render('Laporan/LaporanBeasiswa');
+    return Inertia::render('Admin/Laporan/LaporanBeasiswa');
 })->name('laporanBeasiswa');
-=======
-    return Inertia::render('Admin/Laporan/LaporanLomba');
-})->name('laporanLomba');
->>>>>>> origin/master
+
+Route::get('/laporanPenelitian', function () {
+    return Inertia::render('Admin/Laporan/LaporanPenelitian');
+})->name('laporanPenelitian');
+
+Route::get('/laporanAbdimas', function () {
+    return Inertia::render('Admin/Laporan/LaporanAbdimas');
+})->name('laporanAbdimas');
+
+
+Route::get('/pusatinfoPenelitian', function () {
+    return Inertia::render('Admin/Pusat Informasi/PusatInformasiPenelitian');
+})->name('pusatinfoPenelitian');
+
+Route::get('/pusatinfoAbdimas', function () {
+    return Inertia::render('Admin/Pusat Informasi/PusatInformasiAbdimas');
+})->name('pusatinfoAbdimas');

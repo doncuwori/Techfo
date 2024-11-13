@@ -1,9 +1,6 @@
-import "react-circular-progressbar/dist/styles.css";
 import React from "react";
-import { CircularProgressbar } from "react-circular-progressbar";
 
-const LaporanLomba = () => {
-    const value = 0.3;
+const LaporanAbdimas = () => {
     return (
         <body>
             <header class="w-full h-16 px-4 md:px-10 py-4 bg-white shadow-md flex items-center justify-between sticky top-0">
@@ -63,44 +60,12 @@ const LaporanLomba = () => {
                         Pusat Informasi
                     </h1>
                     <div class="flex flex-wrap -mx-4 mb-6">
-                        <div class="w-full md:w-1/3 px-4">
-                            <div class="bg-white rounded-lg border-2 border-neutral-100 p-4 flex items-center">
-                                <div class="w-[87px] h-[87px] relative">
-                                    <div class="absolute">
-                                        <CircularProgressbar
-                                            className="h-24 w-24"
-                                            value={value}
-                                            maxValue={1}
-                                            text={`${value * 100}%`}
-                                        />
-                                    </div>
-                                </div>
-                                <div class="flex-col justify-center items-center gap-1 inline-flex">
-                                    <div class="text-center text-[#2d3036] text-lg font-medium leading-7 ml-8">
-                                        Prestasi Mahasiswa
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full md:w-1/3 px-4">
-                            <div class="bg-orange-100 rounded-lg border-2 border-neutral-100 p-4 flex items-center">
-                                <div class="text-5xl ml-2 mr-6">🏆</div>
-                                <div>
-                                    <h2 class="text-xl font-semibold text-black mb-4">
-                                        Pemenang Lomba
-                                    </h2>
-                                    <div class="text-4xl font-bold text-black">
-                                        135
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full md:w-1/3 px-4">
+                        <div class="w-full md:w-1/2 px-4">
                             <div class="bg-orange-100 rounded-lg border-2 border-neutral-100 p-4 flex items-center">
                                 <div class="text-5xl ml-2 mr-6">📄</div>
                                 <div>
                                     <h2 class="text-xl font-semibold text-black mb-4">
-                                        Partisipan Lomba
+                                        Pendaftar Pengabdian Masyarakat
                                     </h2>
                                     <div class="text-4xl font-bold text-black">
                                         135
@@ -108,114 +73,22 @@ const LaporanLomba = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="self-stretch h-[360px] p-6 bg-white rounded-lg border-2 border-neutral-100 flex-col justify-start items-start gap-8 flex">
-                        <div class="justify-start items-start gap-3 inline-flex">
-                            <div class="text-[#2d3036] text-xl font-medium leading-7">
-                                REKAP JUARA
-                            </div>
-                        </div>
-                        <div class="self-stretch justify-start items-end gap-6 inline-flex">
-                            <div class="w-[19px] pb-9 flex-col justify-start items-center gap-[31px] inline-flex">
-                                <div class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
-                                    25
-                                </div>
-                                <div class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
-                                    20
-                                </div>
-                                <div class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
-                                    15
-                                </div>
-                                <div class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
-                                    10
-                                </div>
-                                <div class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
-                                    5
-                                </div>
-                            </div>
-                            <div class="grow shrink basis-0 h-[185px] justify-center items-end gap-[39px] flex">
-                                <div class="grow shrink basis-0 flex-col justify-center items-center gap-2 inline-flex">
-                                    <div class="self-stretch justify-center items-end gap-[5px] inline-flex">
-                                        <div class="w-6 h-[90px] bg-[#b44621] rounded-xl"></div>
-                                        <div class="w-6 h-[157px] bg-[#fe632e] rounded-xl"></div>
-                                        <div class="w-6 h-[60px] bg-[#fe9673] rounded-xl"></div>
-                                        <div class="w-6 h-[35px] bg-[#ffcfbe] rounded-xl"></div>
-                                    </div>
-                                    <div class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
-                                        Juara 1
-                                    </div>
-                                </div>
-                                <div class="grow shrink basis-0 flex-col justify-center items-center gap-2 inline-flex">
-                                    <div class="self-stretch justify-center items-end gap-[5px] inline-flex">
-                                        <div class="w-6 h-[90px] bg-[#b44621] rounded-xl"></div>
-                                        <div class="w-6 h-[157px] bg-[#fe632e] rounded-xl"></div>
-                                        <div class="w-6 h-[60px] bg-[#fe9673] rounded-xl"></div>
-                                        <div class="w-6 h-[35px] bg-[#ffcfbe] rounded-xl"></div>
-                                    </div>
-                                    <div class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
-                                        Juara 2
-                                    </div>
-                                </div>
-                                <div class="grow shrink basis-0 flex-col justify-center items-center gap-2 inline-flex">
-                                    <div class="self-stretch justify-center items-end gap-[5px] inline-flex">
-                                        <div class="w-6 h-[90px] bg-[#b44621] rounded-xl"></div>
-                                        <div class="w-6 h-[157px] bg-[#fe632e] rounded-xl"></div>
-                                        <div class="w-6 h-[60px] bg-[#fe9673] rounded-xl"></div>
-                                        <div class="w-6 h-[35px] bg-[#ffcfbe] rounded-xl"></div>
-                                    </div>
-                                    <div class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
-                                        Juara 3
-                                    </div>
-                                </div>
-                                <div class="grow shrink basis-0 flex-col justify-center items-center gap-2 inline-flex">
-                                    <div class="self-stretch justify-center items-end gap-[5px] inline-flex">
-                                        <div class="w-6 h-[90px] bg-[#b44621] rounded-xl"></div>
-                                        <div class="w-6 h-[157px] bg-[#fe632e] rounded-xl"></div>
-                                        <div class="w-6 h-[60px] bg-[#fe9673] rounded-xl"></div>
-                                        <div class="w-6 h-[35px] bg-[#ffcfbe] rounded-xl"></div>
-                                    </div>
-                                    <div class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
-                                        Juara Umum
-                                    </div>
-                                </div>
-                                <div class="grow shrink basis-0 flex-col justify-center items-center gap-2 inline-flex">
-                                    <div class="self-stretch justify-center items-end gap-[5px] inline-flex">
-                                        <div class="w-6 h-[90px] bg-[#b44621] rounded-xl"></div>
-                                        <div class="w-6 h-[157px] bg-[#fe632e] rounded-xl"></div>
-                                        <div class="w-6 h-[60px] bg-[#fe9673] rounded-xl"></div>
-                                        <div class="w-6 h-[35px] bg-[#ffcfbe] rounded-xl"></div>
-                                    </div>
-                                    <div class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
-                                        Juara Favorit
-                                    </div>
-                                </div>
-                                <div class="grow shrink basis-0 flex-col justify-center items-center gap-2 inline-flex">
-                                    <div class="self-stretch justify-center items-end gap-[5px] inline-flex">
-                                        <div class="w-6 h-[90px] bg-[#b44621] rounded-xl"></div>
-                                        <div class="w-6 h-[157px] bg-[#fe632e] rounded-xl"></div>
-                                        <div class="w-6 h-[60px] bg-[#fe9673] rounded-xl"></div>
-                                        <div class="w-6 h-[35px] bg-[#ffcfbe] rounded-xl"></div>
-                                    </div>
-                                    <div class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
-                                        Juara Harapan
-                                    </div>
-                                </div>
-                                <div class="grow shrink basis-0 flex-col justify-center items-center gap-2 inline-flex">
-                                    <div class="self-stretch justify-center items-end gap-[5px] inline-flex">
-                                        <div class="w-6 h-[90px] bg-[#b44621] rounded-xl"></div>
-                                        <div class="w-6 h-[157px] bg-[#fe632e] rounded-xl"></div>
-                                        <div class="w-6 h-[60px] bg-[#fe9673] rounded-xl"></div>
-                                        <div class="w-6 h-[35px] bg-[#ffcfbe] rounded-xl"></div>
-                                    </div>
-                                    <div class="self-stretch text-center text-gray-500 text-sm font-normal leading-tight">
-                                        Lainnya
+                        <div class="w-full md:w-1/2 px-4">
+                            <div class="bg-orange-100 rounded-lg border-2 border-neutral-100 p-4 flex items-center">
+                                <div class="text-5xl ml-2 mr-6">🏆</div>
+                                <div>
+                                    <h2 class="text-xl font-semibold text-black mb-4">
+                                        Lolos Pengabdian Masyarakat
+                                    </h2>
+                                    <div class="text-4xl font-bold text-black">
+                                        135
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white p-4 rounded-lg shadow-lg mt-6 mb-6 border-2 border-neutral-100">
+                    <div class="bg-white p-4 rounded-lg shadow-lg mb-6">
                         <div class="flex items-center space-x-2 mb-4">
                             <button class="bg-green-500 text-white px-4 py-2 rounded-md font-semibold">
                                 Penerima
@@ -271,34 +144,28 @@ const LaporanLomba = () => {
                                             Nama
                                         </th>
                                         <th class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Delegasi Ormawa
+                                            Program Studi
                                         </th>
                                         <th class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Dosen Pembimbing/Pendamping
+                                            Angkatan
                                         </th>
                                         <th class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Bidang
+                                            Email
                                         </th>
                                         <th class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Penyelenggara
+                                            Nomor Telepon/WA
                                         </th>
                                         <th class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Negara Penyelenggara
+                                            KHS
                                         </th>
                                         <th class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Tempat Pelaksanaan
+                                            CV
                                         </th>
                                         <th class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Waktu Pelaksanaan
+                                            Portofolio
                                         </th>
                                         <th class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Deskripsi Kegiatan
-                                        </th>
-                                        <th class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Scan Bukti
-                                        </th>
-                                        <th class="px-6 py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Foto Kegiatan
+                                            Foto 3x4
                                         </th>
                                     </tr>
                                 </thead>
@@ -314,34 +181,29 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
+                                            Foto.png
                                         </td>
                                     </tr>
                                     <tr>
@@ -355,34 +217,29 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
+                                            Foto.png
                                         </td>
                                     </tr>
                                     <tr>
@@ -396,35 +253,30 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
+                                            Foto.png
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>{" "}
                                     </tr>
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
@@ -437,34 +289,29 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
+                                            Foto.png
                                         </td>
                                     </tr>
                                     <tr>
@@ -478,34 +325,29 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
+                                            Foto.png
                                         </td>
                                     </tr>
                                     <tr>
@@ -519,34 +361,29 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
+                                            Foto.png
                                         </td>
                                     </tr>
                                     <tr>
@@ -560,34 +397,29 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
+                                            Foto.png
                                         </td>
                                     </tr>
                                     <tr>
@@ -601,34 +433,29 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
+                                            Foto.png
                                         </td>
                                     </tr>
                                     <tr>
@@ -642,34 +469,29 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
+                                            Foto.png
                                         </td>
                                     </tr>
                                     <tr>
@@ -683,34 +505,29 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
+                                            Foto.png
                                         </td>
                                     </tr>
                                     <tr>
@@ -724,34 +541,29 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
+                                            Foto.png
                                         </td>
                                     </tr>
                                     <tr>
@@ -765,34 +577,29 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
+                                            Foto.png
                                         </td>
                                     </tr>
                                     <tr>
@@ -806,34 +613,29 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
+                                            Foto.png
                                         </td>
                                     </tr>
                                     <tr>
@@ -847,34 +649,29 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
+                                            Foto.png
                                         </td>
                                     </tr>
                                     <tr>
@@ -888,34 +685,29 @@ const LaporanLomba = () => {
                                             John Doe
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
+                                            {" "}
+                                            S1 Teknik Informatika
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
+                                            2020
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
+                                            2110512055@mahasiswa.upnvj.ac.id
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            081906426113
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
+                                            KHS.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
+                                            CV.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
+                                            Portofolio.pdf
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
+                                            Foto.png
                                         </td>
                                     </tr>
                                 </tbody>
@@ -942,4 +734,4 @@ const LaporanLomba = () => {
     );
 };
 
-export default LaporanLomba;
+export default LaporanAbdimas;
