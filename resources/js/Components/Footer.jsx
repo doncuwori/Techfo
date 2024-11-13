@@ -58,7 +58,7 @@ const Footer = () => {
                         </a>
                         <br />
                         <div className="text-white text-lg mt-2 font-bold">
-                            Social Media
+                            Media Sosial
                         </div>
                         <div className="flex mt-2 gap-2">
                             <a
@@ -119,10 +119,6 @@ const Footer = () => {
                         Website yang memuat informasi seputar lomba, beasiswa,
                         penelitian dosen, dan pengabdian masyarakat oleh dosen.
                     </div>
-                </div>
-
-                {/* Student Project Section */}
-                <div className="flex flex-col gap-6 mr-14 max-w-[282px]">
                     <div className="text-[#fcfcfc] text-base font-semibold">
                         Project Akhir Mahasiswa FIK 2021
                     </div>
@@ -140,9 +136,14 @@ const Footer = () => {
                             Andi Setiawan - 2110512083
                         </div>
                     </div>
+                </div>
+
+                {/* Student Project Section */}
+                <div className="flex flex-col gap-6 mr-14 max-w-[282px]">
+                    
                     <div className="flex flex-col gap-2 max-w-[100%] lg:max-w-[300px]">
                         <div className="text-white text-lg font-bold">
-                            Find Us Here
+                            Temukan Kami Disini
                         </div>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.598723401264!2d106.7934897592435!3d-6.316324941843607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ee3e065d4f6b%3A0xe176f81a31564166!2sUniversitas%20Pembangunan%20Nasional%20Veteran%20Jakarta!5e0!3m2!1sen!2sid!4v1730907281576!5m2!1sen!2sid"
