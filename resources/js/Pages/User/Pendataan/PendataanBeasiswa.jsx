@@ -1,14 +1,14 @@
 import React, { useState } from "react";
+import Navbar from "@/Components/Navbar";
 import { BiodataUser } from "@/components/BiodataUser";
 import { TabDaftarBeasiswa } from "@/Components/Pendataan/PendataanBeasiswa/TabDaftarBeasiswa";
 import { TabLolosBeasiswa } from "@/Components/Pendataan/PendataanBeasiswa/TabLolosBeasiswa";
-import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 
 const PendataanBeasiswa = () => {
     const [tabValue, settabValue] = useState("Daftar");
     return (
-        <div className="min-h-screen flex flex-col items-center bg-gray-100">
+        <div className="min-h-screen flex flex-col items-center">
             <Navbar />
             <main className="container mx-auto flex-grow py-10 px-6">
                 <div className="bg-white shadow-md rounded-lg p-8 max-w-[1200px] mx-auto">

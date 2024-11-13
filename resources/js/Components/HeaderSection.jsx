@@ -1,7 +1,6 @@
 import React from "react";
 
 const HeaderSection = ({ pageType }) => {
-    // Tentukan teks berdasarkan halaman
     const pageTitle = () => {
         switch (pageType) {
             case "beasiswa":
@@ -16,7 +15,7 @@ const HeaderSection = ({ pageType }) => {
     };
 
     return (
-        <div className="w-full px-4 md:px-10 py-6 mt-10 relative z-10">
+        <div className="w-full px-4 md:px-10 py-6 mt-20 relative z-10">
             <div className="text-center mb-6">
                 <span className="text-black text-4xl font-medium leading-10">
                     Eksplor Informasi{" "}
