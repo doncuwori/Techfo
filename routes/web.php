@@ -22,7 +22,6 @@ Route::get('/test', function () {
     return Inertia::render('Test');
 });
 
-<<<<<<< HEAD
 Route::get('/pendataanBeasiswa', function () {
     return Inertia::render('User/Pendataan/PendataanBeasiswa');
 });
@@ -30,8 +29,6 @@ Route::get('/pendataanBeasiswa', function () {
 Route::get('/pendataanLomba', function () {
     return Inertia::render('User/Pendataan/PendataanLomba');
 });
-=======
->>>>>>> origin/Andi
 
 Route::get('/tambahInfoLomba', function () {
     return Inertia::render('Admin/PusatInformasi/TambahInfoLomba');

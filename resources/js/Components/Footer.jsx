@@ -160,6 +160,8 @@ const Footer = () => {
             {/* Footer Section */}
             <div className="text-[#fcfcfc] text-sm font-normal text-center">
                 Copyright ©2024 Fakultas Ilmu Komputer UPN "Veteran" Jakarta
+
+
             </div>
         </div>
     );
