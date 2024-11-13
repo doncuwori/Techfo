@@ -60,11 +60,7 @@ export const TabLolosBeasiswa = () => {
                         className="w-full border rounded-lg p-2"
                     />
                     <div className="flex items-center mt-2">
-                        <input type="checkbox" className="mr-2" />
-                        <label className="text-gray-700">
-                            Klik jika tidak pada tanggal yang sama apabila waktu
-                            pelaksanaan hanya 1 hari.
-                        </label>
+                        <input type="calendar" className="mr-2" />
                     </div>
                 </div>
 
@@ -87,7 +83,10 @@ export const TabLolosBeasiswa = () => {
                     <div className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center">
                         <p>Click to upload or drag and drop</p>
                         <p className="text-gray-500">Max. file size: 10MB</p>
-                        <button className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg">
+                        <button
+                            type="file"
+                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg"
+                        >
                             Browse File
                         </button>
                     </div>
@@ -115,7 +114,10 @@ export const TabLolosBeasiswa = () => {
                     <div className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center">
                         <p>Click to upload or drag and drop</p>
                         <p className="text-gray-500">Max. file size: 10MB</p>
-                        <button className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg">
+                        <button
+                            type="file"
+                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg"
+                        >
                             Browse File
                         </button>
                     </div>
@@ -137,7 +139,10 @@ export const TabLolosBeasiswa = () => {
             </section>
             <PernyataanLegalitas />
             <div className="flex justify-end w-full">
-                <button className="mt-2 bg-orange-500 text-white py-1 px-4 rounded-lg">
+                <button
+                    type="submit"
+                    className="mt-2 bg-orange-500 text-white py-1 px-4 rounded-lg"
+                >
                     Submit
                 </button>
             </div>
