@@ -29,10 +29,6 @@ Route::get('/pendataanBeasiswa', function () {
 Route::get('/pendataanLomba', function () {
     return Inertia::render('User/Pendataan/PendataanLomba');
 });
-<<<<<<< HEAD
-=======
-
->>>>>>> 76c5c638097669c8a59c256750b9914023ab71d4
 
 Route::get('/tambahInfoLomba', function () {
     return Inertia::render('Admin/PusatInformasi/TambahInfoLomba');
