@@ -1,8 +1,6 @@
 import React from "react";
-import { Link } from "@inertiajs/react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import ApplicationLogo from "@/Components/ApplicationLogo";
 import NavbarAdmin from "@/Components/NavbarAdmin";
 
 const LaporanLomba = () => {

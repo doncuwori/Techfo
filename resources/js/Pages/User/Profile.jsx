@@ -28,7 +28,7 @@ const Profile = () => {
                                         key={label}
                                         className="self-stretch py-3 flex items-center gap-2"
                                     >
-                                        <div className="text-[#2d3036] text-sm font-semibold font-['Inter'] leading-tight">
+                                        <div className="text-[#2d3036] text-sm font-semibold leading-tight">
                                             {label}
                                         </div>
                                     </div>
@@ -45,7 +45,7 @@ const Profile = () => {
                                         key={value}
                                         className="self-stretch py-3 flex items-center gap-2"
                                     >
-                                        <div className="text-[#2d3036] text-sm font-normal font-['Inter'] leading-tight">
+                                        <div className="text-[#2d3036] text-sm font-normal leading-tight">
                                             {value}
                                         </div>
                                     </div>
