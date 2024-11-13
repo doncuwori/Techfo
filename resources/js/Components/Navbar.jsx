@@ -58,25 +58,25 @@ const Navbar = () => {
                     </Link>
                     <Link
                         href={route('lomba')}
-                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e]"
+                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         Lomba
                     </Link>
                     <Link
                         href={route('beasiswa')}
-                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e]"
+                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         Beasiswa
                     </Link>
                     <Link
-                        // href={route('')}
-                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e]"
+                        href={route('abdimas')}
+                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         Pengabdian Masyarakat
                     </Link>
                     <Link
-                        // href={route('')}
-                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e]"
+                        href={route('penelitian')}
+                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         Penelitian
                     </Link>
@@ -87,7 +87,7 @@ const Navbar = () => {
                     >
                         <button
                             onClick={togglePendataanDropdown}
-                            className="flex items-center text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e]"
+                            className="flex items-center text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                         >
                             <span>Pendataan</span>
                             <svg
@@ -110,26 +110,26 @@ const Navbar = () => {
                                 onMouseLeave={handlePendataanMouseLeave}
                             >
                                 <Link
-                                    // href={route('')}
-                                    className="block px-4 py-2 hover:bg-orange-100"
-                                >
-                                    <div className="text-black text-base font-semibold leading-normal">
-                                        Lomba Terbaru
-                                    </div>
-                                    <div className="text-gray-500 text-xs font-normal leading-tight">
-                                        Lihat informasi lomba terbaru di sini
-                                    </div>
-                                </Link>
-
-                                <Link
-                                    // href={route('')}
+                                    href={route('pendataanLomba')}
                                     className="block px-4 py-2 hover:bg-orange-100"
                                 >
                                     <div className="text-black text-base font-semibold leading-normal">
                                         Pendataan Lomba
                                     </div>
                                     <div className="text-gray-500 text-xs font-normal leading-tight">
-                                        Lakukan pendataan keaktifan lomba di sini
+                                        Lakukan pendataan lomba disini
+                                    </div>
+                                </Link>
+
+                                <Link
+                                    href={route('pendataanBeasiswa')}
+                                    className="block px-4 py-2 hover:bg-orange-100"
+                                >
+                                    <div className="text-black text-base font-semibold leading-normal">
+                                        Pendataan Beasiswa
+                                    </div>
+                                    <div className="text-gray-500 text-xs font-normal leading-tight">
+                                        Lakukan pendataan besiswa disini
                                     </div>
                                 </Link>
                             </div>
@@ -137,7 +137,7 @@ const Navbar = () => {
                     </div>
                     <Link
                         href={route('faq')}
-                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e]"
+                        className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         FAQ
                     </Link>
@@ -158,7 +158,7 @@ const Navbar = () => {
                         onMouseLeave={handleProfileMouseLeave}
                     >
                         <Link
-                            // href={route('')}
+                            href={route('profile')}
                             className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:font-bold hover:text-[#fe632e]"
                         >
                             Profil Saya
