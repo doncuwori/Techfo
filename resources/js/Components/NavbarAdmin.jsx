@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "@inertiajs/react";  // Make sure you're using Inertia Link
+import { Link } from "@inertiajs/react"; // Make sure you're using Inertia Link
 import {
     LogOut,
     LayoutDashboard,
     Briefcase,
     ChevronDown,
     NotepadText,
-    ChartBar
+    ChartBar,
 } from "lucide-react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 
@@ -24,7 +24,7 @@ const NavbarAdmin = () => {
     };
 
     const toggleLaporanDropdown = () => {
-        setIsLaporanDropdownOpen(!isLaporanDropdownOpen); 
+        setIsLaporanDropdownOpen(!isLaporanDropdownOpen);
         setIsChevronRotated(!isChevronRotated);
     };
 
@@ -37,7 +37,10 @@ const NavbarAdmin = () => {
                             <ApplicationLogo className="w-full h-full object-cover" />
                         </div>
 
-                        <Link href={route('dashboardAdmin')} className="flex items-center">
+                        <Link
+                            href={route("dashboardAdmin")}
+                            className="flex items-center"
+                        >
                             <span className="text-gray-900 text-lg md:text-2xl font-semibold">
                                 Tech
                             </span>
@@ -80,15 +83,17 @@ const NavbarAdmin = () => {
             </div>
 
             {/* Sidebar */}
-            <div className="fixed top-4 left-0 w-72 h-screen bg-white shadow-md p-4 mt-16 z-10 flex flex-col">
+            <div className="fixed top-2 left-0 w-72 h-screen bg-white shadow-md p-4 mt-16 z-10 flex flex-col">
                 <ul className="flex-1">
                     <li key="dashboard" className="mb-4">
                         <Link
-                            href={route('dashboardAdmin')}  // Ensure the correct route name is used
+                            href={route("dashboardAdmin")} // Ensure the correct route name is used
                             className="text-gray-500 hover:text-orange-500 flex items-center w-full group"
                         >
                             <LayoutDashboard className="w-5 h-5 mr-2" />
-                            <span className="group-hover:text-orange-500">Dashboard</span>
+                            <span className="group-hover:text-orange-500">
+                                Dashboard
+                            </span>
                         </Link>
                     </li>
 
@@ -99,26 +104,37 @@ const NavbarAdmin = () => {
                             onClick: toggleLaporanDropdown, // Add onClick to toggle dropdown
                             dropdown: isLaporanDropdownOpen && ( // Conditionally render dropdown
                                 <ul className="pl-8 mt-2">
-                                    {[{
-                                        name: "Lomba", route: "laporanLomba"
-                                    },
-                                    { name: "Beasiswa", route: "laporanBeasiswa" },
-                                    { name: "Pengabdian Masyarakat", route: "laporanAbdimas" },
-                                    { name: "Penelitian", route: "laporanPenelitian" }]
-                                        .map((subItem) => (
-                                            <li
-                                                key={subItem.name}
-                                                className="mb-2 flex items-center group hover:text-orange-500"
+                                    {[
+                                        {
+                                            name: "Lomba",
+                                            route: "laporanLomba",
+                                        },
+                                        {
+                                            name: "Beasiswa",
+                                            route: "laporanBeasiswa",
+                                        },
+                                        {
+                                            name: "Pengabdian Masyarakat",
+                                            route: "laporanAbdimas",
+                                        },
+                                        {
+                                            name: "Penelitian",
+                                            route: "laporanPenelitian",
+                                        },
+                                    ].map((subItem) => (
+                                        <li
+                                            key={subItem.name}
+                                            className="mb-2 flex items-center group hover:text-orange-500"
+                                        >
+                                            <NotepadText className="w-4 h-4 mr-2 text-gray-500 group-hover:text-orange-500 transition-colors duration-200" />
+                                            <Link
+                                                href={route(subItem.route)}
+                                                className="text-gray-500 group-hover:text-orange-500"
                                             >
-                                                <NotepadText className="w-4 h-4 mr-2 text-gray-500 group-hover:text-orange-500 transition-colors duration-200" />
-                                                <Link
-                                                    href={route(subItem.route)}
-                                                    className="text-gray-500 group-hover:text-orange-500"
-                                                >
-                                                    {subItem.name}
-                                                </Link>
-                                            </li>
-                                        ))}
+                                                {subItem.name}
+                                            </Link>
+                                        </li>
+                                    ))}
                                 </ul>
                             ),
                             iconRight: (
@@ -152,7 +168,7 @@ const NavbarAdmin = () => {
 
                 <div className="mt-auto mb-20">
                     <Link href={route("loginUser")}>
-                        <button className="w-full px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 flex items-center justify-center gap-2">
+                        <button className="w-full px-4 py-2 bg-gray-400 text-white rounded-md hover:bg-orange-700 flex items-center justify-center gap-2">
                             <span>Keluar</span>
                             <LogOut className="w-5 h-5" />
                         </button>
