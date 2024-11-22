@@ -15,7 +15,7 @@ const PendataanBeasiswa = () => {
                     <h1 className="text-center text-2xl font-bold mb-6">
                         Pendataan Mahasiswa {tabValue} Beasiswa
                     </h1>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center pb-6">
                         <button
                             onClick={() => {
                                 settabValue("Daftar");

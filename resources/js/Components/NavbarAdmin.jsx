@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "@inertiajs/react"; // Make sure you're using Inertia Link
+import { Link } from "@inertiajs/react"; 
 import {
     LogOut,
     LayoutDashboard,
@@ -12,8 +12,10 @@ import ApplicationLogo from "@/Components/ApplicationLogo";
 
 const NavbarAdmin = () => {
     const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-    const [isLaporanDropdownOpen, setIsLaporanDropdownOpen] = useState(false); // Manage Laporan dropdown visibility
-    const [isChevronRotated, setIsChevronRotated] = useState(false); // State for rotating ChevronDown icon
+    const [isLaporanDropdownOpen, setIsLaporanDropdownOpen] = useState(false); 
+    const [isPusatInformasiDropdownOpen, setIsPusatInformasiDropdownOpen] = useState(false); 
+    const [isChevronLaporanRotated, setIsChevronLaporanRotated] = useState(false);
+    const [isChevronPusatInformasiRotated, setIsChevronPusatInformasiRotated] = useState(false);
 
     const toggleProfileDropdown = () => {
         setIsProfileDropdownOpen(!isProfileDropdownOpen);
@@ -24,8 +26,13 @@ const NavbarAdmin = () => {
     };
 
     const toggleLaporanDropdown = () => {
-        setIsLaporanDropdownOpen(!isLaporanDropdownOpen);
-        setIsChevronRotated(!isChevronRotated);
+        setIsLaporanDropdownOpen(!isLaporanDropdownOpen); 
+        setIsChevronLaporanRotated(!isChevronLaporanRotated);
+    };
+
+    const togglePusatInformasiDropdown = () => {
+        setIsPusatInformasiDropdownOpen(!isPusatInformasiDropdownOpen); 
+        setIsChevronPusatInformasiRotated(!isChevronPusatInformasiRotated);
     };
 
     return (
@@ -101,46 +108,35 @@ const NavbarAdmin = () => {
                         {
                             name: "Laporan",
                             icon: <Briefcase className="w-5 h-5 mr-2" />,
-                            onClick: toggleLaporanDropdown, // Add onClick to toggle dropdown
-                            dropdown: isLaporanDropdownOpen && ( // Conditionally render dropdown
+                            onClick: toggleLaporanDropdown, 
+                            dropdown: isLaporanDropdownOpen && ( 
                                 <ul className="pl-8 mt-2">
-                                    {[
-                                        {
-                                            name: "Lomba",
-                                            route: "laporanLomba",
-                                        },
-                                        {
-                                            name: "Beasiswa",
-                                            route: "laporanBeasiswa",
-                                        },
-                                        {
-                                            name: "Pengabdian Masyarakat",
-                                            route: "laporanAbdimas",
-                                        },
-                                        {
-                                            name: "Penelitian",
-                                            route: "laporanPenelitian",
-                                        },
-                                    ].map((subItem) => (
-                                        <li
-                                            key={subItem.name}
-                                            className="mb-2 flex items-center group hover:text-orange-500"
-                                        >
-                                            <NotepadText className="w-4 h-4 mr-2 text-gray-500 group-hover:text-orange-500 transition-colors duration-200" />
-                                            <Link
-                                                href={route(subItem.route)}
-                                                className="text-gray-500 group-hover:text-orange-500"
+                                    {[{
+                                        name: "Lomba", route: "laporanLomba"
+                                    },
+                                    { name: "Beasiswa", route: "laporanBeasiswa" },
+                                    { name: "Pengabdian Masyarakat", route: "laporanAbdimas" },
+                                    { name: "Penelitian", route: "laporanPenelitian" }]
+                                        .map((subItem) => (
+                                            <li
+                                                key={subItem.name}
+                                                className="mb-2 flex items-center group hover:text-orange-500"
                                             >
-                                                {subItem.name}
-                                            </Link>
-                                        </li>
-                                    ))}
+                                                <NotepadText className="w-4 h-4 mr-2 text-gray-500 group-hover:text-orange-500 transition-colors duration-200" />
+                                                <Link
+                                                    href={route(subItem.route)}
+                                                    className="text-gray-500 group-hover:text-orange-500"
+                                                >
+                                                    {subItem.name}
+                                                </Link>
+                                            </li>
+                                        ))}
                                 </ul>
                             ),
                             iconRight: (
                                 <ChevronDown
                                     className={`ml-auto w-5 h-5 text-gray-500 transform transition-transform duration-200 group-hover:text-orange-500 ${
-                                        isChevronRotated ? "rotate-180" : ""
+                                        isChevronLaporanRotated ? "rotate-180" : ""
                                     }`}
                                 />
                             ),
@@ -148,6 +144,38 @@ const NavbarAdmin = () => {
                         {
                             name: "Pusat Informasi",
                             icon: <ChartBar className="w-5 h-5 mr-2" />,
+                            onClick: togglePusatInformasiDropdown, 
+                            dropdown: isPusatInformasiDropdownOpen && ( 
+                                <ul className="pl-8 mt-2">
+                                    {[{
+                                        name: "Lomba", route: "laporanLomba"
+                                    },
+                                    { name: "Beasiswa", route: "laporanBeasiswa" },
+                                    { name: "Pengabdian Masyarakat", route: "laporanAbdimas" },
+                                    { name: "Penelitian", route: "laporanPenelitian" }]
+                                        .map((subItem) => (
+                                            <li
+                                                key={subItem.name}
+                                                className="mb-2 flex items-center group hover:text-orange-500"
+                                            >
+                                                <NotepadText className="w-4 h-4 mr-2 text-gray-500 group-hover:text-orange-500 transition-colors duration-200" />
+                                                <Link
+                                                    href={route(subItem.route)}
+                                                    className="text-gray-500 group-hover:text-orange-500"
+                                                >
+                                                    {subItem.name}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                </ul>
+                            ),
+                            iconRight: (
+                                <ChevronDown
+                                    className={`ml-auto w-5 h-5 text-gray-500 transform transition-transform duration-200 group-hover:text-orange-500 ${
+                                        isChevronPusatInformasiRotated ? "rotate-180" : ""
+                                    }`}
+                                />
+                            ),
                         },
                     ].map((item) => (
                         <li key={item.name} className="mb-4">
