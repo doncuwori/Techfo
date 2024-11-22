@@ -9,7 +9,7 @@ import ProcedurePenelitian from "@/Components/FAQ/ProcedurePenelitian";
 function FAQ() {
     return (
         <div className="App">
-            <div class="absolute inset-0 z-0 flex justify-center mt-16">
+            <div class="fixed inset-x-0 z-0 flex justify-center mt-16">
                 <img
                     src="img/bgprosedure1.png"
                     alt="Deskripsi gambar"

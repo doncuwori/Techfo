@@ -4,10 +4,10 @@ import Step from "@/Components/FAQ/Step";
 
 const ProcedureLomba = () => {
     return (
-        <div className="container max-w-5xl mx-auto px-4 py-8 relative z-10">   
+        <div className="container max-w-5xl mx-auto px-8 py-8 relative z-10">   
             <div className="text-left">
                 <h3 className="text-2xl font-bold text-black">
-                    Prosedur Lomba
+                    Prosedur <span className="text-[#fe632e]">Lomba</span>
                 </h3>
             </div>
 
