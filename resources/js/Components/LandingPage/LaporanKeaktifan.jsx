@@ -105,7 +105,7 @@ const LaporanKeaktifan = () => {
                 data: [5, 15, 10, 20],
                 fill: false,
                 borderColor: "#eca00c",
-                tension: 0,
+                tension: 0.4,
             },
         ],
     };

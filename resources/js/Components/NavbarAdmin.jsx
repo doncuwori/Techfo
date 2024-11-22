@@ -6,7 +6,7 @@ import {
     Briefcase,
     ChevronDown,
     NotepadText,
-    ChartBar
+    ChartBar,
 } from "lucide-react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 
@@ -44,7 +44,10 @@ const NavbarAdmin = () => {
                             <ApplicationLogo className="w-full h-full object-cover" />
                         </div>
 
-                        <Link href={route('dashboardAdmin')} className="flex items-center">
+                        <Link
+                            href={route("dashboardAdmin")}
+                            className="flex items-center"
+                        >
                             <span className="text-gray-900 text-lg md:text-2xl font-semibold">
                                 Tech
                             </span>
@@ -91,11 +94,13 @@ const NavbarAdmin = () => {
                 <ul className="flex-1">
                     <li key="dashboard" className="mb-4">
                         <Link
-                            href={route('dashboardAdmin')}  // Ensure the correct route name is used
+                            href={route("dashboardAdmin")} // Ensure the correct route name is used
                             className="text-gray-500 hover:text-orange-500 flex items-center w-full group"
                         >
                             <LayoutDashboard className="w-5 h-5 mr-2" />
-                            <span className="group-hover:text-orange-500">Dashboard</span>
+                            <span className="group-hover:text-orange-500">
+                                Dashboard
+                            </span>
                         </Link>
                     </li>
 
@@ -191,7 +196,7 @@ const NavbarAdmin = () => {
 
                 <div className="mt-auto mb-20">
                     <Link href={route("loginUser")}>
-                        <button className="w-full px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 flex items-center justify-center gap-2">
+                        <button className="w-full px-4 py-2 bg-gray-400 text-white rounded-md hover:bg-orange-700 flex items-center justify-center gap-2">
                             <span>Keluar</span>
                             <LogOut className="w-5 h-5" />
                         </button>

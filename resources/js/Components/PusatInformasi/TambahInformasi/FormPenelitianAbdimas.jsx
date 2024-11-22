@@ -36,9 +36,7 @@ const FormPenelitianAbdimas = () => {
                             type="date"
                             className="w-full border rounded-lg p-2"
                         />
-                        <div className="flex items-center mt-2">
-                            <input type="calendar" className="mr-2" />
-                        </div>
+                       
                     </div>
 
                     <div className="mb-4">
@@ -59,7 +57,7 @@ const FormPenelitianAbdimas = () => {
                         <input
                             type="text"
                             className="w-full border rounded-lg p-2"
-                            placeholder="Hayyu Satya S.Kom., MM."
+                            placeholder="Nama Lengkap Dosen 1"
                         />
                     </div>
 
@@ -70,7 +68,7 @@ const FormPenelitianAbdimas = () => {
                         <input
                             type="text"
                             className="w-full border rounded-lg p-2"
-                            placeholder="Hayyu Satya S.Kom., MM."
+                            placeholder="Nama Lengkap Dosen 2"
                         />
                     </div>
 
@@ -81,7 +79,7 @@ const FormPenelitianAbdimas = () => {
                         <input
                             type="text"
                             className="w-full border rounded-lg p-2"
-                            placeholder="Hayyu Satya S.Kom., MM."
+                            placeholder="Nama Lengkap Dosen 3"
                         />
                     </div>
 
@@ -92,7 +90,7 @@ const FormPenelitianAbdimas = () => {
                         <input
                             type="text"
                             className="w-full border rounded-lg p-2"
-                            placeholder="Hayyu Satya S.Kom., MM."
+                            placeholder="Nama Lengkap Dosen 4"
                         />
                     </div>
 
@@ -103,7 +101,18 @@ const FormPenelitianAbdimas = () => {
                         <input
                             type="text"
                             className="w-full border rounded-lg p-2"
-                            placeholder="Hayyu Satya S.Kom., MM."
+                            placeholder="Nama Lengkap Dosen 5"
+                        />
+                    </div>
+
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            Deskripsi Kegiatan
+                        </label>
+                        <textarea
+                            type="text"
+                            className="w-full border rounded-lg p-2"
+                            placeholder="Deskripsi Kegiatan"
                         />
                     </div>
 

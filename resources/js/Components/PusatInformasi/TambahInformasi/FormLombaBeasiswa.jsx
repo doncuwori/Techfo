@@ -4,10 +4,6 @@ export const FormLombaBeasiswa = () => {
     return (
         <div>
             <section className="mb-8">
-                <h2 className="text-xl font-bold mb-4">
-                    Tambah Informasi Lomba
-                </h2>
-
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Nama Kegiatan
@@ -38,9 +34,6 @@ export const FormLombaBeasiswa = () => {
                         type="date"
                         className="w-full border rounded-lg p-2"
                     />
-                    <div className="flex items-center mt-2">
-                        <input type="calendar" className="mr-2" />
-                    </div>
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
