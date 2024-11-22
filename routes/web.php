@@ -30,7 +30,6 @@ Route::get('/pendataanLomba', function () {
     return Inertia::render('User/Pendataan/PendataanLomba');
 });
 
-
 Route::get('/tambahInfoLomba', function () {
     return Inertia::render('Admin/PusatInformasi/TambahInfoLomba');
 });
