@@ -45,8 +45,8 @@ const LoginForm = () => {
             </div>
 
             <div className="absolute top-0 right-0 p-12 text-4xl font-bold z-10">
-                <span className="text-[#2d3036]">i</span>
-                <span className="text-[#fe632e]">Prestasi</span>
+                <span className="text-[#2d3036]">Tech</span>
+                <span className="text-[#fe632e]">fo</span>
             </div>
 
             <div className="relative w-[598px] bg-white rounded-3xl border border-[#d1d3d8] p-12 shadow-lg flex flex-col items-center gap-6 z-20">
