@@ -9,7 +9,7 @@ const Dropdown = ({ title, children }) => {
 
     return (
         <div
-            className={`bg-white shadow-lg p-8 border-b border-gray-300 ${
+            className={`bg-white shadow-lg p-8 border-t border-gray-300 ${
                 isOpen ? "rounded-xl" : "rounded-xl"
             }`}
         >
