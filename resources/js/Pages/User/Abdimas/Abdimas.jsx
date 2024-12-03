@@ -4,6 +4,7 @@ import HeaderSection from "@/Components/HeaderSection";
 import SearchBox from "@/Components/SearchBox";
 import Procedure from "@/Components/Abdimas/ProcedureAbdimas";
 import CardAbdimas from "@/Components/Abdimas/CardAbdimas";
+import ScrollUpButton from "@/Components/ScrollUpButton";
 
 const Abdimas = () => {
     return (
@@ -28,6 +29,7 @@ const Abdimas = () => {
             </div>
             <CardAbdimas />
             <Footer />
+            <ScrollUpButton />
         </div>
     );
 };

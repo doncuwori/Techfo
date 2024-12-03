@@ -8,6 +8,7 @@ import CardBeasiswa from "../../Components/Dashboard/CardBeasiswa";
 import CardAbdimas from "../../Components/Dashboard/CardAbdimas";
 import CardPenelitian from "../../Components/Dashboard/CardPenelitian";
 import Footer from "../../Components/Footer";
+import ScrollUpButton from "@/Components/ScrollUpButton";
 
 const Dashboard = () => {
     return (
@@ -21,6 +22,7 @@ const Dashboard = () => {
             <CardAbdimas />
             <CardPenelitian />
             <Footer />
+            <ScrollUpButton />
         </div>
     );
 };

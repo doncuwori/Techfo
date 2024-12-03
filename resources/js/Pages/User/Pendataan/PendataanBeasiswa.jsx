@@ -4,6 +4,7 @@ import { BiodataUser } from "@/components/BiodataUser";
 import { TabDaftarBeasiswa } from "@/Components/Pendataan/PendataanBeasiswa/TabDaftarBeasiswa";
 import { TabLolosBeasiswa } from "@/Components/Pendataan/PendataanBeasiswa/TabLolosBeasiswa";
 import Footer from "@/Components/Footer";
+import ScrollUpButton from "@/Components/ScrollUpButton";
 
 const PendataanBeasiswa = () => {
     const [tabValue, settabValue] = useState("Daftar");
@@ -50,6 +51,7 @@ const PendataanBeasiswa = () => {
                 </div>
             </main>
             <Footer />
+            <ScrollUpButton />
         </div>
     );
 };

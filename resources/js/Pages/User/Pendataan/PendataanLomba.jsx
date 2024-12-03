@@ -4,6 +4,7 @@ import { BiodataUser } from "@/components/BiodataUser";
 import { TabPrestasiLomba } from "@/Components/Pendataan/PendataanLomba/TabPrestasiLomba";
 import { TabPartisipasiLomba } from "@/Components/Pendataan/PendataanLomba/TabPartisipasiLomba";
 import Footer from "@/Components/Footer";
+import ScrollUpButton from "@/Components/ScrollUpButton";
 
 const PendataanLomba = () => {
     const [tabValue, settabValue] = useState("Partisipasi");
@@ -50,6 +51,7 @@ const PendataanLomba = () => {
                 </div>
             </main>
             <Footer />
+            <ScrollUpButton />
         </div>
     );
 };

@@ -191,7 +191,7 @@ const NavbarAdmin = () => {
 
                 <div className="mt-auto mb-20">
                     <Link href={route("loginUser")}>
-                        <button className="w-full px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 flex items-center justify-center gap-2">
+                        <button className="w-full px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-red-700 flex items-center justify-center gap-2">
                             <span>Keluar</span>
                             <LogOut className="w-5 h-5" />
                         </button>

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "@inertiajs/react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
-import { Menu, X } from "lucide-react"; // Import X icon for close button
+import { ChevronDown, Menu, X } from "lucide-react"; // Import X icon for close button
 
 const Navbar = () => {
     const [isPendataanDropdownOpen, setIsPendataanDropdownOpen] =
         useState(false);
     const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // For mobile menu state
+    const [isMobilePendataanDropdownOpen, setIsMobilePendataanDropdownOpen] =
+        useState(false);
 
     const handlePendataanMouseEnter = () => {
         setIsPendataanDropdownOpen(true);
@@ -34,6 +36,10 @@ const Navbar = () => {
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen((prev) => !prev);
+    };
+
+    const toggleMobilePendataanDropdown = () => {
+        setIsMobilePendataanDropdownOpen((prev) => !prev);
     };
 
     return (
@@ -63,57 +69,121 @@ const Navbar = () => {
                 <nav className="hidden md:flex items-center gap-6">
                     <Link
                         href={route("dashboardUser")}
-                        className="px-3 py-1 md:px-4 md:py-2 bg-[#fe632e] text-white rounded-2xl text-sm md:text-base font-medium transition duration-150 hover:bg-[#e65c24]"
+                        className={`${
+                            route().current("dashboardUser")
+                                ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
+                                : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
+                        } text-sm md:text-base font-medium transition duration-150`}
                     >
                         Home
                     </Link>
                     <Link
                         href={route("lomba")}
-                        className="text-gray-900 text-sm md:text-base font-medium transition duration-150 hover:text-[#fe632e] hover:font-bold"
+                        className={`${
+                            route().current("lomba")
+                                ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
+                                : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
+                        } text-sm md:text-base font-medium transition duration-150`}
                     >
                         Lomba
                     </Link>
                     <Link
                         href={route("beasiswa")}
-                        className="text-gray-900 text-sm md:text-base font-medium transition duration-150 hover:text-[#fe632e] hover:font-bold"
+                        className={`${
+                            route().current("beasiswa")
+                                ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
+                                : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
+                        } text-sm md:text-base font-medium transition duration-150`}
                     >
                         Beasiswa
                     </Link>
                     <Link
                         href={route("abdimas")}
-                        className="text-gray-900 text-sm md:text-base font-medium transition duration-150 hover:text-[#fe632e] hover:font-bold"
+                        className={`${
+                            route().current("abdimas")
+                                ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
+                                : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
+                        } text-sm md:text-base font-medium transition duration-150`}
                     >
                         Pengabdian Masyarakat
                     </Link>
                     <Link
                         href={route("penelitian")}
-                        className="text-gray-900 text-sm md:text-base font-medium transition duration-150 hover:text-[#fe632e] hover:font-bold"
+                        className={`${
+                            route().current("penelitian")
+                                ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
+                                : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
+                        } text-sm md:text-base font-medium transition duration-150`}
                     >
                         Penelitian
                     </Link>
 
                     {/* Pendataan Dropdown */}
-                    <div className="relative" onMouseEnter={handlePendataanMouseEnter} onMouseLeave={handlePendataanMouseLeave}>
-                        <button onClick={togglePendataanDropdown} className="flex items-center text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold">
+                    <div
+                        className="relative"
+                        onMouseEnter={handlePendataanMouseEnter}
+                        onMouseLeave={handlePendataanMouseLeave}
+                    >
+                        <button
+                            onClick={togglePendataanDropdown}
+                            className={`flex items-center ${
+                                route().current("pendataanLomba") ||
+                                route().current("pendataanBeasiswa")
+                                    ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
+                                    : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
+                            } text-sm md:text-base font-medium`}
+                        >
                             <span>Pendataan</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                            </svg>
+                            <ChevronDown className="h-5 w-5 ml-1" />
                         </button>
                         {isPendataanDropdownOpen && (
-                            <div className="absolute left-0 mt-0 w-72 border bg-white rounded-md shadow-lg z-20" onMouseEnter={handlePendataanMouseEnter} onMouseLeave={handlePendataanMouseLeave}>
-                                <Link href={route('pendataanLomba')} className="block px-4 py-2 hover:bg-orange-100">
-                                    <div className="text-black text-base font-semibold leading-normal">Pendataan Lomba</div>
-                                    <div className="text-gray-500 text-xs font-normal leading-tight">Lakukan pendataan lomba disini</div>
+                            <div
+                                className="absolute left-0 mt-0 w-72 border bg-white rounded-xl shadow-lg z-20"
+                                onMouseEnter={handlePendataanMouseEnter}
+                                onMouseLeave={handlePendataanMouseLeave}
+                            >
+                                <Link
+                                    href={route("pendataanLomba")}
+                                    className={`block px-4 py-2 ${
+                                        route().current("pendataanLomba")
+                                            ? "bg-[#fe632e] text-white font-bold rounded-t-xl hover:font-bold"
+                                            : "hover:bg-orange-100 hover:text-[#fe632e] font-bold"
+                                    }`}
+                                >
+                                    <div className="text-base font-semibold leading-normal">
+                                        Pendataan Lomba
+                                    </div>
+                                    <div className="text-gray-500 text-xs font-normal leading-tight">
+                                        Lakukan pendataan lomba disini
+                                    </div>
                                 </Link>
-                                <Link href={route('pendataanBeasiswa')} className="block px-4 py-2 hover:bg-orange-100">
-                                    <div className="text-black text-base font-semibold leading-normal">Pendataan Beasiswa</div>
-                                    <div className="text-gray-500 text-xs font-normal leading-tight">Lakukan pendataan besiswa disini</div>
+
+                                <Link
+                                    href={route("pendataanBeasiswa")}
+                                    className={`block px-4 py-2 ${
+                                        route().current("pendataanBeasiswa")
+                                            ? "bg-[#fe632e] text-white font-bold rounded-b-lg hover:font-bold"
+                                            : "hover:bg-orange-100 hover:text-[#fe632e] font-bold"
+                                    }`}
+                                >
+                                    <div className="text-base font-semibold leading-normal">
+                                        Pendataan Beasiswa
+                                    </div>
+                                    <div className="text-gray-500 text-xs font-normal leading-tight">
+                                        Lakukan pendataan beasiswa disini
+                                    </div>
                                 </Link>
                             </div>
                         )}
                     </div>
-                    <Link href={route('faq')} className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold">
+                    <Link
+                        href={route("faq")}
+                        className={`${
+                            route().current("faq")
+                                ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
+                                : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
+                        } text-sm md:text-base font-medium transition duration-150`}
+                    >
                         FAQ
                     </Link>
                 </nav>
@@ -123,7 +193,11 @@ const Navbar = () => {
             <div className="relative hidden md:block">
                 <button
                     onClick={toggleProfileDropdown}
-                    className="flex items-center space-x-2 transition duration-150 hover:text-[#fe632e]"
+                    className={`flex items-center space-x-2 transition duration-150 hover:scale-105 hover:border-4 hover:border-orange-400 hover:rounded-full ${
+                        route().current("profile")
+                            ? "border-4 border-orange-400 rounded-full"
+                            : ""
+                    }`}
                 >
                     <img
                         className="w-9 h-9 md:w-9 md:h-9 rounded-full ml-auto cursor-pointer"
@@ -138,7 +212,11 @@ const Navbar = () => {
                     >
                         <Link
                             href={route("profile")}
-                            className="block px-4 py-2 text-gray-700 transition duration-150 hover:bg-orange-50 hover:text-[#fe632e] hover:font-bold"
+                            className={`block px-4 py-2 text-gray-700 transition duration-150 ${
+                                route().current("profile")
+                                    ? "bg-orange-50 text-black font-bold"
+                                    : "hover:bg-orange-50 hover:text-[#fe632e] hover:font-bold"
+                            }`}
                         >
                             Profil Saya
                         </Link>
@@ -210,11 +288,42 @@ const Navbar = () => {
                             </Link>
                         </div>
                         <div className="w-full hover:bg-orange-50 transition duration-150">
+                            <button
+                                onClick={toggleMobilePendataanDropdown}
+                                className="w-full px-4 py-2 text-gray-900 text-lg font-medium transition duration-150 hover:bg-orange-100 hover:text-[#fe632e] hover:font-bold text-center flex justify-center items-center gap-1"
+                            >
+                                <span className="text-center">Pendataan</span>
+                                <ChevronDown
+                                    className={`h-5 w-5 transform transition-transform ${
+                                        isMobilePendataanDropdownOpen
+                                            ? "rotate-180"
+                                            : "rotate-0"
+                                    }`}
+                                />
+                            </button>
+                            {isMobilePendataanDropdownOpen && (
+                                <div className="w-full bg-orange-50">
+                                    <Link
+                                        href={route("pendataanLomba")}
+                                        className="block px-4 py-2 text-gray-900 text-base text-center hover:bg-orange-100 hover:text-[#fe632e] hover:font-bold transition duration-150"
+                                    >
+                                        Pendataan Lomba
+                                    </Link>
+                                    <Link
+                                        href={route("pendataanBeasiswa")}
+                                        className="block px-4 py-2 text-gray-900 text-base text-center hover:bg-orange-100 hover:text-[#fe632e] hover:font-bold transition duration-150"
+                                    >
+                                        Pendataan Beasiswa
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
+                        <div className="w-full hover:bg-orange-50 transition duration-150">
                             <Link
-                                href={route("penelitian")}
+                                href={route("faq")}
                                 className="px-4 py-2 text-gray-900 text-lg font-medium transition duration-150 hover:text-[#fe632e] hover:font-bold w-full block text-center"
                             >
-                                Pendataan
+                                FAQ
                             </Link>
                         </div>
                         <div className="w-full hover:bg-orange-50 transition duration-150">
