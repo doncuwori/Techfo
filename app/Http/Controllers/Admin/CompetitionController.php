@@ -12,7 +12,7 @@ class CompetitionController extends Controller
     public function index(){
         $competitions = Competition::all();
 
-        return Inertia::render('Admin/dashboardAdmin', [
+        return Inertia::render('Admin/DashboardAdmin', [
             'competitions' => $competitions,
         ]);
     }

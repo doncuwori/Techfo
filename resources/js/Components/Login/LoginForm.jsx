@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Head, Link, useForm } from "@inertiajs/react";
+import React from "react";
+import { useForm } from "@inertiajs/react";
 
 const LoginForm = () => {
-    const { data, setData, post, processing, errors } = useForm({
+    const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
         password: "",
     });
