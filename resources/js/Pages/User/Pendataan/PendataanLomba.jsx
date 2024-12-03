@@ -7,6 +7,7 @@ import Footer from "@/Components/Footer";
 
 const PendataanLomba = () => {
     const [tabValue, settabValue] = useState("Partisipasi");
+    
     return (
         <div className="min-h-screen flex flex-col items-center">
             <Navbar />

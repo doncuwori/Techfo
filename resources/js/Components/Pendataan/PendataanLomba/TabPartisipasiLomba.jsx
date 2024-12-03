@@ -1,8 +1,35 @@
 import PernyataanLegalitas from "@/Components/PernyataanLegalitas";
+import { useForm } from "@inertiajs/react";
 import { Plus, Search } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export const TabPartisipasiLomba = () => {
+    const { data, post } = useForm({
+        isGroup: false,
+        delegasiOrmawa: "",
+        namaKegiatan: "",
+        tingkatPrestasi: "",
+        gelar: "",
+        bidang: "",
+        dosenPembimbing: "",
+        penyelenggara: "",
+        negaraPenyelenggara: "",
+        tempatPelaksanaan: "",
+        waktuPelaksanaan: "",
+        deskripsiKegiatan: "",
+    });
+
+    const [nimAnggota, setNimAnggota] = useState("");
+
+    useEffect(() => {
+        fetchAnggota();
+    }, [nimAnggota]);
+
+    const fetchAnggota = async () => {
+        const data = await post(route("api/user"));
+        console.log(data);
+    };
+
     const [isGroup, setIsGroup] = useState(false);
     function handleCheckbox(e) {
         setIsGroup(e.target.checked);

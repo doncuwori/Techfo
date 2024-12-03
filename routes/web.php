@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\CompetitionController as AdminCompetitionController;
+use App\Http\Controllers\CompetitionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -14,9 +17,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return Inertia::render('Dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/test', function () {
     return Inertia::render('Test');
@@ -30,22 +33,6 @@ Route::get('/pendataanLomba', function () {
     return Inertia::render('User/Pendataan/PendataanLomba');
 });
 
-Route::get('/tambahInfoLomba', function () {
-    return Inertia::render('Admin/PusatInformasi/TambahInfoLomba');
-});
-
-Route::get('/tambahInfoBeasiswa', function () {
-    return Inertia::render('Admin/PusatInformasi/TambahInfoBeasiswa');
-});
-
-Route::get('/tambahInfoPenelitian', function () {
-    return Inertia::render('Admin/PusatInformasi/TambahInfoPenelitian');
-});
-
-Route::get('/tambahInfoAbdimas', function () {
-    return Inertia::render('Admin/PusatInformasi/TambahInfoAbdimas');
-});
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -57,20 +44,15 @@ Route::get('/landingPage', function () {
     return Inertia::render('LandingPage');
 })->name(name: 'landingPage');
 
+
 // Login
 Route::get('/loginUser', function () {
     return Inertia::render('User/LoginUser');
 })->name('loginUser');
 
-
-// Dashboard
-Route::get('/dashboardAdmin', function () {
-    return Inertia::render('Admin/DashboardAdmin');
-})->name('dashboardAdmin');
-
 Route::get('/dashboardUser', function () {
     return Inertia::render('User/DashboardUser');
-})->name('dashboardUser');
+})->name('dashboardUser')->middleware(['auth', 'verified', 'role:user']);
 
 
 // Lomba 
@@ -128,13 +110,6 @@ Route::get('/faq', function () {
     return Inertia::render('User/FAQ');
 })->name('faq');
 
-
-
-Route::get('/loginAdmin', function () {
-    return Inertia::render('Admin/LoginAdmin');
-});
-
-
 // Profile
 Route::get('/profile', function () {
     return Inertia::render('User/Profile');
@@ -150,20 +125,96 @@ Route::get('/daftarPenelitian', function () {
     return Inertia::render('User/Penelitian/DaftarPenelitian');
 });
 
+// ADMIN
+
+// Route::get('/loginAdmin', function () {
+//     return Inertia::render('Admin/LoginAdmin');
+// });
+
+// Route::get('/laporanLomba', function () {
+//     return Inertia::render('Admin/Laporan/LaporanLomba');
+// })->name('laporanLomba');
+
+// Route::get('/laporanBeasiswa', function () {
+//     return Inertia::render('Admin/Laporan/LaporanBeasiswa');
+// })->name('laporanBeasiswa');
+
+// Route::get('/laporanAbdimas', function () {
+//     return Inertia::render('Admin/Laporan/LaporanAbdimas');
+// })->name('laporanAbdimas');
+
+// Route::get('/laporanPenelitian', function () {
+//     return Inertia::render('Admin/Laporan/LaporanPenelitian');
+// })->name('laporanPenelitian');
+
+
+// Route::get('/tambahInfoLomba', function () {
+//     return Inertia::render('Admin/PusatInformasi/TambahInfoLomba');
+// });
+
+// Route::get('/tambahInfoBeasiswa', function () {
+//     return Inertia::render('Admin/PusatInformasi/TambahInfoBeasiswa');
+// });
+
+// Route::get('/tambahInfoPenelitian', function () {
+//     return Inertia::render('Admin/PusatInformasi/TambahInfoPenelitian');
+// });
+
+// Route::get('/tambahInfoAbdimas', function () {
+//     return Inertia::render('Admin/PusatInformasi/TambahInfoAbdimas');
+// });
+
+
+// GROUPS
+Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
+    // Dashboard
+    Route::get('/dashboardAdmin', [AdminCompetitionController::class, 'index'])->name('dashboardAdmin');
+
+    Route::get('/laporanLomba', function () {
+        return Inertia::render('Admin/Laporan/LaporanLomba');
+    })->name('laporanLomba');
+    
+    Route::get('/laporanBeasiswa', function () {
+        return Inertia::render('Admin/Laporan/LaporanBeasiswa');
+    })->name('laporanBeasiswa');
+    
+    Route::get('/laporanAbdimas', function () {
+        return Inertia::render('Admin/Laporan/LaporanAbdimas');
+    })->name('laporanAbdimas');
+    
+    Route::get('/laporanPenelitian', function () {
+        return Inertia::render('Admin/Laporan/LaporanPenelitian');
+    })->name('laporanPenelitian');
+
+    Route::get('/tambahInfoLomba', function () {
+        return Inertia::render('Admin/PusatInformasi/TambahInfoLomba');
+    });
+    
+    Route::get('/tambahInfoBeasiswa', function () {
+        return Inertia::render('Admin/PusatInformasi/TambahInfoBeasiswa');
+    });
+    
+    Route::get('/tambahInfoPenelitian', function () {
+        return Inertia::render('Admin/PusatInformasi/TambahInfoPenelitian');
+    });
+    
+    Route::get('/tambahInfoAbdimas', function () {
+        return Inertia::render('Admin/PusatInformasi/TambahInfoAbdimas');
+    });
+
+
+Route::get('/loginAdmin', function () {
+    return Inertia::render('Admin/LoginAdmin');
+});
+});
+
+
+
+
 require __DIR__ . '/auth.php';
 
-Route::get('/laporanLomba', function () {
-    return Inertia::render('Admin/Laporan/LaporanLomba');
-})->name('laporanLomba');
 
-Route::get('/laporanBeasiswa', function () {
-    return Inertia::render('Admin/Laporan/LaporanBeasiswa');
-})->name('laporanBeasiswa');
 
-Route::get('/laporanAbdimas', function () {
-    return Inertia::render('Admin/Laporan/LaporanAbdimas');
-})->name('laporanAbdimas');
 
-Route::get('/laporanPenelitian', function () {
-    return Inertia::render('Admin/Laporan/LaporanPenelitian');
-})->name('laporanPenelitian');
+Route::resource('competitions', CompetitionController::class);
+

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from '@inertiajs/react';
+import { Link, useForm } from "@inertiajs/react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 
 const Navbar = () => {
@@ -30,6 +30,13 @@ const Navbar = () => {
         }
     };
 
+    // Form handling for logout
+    const { post } = useForm();
+
+    const handleLogout = () => {
+        post(route("logout")); // Mengirimkan POST request ke route logout
+    };
+
     return (
         <header className="w-full h-16 px-4 md:px-10 py-4 bg-white shadow-md flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -38,7 +45,10 @@ const Navbar = () => {
                         <ApplicationLogo className="w-full h-full object-cover" />
                     </div>
 
-                    <Link href={route('dashboardUser')} className="flex items-center">
+                    <Link
+                        href={route("dashboardUser")}
+                        className="flex items-center"
+                    >
                         <span className="text-gray-900 text-lg md:text-2xl font-semibold">
                             Tech
                         </span>
@@ -51,31 +61,31 @@ const Navbar = () => {
             <div className="flex-grow flex items-center justify-center">
                 <nav className="hidden md:flex items-center gap-6">
                     <Link
-                        href={route('dashboardUser')}
+                        href={route("dashboardUser")}
                         className="px-3 py-1 md:px-4 md:py-2 bg-[#fe632e] text-white rounded-2xl text-sm md:text-base font-medium"
                     >
                         Home
                     </Link>
                     <Link
-                        href={route('lomba')}
+                        href={route("lomba")}
                         className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         Lomba
                     </Link>
                     <Link
-                        href={route('beasiswa')}
+                        href={route("beasiswa")}
                         className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         Beasiswa
                     </Link>
                     <Link
-                        href={route('abdimas')}
+                        href={route("abdimas")}
                         className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         Pengabdian Masyarakat
                     </Link>
                     <Link
-                        href={route('penelitian')}
+                        href={route("penelitian")}
                         className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         Penelitian
@@ -110,7 +120,7 @@ const Navbar = () => {
                                 onMouseLeave={handlePendataanMouseLeave}
                             >
                                 <Link
-                                    href={route('pendataanLomba')}
+                                    href={route("pendataanLomba")}
                                     className="block px-4 py-2 hover:bg-orange-100"
                                 >
                                     <div className="text-black text-base font-semibold leading-normal">
@@ -122,7 +132,7 @@ const Navbar = () => {
                                 </Link>
 
                                 <Link
-                                    href={route('pendataanBeasiswa')}
+                                    href={route("pendataanBeasiswa")}
                                     className="block px-4 py-2 hover:bg-orange-100"
                                 >
                                     <div className="text-black text-base font-semibold leading-normal">
@@ -136,7 +146,7 @@ const Navbar = () => {
                         )}
                     </div>
                     <Link
-                        href={route('faq')}
+                        href={route("faq")}
                         className="text-gray-900 text-sm md:text-base font-medium hover:text-[#fe632e] hover:font-bold"
                     >
                         FAQ
@@ -158,17 +168,19 @@ const Navbar = () => {
                         onMouseLeave={handleProfileMouseLeave}
                     >
                         <Link
-                            href={route('profile')}
-                            className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:font-bold hover:text-[#fe632e]"
+                            href={route("profile")}
+                            className="block px-4 py-2 duration-300 text-gray-700 hover:bg-orange-50 hover:font-bold hover:text-[#fe632e]"
                         >
                             Profil Saya
                         </Link>
-                        <Link
-                            href={route('loginUser')}
-                            className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:font-bold hover:text-[#fe632e]"
+
+                        {/* Button Keluar */}
+                        <button
+                            onClick={handleLogout}
+                            className="block px-4 w-full text-start duration-300 py-2 text-gray-700 hover:bg-orange-50 hover:font-bold hover:text-[#fe632e]"
                         >
                             Keluar
-                        </Link>
+                        </button>
                     </div>
                 )}
             </div>
