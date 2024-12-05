@@ -73,12 +73,12 @@ const NavbarAdmin = () => {
                             className="absolute right-0 mt-20 w-56 border bg-white rounded-md shadow-lg z-10"
                             onMouseLeave={handleProfileMouseLeave}
                         >
-                            <Link
-                                href={route("loginUser")}
-                                className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:font-bold hover:text-orange-600"
+                            <button
+                                onClick={() => post(route("logout"))}
+                                className="block px-4 py-2 w-full text-left text-gray-700 hover:bg-orange-50 hover:font-bold hover:text-orange-600"
                             >
                                 Keluar
-                            </Link>
+                            </button>
                         </div>
                     )}
                 </div>

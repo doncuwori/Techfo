@@ -41,8 +41,27 @@ class User extends Authenticatable
         ];
     }
 
-    public function competitions()
+    // Relasi dengan Competition Registrants (pendaftar lomba)
+    public function competitionRegistrants()
     {
-        return $this->belongsToMany(Competition::class, 'competition_user');
+        return $this->belongsToMany(CompetitionRegistrant::class, 'user_competition_registrants');
+    }
+
+    // Relasi dengan Scholarship Registrants (pendaftar beasiswa)
+    public function scholarshipRegistrants()
+    {
+        return $this->belongsToMany(ScholarshipRegistrant::class, 'user_scholarship_registrants');
+    }
+
+    // Relasi dengan Competition Winners (pemenang lomba)`
+    public function competitionWinners()
+    {
+        return $this->belongsToMany(CompetitionWinner::class, 'user_competition_winners');
+    }
+
+    // Relasi dengan Scholarship Recipients (penerima beasiswa)
+    public function scholarshipRecipients()
+    {
+        return $this->belongsToMany(ScholarshipRecipient::class, 'user_scholarship_recipients');
     }
 }

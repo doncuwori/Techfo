@@ -1,14 +1,75 @@
 import PernyataanLegalitas from "@/Components/PernyataanLegalitas";
-import { Plus, Search } from "lucide-react";
-import React, { useState } from "react";
+import { useForm, usePage } from "@inertiajs/react";
+import { Plus, Search, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export const TabPrestasiLomba = () => {
+    const { data, setData, post, processing, errors, reset } = useForm({
+        is_group: false,
+        leader_nim: "",
+        ormawa_delegation: "BI Corner",
+        achievement_level: "Juara 1",
+        mentor_name: "Neny",
+        activity_name: "Dicoding",
+        field: "Sains",
+        degree: "Sains",
+        organizer: "Dicoding",
+        scope: "Nasional",
+        host_country: "Indonesia",
+        location: "tangsel",
+        activity_date_start: "2024-11-01",
+        activity_date_end: "2024-12-01",
+        description: "Dicoding",
+        proof_scan_url: "",
+        event_photo_url: "",
+        members: [],
+    });
     const [isGroup, setIsGroup] = useState(false);
-    function handleCheckbox(e) {
+    const [memberNim, setMemberNim] = useState("");
+    const [fetchedUsers, setFetchedUsers] = useState([]);
+
+    const fetchUsers = async () => {
+        try {
+            const response = await axios.get(route("api.user"), {
+                params: { nim: memberNim },
+            });
+            setFetchedUsers(response.data.data);
+        } catch (error) {
+            console.error("Error fetching users:", error);
+        }
+    };
+
+    useEffect(() => {
+        if (memberNim != "") fetchUsers();
+    }, [memberNim]);
+
+    const onAddMember = (member) => {
+        setData("members", [...data.members, member]);
+        setMemberNim("");
+    };
+
+    const handleCheckbox = (e) => {
         setIsGroup(e.target.checked);
-    }
+        setData("is_group", e.target.checked);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        post(route("competitionsAchievement.store"), {
+            onSuccess: (res) => {
+                reset();
+                toast.success("Prestasi Lomba Berhasil Dibuat");
+            },
+            onError: (errors) => {
+                console.error(errors);
+            },
+        });
+    };
+
     return (
-        <div>
+        <form onSubmit={handleSubmit}>
             <section className="mb-8">
                 <h2 className="text-xl font-bold mb-4">
                     Data Prestasi Mahasiswa
@@ -17,13 +78,14 @@ export const TabPrestasiLomba = () => {
                     <div className="flex items-center mb-2 bg-orange-50 gap-3 px-2 py-1 w-fit">
                         <input
                             type="checkbox"
-                            checked={isGroup}
-                            onClick={handleCheckbox}
+                            value={isGroup}
+                            id="is_group"
+                            onChange={handleCheckbox}
                         />
-                        <p className="text-black">
+                        <label htmlFor="is_group" className="text-black">
                             Beri tanda Centang untuk kejuaraan beregu/kelompok
                             (Grup).
-                        </p>
+                        </label>
                     </div>
                     {isGroup && (
                         // && artinya kalau true tampilkan, kalau false ga ditampilkan
@@ -40,19 +102,75 @@ export const TabPrestasiLomba = () => {
                             <div className="flex flex-row">
                                 <input
                                     type="text"
-                                    className="text-sm px-2.5 py-2 rounded-l-lg border-neutral-400 border-[1.5px]"
+                                    className="text-sm px-2.5 py-2 rounded-lg border-neutral-400 border-[1.5px]"
                                     placeholder="Tuliskan NIM"
+                                    onChange={(e) => {
+                                        setMemberNim(e.target.value);
+                                    }}
+                                    value={memberNim}
                                 />
-                                <button className="bg-green-500 p-2 rounded-r-lg text-white">
-                                    <Search size={20} />
-                                </button>
                             </div>
-                            <div>
-                                <button className="bg-green-500 flex gap-2 px-3 py-2 text-white rounded-lg">
-                                    <Plus size={16} />
-                                    <p className="text-xs">Tambahkan Anggota</p>
-                                </button>
-                            </div>
+
+                            {data.members.length > 0 && (
+                                <div className="flex gap-2">
+                                    {data.members.map((member, index) => (
+                                        <div
+                                            key={member + index}
+                                            className="bg-gray-300 w-fit px-2 py-1 rounded-lg flex gap-2 "
+                                        >
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setData(
+                                                        "members",
+                                                        data.members.filter(
+                                                            (u) =>
+                                                                u.nim !==
+                                                                member.nim
+                                                        )
+                                                    );
+                                                }}
+                                                className="flex gap-2 items-center"
+                                            >
+                                                {member.name} ({member.nim})
+                                                <X size={20} />
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+
+                            {fetchedUsers.length > 0 && memberNim && (
+                                <div className="mt-4">
+                                    <h3 className="text-lg font-semibold mb-2">
+                                        Pilih Anggota:
+                                    </h3>
+                                    <ul className="list-disc pl-5">
+                                        {fetchedUsers.map((user) => (
+                                            <li
+                                                key={user.id}
+                                                className="mb-2 flex gap-2"
+                                            >
+                                                {user.name} ({user.nim})
+                                                <button
+                                                    type="button"
+                                                    className="bg-green-500 flex gap-1.5 px-1.5 py-1 text-white rounded"
+                                                    onClick={() => {
+                                                        onAddMember(user);
+                                                    }}
+                                                >
+                                                    <Plus size={16} />
+                                                    <p className="text-xs">
+                                                        Tambahkan
+                                                    </p>
+                                                </button>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            <div></div>
                         </div>
                     )}
                 </div>
@@ -60,7 +178,13 @@ export const TabPrestasiLomba = () => {
                     <label className="block text-gray-700 font-bold mb-2">
                         Delegasi ORMAWA
                     </label>
-                    <select className="w-full border rounded-lg p-2">
+                    <select
+                        value={data.ormawa_delegation}
+                        onChange={(e) => {
+                            setData("ormawa_delegation", e.target.value);
+                        }}
+                        className="w-full border rounded-lg p-2"
+                    >
                         <option>Bukan Delegasi dari ORMAWA</option>
                         <option>
                             Badan Eksekutif Mahasiswa Fakultas Ilmu Komputer
@@ -98,6 +222,10 @@ export const TabPrestasiLomba = () => {
                     </label>
                     <input
                         type="text"
+                        onChange={(e) => {
+                            setData("activity_name", e.target.value);
+                        }}
+                        value={data.activity_name}
                         className="w-full border rounded-lg p-2"
                         placeholder="Contoh: Lomba Karya Tulis Ilmiah Nasional Tahun 2017"
                     />
@@ -107,7 +235,13 @@ export const TabPrestasiLomba = () => {
                     <label className="block text-gray-700 font-bold mb-2">
                         Prestasi
                     </label>
-                    <select className="w-full border rounded-lg p-2">
+                    <select
+                        value={data.achievement_level}
+                        onChange={(e) => {
+                            setData("achievement_level", e.target.value);
+                        }}
+                        className="w-full border rounded-lg p-2"
+                    >
                         <option>-- Pilih Prestasi --</option>
                         <option>Juara 1</option>
                         <option>Juara 2</option>
@@ -124,7 +258,13 @@ export const TabPrestasiLomba = () => {
                             <label className="block text-gray-700 font-bold mb-2">
                                 Tingkat Prestasi
                             </label>
-                            <select className="w-full border rounded-lg p-2">
+                            <select
+                                onChange={(e) => {
+                                    setData("scope", e.target.value);
+                                }}
+                                value={data.scope}
+                                className="w-full border rounded-lg p-2"
+                            >
                                 <option>-- Pilih Tingkat Prestasi --</option>
                                 <option>International</option>
                                 <option>Nasional</option>
@@ -140,7 +280,13 @@ export const TabPrestasiLomba = () => {
                             <label className="block text-gray-700 font-bold mb-2">
                                 Gelar
                             </label>
-                            <select className="w-full border rounded-lg p-2">
+                            <select
+                                onChange={(e) => {
+                                    setData("field", e.target.value);
+                                }}
+                                value={data.field}
+                                className="w-full border rounded-lg p-2"
+                            >
                                 <option>-- Pilih Gelar --</option>
                                 <option>Ilmiah/Penalaran/Akademik</option>
                                 <option>Minat Khusus</option>
@@ -155,7 +301,13 @@ export const TabPrestasiLomba = () => {
                             <label className="block text-gray-700 font-bold mb-2">
                                 Bidang
                             </label>
-                            <select className="w-full border rounded-lg p-2">
+                            <select
+                                onChange={(e) => {
+                                    setData("field", e.target.value);
+                                }}
+                                value={data.field}
+                                className="w-full border rounded-lg p-2"
+                            >
                                 <option>-- Pilih Bidang Lomba --</option>
                                 <option>Ilmiah/Penalaran/Akademik</option>
                                 <option>Minat Khusus</option>
@@ -170,6 +322,10 @@ export const TabPrestasiLomba = () => {
                             </label>
                             <input
                                 type="text"
+                                onChange={(e) => {
+                                    setData("mentor_name", e.target.value);
+                                }}
+                                value={data.mentor_name}
                                 className="w-full border rounded-lg p-2"
                                 placeholder="Tuliskan nama dosen pembimbing/pendamping..."
                             />
@@ -183,6 +339,10 @@ export const TabPrestasiLomba = () => {
                     </label>
                     <input
                         type="text"
+                        onChange={(e) => {
+                            setData("organizer", e.target.value);
+                        }}
+                        value={data.organizer}
                         className="w-full border rounded-lg p-2"
                         placeholder="Tuliskan penyelenggara kegiatan..."
                     />
@@ -191,8 +351,16 @@ export const TabPrestasiLomba = () => {
                     <label className="block text-gray-700 font-bold mb-2">
                         Negara Penyelenggara
                     </label>
-                    <select className="w-full border rounded-lg p-2">
+                    <select
+                        onChange={(e) => {
+                            setData("host_country", e.target.value);
+                        }}
+                        value={data.host_country}
+                        className="w-full border rounded-lg p-2"
+                    >
                         <option>Pilih Negara Penyelenggara</option>
+                        <option>Indonesia</option>
+                        <option>Malaysia</option>
                     </select>
                 </div>
                 <div className="mb-4">
@@ -201,27 +369,49 @@ export const TabPrestasiLomba = () => {
                     </label>
                     <input
                         type="text"
+                        onChange={(e) => {
+                            setData("location", e.target.value);
+                        }}
+                        value={data.location}
                         className="w-full border rounded-lg p-2"
                         placeholder="Tuliskan tempat pelaksanaan kegiatan..."
                     />
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Waktu Pelaksanaan
+                        Waktu Pelaksanaan Dimulai
                     </label>
                     <input
+                        onChange={(e) => {
+                            setData("activity_date_start", e.target.value);
+                        }}
+                        value={data.activity_date_start}
                         type="date"
                         className="w-full border rounded-lg p-2"
                     />
-                    <div className="flex items-center mt-2">
-                        <input type="calendar" className="mr-2" />
-                    </div>
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-bold mb-2">
+                        Waktu Pelaksanaan Berakhir
+                    </label>
+                    <input
+                        onChange={(e) => {
+                            setData("activity_date_end", e.target.value);
+                        }}
+                        value={data.activity_date_end}
+                        type="date"
+                        className="w-full border rounded-lg p-2"
+                    />
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Deskripsi Kegiatan
                     </label>
                     <textarea
+                        onChange={(e) => {
+                            setData("description", e.target.value);
+                        }}
+                        value={data.description}
                         className="w-full border rounded-lg p-2"
                         placeholder="Write text here..."
                     ></textarea>
@@ -278,12 +468,18 @@ export const TabPrestasiLomba = () => {
                     </ul>
                 </div>
             </section>
+
             <PernyataanLegalitas />
             <div className="flex justify-end w-full">
-                <button className="mt-2 bg-orange-500 text-white py-1 px-4 rounded-lg">
-                    Submit
+                <button
+                    type="submit"
+                    className={`mt-2 ${
+                        processing ? "bg-gray-400" : "bg-orange-500"
+                    }  text-white py-1 px-4 rounded-lg`}
+                >
+                    {processing ? "Loading..." : "Submit"}
                 </button>
             </div>
-        </div>
+        </form>
     );
 };

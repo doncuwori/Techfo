@@ -2,7 +2,7 @@ import React from "react";
 
 export const FormLombaBeasiswa = () => {
     return (
-        <div>
+        <form>
             <section className="mb-8">
                 <h2 className="text-xl font-bold mb-4">
                     Tambah Informasi Lomba
@@ -92,6 +92,6 @@ export const FormLombaBeasiswa = () => {
                     Submit
                 </button>
             </div>
-        </div>
+        </form>
     );
 };

@@ -14,6 +14,11 @@ class UserController extends Controller
         if($request->has('name')){
             $name = strtolower($request->name);
             $query->whereRaw('LOWER(name) LIKE ?', ["%{$name}%"]);
+        }   
+
+        if($request->has('nim')){
+            $nim = $request->nim;
+            $query->where('nim', 'LIKE', "%{$nim}%");
         }
 
         $query->where('role', 'user');
@@ -25,11 +30,12 @@ class UserController extends Controller
                 'id' => $user->id,
                 'nim' => $user->nim,
                 'name' => $user->name,
-                'email' => $user->email,
-                'role' => $user->role,
+                
             ];
         });
 
         return response()->json(["data" => $mappedUsers]);
+
+        
     }
 }

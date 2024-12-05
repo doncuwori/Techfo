@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        Schema::create('competitions', function (Blueprint $table) {
+        // Pendaftar Lomba
+        Schema::create('competition_registrants', function (Blueprint $table) {
             $table->id(); // ID kompetisi
             $table->boolean('is_group')->default(false); // Kompetisi kelompok
             $table->string('leader_nim', 20)->nullable(); // NIM ketua kelompok
@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('mentor_name')->nullable(); // Nama pembimbing
             $table->string('activity_name'); // Nama kegiatan
             $table->string('field')->nullable(); // Bidang lomba
+            $table->string('scope')->nullable(); // Tingkat Prestasi lomba
+            $table->string('degree')->nullable(); // Gelar lomba
             $table->string('organizer')->nullable(); // Penyelenggara
             $table->string('host_country')->nullable(); // Negara penyelenggara
             $table->string('location')->nullable(); // Lokasi kegiatan
@@ -30,16 +32,43 @@ return new class extends Migration
             $table->timestamps();
         });
         
-        Schema::create('competition_user', function (Blueprint $table) {
-            $table->id(); // ID relasi
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Foreign key ke users
-            $table->foreignId('competition_id')->constrained('competitions')->onDelete('cascade'); // Foreign key ke competitions
+        Schema::create('user_competition_registrants', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('competition_registrant_id')->constrained('competition_registrants')->onDelete('cascade'); // Pastikan kolom ini ada
+            $table->timestamps();
+        });        
+
+        // Pemenang Lomba
+        Schema::create('competition_winners', function (Blueprint $table) {
+            $table->id(); // ID kompetisi
+            $table->boolean('is_group')->default(false); // Kompetisi kelompok
+            $table->string('leader_nim', 20)->nullable(); // NIM ketua kelompok
+            $table->string('ormawa_delegation')->nullable(); // Delegasi ORMAWA
+            $table->string('mentor_name')->nullable(); // Nama pembimbing
+            $table->string('achievement_level'); // Tingkat Prestasi 
+            $table->string('activity_name'); // Nama kegiatan
+            $table->string('field')->nullable(); // Bidang lomba
+            $table->string('scope')->nullable(); // Tingkat Prestasi lomba
+            $table->string('degree')->nullable(); // Gelar lomba
+            $table->string('organizer')->nullable(); // Penyelenggara
+            $table->string('host_country')->nullable(); // Negara penyelenggara
+            $table->string('location')->nullable(); // Lokasi kegiatan
+            $table->date('activity_date_start')->nullable(); // Tanggal mulai
+            $table->date('activity_date_end')->nullable(); // Tanggal selesai
+            $table->text('description')->nullable(); // Deskripsi kegiatan
+            $table->string('proof_scan_url')->nullable(); // URL bukti scan
+            $table->string('event_photo_url')->nullable(); // URL poster
             $table->timestamps();
         });
         
-   
+        Schema::create('user_competition_winners', function (Blueprint $table) {
+            $table->id(); // ID relasi
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Foreign key ke users
+            $table->foreignId('competition_id')->constrained('competition_winners')->onDelete('cascade'); // Foreign key ke competitions
+            $table->timestamps();
+        });    
 
-        
     }
 
     /**
@@ -47,9 +76,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('competition_user');
-        Schema::dropIfExists('competitions');
-        
-
+        Schema::dropIfExists('competition_registrants');
+        Schema::dropIfExists('user_competition_registrants');
     }
 };

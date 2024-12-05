@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCompetitionUserRequest;
-use App\Http\Requests\UpdateCompetitionUserRequest;
-use App\Models\CompetitionUser;
+use App\Http\Requests\StoreUserCompetitionRegistrantRequest;
+use App\Http\Requests\UpdateUserCompetitionRegistrantRequest;
+use App\Models\UserCompetitionRegistrant;
+use Illuminate\Http\Request;
 
-class CompetitionUserController extends Controller
+class UserCompetitionRegistrantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class CompetitionUserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCompetitionUserRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class CompetitionUserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CompetitionUser $competitionUser)
+    public function show(UserCompetitionRegistrant $competitionUser)
     {
         //
     }
@@ -43,7 +44,7 @@ class CompetitionUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CompetitionUser $competitionUser)
+    public function edit(UserCompetitionRegistrant $competitionUser)
     {
         //
     }
@@ -51,7 +52,7 @@ class CompetitionUserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCompetitionUserRequest $request, CompetitionUser $competitionUser)
+    public function update(Request $request, UserCompetitionRegistrant $competitionUser)
     {
         //
     }
@@ -59,7 +60,7 @@ class CompetitionUserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CompetitionUser $competitionUser)
+    public function destroy(UserCompetitionRegistrant $competitionUser)
     {
         //
     }

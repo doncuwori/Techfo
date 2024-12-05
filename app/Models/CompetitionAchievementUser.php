@@ -4,14 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Competition extends Model
+class CompetitionAchievementUser extends Pivot
 {
     use HasFactory;
-
-
-    public function users()
-    {
-        return $this->belongsToMany(User::class, 'competition_user');
-    }
 }

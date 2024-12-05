@@ -2,16 +2,16 @@
 
 namespace App\Policies;
 
-use App\Models\CompetitionUser;
+use App\Models\UserCompetitionRegistrant;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class CompetitionUserPolicy
+class UserCompetitionRegistrantPolicy
 {
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user): bool
+    public function viewAny(User $user)
     {
         //
     }
@@ -19,7 +19,7 @@ class CompetitionUserPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, CompetitionUser $competitionUser): bool
+    public function view(User $user, UserCompetitionRegistrant $competitionUser)
     {
         //
     }
@@ -27,7 +27,7 @@ class CompetitionUserPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(User $user)
     {
         //
     }
@@ -35,7 +35,7 @@ class CompetitionUserPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, CompetitionUser $competitionUser): bool
+    public function update(User $user, UserCompetitionRegistrant $competitionUser)
     {
         //
     }
@@ -43,7 +43,7 @@ class CompetitionUserPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, CompetitionUser $competitionUser): bool
+    public function delete(User $user, UserCompetitionRegistrant $competitionUser)
     {
         //
     }
@@ -51,7 +51,7 @@ class CompetitionUserPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, CompetitionUser $competitionUser): bool
+    public function restore(User $user, UserCompetitionRegistrant $competitionUser)
     {
         //
     }
@@ -59,7 +59,7 @@ class CompetitionUserPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, CompetitionUser $competitionUser): bool
+    public function forceDelete(User $user, UserCompetitionRegistrant $competitionUser)
     {
         //
     }

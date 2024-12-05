@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Competition;
+use App\Models\CompetitionRegistrant;
 
 class CompetitionSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class CompetitionSeeder extends Seeder
      */
     public function run(): void
     {
-        Competition::create(attributes: [
+        CompetitionRegistrant::create(attributes: [
             'is_group' => false,
             'leader_nim' => '1234567890', // Admin
             'ormawa_delegation' => 'HIMTI',
@@ -31,7 +32,7 @@ class CompetitionSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        Competition::create(attributes:
+        CompetitionRegistrant::create(attributes:
         [
             'is_group' => true,
             'leader_nim' => '0987654321', // User
@@ -50,7 +51,7 @@ class CompetitionSeeder extends Seeder
             'updated_at' => now(),
         ]);
         
-        Competition::create(attributes:[
+        CompetitionRegistrant::create(attributes:[
             'is_group' => false,
             'leader_nim' => '1122334455', // John Doe
             'ormawa_delegation' => 'HIMSI',
@@ -67,7 +68,7 @@ class CompetitionSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        Competition::create(attributes:[
+        CompetitionRegistrant::create(attributes:[
             'is_group' => true,
             'leader_nim' => '2233445566', // Jane Smith
             'ormawa_delegation' => 'HIMTEK',
@@ -84,7 +85,7 @@ class CompetitionSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        Competition::create(attributes:[
+        CompetitionRegistrant::create(attributes:[
             'is_group' => false,
             'leader_nim' => '3344556677', // Alice Johnson
             'ormawa_delegation' => 'HIMTE',
@@ -101,7 +102,7 @@ class CompetitionSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        Competition::create(attributes:[
+        CompetitionRegistrant::create(attributes:[
             'is_group' => true,
             'leader_nim' => '4455667788', // Bob Brown
             'ormawa_delegation' => 'HMM',

@@ -34,7 +34,7 @@ const Navbar = () => {
     const { post } = useForm();
 
     const handleLogout = () => {
-        post(route("logout")); // Mengirimkan POST request ke route logout
+        post(route("logout")); 
     };
 
     return (
