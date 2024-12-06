@@ -5,6 +5,8 @@ import ProcedureLomba from "@/Components/FAQ/ProcedureLomba";
 import ProcedureBeasiswa from "@/Components/FAQ/ProcedureBeasiswa";
 import ProcedureAbdimas from "@/Components/FAQ/ProcedureAbdimas";
 import ProcedurePenelitian from "@/Components/FAQ/ProcedurePenelitian";
+import ScrollUpButton from "@/Components/ScrollUpButton";
+import Footer from "@/Components/Footer";
 
 function FAQ() {
     return (
@@ -31,6 +33,8 @@ function FAQ() {
             <ProcedureBeasiswa />
             <ProcedureAbdimas />
             <ProcedurePenelitian />
+            <ScrollUpButton />
+            <Footer />
         </div>
     );
 }

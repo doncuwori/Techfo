@@ -26,7 +26,7 @@ ChartJS.register(
     Title
 );
 
-const LaporanKeaktifan = () => {
+const LaporanKeaktifan = ({ competitionCount, scholarshipCount }) => {
     const pieData = {
         labels: [
             "S-1 Informatika",
@@ -105,7 +105,7 @@ const LaporanKeaktifan = () => {
                 data: [5, 15, 10, 20],
                 fill: false,
                 borderColor: "#eca00c",
-                tension: 0.4,
+                tension: 0,
             },
         ],
     };
@@ -188,11 +188,15 @@ const LaporanKeaktifan = () => {
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-4 pt-4 gap-6">
                             {[
-                                { label: "LOMBA", icon: "🏆", count: "36/50" },
+                                {
+                                    label: "LOMBA",
+                                    icon: "🏆",
+                                    count: competitionCount,
+                                },
                                 {
                                     label: "BEASISWA",
                                     icon: "📝",
-                                    count: "36/50",
+                                    count: scholarshipCount,
                                 },
                                 {
                                     label: "ABDIMAS",
@@ -207,16 +211,16 @@ const LaporanKeaktifan = () => {
                             ].map(({ label, icon, count }) => (
                                 <div
                                     key={label}
-                                    className="bg-orange-100 border-2 border-neutral-200 rounded-lg p-4 flex items-center"
+                                    className="bg-orange-100 border-2 border-neutral-200 rounded-lg p-6 flex items-center"
                                 >
-                                    <div className="ml-4 text-5xl">{icon}</div>
-                                    <div className="ml-10 text-center">
+                                    <div className="text-5xl">{icon}</div>
+                                    <div className="ml-16 text-center">
                                         <p className="font-semibold">{label}</p>
                                         <p className="text-[#2d3036] text-2xl font-medium leading-10">
                                             {count}
                                         </p>
                                         <p className="text-gray-600 text-xs">
-                                            Daftar/Menang
+                                            Menang/Daftar
                                         </p>
                                     </div>
                                 </div>

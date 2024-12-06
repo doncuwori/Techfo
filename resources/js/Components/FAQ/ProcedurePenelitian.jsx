@@ -4,7 +4,7 @@ import Step from "@/Components/FAQ/Step";
 
 const ProcedurePenelitian = () => {
     return (
-        <div className="container max-w-5xl mx-auto px-8 py-8 relative z-10">
+        <div className="container max-w-5xl mx-auto px-8 py-8 mb-8 relative z-10">
             <div className="text-left">
                 <h3 className="text-2xl font-bold text-black">
                     Prosedur <span className="text-[#fe632e]">Penelitian</span>

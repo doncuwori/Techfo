@@ -4,6 +4,7 @@ import HeaderSection from "@/Components/HeaderSection";
 import SearchBox from "@/Components/SearchBox";
 import Procedure from "@/Components/Penelitian/ProcedurePenelitian";
 import CardPenelitian from "@/Components/Penelitian/CardPenelitian";
+import ScrollUpButton from "@/Components/ScrollUpButton";
 
 const Penelitian = () => {
     return (
@@ -28,6 +29,7 @@ const Penelitian = () => {
             </div>
             <CardPenelitian />
             <Footer />
+            <ScrollUpButton />
         </div>
     );
 };

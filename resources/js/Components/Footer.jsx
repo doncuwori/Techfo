@@ -3,7 +3,7 @@ import { University, MapPinned, PhoneCall, Mail, UserRound, Instagram, Facebook,
 
 const Footer = () => {
     return (
-        <div className="w-full bg-[#111111] py-12 px-8 text-white">
+        <div className="w-full bg-[#111111] py-12 px-8 text-white relative z-10">
             <div className="max-w-screen-xl mx-auto flex flex-col lg:flex-row justify-between gap-12">
                 {/* Faculty Info Section */}
                 <div className="flex flex-col gap-8 lg:max-w-[363px]">
@@ -23,7 +23,7 @@ const Footer = () => {
                             rel="noopener noreferrer"
                             className="hover:text-orange-500 flex items-center gap-3"
                         >
-                            <University className="w-6 h-6 text-orange-500" />{" "}
+                            <University className="w-6 h-6 text-orange-500" />
                             Universitas Pembangunan Nasional "Veteran" Jakarta
                         </a>
                         <br />
@@ -33,12 +33,12 @@ const Footer = () => {
                             rel="noopener noreferrer"
                             className="hover:text-orange-500 flex items-center gap-3"
                         >
-                            <MapPinned className="w-8 h-8 text-orange-500" />{" "}
+                            <MapPinned className="w-6 h-6 text-orange-500" />
                             Jl. RS. Fatmawati, Pondok Labu, Jakarta Selatan, DKI Jakarta. 12450.
                         </a>
                         <br />
                         <a
-                            href="tel:+62217656971"
+                            href="tel:(021)7656971"
                             className="hover:text-orange-500 flex items-center gap-3"
                         >
                             <PhoneCall className="w-5 h-5 text-orange-500" /> (021)7656971
@@ -90,7 +90,7 @@ const Footer = () => {
                 </div>
 
                 {/* Technology Information Section */}
-                <div className="flex flex-col gap-3 lg:max-w-[397px]">
+                <div className="flex flex-col gap-3 lg:max-w-[400px]">
                     <div className="flex items-center gap-4">
                         <div className="w-14 h-14 bg-[#d9d9d9] rounded-full flex items-center justify-center border-2 border-[#fcfcfc]">
                             <img
@@ -105,9 +105,9 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="text-base font-bold">Project Akhir Mahasiswa</div>
+                    <div className="text-base font-bold mt-5">Project Akhir Mahasiswa</div>
                     <div className="text-base font-normal leading-snug">
-                        Website yang memuat informasi seputar lomba, beasiswa, penelitian dosen, dan pengabdian masyarakat oleh dosen.
+                        Website yang memuat informasi seputar lomba, beasiswa, pengabdian masyarakat, dan penelitian oleh dosen.
                     </div>
                     <div className="text-base font-semibold">Project Akhir Mahasiswa FIK 2021</div>
                     <div className="text-base font-normal">
@@ -128,18 +128,18 @@ const Footer = () => {
                     <div className="text-base font-normal">
                         <div className="flex items-center gap-3">
                             <UserRound className="w-5 h-5" />
-                            Erly Krisnanik S.Kom., MM. - 197409082021212003
+                            Erly Krisnanik, S.Kom., MM. - 197409082021212003
                         </div>
                         <div className="flex items-center gap-3">
                             <UserRound className="w-5 h-5" />
-                            Ika Nurlaili, S.Kom,M.Sc. - 217121291
+                            Ika Nurlaili, S.Kom., M.Sc. - 217121291
                         </div>
                     </div>
                 </div>
 
                 {/* Student Project Section */}
-                <div className="flex flex-col gap-6 lg:max-w-[282px]">
-                    <div className="text-lg font-bold text-white">Temukan Kami Disini</div>
+                <div className="flex flex-col gap-12 mt-3 lg:max-w-[282px]">
+                    <div className="text-xl font-bold text-white">Temukan Kami Disini</div>
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.598723401264!2d106.7934897592435!3d-6.316324941843607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ee3e065d4f6b%3A0xe176f81a31564166!2sUniversitas%20Pembangunan%20Nasional%20Veteran%20Jakarta!5e0!3m2!1sen!2sid!4v1730907281576!5m2!1sen!2sid"
                         width="100%"
@@ -153,10 +153,8 @@ const Footer = () => {
             </div>
 
             {/* Footer Section */}
-            <div className="text-sm text-center mt-12">
+            <div className="text-sm text-center mt-14">
                 Copyright ©2024 Fakultas Ilmu Komputer UPN "Veteran" Jakarta
-
-
             </div>
         </div>
     );

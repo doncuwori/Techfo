@@ -3,6 +3,7 @@ import Header from "@/Components/LandingPage/Header";
 import HeaderSection from "@/Components/Dashboard/HeaderSection";
 import LaporanKeaktifan from "@/Components/LandingPage/LaporanKeaktifan";
 import Footer from "@/Components/Footer";
+import ScrollUpButton from "@/Components/ScrollUpButton";
 
 const LandingPage = () => {
     return (
@@ -18,6 +19,7 @@ const LandingPage = () => {
             </div>
             <LaporanKeaktifan />
             <Footer />
+            <ScrollUpButton />
         </div>
     );
 };
