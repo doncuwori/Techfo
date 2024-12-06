@@ -5,9 +5,11 @@ import { TabPrestasiLomba } from "@/Components/Pendataan/PendataanLomba/TabPrest
 import { TabPartisipasiLomba } from "@/Components/Pendataan/PendataanLomba/TabPartisipasiLomba";
 import Footer from "@/Components/Footer";
 import ScrollUpButton from "@/Components/ScrollUpButton";
+import toast, { Toaster } from "react-hot-toast";
 
 const PendataanLomba = () => {
     const [tabValue, settabValue] = useState("Partisipasi");
+
     return (
         <div className="min-h-screen flex flex-col items-center">
             <Navbar />
@@ -51,6 +53,7 @@ const PendataanLomba = () => {
                 </div>
             </main>
             <Footer />
+            <Toaster position="top-right" />
             <ScrollUpButton />
         </div>
     );

@@ -5,6 +5,7 @@ import { TabDaftarBeasiswa } from "@/Components/Pendataan/PendataanBeasiswa/TabD
 import { TabLolosBeasiswa } from "@/Components/Pendataan/PendataanBeasiswa/TabLolosBeasiswa";
 import Footer from "@/Components/Footer";
 import ScrollUpButton from "@/Components/ScrollUpButton";
+import toast, { Toaster } from "react-hot-toast";
 
 const PendataanBeasiswa = () => {
     const [tabValue, settabValue] = useState("Daftar");
@@ -51,6 +52,7 @@ const PendataanBeasiswa = () => {
                 </div>
             </main>
             <Footer />
+            <Toaster position="top-right" />
             <ScrollUpButton />
         </div>
     );

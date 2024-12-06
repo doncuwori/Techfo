@@ -1,21 +1,26 @@
 import React, { useState } from "react";
-import { Link } from "@inertiajs/react"; 
+import { Link, useForm } from "@inertiajs/react";
 import {
     LogOut,
     LayoutDashboard,
     Briefcase,
     ChevronDown,
     NotepadText,
-    ChartBar
+    ChartBar,
 } from "lucide-react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 
 const NavbarAdmin = () => {
     const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-    const [isLaporanDropdownOpen, setIsLaporanDropdownOpen] = useState(false); 
-    const [isPusatInformasiDropdownOpen, setIsPusatInformasiDropdownOpen] = useState(false); 
-    const [isChevronLaporanRotated, setIsChevronLaporanRotated] = useState(false);
-    const [isChevronPusatInformasiRotated, setIsChevronPusatInformasiRotated] = useState(false);
+    const [isLaporanDropdownOpen, setIsLaporanDropdownOpen] = useState(false);
+    const [isPusatInformasiDropdownOpen, setIsPusatInformasiDropdownOpen] =
+        useState(false);
+    const [isChevronLaporanRotated, setIsChevronLaporanRotated] =
+        useState(false);
+    const [isChevronPusatInformasiRotated, setIsChevronPusatInformasiRotated] =
+        useState(false);
+
+    const { post } = useForm();
 
     const toggleProfileDropdown = () => {
         setIsProfileDropdownOpen(!isProfileDropdownOpen);
@@ -26,12 +31,12 @@ const NavbarAdmin = () => {
     };
 
     const toggleLaporanDropdown = () => {
-        setIsLaporanDropdownOpen(!isLaporanDropdownOpen); 
+        setIsLaporanDropdownOpen(!isLaporanDropdownOpen);
         setIsChevronLaporanRotated(!isChevronLaporanRotated);
     };
 
     const togglePusatInformasiDropdown = () => {
-        setIsPusatInformasiDropdownOpen(!isPusatInformasiDropdownOpen); 
+        setIsPusatInformasiDropdownOpen(!isPusatInformasiDropdownOpen);
         setIsChevronPusatInformasiRotated(!isChevronPusatInformasiRotated);
     };
 
@@ -44,7 +49,10 @@ const NavbarAdmin = () => {
                             <ApplicationLogo className="w-full h-full object-cover" />
                         </div>
 
-                        <Link href={route('dashboardAdmin')} className="flex items-center">
+                        <Link
+                            href={route("dashboardAdmin")}
+                            className="flex items-center"
+                        >
                             <span className="text-gray-900 text-lg md:text-2xl font-semibold">
                                 Tech
                             </span>
@@ -75,12 +83,12 @@ const NavbarAdmin = () => {
                             className="absolute right-0 mt-20 w-56 border bg-white rounded-md shadow-lg z-10"
                             onMouseLeave={handleProfileMouseLeave}
                         >
-                            <Link
-                                href={route("loginUser")}
+                            <button
+                                onClick={() => post(route("logout"))}
                                 className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:font-bold hover:text-orange-600"
                             >
                                 Keluar
-                            </Link>
+                            </button>
                         </div>
                     )}
                 </div>
@@ -91,11 +99,13 @@ const NavbarAdmin = () => {
                 <ul className="flex-1">
                     <li key="dashboard" className="mb-4">
                         <Link
-                            href={route('dashboardAdmin')}  // Ensure the correct route name is used
+                            href={route("dashboardAdmin")}
                             className="text-gray-500 hover:text-orange-500 flex items-center w-full group"
                         >
                             <LayoutDashboard className="w-5 h-5 mr-2" />
-                            <span className="group-hover:text-orange-500">Dashboard</span>
+                            <span className="group-hover:text-orange-500">
+                                Dashboard
+                            </span>
                         </Link>
                     </li>
 
@@ -103,35 +113,48 @@ const NavbarAdmin = () => {
                         {
                             name: "Laporan",
                             icon: <Briefcase className="w-5 h-5 mr-2" />,
-                            onClick: toggleLaporanDropdown, 
-                            dropdown: isLaporanDropdownOpen && ( 
+                            onClick: toggleLaporanDropdown,
+                            dropdown: isLaporanDropdownOpen && (
                                 <ul className="pl-8 mt-2">
-                                    {[{
-                                        name: "Lomba", route: "laporanLomba"
-                                    },
-                                    { name: "Beasiswa", route: "laporanBeasiswa" },
-                                    { name: "Pengabdian Masyarakat", route: "laporanAbdimas" },
-                                    { name: "Penelitian", route: "laporanPenelitian" }]
-                                        .map((subItem) => (
-                                            <li
-                                                key={subItem.name}
-                                                className="mb-2 flex items-center group hover:text-orange-500"
+                                    {[
+                                        {
+                                            name: "Lomba",
+                                            route: "laporanLomba",
+                                        },
+                                        {
+                                            name: "Beasiswa",
+                                            route: "laporanBeasiswa",
+                                        },
+                                        {
+                                            name: "Pengabdian Masyarakat",
+                                            route: "laporanAbdimas",
+                                        },
+                                        {
+                                            name: "Penelitian",
+                                            route: "laporanPenelitian",
+                                        },
+                                    ].map((subItem) => (
+                                        <li
+                                            key={subItem.name}
+                                            className="mb-2 flex items-center group hover:text-orange-500"
+                                        >
+                                            <NotepadText className="w-4 h-4 mr-2 text-gray-500 group-hover:text-orange-500 transition-colors duration-200" />
+                                            <Link
+                                                href={route(subItem.route)}
+                                                className="text-gray-500 group-hover:text-orange-500"
                                             >
-                                                <NotepadText className="w-4 h-4 mr-2 text-gray-500 group-hover:text-orange-500 transition-colors duration-200" />
-                                                <Link
-                                                    href={route(subItem.route)}
-                                                    className="text-gray-500 group-hover:text-orange-500"
-                                                >
-                                                    {subItem.name}
-                                                </Link>
-                                            </li>
-                                        ))}
+                                                {subItem.name}
+                                            </Link>
+                                        </li>
+                                    ))}
                                 </ul>
                             ),
                             iconRight: (
                                 <ChevronDown
                                     className={`ml-auto w-5 h-5 text-gray-500 transform transition-transform duration-200 group-hover:text-orange-500 ${
-                                        isChevronLaporanRotated ? "rotate-180" : ""
+                                        isChevronLaporanRotated
+                                            ? "rotate-180"
+                                            : ""
                                     }`}
                                 />
                             ),
@@ -139,35 +162,48 @@ const NavbarAdmin = () => {
                         {
                             name: "Pusat Informasi",
                             icon: <ChartBar className="w-5 h-5 mr-2" />,
-                            onClick: togglePusatInformasiDropdown, 
-                            dropdown: isPusatInformasiDropdownOpen && ( 
+                            onClick: togglePusatInformasiDropdown,
+                            dropdown: isPusatInformasiDropdownOpen && (
                                 <ul className="pl-8 mt-2">
-                                    {[{
-                                        name: "Lomba", route: "laporanLomba"
-                                    },
-                                    { name: "Beasiswa", route: "laporanBeasiswa" },
-                                    { name: "Pengabdian Masyarakat", route: "laporanAbdimas" },
-                                    { name: "Penelitian", route: "laporanPenelitian" }]
-                                        .map((subItem) => (
-                                            <li
-                                                key={subItem.name}
-                                                className="mb-2 flex items-center group hover:text-orange-500"
+                                    {[
+                                        {
+                                            name: "Lomba",
+                                            route: "laporanLomba",
+                                        },
+                                        {
+                                            name: "Beasiswa",
+                                            route: "laporanBeasiswa",
+                                        },
+                                        {
+                                            name: "Pengabdian Masyarakat",
+                                            route: "laporanAbdimas",
+                                        },
+                                        {
+                                            name: "Penelitian",
+                                            route: "laporanPenelitian",
+                                        },
+                                    ].map((subItem) => (
+                                        <li
+                                            key={subItem.name}
+                                            className="mb-2 flex items-center group hover:text-orange-500"
+                                        >
+                                            <NotepadText className="w-4 h-4 mr-2 text-gray-500 group-hover:text-orange-500 transition-colors duration-200" />
+                                            <Link
+                                                href={route(subItem.route)}
+                                                className="text-gray-500 group-hover:text-orange-500"
                                             >
-                                                <NotepadText className="w-4 h-4 mr-2 text-gray-500 group-hover:text-orange-500 transition-colors duration-200" />
-                                                <Link
-                                                    href={route(subItem.route)}
-                                                    className="text-gray-500 group-hover:text-orange-500"
-                                                >
-                                                    {subItem.name}
-                                                </Link>
-                                            </li>
-                                        ))}
+                                                {subItem.name}
+                                            </Link>
+                                        </li>
+                                    ))}
                                 </ul>
                             ),
                             iconRight: (
                                 <ChevronDown
                                     className={`ml-auto w-5 h-5 text-gray-500 transform transition-transform duration-200 group-hover:text-orange-500 ${
-                                        isChevronPusatInformasiRotated ? "rotate-180" : ""
+                                        isChevronPusatInformasiRotated
+                                            ? "rotate-180"
+                                            : ""
                                     }`}
                                 />
                             ),
@@ -190,12 +226,17 @@ const NavbarAdmin = () => {
                 </ul>
 
                 <div className="mt-auto mb-20">
-                    <Link href={route("loginUser")}>
-                        <button className="w-full px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-red-700 flex items-center justify-center gap-2">
+                    <div>
+                        <button
+                            onClick={() => {
+                                post(route("logout"));
+                            }}
+                            className="w-full px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-orange-700 flex items-center justify-center gap-2"
+                        >
                             <span>Keluar</span>
                             <LogOut className="w-5 h-5" />
                         </button>
-                    </Link>
+                    </div>
                 </div>
             </div>
         </div>

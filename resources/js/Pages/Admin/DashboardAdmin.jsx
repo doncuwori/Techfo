@@ -2,7 +2,18 @@ import React, { useState } from "react";
 import LaporanKeaktifan from "@/Components/LandingPage/LaporanKeaktifan";
 import NavbarAdmin from "@/Components/NavbarAdmin";
 
-const DashboardAdmin = () => {
+const DashboardAdmin = ({ competitions }) => {
+    const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+
+    console.log(competitions)
+    const toggleProfileDropdown = () => {
+        setIsProfileDropdownOpen(!isProfileDropdownOpen);
+    };
+
+    const handleProfileMouseLeave = () => {
+        setIsProfileDropdownOpen(false);
+    };
+
     return (
         <div>
             <NavbarAdmin />

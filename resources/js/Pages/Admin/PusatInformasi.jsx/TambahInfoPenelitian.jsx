@@ -1,6 +1,6 @@
 import Footer from "@/Components/Footer";
 import Navbar from "@/Components/Navbar";
-import FormPenelitianAbdimas from "@/Components/PusatInformasi/TambahInformasi/FormPenelitianAbdimas";
+import { FormPenelitianAbdimas } from "@/Components/PusatInformasi/TambahInformasi/FormPenelitianAbdimas";
 import React from "react";
 
 const TambahInfoPenelitian = () => {

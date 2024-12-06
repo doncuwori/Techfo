@@ -1,36 +1,18 @@
 import React, { useState } from "react";
+import { useForm } from "@inertiajs/react";
 
 const LoginForm = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
+    const { data, setData, post, processing, errors, reset } = useForm({
+        email: "",
+        password: "",
+    });
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        setLoading(true);
-        setError("");
 
-        try {
-            const response = await fetch("/api/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ email, password }),
-            });
-
-            if (!response.ok) {
-                throw new Error("Login failed");
-            }
-
-            const data = await response.json();
-            console.log("Login successful:", data);
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
+        post(route("login"), {
+            onFinish: () => reset("password"),
+        });
     };
 
     return (
@@ -97,8 +79,10 @@ const LoginForm = () => {
                         <span className="text-[#fe632e]">Fikers!</span>
                     </h1>
 
-                    {error && (
-                        <p className="text-red-600 text-center">{error}</p>
+                    {errors && (
+                        <p className="text-red-600">
+                            {errors.email || errors.password}
+                        </p>
                     )}
 
                     {/* Form Fields */}
@@ -112,9 +96,16 @@ const LoginForm = () => {
                                 type="email"
                                 placeholder="ava.wright@gmail.com"
                                 className="w-full px-4 py-3 bg-white border border-zinc-200 rounded-md text-base text-zinc-500 focus:outline-none"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                value={data.email}
+                                onChange={(e) =>
+                                    setData("email", e.target.value)
+                                }
                             />
+                            {errors.email && (
+                                <span className="text-red-600">
+                                    {errors.email}
+                                </span>
+                            )}
                         </div>
 
                         {/* Password Field */}
@@ -127,20 +118,27 @@ const LoginForm = () => {
                                 type="password"
                                 placeholder="••••••••"
                                 className="w-full px-4 py-3 bg-white border border-zinc-200 rounded-md text-base text-zinc-500 focus:outline-none"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                value={data.password}
+                                onChange={(e) =>
+                                    setData("password", e.target.value)
+                                }
                             />
+                            {errors.password && (
+                                <span className="text-red-600">
+                                    {errors.password}
+                                </span>
+                            )}
                         </div>
 
                         {/* Login Button */}
                         <button
                             type="submit"
                             className={`w-full px-6 py-3 ${
-                                loading ? "bg-gray-400" : "bg-[#fe632e]"
+                                processing ? "bg-gray-400" : "bg-[#fe632e]"
                             } text-white text-base font-medium rounded-lg hover:bg-[#e5571e] transition-colors`}
-                            disabled={loading}
+                            disabled={processing}
                         >
-                            {loading ? "Loading..." : "Masuk"}
+                            {processing ? "Loading..." : "Masuk"}
                         </button>
                     </form>
                 </div>

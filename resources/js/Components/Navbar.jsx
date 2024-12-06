@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
-import { ChevronDown, Menu, X } from "lucide-react"; // Import X icon for close button
+import { ChevronDown, Menu, X } from "lucide-react";
 
 const Navbar = () => {
     const [isPendataanDropdownOpen, setIsPendataanDropdownOpen] =
         useState(false);
     const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // For mobile menu state
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMobilePendataanDropdownOpen, setIsMobilePendataanDropdownOpen] =
         useState(false);
 
@@ -40,6 +40,13 @@ const Navbar = () => {
 
     const toggleMobilePendataanDropdown = () => {
         setIsMobilePendataanDropdownOpen((prev) => !prev);
+    };
+
+    // Form handling for logout
+    const { post } = useForm();
+
+    const handleLogout = () => {
+        post(route("logout"));
     };
 
     return (
@@ -207,7 +214,7 @@ const Navbar = () => {
                 </button>
                 {isProfileDropdownOpen && (
                     <div
-                        className="absolute right-0 mt-0 w-56 border bg-white rounded-md shadow-lg z-10"
+                        className="absolute right-0 mt-0 w-56 border bg-white rounded-md shadow-md z-10"
                         onMouseLeave={handleProfileMouseLeave}
                     >
                         <Link
@@ -220,12 +227,12 @@ const Navbar = () => {
                         >
                             Profil Saya
                         </Link>
-                        <Link
-                            href={route("loginUser")}
-                            className="block px-4 py-2 text-gray-700 transition duration-150 hover:bg-orange-50 hover:text-[#fe632e] hover:font-bold"
+                        <button
+                            onClick={handleLogout}
+                            className="block w-full text-left px-4 py-2 text-gray-700 transition duration-150 hover:bg-orange-50 hover:text-[#fe632e] hover:font-bold hover:rounded-b-md"
                         >
                             Keluar
-                        </Link>
+                        </button>
                     </div>
                 )}
             </div>
@@ -335,12 +342,12 @@ const Navbar = () => {
                             </Link>
                         </div>
                         <div className="w-full hover:bg-orange-50 transition duration-150">
-                            <Link
-                                href={route("loginUser")}
+                            <button
+                                onClick={handleLogout}
                                 className="px-4 py-2 text-gray-900 text-lg font-medium transition duration-150 hover:text-[#fe632e] hover:font-bold w-full block text-center"
                             >
                                 Keluar
-                            </Link>
+                            </button>
                         </div>
                     </nav>
                 </div>
