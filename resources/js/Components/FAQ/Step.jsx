@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "@inertiajs/react";
 
 const Step = ({ stepNumber, title, description, linkText, linkUrl }) => {
     return (
         <li className="flex items-start">
-            <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">
+            <div className="aspect-square w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">
                 {stepNumber}
             </div>
             <div className="ml-4">
@@ -11,9 +12,12 @@ const Step = ({ stepNumber, title, description, linkText, linkUrl }) => {
                 <p className="text-gray-600">
                     {description}{" "}
                     {linkText && (
-                        <a href={linkUrl} className="text-blue-500 underline">
+                        <Link
+                            href={linkUrl}
+                            className="text-blue-500 underline"
+                        >
                             {linkText}
-                        </a>
+                        </Link>
                     )}
                 </p>
             </div>

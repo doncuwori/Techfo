@@ -4,6 +4,7 @@ import HeaderSection from "@/Components/HeaderSection";
 import SearchBox from "@/Components/SearchBox";
 import Procedure from "@/Components/Beasiswa/ProcedureBeasiswa";
 import CardBeasiswa from "@/Components/Beasiswa/CardBeasiswa";
+import ScrollUpButton from "@/Components/ScrollUpButton";
 
 const Beasiswa = () => {
     return (
@@ -28,6 +29,7 @@ const Beasiswa = () => {
             </div>
             <CardBeasiswa />
             <Footer />
+            <ScrollUpButton />
         </div>
     );
 };

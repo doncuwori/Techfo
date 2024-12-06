@@ -16,57 +16,46 @@ const ProcedureBeasiswa = () => {
                     <Step
                         stepNumber="1"
                         title="Pilih Beasiswa yang ingin diikuti"
-                        description="Pilih Beasiswa sesuai minat dan bakat Anda. Untuk informasi Beasiswa terbaru, klik"
+                        description="Pilih Beasiswa sesuai minat Anda. Untuk informasi Beasiswa terbaru, klik"
                         linkText="di sini"
-                        linkUrl="#"
+                        linkUrl={route("beasiswa")}
                     />
                     <Step
                         stepNumber="2"
-                        title="Pilih dan hubungi dosen pembimbing"
-                        description="Hubungi dosen sesuai dengan topik Beasiswa. Lihat informasi dosen pembimbing"
-                        linkText="di sini"
-                        linkUrl="#"
+                        title="Daftarkan diri ke Beasiswa"
+                        description="Daftarkan diri ke Beasiswa yang diinginkan. Semangat dan semoga berhasil!"
                     />
                     <Step
                         stepNumber="3"
-                        title="Daftarkan diri ke Beasiswa"
-                        description="Daftarkan diri atau tim ke Beasiswa yang diinginkan. Semangat dan semoga berhasil!"
-                    />
-                    <Step
-                        stepNumber="4"
                         title="Melakukan pendataan fakultas"
-                        description="Lakukan pendataan fakultas untuk mencatat partisipasi Beasiswa. Klik"
+                        description="Lakukan pendataan fakultas untuk mencatat partisipasi Beasiswa. Dengan mengisi form yang telah disediakan. Klik"
                         linkText="link ini"
-                        linkUrl="#"
+                        linkUrl={route("pendataanBeasiswa")}
                     />
                 </Dropdown>
 
                 <Dropdown title="Prosedur Pendataan Penerima Beasiswa">
                     <Step
                         stepNumber="1"
-                        title="Pilih Beasiswa yang ingin diikuti"
-                        description="Pilih Beasiswa sesuai minat dan bakat Anda. Untuk informasi Beasiswa terbaru, klik"
+                        title="Pilih Menu Pendataan Beasiswa"
+                        description="Pada navigasi terdapat menu Pendataan Beasiswa, lalu klik menu tersebut. Dapat dilihat"
                         linkText="di sini"
-                        linkUrl="#"
+                        linkUrl={route("pendataanBeasiswa")}
                     />
                     <Step
                         stepNumber="2"
-                        title="Pilih dan hubungi dosen pembimbing"
-                        description="Hubungi dosen sesuai dengan topik Beasiswa. Lihat informasi dosen pembimbing"
-                        linkText="di sini"
-                        linkUrl="#"
+                        title="Pilih Menu Lolos Yang Ada Pada Pendataan Beasiswa"
+                        description="Pilihlah menu Lolos dengan menggeser menu Daftar Menjadi Lolos"
                     />
                     <Step
                         stepNumber="3"
-                        title="Daftarkan diri ke Beasiswa"
-                        description="Daftarkan diri atau tim ke Beasiswa yang diinginkan. Semangat dan semoga berhasil!"
+                        title="Isi Form Yang Telah Disediakan"
+                        description="Isilah form penerima beasiswa yang telah disediakan"
                     />
                     <Step
                         stepNumber="4"
-                        title="Melakukan pendataan fakultas"
-                        description="Lakukan pendataan fakultas untuk mencatat partisipasi Beasiswa. Klik"
-                        linkText="link ini"
-                        linkUrl="#"
+                        title="Pendataan Telah Selesai"
+                        description="Setelah melakukan submit form maka pendataan fakultas telah selesai, Terima Kasih!!"
                     />
                 </Dropdown>
             </div>

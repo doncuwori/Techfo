@@ -2,7 +2,7 @@ import React from "react";
 
 export const FormLombaBeasiswa = () => {
     return (
-        <div>
+        <form>
             <section className="mb-8">
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
@@ -85,6 +85,6 @@ export const FormLombaBeasiswa = () => {
                     Submit
                 </button>
             </div>
-        </div>
+        </form>
     );
 };
