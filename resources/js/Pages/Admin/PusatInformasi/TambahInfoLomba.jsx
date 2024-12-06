@@ -2,6 +2,7 @@ import Footer from "@/Components/Footer";
 import Navbar from "@/Components/Navbar";
 import { FormLombaBeasiswa } from "@/Components/PusatInformasi/TambahInformasi/FormLombaBeasiswa";
 import React from "react";
+import { Toaster } from "react-hot-toast";
 
 const TambahInfoLomba = () => {
     return (
@@ -16,12 +17,13 @@ const TambahInfoLomba = () => {
                         Tambah Informasi Lomba
                     </h1>
                     {/* Form */}
-                    <FormLombaBeasiswa />
+                    <FormLombaBeasiswa type={"lomba"} />
                 </div>
             </main>
 
             {/* Footer */}
             <Footer />
+            <Toaster position="top-right" />
         </div>
     );
 };

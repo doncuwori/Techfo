@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Competitions\CompetitionRegistrant;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Competition;
-use App\Models\CompetitionRegistrant;
 
 class CompetitionSeeder extends Seeder
 {

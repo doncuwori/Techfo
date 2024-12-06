@@ -26,7 +26,7 @@ ChartJS.register(
     Title
 );
 
-const LaporanKeaktifan = () => {
+const LaporanKeaktifan = ({ competitionCount, scholarshipCount }) => {
     const pieData = {
         labels: [
             "S-1 Informatika",
@@ -188,11 +188,15 @@ const LaporanKeaktifan = () => {
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-4 pt-4 gap-6">
                             {[
-                                { label: "LOMBA", icon: "🏆", count: "36/50" },
+                                {
+                                    label: "LOMBA",
+                                    icon: "🏆",
+                                    count: competitionCount,
+                                },
                                 {
                                     label: "BEASISWA",
                                     icon: "📝",
-                                    count: "36/50",
+                                    count: scholarshipCount,
                                 },
                                 {
                                     label: "ABDIMAS",
@@ -216,7 +220,7 @@ const LaporanKeaktifan = () => {
                                             {count}
                                         </p>
                                         <p className="text-gray-600 text-xs">
-                                            Daftar/Menang
+                                            Menang/Daftar
                                         </p>
                                     </div>
                                 </div>

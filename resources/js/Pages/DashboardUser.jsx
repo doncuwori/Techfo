@@ -9,7 +9,8 @@ import CardAbdimas from "@/Components/Dashboard/CardAbdimas";
 import CardPenelitian from "@/Components/Dashboard/CardPenelitian";
 import Footer from "@/Components/Footer";
 
-const Dashboard = () => {
+const Dashboard = ({competitions_information, scholarships_information}) => {
+    console.log(competitions_information, scholarships_information)
     return (
         <div>
             <Navbar />

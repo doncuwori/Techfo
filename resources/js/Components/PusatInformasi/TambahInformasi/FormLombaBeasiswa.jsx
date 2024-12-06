@@ -1,41 +1,91 @@
+import { useForm } from "@inertiajs/react";
 import React from "react";
+import toast from "react-hot-toast";
 
-export const FormLombaBeasiswa = () => {
+export const FormLombaBeasiswa = ({ type }) => {
+    const { data, setData, post, processing, errors, reset } = useForm({
+        name: "",
+        organizer: "",
+        event_time: "",
+        description: "",
+        poster_url: "",
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const routeName =
+            type === "lomba"
+                ? "competitionInformation.store"
+                : "scholarshipInformation.store";
+
+        post(route(routeName), {
+            onSuccess: () => {
+                console.log('success')
+                type === "lomba"
+                    ? toast.success("Informasi Lomba berhasil ditambahkan")
+                    : toast.success("Informasi Beasiswa berhasil ditambahkan");
+                reset();
+            },
+            onError: (errors) => {
+                toast.error("Terjadi kesalahan");
+            },
+        });
+    };
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <section className="mb-8">
                 <h2 className="text-xl font-bold mb-4">
-                    Tambah Informasi Lomba
+                    Tambah Informasi {type === "lomba" ? "Lomba" : "Beasiswa"}
                 </h2>
 
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
+                    <label
+                        htmlFor="name"
+                        className="block text-gray-700 font-bold mb-2"
+                    >
                         Nama Kegiatan
                     </label>
                     <input
                         type="text"
+                        id="name"
+                        value={data.name}
+                        onChange={(e) => setData("name", e.target.value)}
                         className="w-full border rounded-lg p-2"
                         placeholder="Contoh: Lomba Karya Tulis Ilmiah Nasional Tahun 2017"
                     />
                 </div>
 
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
+                    <label
+                        htmlFor="organizer"
+                        className="block text-gray-700 font-bold mb-2"
+                    >
                         Penyelenggara
                     </label>
                     <input
+                        id="organizer"
                         type="text"
+                        value={data.organizer}
+                        onChange={(e) => setData("organizer", e.target.value)}
                         className="w-full border rounded-lg p-2"
                         placeholder="Tuliskan penyelenggara kegiatan..."
                     />
                 </div>
 
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
+                    <label
+                        htmlFor="event_time"
+                        className="block text-gray-700 font-bold mb-2"
+                    >
                         Waktu Pelaksanaan
                     </label>
                     <input
+                        id="event_time"
                         type="date"
+                        value={data.event_time}
+                        onChange={(e) => setData("event_time", e.target.value)}
                         className="w-full border rounded-lg p-2"
                     />
                     <div className="flex items-center mt-2">
@@ -43,10 +93,16 @@ export const FormLombaBeasiswa = () => {
                     </div>
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
+                    <label
+                        htmlFor="description"
+                        className="block text-gray-700 font-bold mb-2"
+                    >
                         Deskripsi Kegiatan
                     </label>
                     <textarea
+                        id="description"
+                        value={data.description}
+                        onChange={(e) => setData("description", e.target.value)}
                         className="w-full border rounded-lg p-2"
                         placeholder="Write text here..."
                     ></textarea>

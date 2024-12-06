@@ -2,22 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Competitions\CompetitionRegistrant;
-
+use App\Models\CompetitionWinner;
 use App\Models\User;
-use App\Models\Pivot\UserCompetitionRegistrants;
+use App\Models\UserCompetitionWinners;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
-class CompetitionRegistrantController extends Controller
+class CompetitionWinnerController extends Controller
 {
-    
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function store(Request $request)
+     public function store(Request $request)
     {      
         $user = Auth::user();
        
@@ -35,7 +28,7 @@ class CompetitionRegistrantController extends Controller
             "description" => 'required',
         ]);
 
-        $competition = CompetitionRegistrant::create([
+        $competition = CompetitionWinner::create([
             'is_group' => $request->is_group,
             'leader_nim' => $user->nim,
             'ormawa_delegation' => $request->ormawa_delegation,
@@ -48,7 +41,9 @@ class CompetitionRegistrantController extends Controller
             'activity_date_start' => $request->activity_date_start,
             'activity_date_end' => $request->activity_date_end,
             'description' => $request->description,
-            'poster_url' => $request->poster_url,
+            "achievement_level" => $request->achievement_level,
+            'proof_scan_url' => $request->proof_scan_url,
+            'event_photo_url' => $request->event_photo_url,
             'created_at' => now(),
             'updated_at' => now(),
             ]
@@ -65,7 +60,7 @@ class CompetitionRegistrantController extends Controller
                 $member = User::where('nim', $member->nim)->first();
     
                 if ($member) {
-                    UserCompetitionRegistrants::create([
+                    UserCompetitionWinners::create([
                         'user_id' => $member->id,
                         'competition_id' => $competition->id,
                         'created_at' => now(),
@@ -78,25 +73,15 @@ class CompetitionRegistrantController extends Controller
             }        
         }
 
-        UserCompetitionRegistrants::create([
+        UserCompetitionWinners::create([
             'user_id' => $user->id,
             'competition_id' => $competition->id,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        $competition->load('users');
+        
 
         return redirect()->route('pendataanLomba')->with('success', 'Kompetisi berhasil ditambahkan');
     }
-
-    /**
-     * Display a listing of the resource.
-     */     
-    public function index()
-    {
-        $competitions = CompetitionRegistrant::all();
-        return response()->json($competitions, 201);
-    }
-
 }

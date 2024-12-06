@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUserCompetitionRegistrantRequest;
 use App\Http\Requests\UpdateUserCompetitionRegistrantRequest;
 use App\Models\UserCompetitionRegistrant;
+use App\Models\Pivot\UserCompetitionRegistrants;
 use Illuminate\Http\Request;
 
 class UserCompetitionRegistrantController extends Controller
@@ -36,7 +37,7 @@ class UserCompetitionRegistrantController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(UserCompetitionRegistrant $competitionUser)
+    public function show(UserCompetitionRegistrants $competitionUser)
     {
         //
     }
@@ -44,7 +45,7 @@ class UserCompetitionRegistrantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(UserCompetitionRegistrant $competitionUser)
+    public function edit(UserCompetitionRegistrants $competitionUser)
     {
         //
     }
@@ -52,7 +53,7 @@ class UserCompetitionRegistrantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, UserCompetitionRegistrant $competitionUser)
+    public function update(Request $request, UserCompetitionRegistrants $competitionUser)
     {
         //
     }
@@ -60,7 +61,7 @@ class UserCompetitionRegistrantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UserCompetitionRegistrant $competitionUser)
+    public function destroy(UserCompetitionRegistrants $competitionUser)
     {
         //
     }

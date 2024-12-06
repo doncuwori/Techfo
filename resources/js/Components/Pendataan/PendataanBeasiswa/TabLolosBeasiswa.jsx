@@ -1,27 +1,67 @@
 import PernyataanLegalitas from "@/Components/PernyataanLegalitas";
+import { useForm } from "@inertiajs/react";
+import toast from "react-hot-toast";
 
 export const TabLolosBeasiswa = () => {
+    const { data, setData, post, processing, errors, reset } = useForm({
+        name: "",
+        type: "",
+        organizer: "",
+        host_country: "",
+        event_date: "",
+        description: "",
+        created_by: "",
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        data.name = data.name.trim();
+        post(route("scholarshipRecipient.store"), {
+            onSuccess: (res) => {
+                reset();
+                toast.success("Berhasil Membuat Data Pendaftaran Beasiswa");
+            },
+            onError: (errors) => {
+                toast.error("Gagal Membuat Data Pendaftaran Beasiswa");
+                console.error(errors);
+            },
+        });
+    };
+
     return (
-        <div>
+        <form onSubmit={handleSubmit}>
             <section className="mb-8">
                 <h2 className="text-xl font-bold mb-4">Data Lolos Beasiswa</h2>
-
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
+                    <label
+                        htmlFor="name"
+                        className="block text-gray-700 font-bold mb-2"
+                    >
                         Nama Beasiswa
                     </label>
                     <input
+                        value={data.name}
+                        onChange={(e) => setData("name", e.target.value)}
                         type="text"
+                        id="name"
                         className="w-full border rounded-lg p-2"
                         placeholder="Contoh: Lomba Karya Tulis Ilmiah Nasional Tahun 2017"
                     />
                 </div>
-
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
+                    <label
+                        htmlFor="type"
+                        className="block text-gray-700 font-bold mb-2"
+                    >
                         Jenis Beasiswa
                     </label>
-                    <select className="w-full border rounded-lg p-2">
+                    <select
+                        value={data.type}
+                        onChange={(e) => setData("type", e.target.value)}
+                        id="type"
+                        className="w-full border rounded-lg p-2"
+                    >
                         <option>-- Pilih Jenis Beasiswa --</option>
                         <option>Beasiswa dari Pemerintah</option>
                         <option>Beasiswa Swasta</option>
@@ -36,6 +76,8 @@ export const TabLolosBeasiswa = () => {
                         Penyelenggara
                     </label>
                     <input
+                        value={data.organizer}
+                        onChange={(e) => setData("organizer", e.target.value)}
                         type="text"
                         className="w-full border rounded-lg p-2"
                         placeholder="Tuliskan penyelenggara kegiatan..."
@@ -43,20 +85,39 @@ export const TabLolosBeasiswa = () => {
                 </div>
 
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
+                    <label
+                        htmlFor="host_country"
+                        className="block text-gray-700 font-bold mb-2"
+                    >
                         Negara Penyelenggara
                     </label>
-                    <select className="w-full border rounded-lg p-2">
+                    <select
+                        value={data.host_country}
+                        onChange={(e) =>
+                            setData("host_country", e.target.value)
+                        }
+                        id="host_country"
+                        className="w-full border rounded-lg p-2"
+                    >
                         <option>Pilih Negara Penyelenggara</option>
+
+                        <option>Indonesia</option>
+                        <option>Malaysia</option>
                     </select>
                 </div>
 
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
+                    <label
+                        htmlFor="event_date"
+                        className="block text-gray-700 font-bold mb-2"
+                    >
                         Waktu Pelaksanaan
                     </label>
                     <input
                         type="date"
+                        onChange={(e) => setData("event_date", e.target.value)}
+                        value={data.event_date}
+                        id="event_date"
                         className="w-full border rounded-lg p-2"
                     />
                     <div className="flex items-center mt-2">
@@ -65,10 +126,16 @@ export const TabLolosBeasiswa = () => {
                 </div>
 
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
+                    <label
+                        htmlFor="description"
+                        className="block text-gray-700 font-bold mb-2"
+                    >
                         Deskripsi Kegiatan
                     </label>
                     <textarea
+                        id="description"
+                        value={data.description}
+                        onChange={(e) => setData("description", e.target.value)}
                         className="w-full border rounded-lg p-2"
                         placeholder="Write text here..."
                     ></textarea>
@@ -146,6 +213,6 @@ export const TabLolosBeasiswa = () => {
                     Submit
                 </button>
             </div>
-        </div>
+        </form>
     );
 };

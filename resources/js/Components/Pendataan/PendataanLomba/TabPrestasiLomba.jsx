@@ -8,19 +8,19 @@ export const TabPrestasiLomba = () => {
     const { data, setData, post, processing, errors, reset } = useForm({
         is_group: false,
         leader_nim: "",
-        ormawa_delegation: "BI Corner",
-        achievement_level: "Juara 1",
-        mentor_name: "Neny",
-        activity_name: "Dicoding",
-        field: "Sains",
-        degree: "Sains",
-        organizer: "Dicoding",
-        scope: "Nasional",
-        host_country: "Indonesia",
-        location: "tangsel",
-        activity_date_start: "2024-11-01",
-        activity_date_end: "2024-12-01",
-        description: "Dicoding",
+        ormawa_delegation: "",
+        achievement_level: "",
+        mentor_name: "",
+        activity_name: "",
+        field: "",
+        degree: "",
+        organizer: "",
+        scope: "",
+        host_country: "",
+        location: "",
+        activity_date_start: "",
+        activity_date_end: "",
+        description: "",
         proof_scan_url: "",
         event_photo_url: "",
         members: [],
@@ -57,12 +57,14 @@ export const TabPrestasiLomba = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        post(route("competitionsAchievement.store"), {
+        post(route("competitionWinner.store"), {
             onSuccess: (res) => {
+                console.log("success");
                 reset();
                 toast.success("Prestasi Lomba Berhasil Dibuat");
             },
             onError: (errors) => {
+                toast.error("Gagal membuat prestasi lomba");
                 console.error(errors);
             },
         });

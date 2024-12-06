@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from '@inertiajs/react';
+import { Link } from "@inertiajs/react";
 import { Clock4 } from "lucide-react";
+import { formatDate } from "@/lib/helper";
 
-const CardAbdimas = () => {
+const CardAbdimas = ({ data }) => {
     const communityServices = [
         {
             title: "INSPACE UI/UX",
@@ -46,6 +47,8 @@ const CardAbdimas = () => {
         },
     ];
 
+    console.log(data);
+
     return (
         <div className="relative">
             <div className="absolute inset-x-0 mt-6 z-0 flex justify-center">
@@ -62,7 +65,7 @@ const CardAbdimas = () => {
                         Informasi Abdimas
                     </h1>
                     <Link
-                        href={route('abdimas')}
+                        href={route("abdimas")}
                         className="text-orange-500 text-base font-normal text-right hover:font-bold"
                     >
                         Lihat Semua
@@ -70,7 +73,7 @@ const CardAbdimas = () => {
                 </div>
 
                 <div className="w-full px-16 flex gap-6 overflow-x-auto">
-                    {communityServices.map((service, index) => (
+                    {data.map((service, index) => (
                         <div
                             key={index}
                             className="w-[343px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-lg flex flex-col gap-2"
@@ -82,12 +85,12 @@ const CardAbdimas = () => {
                                 }}
                             >
                                 <div className="absolute top-2 left-2 bg-yellow-500 text-white text-xs px-2 py-0.5 rounded-2xl">
-                                    {service.label}
+                                    Abdimas
                                 </div>
                             </div>
                             <div className="flex flex-col gap-2">
                                 <h2 className="text-black text-lg font-medium">
-                                    {service.title}
+                                    {service.name}
                                 </h2>
                                 <p className="text-gray-500 text-sm">
                                     {service.description}
@@ -98,7 +101,7 @@ const CardAbdimas = () => {
                                         className="text-orange-500"
                                     />{" "}
                                     <span className="text-orange-500 text-xs font-medium leading-tight">
-                                        {service.date}
+                                        {formatDate(service.registration_deadline)}
                                     </span>
                                 </div>
                             </div>

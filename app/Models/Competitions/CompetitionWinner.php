@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Competitions;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CompetitionAchievement extends Model
+class CompetitionWinner extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'is_group',
         'leader_nim',
@@ -25,12 +24,7 @@ class CompetitionAchievement extends Model
         'activity_date_end',
         'description',
         'achievement_level',
-        'scan_evidence_url',
-        'photo_activity_url',
+        'proof_scan_url',
+        'event_photo_url',
     ];
-
-    public function users()
-    {
-        return $this->belongsToMany(User::class, 'competition_achievement_user');
-    }
 }

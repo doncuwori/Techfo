@@ -9,16 +9,20 @@ import CardAbdimas from "../../Components/Dashboard/CardAbdimas";
 import CardPenelitian from "../../Components/Dashboard/CardPenelitian";
 import Footer from "../../Components/Footer";
 
-const Dashboard = () => {
+const Dashboard = ({
+    competitions_information,
+    scholarships_information,
+    abdimas_information = [],
+}) => {
     return (
         <div>
             <Navbar />
             <HeaderSection />
             <SearchBox />
             <ProcedureCards />
-            <CardLomba />
-            <CardBeasiswa />
-            <CardAbdimas />
+            <CardLomba data={competitions_information} />
+            <CardBeasiswa data={scholarships_information} />
+            <CardAbdimas data={abdimas_information} />
             <CardPenelitian />
             <Footer />
         </div>

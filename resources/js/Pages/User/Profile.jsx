@@ -77,7 +77,7 @@ const Profile = () => {
                                     {item.count}
                                 </p>
                                 <p className="text-gray-600 text-xs">
-                                    Daftar/Menang
+                                    Menang/Daftar
                                 </p>
                             </div>
                         </div>

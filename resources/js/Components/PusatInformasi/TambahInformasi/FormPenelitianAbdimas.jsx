@@ -1,16 +1,46 @@
-import PernyataanLegalitas from "@/Components/PernyataanLegalitas";
+import { useForm } from "@inertiajs/react";
 import React from "react";
+import toast from "react-hot-toast";
 
 const FormPenelitianAbdimas = () => {
+    const { data, setData, post, processing, errors, reset } = useForm({
+        name: "",
+        lecturer_1: "",
+        lecturer_2: "",
+        lecturer_3: "",
+        lecturer_4: "",
+        lecturer_5: "",
+        description: "",
+        registration_deadline: "",
+        location: "",
+        total_students_required: "",
+        assignment_letter_url: "",
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        post(route("abdimasInformation.store"), {
+            onSuccess: (res) => {
+                reset();
+                toast.success("Informasi Abdimas Berhasil Ditambahkan");
+            },
+            onError: (errors) => {
+                toast.error("Gagal menambahkan informasi abdimas");
+                console.error(errors);
+            },
+        });
+    };
     return (
-        <div>
+        <form onSubmit={handleSubmit}>
             <section className="mb-6">
-                <form>
+                <div>
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2">
                             Nama Kegiatan
                         </label>
                         <input
+                            value={data.name}
+                            onChange={(e) => setData("name", e.target.value)}
                             type="text"
                             className="w-full border rounded-lg p-2"
                             placeholder="Masukkan Nama Kegiatan"
@@ -22,6 +52,10 @@ const FormPenelitianAbdimas = () => {
                             Lokasi Kegiatan
                         </label>
                         <input
+                            value={data.location}
+                            onChange={(e) =>
+                                setData("location", e.target.value)
+                            }
                             type="text"
                             className="w-full border rounded-lg p-2"
                             placeholder="Masukkan Lokasi Kegiatan"
@@ -33,6 +67,10 @@ const FormPenelitianAbdimas = () => {
                             Batas Pendaftaran
                         </label>
                         <input
+                            value={data.registration_deadline}
+                            onChange={(e) =>
+                                setData("registration_deadline", e.target.value)
+                            }
                             type="date"
                             className="w-full border rounded-lg p-2"
                         />
@@ -46,7 +84,14 @@ const FormPenelitianAbdimas = () => {
                             Total Mahasiswa yang Dibutuhkan
                         </label>
                         <input
-                            type="text"
+                            value={data.total_students_required}
+                            onChange={(e) =>
+                                setData(
+                                    "total_students_required",
+                                    e.target.value
+                                )
+                            }
+                            type="number"
                             className="w-full border rounded-lg p-2"
                             placeholder="Masukkan Total Mahasiswa yang Dibutuhkan"
                         />
@@ -57,6 +102,10 @@ const FormPenelitianAbdimas = () => {
                             Nama Lengkap Dosen 1
                         </label>
                         <input
+                            value={data.lecturer_1}
+                            onChange={(e) =>
+                                setData("lecturer_1", e.target.value)
+                            }
                             type="text"
                             className="w-full border rounded-lg p-2"
                             placeholder="Hayyu Satya S.Kom., MM."
@@ -68,6 +117,10 @@ const FormPenelitianAbdimas = () => {
                             Nama Lengkap Dosen 2
                         </label>
                         <input
+                            value={data.lecturer_2}
+                            onChange={(e) =>
+                                setData("lecturer_2", e.target.value)
+                            }
                             type="text"
                             className="w-full border rounded-lg p-2"
                             placeholder="Hayyu Satya S.Kom., MM."
@@ -79,6 +132,10 @@ const FormPenelitianAbdimas = () => {
                             Nama Lengkap Dosen 3
                         </label>
                         <input
+                            value={data.lecturer_3}
+                            onChange={(e) =>
+                                setData("lecturer_3", e.target.value)
+                            }
                             type="text"
                             className="w-full border rounded-lg p-2"
                             placeholder="Hayyu Satya S.Kom., MM."
@@ -90,6 +147,10 @@ const FormPenelitianAbdimas = () => {
                             Nama Lengkap Dosen 4
                         </label>
                         <input
+                            value={data.lecturer_4}
+                            onChange={(e) =>
+                                setData("lecturer_4", e.target.value)
+                            }
                             type="text"
                             className="w-full border rounded-lg p-2"
                             placeholder="Hayyu Satya S.Kom., MM."
@@ -101,10 +162,28 @@ const FormPenelitianAbdimas = () => {
                             Nama Lengkap Dosen 5
                         </label>
                         <input
+                            value={data.lecturer_5}
+                            onChange={(e) =>
+                                setData("lecturer_5", e.target.value)
+                            }
                             type="text"
                             className="w-full border rounded-lg p-2"
                             placeholder="Hayyu Satya S.Kom., MM."
                         />
+                    </div>
+
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            Deskripsi Kegiatan
+                        </label>
+                        <textarea
+                            onChange={(e) => {
+                                setData("description", e.target.value);
+                            }}
+                            value={data.description}
+                            className="w-full border rounded-lg p-2"
+                            placeholder="Write text here..."
+                        ></textarea>
                     </div>
 
                     <div className="mb-4">
@@ -129,9 +208,9 @@ const FormPenelitianAbdimas = () => {
                             Submit
                         </button>
                     </div>
-                </form>
+                </div>
             </section>
-        </div>
+        </form>
     );
 };
 
