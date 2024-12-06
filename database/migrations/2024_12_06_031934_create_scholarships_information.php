@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('organizer'); 
             $table->dateTime('event_time'); 
             $table->text('description'); 
-            $table->string('poster_url'); 
+            $table->string('poster_url')->nullable(); 
+            $table->foreignId(column: 'created_by')->constrained('users')->onDelete('cascade');
             $table->timestamps(); 
         });    
     }

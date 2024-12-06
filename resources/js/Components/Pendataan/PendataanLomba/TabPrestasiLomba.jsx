@@ -8,24 +8,24 @@ export const TabPrestasiLomba = () => {
     const { data, setData, post, processing, errors, reset } = useForm({
         is_group: false,
         leader_nim: "",
-        ormawa_delegation: "BI Corner",
-        achievement_level: "Juara 1",
-        mentor_name: "Neny",
-        activity_name: "Dicoding",
-        field: "Sains",
-        degree: "Sains",
-        organizer: "Dicoding",
-        scope: "Nasional",
-        host_country: "Indonesia",
-        location: "tangsel",
-        activity_date_start: "2024-11-01",
-        activity_date_end: "2024-12-01",
-        description: "Dicoding",
+        ormawa_delegation: "",
+        achievement_level: "",
+        mentor_name: "",
+        activity_name: "",
+        field: "",
+        degree: "",
+        organizer: "",
+        scope: "",
+        host_country: "",
+        location: "",
+        activity_date_start: "",
+        activity_date_end: "",
+        description: "",
         proof_scan_url: "",
         event_photo_url: "",
         members: [],
     });
-    const [isGroup, setIsGroup] = useState(false);
+    
     const [memberNim, setMemberNim] = useState("");
     const [fetchedUsers, setFetchedUsers] = useState([]);
 
@@ -50,19 +50,20 @@ export const TabPrestasiLomba = () => {
     };
 
     const handleCheckbox = (e) => {
-        setIsGroup(e.target.checked);
         setData("is_group", e.target.checked);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        post(route("competitionsAchievement.store"), {
+        post(route("competitionWinner.store"), {
             onSuccess: (res) => {
+                console.log("success");
                 reset();
                 toast.success("Prestasi Lomba Berhasil Dibuat");
             },
             onError: (errors) => {
+                toast.error("Gagal membuat prestasi lomba");
                 console.error(errors);
             },
         });
@@ -78,7 +79,7 @@ export const TabPrestasiLomba = () => {
                     <div className="flex items-center mb-2 bg-orange-50 gap-3 px-2 py-1 w-fit">
                         <input
                             type="checkbox"
-                            value={isGroup}
+                            value={data.is_group}
                             id="is_group"
                             onChange={handleCheckbox}
                         />
@@ -87,7 +88,7 @@ export const TabPrestasiLomba = () => {
                             (Grup).
                         </label>
                     </div>
-                    {isGroup && (
+                    {data.is_group && (
                         // && artinya kalau true tampilkan, kalau false ga ditampilkan
                         <div className="mt-4 flex flex-col bg-neutral-50 gap-4 p-4">
                             <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4">
@@ -101,7 +102,8 @@ export const TabPrestasiLomba = () => {
                             </div>
                             <div className="flex flex-row">
                                 <input
-                                    type="text"
+                                    type="number"
+                            
                                     className="text-sm px-2.5 py-2 rounded-lg border-neutral-400 border-[1.5px]"
                                     placeholder="Tuliskan NIM"
                                     onChange={(e) => {

@@ -23,7 +23,6 @@ export const TabPartisipasiLomba = () => {
         poster_url: "",
         members: [],
     });
-    const [isGroup, setIsGroup] = useState(false);
     const [memberNim, setMemberNim] = useState("");
     const [fetchedUsers, setFetchedUsers] = useState([]);
 
@@ -48,12 +47,12 @@ export const TabPartisipasiLomba = () => {
     };
 
     const handleCheckbox = (e) => {
-        setIsGroup(e.target.checked);
         setData("is_group", e.target.checked);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         post(route("competitions.store"), {
             onSuccess: (res) => {
                 reset();
@@ -75,7 +74,7 @@ export const TabPartisipasiLomba = () => {
                     <div className="flex items-center mb-2 bg-orange-50 gap-3 px-2 py-1 w-fit">
                         <input
                             type="checkbox"
-                            value={isGroup}
+                            value={data.is_group}
                             id="is_group"
                             onChange={handleCheckbox}
                         />
@@ -84,7 +83,7 @@ export const TabPartisipasiLomba = () => {
                             (Grup).
                         </label>
                     </div>
-                    {isGroup && (
+                    {data.is_group && (
                         // && artinya kalau true tampilkan, kalau false ga ditampilkan
                         <div className="mt-4 flex flex-col bg-neutral-50 gap-4 p-4">
                             <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4">
@@ -98,7 +97,7 @@ export const TabPartisipasiLomba = () => {
                             </div>
                             <div className="flex flex-row">
                                 <input
-                                    type="text"
+                                    type="number"
                                     className="text-sm px-2.5 py-2 rounded-lg border-neutral-400 border-[1.5px]"
                                     placeholder="Tuliskan NIM"
                                     onChange={(e) => {

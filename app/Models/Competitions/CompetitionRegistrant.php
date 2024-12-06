@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Competitions;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CompetitionAchievement extends Model
+class CompetitionRegistrant extends Model
 {
     use HasFactory;
 
@@ -24,13 +25,10 @@ class CompetitionAchievement extends Model
         'activity_date_start',
         'activity_date_end',
         'description',
-        'achievement_level',
-        'scan_evidence_url',
-        'photo_activity_url',
+        'poster_url',
     ];
-
     public function users()
     {
-        return $this->belongsToMany(User::class, 'competition_achievement_user');
+        return $this->belongsToMany(User::class, 'user_competition_registrants');
     }
 }

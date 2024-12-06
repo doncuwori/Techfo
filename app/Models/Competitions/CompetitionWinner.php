@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Competitions;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,4 +28,9 @@ class CompetitionWinner extends Model
         'proof_scan_url',
         'event_photo_url',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_competition_winners');
+    }
 }

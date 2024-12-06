@@ -1,51 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link } from "@inertiajs/react";
 import { Clock4, ArrowRight, ArrowLeft } from "lucide-react";
+import { formatDate } from "@/lib/helper";
 
-const CardPenelitian = () => {
-    const researchProjects = [
-        {
-            title: "INSPACE UI/UX",
-            description:
-                "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/poster.jpeg",
-            label: "Penelitian",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description:
-                "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/poster.jpeg",
-            label: "Penelitian",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description:
-                "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/poster.jpeg",
-            label: "Penelitian",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description:
-                "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/poster.jpeg",
-            label: "Penelitian",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description:
-                "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/poster.jpeg",
-            label: "Penelitian",
-        },
-    ];
-
+const CardPenelitian = ({ data }) => {
     const scrollRef = useRef(null);
     const [canScrollRight, setCanScrollRight] = useState(true);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -64,7 +22,7 @@ const CardPenelitian = () => {
         };
 
         const handleResize = () => {
-            handleScroll(); 
+            handleScroll();
         };
 
         const scrollContainer = scrollRef.current;
@@ -114,8 +72,9 @@ const CardPenelitian = () => {
                     ref={scrollRef}
                     className="flex gap-6 overflow-hidden pb-4"
                 >
-                    {researchProjects.map((project, index) => (
-                        <div
+                    {data.map((project, index) => (
+                        <Link
+                            href={"/penelitian/" + project.id}
                             key={index}
                             className="w-[343px] min-w-[280px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
                         >
@@ -127,14 +86,14 @@ const CardPenelitian = () => {
                                 }}
                             >
                                 <div className="absolute top-2 left-2 bg-purple-500 text-white text-xs px-2 py-0.5 rounded-2xl">
-                                    {project.label}
+                                    Penelitian
                                 </div>
                             </div>
 
                             {/* Content Section */}
                             <div className="flex flex-col gap-2">
                                 <h2 className="text-black text-lg font-medium">
-                                    {project.title}
+                                    {project.name}
                                 </h2>
                                 <p className="text-gray-500 text-sm">
                                     {project.description}
@@ -145,11 +104,13 @@ const CardPenelitian = () => {
                                         className="text-orange-500"
                                     />
                                     <span className="text-orange-500 text-xs font-medium leading-tight">
-                                        {project.date}
+                                        {formatDate(
+                                            project.registration_deadline
+                                        )}
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
 

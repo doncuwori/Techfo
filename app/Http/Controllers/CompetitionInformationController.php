@@ -44,8 +44,7 @@ class CompetitionInformationController extends Controller
 
     public function show(CompetitionInformation $postId) {
         return Inertia::render('User/Lomba/DetailLomba', [
-            'data' => [],
-            'postId' => $postId
+            'data' => $postId
         ]);
     }
 }

@@ -3,6 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Competitions\CompetitionRegistrant;
+use App\Models\Competitions\CompetitionWinner;
+use App\Models\Scholarships\ScholarshipRecipient;
+use App\Models\Scholarships\ScholarshipRegistrant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;

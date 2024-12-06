@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\UserCompetitionRegistrant;
-use App\Models\UserCompetitionRegistrants;
+use App\Models\Pivot\UserCompetitionRegistrants;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

@@ -1,51 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link } from "@inertiajs/react";
 import { Clock4, ArrowRight, ArrowLeft } from "lucide-react";
+import { formatDate } from "@/lib/helper";
 
-const CardLomba = () => {
-    const competitions = [
-        {
-            title: "INSPACE UI/UX",
-            description:
-                "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/poster.jpeg",
-            label: "Lomba",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description:
-                "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/poster.jpeg",
-            label: "Lomba",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description:
-                "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/poster.jpeg",
-            label: "Lomba",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description:
-                "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/poster.jpeg",
-            label: "Lomba",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description:
-                "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/poster.jpeg",
-            label: "Lomba",
-        },
-    ];
-
+const CardLomba = ({ data }) => {
     const scrollRef = useRef(null);
     const [canScrollRight, setCanScrollRight] = useState(true);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -54,7 +12,8 @@ const CardLomba = () => {
         const handleScroll = () => {
             if (scrollRef.current) {
                 const isAtEnd =
-                    scrollRef.current.scrollLeft + scrollRef.current.clientWidth >=
+                    scrollRef.current.scrollLeft +
+                        scrollRef.current.clientWidth >=
                     scrollRef.current.scrollWidth;
                 const isAtStart = scrollRef.current.scrollLeft === 0;
                 setCanScrollRight(!isAtEnd);
@@ -63,7 +22,7 @@ const CardLomba = () => {
         };
 
         const handleResize = () => {
-            handleScroll(); 
+            handleScroll();
         };
 
         const scrollContainer = scrollRef.current;
@@ -123,25 +82,26 @@ const CardLomba = () => {
                         ref={scrollRef}
                         className="flex gap-6 overflow-hidden pb-4"
                     >
-                        {competitions.map((competition, index) => (
-                            <div
+                        {data.map((competition, index) => (
+                            <Link
+                                href={"/lomba/" + competition.id}
                                 key={index}
                                 className="w-[343px] min-w-[280px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
                             >
                                 <div
                                     className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center"
                                     style={{
-                                        backgroundImage: `url(${competition.image})`,
+                                        backgroundImage: `url(img/poster.jpeg)`,
                                     }}
                                 >
                                     <div className="absolute top-2 left-2 bg-blue-500 text-white text-xs px-2 py-0.5 rounded-2xl">
-                                        {competition.label}
+                                        Lomba
                                     </div>
                                 </div>
 
                                 <div className="flex flex-col gap-2">
                                     <h2 className="text-black text-lg font-medium">
-                                        {competition.title}
+                                        {competition.name}
                                     </h2>
                                     <p className="text-gray-500 text-sm">
                                         {competition.description}
@@ -152,11 +112,11 @@ const CardLomba = () => {
                                             className="text-orange-500"
                                         />
                                         <span className="text-orange-500 text-xs font-medium leading-tight">
-                                            {competition.date}
+                                            {formatDate(competition.event_time)}
                                         </span>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
 
