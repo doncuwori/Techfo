@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Competition;
-use App\Models\CompetitionRegistrant;
+use App\Models\Competitions\CompetitionRegistrant;
 use Illuminate\Http\Request;
 
 class PendataanLombaController extends Controller
