@@ -65,7 +65,7 @@ return new class extends Migration
         Schema::create('user_competition_winners', function (Blueprint $table) {
             $table->id(); // ID relasi
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Foreign key ke users
-            $table->foreignId('competition_id')->constrained('competition_winners')->onDelete('cascade'); // Foreign key ke competitions
+            $table->foreignId('competition_winner_id')->constrained('competition_winners')->onDelete('cascade'); // Foreign key ke competitions
             $table->timestamps();
         });    
 

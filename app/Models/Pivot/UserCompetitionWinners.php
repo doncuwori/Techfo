@@ -12,7 +12,7 @@ class UserCompetitionWinners extends Model
 
     protected $fillable = [
         'user_id',
-        'competition_id',
+        'competition_winner_id',
         'created_at',
         'updated_at',
     ];

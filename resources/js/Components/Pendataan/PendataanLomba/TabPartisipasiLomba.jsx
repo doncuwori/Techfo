@@ -5,26 +5,24 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export const TabPartisipasiLomba = () => {
-
     const { data, setData, post, processing, errors, reset } = useForm({
-        is_group: true,
-        leader_nim: "123456789",
-        ormawa_delegation: "BI Corner",
-        mentor_name: "John Doe",
-        activity_name: "National Science Competition",
-        field: "Sains",
-        degree: "Sains",
-        organizer: "National Science Organization",
-        scope: "Nasional",
-        host_country: "Indonesia",
-        location: "Jakarta",
-        activity_date_start: "2024-01-15",
-        activity_date_end: "2024-01-20",
-        description: "A competition to showcase scientific talents.",
-        poster_url: "http://example.com/poster.jpg",
+        is_group: false,
+        leader_nim: "",
+        ormawa_delegation: "",
+        mentor_name: "",
+        activity_name: "",
+        field: "",
+        degree: "",
+        organizer: "",
+        scope: "",
+        host_country: "",
+        location: "",
+        activity_date_start: "",
+        activity_date_end: "",
+        description: "",
+        poster_url: "",
         members: [],
     });
-    const [isGroup, setIsGroup] = useState(false);
     const [memberNim, setMemberNim] = useState("");
     const [fetchedUsers, setFetchedUsers] = useState([]);
 
@@ -49,7 +47,6 @@ export const TabPartisipasiLomba = () => {
     };
 
     const handleCheckbox = (e) => {
-        setIsGroup(e.target.checked);
         setData("is_group", e.target.checked);
     };
 
@@ -77,7 +74,7 @@ export const TabPartisipasiLomba = () => {
                     <div className="flex items-center mb-2 bg-orange-50 gap-3 px-2 py-1 w-fit">
                         <input
                             type="checkbox"
-                            value={isGroup}
+                            value={data.is_group}
                             id="is_group"
                             onChange={handleCheckbox}
                         />
@@ -86,7 +83,7 @@ export const TabPartisipasiLomba = () => {
                             (Grup).
                         </label>
                     </div>
-                    {isGroup && (
+                    {data.is_group && (
                         // && artinya kalau true tampilkan, kalau false ga ditampilkan
                         <div className="mt-4 flex flex-col bg-neutral-50 gap-4 p-4">
                             <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4">
@@ -100,7 +97,7 @@ export const TabPartisipasiLomba = () => {
                             </div>
                             <div className="flex flex-row">
                                 <input
-                                    type="text"
+                                    type="number"
                                     className="text-sm px-2.5 py-2 rounded-lg border-neutral-400 border-[1.5px]"
                                     placeholder="Tuliskan NIM"
                                     onChange={(e) => {

@@ -56,16 +56,11 @@ class CompetitionWinnerController extends Controller
                 'members.*.name' => 'required|string',
             ]);
     
-            foreach ($request->members as $member) {
-                $member = User::where('nim', $member->nim)->first();
+            foreach ($request->members as $memberData) {
+                $member = User::where('nim', $memberData['nim'])->first();
     
                 if ($member) {
-                    UserCompetitionWinners::create([
-                        'user_id' => $member->id,
-                        'competition_id' => $competition->id,
-                        'created_at' => now(),
-                        'updated_at' => now(),
-                    ]);
+                    $competition->users()->attach($member->id);
                 } else {
                     // Handle the case where the user with the given NIM does not exist
                     return response()->json(['error' => "User with NIM $member does not exist."], 404);
@@ -73,14 +68,7 @@ class CompetitionWinnerController extends Controller
             }        
         }
 
-        UserCompetitionWinners::create([
-            'user_id' => $user->id,
-            'competition_id' => $competition->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        
+        $competition->users()->attach($user->id);
 
         return redirect()->route('pendataanLomba')->with('success', 'Kompetisi berhasil ditambahkan');
     }

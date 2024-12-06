@@ -14,8 +14,8 @@ class usersTableSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'Admin',
-            'nim' => '1234567890',
+            'name' => 'Kurnia Kharisma',
+            'nim' => '2110511068',
             'prodi' => 'Teknik Informatika',
             'angkatan' => '2019',
             'email' => 'admin@example.com',
@@ -24,8 +24,8 @@ class usersTableSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'User',
-            'nim' => '0987654321',
+            'name' => 'Khaliza Fania',
+            'nim' => '2110511069',
             'prodi' => 'Teknik Informatika',
             'angkatan' => '2019',
             'email' => 'user@example.com',
@@ -34,21 +34,21 @@ class usersTableSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'John Doe',
-            'nim' => '1122334455',
+            'name' => 'Andi Johnson',
+            'nim' => '2210511070',
             'prodi' => 'Sistem Informasi',
             'angkatan' => '2020',
-            'email' => 'john@example.com',
+            'email' => 'andi@example.com',
             'role' => 'user',
             'password' => Hash::make('password'),
         ]);
 
         User::create([
-            'name' => 'Jane Smith',
-            'nim' => '2233445566',
+            'name' => 'Elmira White',
+            'nim' => '2310511071',
             'prodi' => 'Teknik Komputer',
             'angkatan' => '2021',
-            'email' => 'jane@example.com',
+            'email' => 'elmira@example.com',
             'role' => 'user',
             'password' => Hash::make('password'),
         ]);

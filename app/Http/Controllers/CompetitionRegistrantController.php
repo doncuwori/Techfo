@@ -65,7 +65,7 @@ class CompetitionRegistrantController extends Controller
             $members = $request->members;
             
             foreach ($members as $memberData) {
-                $member = User::where('nim', operator: $memberData->nim)->first();
+                $member = User::where('nim', operator: $memberData['nim'])->first();
     
                 if ($member) {
                     $competition->users()->attach($member->id);
