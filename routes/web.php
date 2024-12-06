@@ -73,24 +73,6 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/pendataanBeasiswa', function () {
         return Inertia::render('User/Pendataan/PendataanBeasiswa');
     })->name('pendataanBeasiswa');
-
-
-    // Lomba 
-    Route::get('/lomba', function () {
-        return Inertia::render('User/Lomba/Lomba');
-    })->name('lomba');
-
-    Route::post('/pendataanDaftarLomba', [CompetitionRegistrantController::class, 'store'])
-    ->name('competition.store');
-
-    Route::post('/pendataanDaftarBeasiswa', [ScholarshipRegistrantController::class, 'store'])
-    ->name("scholarshipRegistrant.store");
-    Route::post('/pendataanLolosBeasiswa', [ScholarshipRecipientController::class, 'store'])
-    ->name("scholarshipRecipient.store");
-    
-
-    Route::post('/pendataanPemenangBeasiswa', [CompetitionWinnerController::class, 'store'])
-    ->name('competitionWinner.store');
     
     // Lomba 
     Route::get('/lomba', function () {
@@ -106,7 +88,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
         ->name("scholarshipRecipient.store");
 
 
-    Route::post('/pendataanPemenangBeasiswa', [CompetitionsAchievementController::class, 'store'])
+    Route::post('/pendataanPemenangLomba', [CompetitionsAchievementController::class, 'store'])
         ->name('competitionWinner.store');
 
     Route::get('/pendataanLomba', function () {
@@ -115,6 +97,15 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
     Route::get('/dashboardUser', [DashboardUserController::class, 'index'])->name('dashboardUser');
     Route::get('/lomba/{postId}', [CompetitionInformationController::class, 'show'])->name('competition.show');
+
+    // Beasiswa
+    Route::get('/beasiswa', function () {
+        return Inertia::render('User/Beasiswa/Beasiswa');
+    })->name('beasiswa');
+
+    Route::get('/detailBeasiswa', function () {
+        return Inertia::render(component: 'User/Beasiswa/DetailBeasiswa');
+    })->name('detailBeasiswa');
 
     // Abdimas
     Route::get('/abdimas', function () {
