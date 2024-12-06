@@ -1,8 +1,23 @@
 import PernyataanLegalitas from "@/Components/PernyataanLegalitas";
+import React, { useState } from "react";
 
 export const TabDaftarBeasiswa = () => {
+    const [posterKegiatan, setPosterKegiatan] = useState(null);
+
+    const handleFileChange = (e, setFile) => {
+        const file = e.target.files[0];
+        if (file) {
+            setFile(file);
+        }
+    };
+
+    const handleRemoveFile = (setFile) => {
+        setFile(null);
+    };
+
     return (
         <div>
+            {/* Section Data Pendaftar Beasiswa */}
             <section className="mb-8">
                 <h2 className="text-xl font-bold mb-4">
                     Data Pendaftar Beasiswa
@@ -30,7 +45,6 @@ export const TabDaftarBeasiswa = () => {
                         <option>Beasiswa dari Perguruan Tinggi</option>
                     </select>
                 </div>
-
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Penyelenggara
@@ -41,7 +55,6 @@ export const TabDaftarBeasiswa = () => {
                         placeholder="Tuliskan penyelenggara kegiatan..."
                     />
                 </div>
-
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Negara Penyelenggara
@@ -50,7 +63,6 @@ export const TabDaftarBeasiswa = () => {
                         <option>Pilih Negara Penyelenggara</option>
                     </select>
                 </div>
-
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Waktu Pelaksanaan
@@ -59,11 +71,7 @@ export const TabDaftarBeasiswa = () => {
                         type="date"
                         className="w-full border rounded-lg p-2"
                     />
-                    <div className="flex items-center mt-2">
-                        <input type="calendar" className="mr-2" />
-                    </div>
                 </div>
-
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Deskripsi Kegiatan
@@ -74,8 +82,12 @@ export const TabDaftarBeasiswa = () => {
                     ></textarea>
                 </div>
             </section>
+
+            {/* Section Dokumen Pendukung */}
             <section className="mb-8">
                 <h2 className="text-xl font-bold mb-4">Dokumen Pendukung</h2>
+
+                {/* Poster Kegiatan */}
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Poster Kegiatan
@@ -83,30 +95,43 @@ export const TabDaftarBeasiswa = () => {
                     <div className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center">
                         <p>Click to upload or drag and drop</p>
                         <p className="text-gray-500">Max. file size: 10MB</p>
-                        <button
+                        <input
                             type="file"
-                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg"
+                            id="poster-kegiatan"
+                            className="hidden"
+                            onChange={(e) =>
+                                handleFileChange(e, setPosterKegiatan)
+                            }
+                        />
+                        <label
+                            htmlFor="poster-kegiatan"
+                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg cursor-pointer"
                         >
                             Browse File
-                        </button>
+                        </label>
                     </div>
-                    <p className="text-gray-500 mt-2">
-                        Ketentuan file Poster Kegiatan yang diunggah:
-                    </p>
-                    <ul className="text-gray-500 list-disc list-inside">
-                        <li>
-                            Poster Kegiatan lomba yang diikuti, menunjukkan nama
-                            lomba;
-                        </li>
-                        <li>
-                            Tipe file yang dapat diunggah antara lain: .jpg,
-                            .jpeg, .png;
-                        </li>
-                        <li>Ukuran file maksimal 1MB.</li>
-                    </ul>
+                    {posterKegiatan && (
+                        <div className="flex items-center mt-2">
+                            <span className="text-gray-700">
+                                {posterKegiatan.name}
+                            </span>
+                            <button
+                                onClick={() =>
+                                    handleRemoveFile(setPosterKegiatan)
+                                }
+                                className="ml-2 text-red-500 hover:text-red-700"
+                            >
+                                ✖
+                            </button>
+                        </div>
+                    )}
                 </div>
             </section>
+
+            {/* Pernyataan Legalitas */}
             <PernyataanLegalitas />
+
+            {/* Submit Button */}
             <div className="flex justify-end w-full">
                 <button
                     type="submit"

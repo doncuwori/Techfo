@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const FormLombaBeasiswa = () => {
+    const [selectedFile, setSelectedFile] = useState(null);
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        setSelectedFile(file);
+    };
+
+    const handleRemoveFile = () => {
+        setSelectedFile(null);
+        // Clear the file input field
+        document.getElementById("fileInput").value = null;
+    };
+
     return (
         <div>
             <section className="mb-8">
@@ -53,12 +66,34 @@ export const FormLombaBeasiswa = () => {
                     <div className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center">
                         <p>Click to upload or drag and drop</p>
                         <p className="text-gray-500">Max. file size: 10MB</p>
-                        <button
+                        <input
                             type="file"
-                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg"
+                            accept=".jpg,.jpeg,.png"
+                            className="hidden"
+                            id="fileInput"
+                            onChange={handleFileChange}
+                        />
+                        <label
+                            htmlFor="fileInput"
+                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg cursor-pointer inline-block"
                         >
                             Browse File
-                        </button>
+                        </label>
+                        {selectedFile && (
+                            <div className="mt-4 flex items-center justify-center">
+                                <p className="text-green-500 mr-2">
+                                    {selectedFile.name}
+                                </p>
+                                <button
+                                    type="button"
+                                    className="text-red-500 hover:text-red-700"
+                                    onClick={handleRemoveFile}
+                                    aria-label="Remove file"
+                                >
+                                    &times;
+                                </button>
+                            </div>
+                        )}
                     </div>
                     <p className="text-gray-500 mt-2">
                         Ketentuan file Poster Kegiatan yang diunggah:
