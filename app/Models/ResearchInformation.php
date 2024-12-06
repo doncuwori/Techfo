@@ -25,7 +25,4 @@ class researchInformation extends Model
     ];
 
     protected $table = 'researches_information';
-
-    
-
 }

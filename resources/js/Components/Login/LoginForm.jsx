@@ -6,9 +6,18 @@ const LoginForm = () => {
         email: "",
         password: "",
     });
+    const { data, setData, post, processing, errors, reset } = useForm({
+        email: "",
+        password: "",
+    });
 
     const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+
+        post(route("login"), {
+            onFinish: () => reset("password"),
+        });
 
         post(route("login"), {
             onFinish: () => reset("password"),
