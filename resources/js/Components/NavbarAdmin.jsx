@@ -7,7 +7,6 @@ import {
     ChevronDown,
     NotepadText,
     ChartBar,
-    ChartBar,
 } from "lucide-react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 
@@ -54,10 +53,6 @@ const NavbarAdmin = () => {
                             href={route("dashboardAdmin")}
                             className="flex items-center"
                         >
-                        <Link
-                            href={route("dashboardAdmin")}
-                            className="flex items-center"
-                        >
                             <span className="text-gray-900 text-lg md:text-2xl font-semibold">
                                 Tech
                             </span>
@@ -93,7 +88,6 @@ const NavbarAdmin = () => {
                                 className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:font-bold hover:text-orange-600"
                             >
                                 Keluar
-                            </button>
                             </button>
                         </div>
                     )}
