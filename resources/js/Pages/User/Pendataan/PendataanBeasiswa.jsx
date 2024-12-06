@@ -4,6 +4,8 @@ import { BiodataUser } from "@/components/BiodataUser";
 import { TabDaftarBeasiswa } from "@/Components/Pendataan/PendataanBeasiswa/TabDaftarBeasiswa";
 import { TabLolosBeasiswa } from "@/Components/Pendataan/PendataanBeasiswa/TabLolosBeasiswa";
 import Footer from "@/Components/Footer";
+import ScrollUpButton from "@/Components/ScrollUpButton";
+import { Toaster } from "react-hot-toast";
 
 const PendataanBeasiswa = () => {
     const [tabValue, settabValue] = useState("Daftar");
@@ -15,7 +17,7 @@ const PendataanBeasiswa = () => {
                     <h1 className="text-center text-2xl font-bold mb-6">
                         Pendataan Mahasiswa {tabValue} Beasiswa
                     </h1>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center pb-6">
                         <button
                             onClick={() => {
                                 settabValue("Daftar");
@@ -50,6 +52,8 @@ const PendataanBeasiswa = () => {
                 </div>
             </main>
             <Footer />
+            <Toaster position="top-right" />
+            <ScrollUpButton />
         </div>
     );
 };

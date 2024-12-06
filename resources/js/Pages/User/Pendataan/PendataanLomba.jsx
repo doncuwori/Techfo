@@ -4,9 +4,12 @@ import { BiodataUser } from "@/components/BiodataUser";
 import { TabPrestasiLomba } from "@/Components/Pendataan/PendataanLomba/TabPrestasiLomba";
 import { TabPartisipasiLomba } from "@/Components/Pendataan/PendataanLomba/TabPartisipasiLomba";
 import Footer from "@/Components/Footer";
+import ScrollUpButton from "@/Components/ScrollUpButton";
+import toast, { Toaster } from "react-hot-toast";
 
 const PendataanLomba = () => {
     const [tabValue, settabValue] = useState("Partisipasi");
+
     return (
         <div className="min-h-screen flex flex-col items-center">
             <Navbar />
@@ -15,7 +18,7 @@ const PendataanLomba = () => {
                     <h1 className="text-center text-2xl font-bold mb-6">
                         Pendataan {tabValue} Lomba
                     </h1>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center pb-6">
                         <button
                             onClick={() => {
                                 settabValue("Partisipasi");
@@ -50,6 +53,8 @@ const PendataanLomba = () => {
                 </div>
             </main>
             <Footer />
+            <Toaster position="top-right" />
+            <ScrollUpButton />
         </div>
     );
 };

@@ -5,11 +5,13 @@ import ProcedureLomba from "@/Components/FAQ/ProcedureLomba";
 import ProcedureBeasiswa from "@/Components/FAQ/ProcedureBeasiswa";
 import ProcedureAbdimas from "@/Components/FAQ/ProcedureAbdimas";
 import ProcedurePenelitian from "@/Components/FAQ/ProcedurePenelitian";
+import ScrollUpButton from "@/Components/ScrollUpButton";
+import Footer from "@/Components/Footer";
 
 function FAQ() {
     return (
         <div className="App">
-            <div class="absolute inset-0 z-0 flex justify-center mt-16">
+            <div class="fixed inset-x-0 z-0 flex justify-center mt-16">
                 <img
                     src="img/bgprosedure1.png"
                     alt="Deskripsi gambar"
@@ -31,6 +33,8 @@ function FAQ() {
             <ProcedureBeasiswa />
             <ProcedureAbdimas />
             <ProcedurePenelitian />
+            <ScrollUpButton />
+            <Footer />
         </div>
     );
 }

@@ -2,25 +2,26 @@ import React from 'react';
 
 const HeaderSection = () => {
     return (
-        <div>
+        <div className="relative">
             {/* Background Image Section */}
-            <div className="absolute inset-0 z-0 flex justify-center mt-16">
+            <div className="absolute inset-0 z-0">
                 <img
                     src="img/bgdashboard1.png"
                     alt="Deskripsi gambar"
-                    className="w-full max-h-[370px] rounded-md"
+                    className="w-full h-[360px]  rounded-md"
                 />
             </div>
+
             {/* Text Section */}
-            <div className="w-full px-4 md:px-10 py-6 mt-20 relative z-10">
-                <div className="text-center mb-6">
-                    <span className="text-black text-4xl font-medium leading-10">Eksplor Informasi </span>
-                    <span className="text-[#fe632e] text-4xl font-medium leading-10">Lomba, Beasiswa, Pengabdian Masyarakat, </span>
-                    <span className="text-black text-4xl font-medium leading-10">dan </span>
+            <div className="relative w-full px-6 md:px-12 pt-20 pb-6 text-center">
+                <h1 className="text-black text-4xl font-medium leading-tight mb-6">
+                    Eksplor Informasi{' '}
+                    <span className="text-[#fe632e]">Lomba, Beasiswa, Pengabdian Masyarakat, </span>
+                    <span className="text-black">dan </span>
                     <br />
-                    <span className="text-[#fe632e] text-4xl font-medium leading-10">Penelitian</span>
-                    <span className="text-black text-4xl font-medium leading-10"> Sekarang!</span>
-                </div>
+                    <span className="text-[#fe632e]">Penelitian</span>
+                    <span className="text-black"> Sekarang!</span>
+                </h1>
             </div>
         </div>
     );
