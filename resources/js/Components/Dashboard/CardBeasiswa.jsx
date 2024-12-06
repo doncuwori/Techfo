@@ -63,9 +63,10 @@ const CardBeasiswa = ({ data }) => {
 
             <div className="w-full px-16 flex gap-6 overflow-x-auto">
                 {data.map((scholarship, index) => (
-                    <div
+                    <Link
                         key={index}
                         className="w-[343px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-lg flex flex-col gap-2"
+                        href={"/beasiswa/" + scholarship.id}
                     >
                         <div
                             className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center"
@@ -91,7 +92,7 @@ const CardBeasiswa = ({ data }) => {
                                 </span>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>

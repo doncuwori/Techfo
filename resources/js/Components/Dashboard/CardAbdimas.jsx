@@ -72,9 +72,10 @@ const CardAbdimas = ({ data }) => {
 
                 <div className="w-full px-16 flex gap-6 overflow-x-auto">
                     {data.map((service, index) => (
-                        <div
+                        <Link
                             key={index}
                             className="w-[343px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-lg flex flex-col gap-2"
+                            href={"/abdimas/" + service.id}
                         >
                             <div
                                 className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center"
@@ -103,7 +104,7 @@ const CardAbdimas = ({ data }) => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

@@ -2,7 +2,7 @@ import { useForm } from "@inertiajs/react";
 import React from "react";
 import toast from "react-hot-toast";
 
-const FormPenelitianAbdimas = () => {
+const FormPenelitianAbdimas = ({ type }) => {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: "",
         lecturer_1: "",
@@ -18,14 +18,25 @@ const FormPenelitianAbdimas = () => {
     });
 
     const handleSubmit = (e) => {
+        const routeName =
+            type === "penelitian"
+                ? "researchInformation.store"
+                : "abdimasInformation.store";
+
         e.preventDefault();
-        post(route("abdimasInformation.store"), {
+        post(route(routeName), {
             onSuccess: (res) => {
                 reset();
-                toast.success("Informasi Abdimas Berhasil Ditambahkan");
+                console.log("hai");
+                type === "penelitian"
+                    ? toast.success("Berhasil menambahkan informasi penelitian")
+                    : toast.success(" Berhasil menambahkan informasi abdimas");
             },
             onError: (errors) => {
-                toast.error("Gagal menambahkan informasi abdimas");
+                type === "penelitian"
+                    ? toast.error("Gagal menambahkan informasi penelitian")
+                    : toast.error("Gagal menambahkan informasi abdimas");
+
                 console.error(errors);
             },
         });

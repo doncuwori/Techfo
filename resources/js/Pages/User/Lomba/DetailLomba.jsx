@@ -3,8 +3,7 @@ import Navbar from "@/Components/Navbar";
 import Sidebar from "@/Components/DetailLomba/Sidebar";
 import MainContent from "@/Components/DetailLomba/MainContent";
 
-const DetailLomba = ({ data, postId }) => {
-    
+const DetailLomba = ({ data }) => {
     return (
         <div className="bg-gray-50">
             <Navbar />
@@ -24,7 +23,7 @@ const DetailLomba = ({ data, postId }) => {
             </div>
             <div className="relative z-10 flex flex-col md:flex-row mt-6">
                 <Sidebar />
-                <MainContent data={postId} />
+                <MainContent data={data} />
             </div>
         </div>
     );

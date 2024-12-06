@@ -13,8 +13,8 @@ const Dashboard = ({
     competitions_information,
     scholarships_information,
     abdimas_information = [],
+    researches_information = [],
 }) => {
-    
     return (
         <div>
             <Navbar />
@@ -24,7 +24,7 @@ const Dashboard = ({
             <CardLomba data={competitions_information} />
             <CardBeasiswa data={scholarships_information} />
             <CardAbdimas data={abdimas_information} />
-            <CardPenelitian />
+            <CardPenelitian data={researches_information} />
             <Footer />
         </div>
     );

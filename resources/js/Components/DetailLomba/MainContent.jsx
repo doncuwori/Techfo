@@ -2,7 +2,6 @@ import { formatDate } from "@/lib/helper";
 import React from "react";
 
 const MainContent = ({ data }) => {
-    console.log(data);
     return (
         <div
             className="md:w-2/3 p-8 overflow-y-auto"
@@ -19,8 +18,12 @@ const MainContent = ({ data }) => {
                     />
                     <div>
                         {/* CreatedBy */}
-                        <p className="text-gray-700 font-bold">{data.organizer}</p>
-                        <p className="text-gray-500">{formatDate(data.created_by)}</p>
+                        <p className="text-gray-700 font-bold">
+                            {data.organizer}
+                        </p>
+                        <p className="text-gray-500">
+                            {formatDate(data.created_by)}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -53,9 +56,7 @@ const MainContent = ({ data }) => {
             <p className="text-gray-700 mb-4">{data.description}</p>
             <div className="mb-4">
                 <h2 className="text-lg font-bold mb-2">Penyelenggara</h2>
-                <p className="text-gray-700">
-                    {data.organizer}
-                </p>
+                <p className="text-gray-700">{data.organizer}</p>
             </div>
         </div>
     );

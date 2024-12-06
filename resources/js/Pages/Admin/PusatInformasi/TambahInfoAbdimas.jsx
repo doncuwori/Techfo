@@ -13,7 +13,10 @@ const TambahInfoAbdimas = () => {
                     <h1 className="text-center text-2xl font-bold mb-6">
                         Tambah Informasi Abdimas
                     </h1>
-                    <FormPenelitianAbdimas />
+                    <FormPenelitianAbdimas
+                        type="abdimas"
+                        
+                    />
                 </div>
             </main>
             <Footer />

@@ -7,7 +7,6 @@ const DashboardAdmin = ({
     competitionWinnersCount,
     scholarshipRegistrantsCount,
     scholarshipRecipientsCount,
-    
 }) => {
     const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
