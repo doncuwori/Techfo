@@ -90,11 +90,11 @@ const CardBeasiswa = ({ data }) => {
                                 className="w-[343px] min-w-[280px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
                             >
                                 <div
-                                    className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center"
+                                    className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center "
                                     style={{
                                         backgroundImage: `url(${
                                             scholarship.image ||
-                                            "img/poster.jpeg"
+                                            "img/posterbeasiswa.jpg"
                                         })`,
                                     }}
                                 >
@@ -104,11 +104,11 @@ const CardBeasiswa = ({ data }) => {
                                 </div>
 
                                 <div className="flex flex-col gap-2">
-                                    <h2 className="text-black text-lg font-medium">
-                                        {competition.name}
+                                    <h2 className="text-black text-lg font-medium line-clamp-1">
+                                        {scholarship.name}
                                     </h2>
-                                    <p className="text-gray-500 text-sm">
-                                        {competition.description}
+                                    <p className="text-gray-500 text-sm line-clamp-2">
+                                        {scholarship.description}
                                     </p>
                                     <div className="flex items-center gap-2">
                                         <Clock4

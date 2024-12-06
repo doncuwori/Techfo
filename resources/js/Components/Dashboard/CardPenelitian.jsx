@@ -92,10 +92,10 @@ const CardPenelitian = ({ data }) => {
 
                             {/* Content Section */}
                             <div className="flex flex-col gap-2">
-                                <h2 className="text-black text-lg font-medium">
+                                <h2 className="text-black text-lg font-medium line-clamp-1">
                                     {project.name}
                                 </h2>
-                                <p className="text-gray-500 text-sm">
+                                <p className="text-gray-500 text-sm line-clamp-2">
                                     {project.description}
                                 </p>
                                 <div className="flex items-center gap-2">

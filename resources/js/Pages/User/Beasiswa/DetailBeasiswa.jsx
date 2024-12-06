@@ -3,7 +3,7 @@ import Navbar from "@/Components/Navbar";
 import Sidebar from "@/Components/DetailBeasiswa/Sidebar";
 import MainContent from "@/Components/DetailBeasiswa/MainContent";
 
-const DetailBeasiswa = () => {
+const DetailBeasiswa = ({ data }) => {
     return (
         <div className="bg-gray-50">
             <Navbar />
@@ -22,8 +22,7 @@ const DetailBeasiswa = () => {
                 />
             </div>
             <div className="relative z-10 flex flex-col md:flex-row mt-6">
-                <Sidebar />
-                <MainContent />
+                <MainContent data={data} />
             </div>
         </div>
     );

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Scholarships\ScholarshipInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class ScholarshipInformationController extends Controller
 {
@@ -33,5 +34,11 @@ class ScholarshipInformationController extends Controller
 
         // Return a response
         return redirect()->route('tambahInfoBeasiswa')->with('success', 'Informasi beasiswa berhasil ditambahkan');
+    }
+
+    public function show(ScholarshipInformation $postId) {
+        return Inertia::render('User/Beasiswa/DetailBeasiswa', [
+            'data' => $postId
+        ]);
     }
 }

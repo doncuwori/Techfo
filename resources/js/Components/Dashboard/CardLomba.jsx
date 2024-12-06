@@ -91,7 +91,7 @@ const CardLomba = ({ data }) => {
                                 <div
                                     className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center"
                                     style={{
-                                        backgroundImage: `url(img/poster.jpeg)`,
+                                        backgroundImage: `url(img/posterlomba.jpg)`,
                                     }}
                                 >
                                     <div className="absolute top-2 left-2 bg-blue-500 text-white text-xs px-2 py-0.5 rounded-2xl">
@@ -100,10 +100,10 @@ const CardLomba = ({ data }) => {
                                 </div>
 
                                 <div className="flex flex-col gap-2">
-                                    <h2 className="text-black text-lg font-medium">
+                                    <h2 className="text-black text-lg font-medium line-clamp-1">
                                         {competition.name}
                                     </h2>
-                                    <p className="text-gray-500 text-sm">
+                                    <p className="text-gray-500 text-sm line-clamp-2">
                                         {competition.description}
                                     </p>
                                     <div className="flex items-center gap-2">

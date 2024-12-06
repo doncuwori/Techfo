@@ -1,5 +1,6 @@
-import { formatDate } from "@/lib/helper";
 import React from "react";
+import { Calendar } from 'lucide-react';
+import { formatDate } from "@/lib/helper";
 
 const MainContent = ({ data }) => {
     return (
@@ -22,7 +23,7 @@ const MainContent = ({ data }) => {
                             {data.organizer}
                         </p>
                         <p className="text-gray-500">
-                            {formatDate(data.created_by)}
+                            {formatDate(data.created_at)}
                         </p>
                     </div>
                 </div>
@@ -37,7 +38,7 @@ const MainContent = ({ data }) => {
             </div>
             <div className="flex justify-start mb-4">
                 <img
-                    src="img/poster.jpeg"
+                    src="public/img/poster.jpeg"
                     alt="Deskripsi gambar"
                     className="w-full max-h-[300px] object-cover rounded-md"
                 />
@@ -45,12 +46,8 @@ const MainContent = ({ data }) => {
             <div className="mb-4">
                 <h2 className="text-lg font-bold mb-2">Batas Pendaftaran</h2>
                 <div className="flex items-center">
-                    <img
-                        src="img/calender.png"
-                        alt="Deskripsi gambar"
-                        className="w-6 h-6 mr-2"
-                    />
-                    <p className="text-gray-700">1 Juni 2024 - 31 Juni 2024</p>
+                    <Calendar />
+                    <p className="text-gray-700 ml-2">{formatDate(data.created_at)} - {formatDate(data.event_time)}</p>
                 </div>
             </div>
             <p className="text-gray-700 mb-4">{data.description}</p>

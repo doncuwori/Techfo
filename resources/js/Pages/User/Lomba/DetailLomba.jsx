@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "@/Components/Navbar";
-import Sidebar from "@/Components/DetailLomba/Sidebar";
 import MainContent from "@/Components/DetailLomba/MainContent";
 
 const DetailLomba = ({ data }) => {
@@ -21,8 +20,7 @@ const DetailLomba = ({ data }) => {
                     className="w-full max-h-[300px] object-cover rounded-md"
                 />
             </div>
-            <div className="relative z-10 flex flex-col md:flex-row mt-6">
-                <Sidebar />
+            <div className="relative z-10 mt-6 px-6">
                 <MainContent data={data} />
             </div>
         </div>
