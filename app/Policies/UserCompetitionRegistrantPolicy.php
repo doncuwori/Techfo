@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\UserCompetitionRegistrants;
+use App\Models\Pivot\UserCompetitionRegistrants;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 

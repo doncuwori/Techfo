@@ -105,10 +105,10 @@ const CardBeasiswa = ({ data }) => {
 
                                 <div className="flex flex-col gap-2">
                                     <h2 className="text-black text-lg font-medium">
-                                        {competition.name}
+                                        {scholarship.name}
                                     </h2>
                                     <p className="text-gray-500 text-sm">
-                                        {competition.description}
+                                        {scholarship.description}
                                     </p>
                                     <div className="flex items-center gap-2">
                                         <Clock4
