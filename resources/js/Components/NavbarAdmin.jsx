@@ -106,6 +106,9 @@ const NavbarAdmin = () => {
                             <span className="group-hover:text-orange-500">
                                 Dashboard
                             </span>
+                            <span className="group-hover:text-orange-500">
+                                Dashboard
+                            </span>
                         </Link>
                     </li>
 
