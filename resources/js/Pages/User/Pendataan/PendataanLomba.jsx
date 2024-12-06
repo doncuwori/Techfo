@@ -8,7 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 const PendataanLomba = () => {
     const [tabValue, settabValue] = useState("Partisipasi");
-
+    
 
     return (
         <div className="min-h-screen flex flex-col items-center">

@@ -7,6 +7,7 @@ use App\Models\Competitions\CompetitionRegistrant;
 
 use App\Models\User;
 use App\Models\Pivot\UserCompetitionRegistrants;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,16 +62,13 @@ class CompetitionRegistrantController extends Controller
                 'members.*.name' => 'required|string',
             ]);
     
-            foreach ($request->members as $member) {
-                $member = User::where('nim', $member->nim)->first();
+            $members = $request->members;
+            
+            foreach ($members as $memberData) {
+                $member = User::where('nim', operator: $memberData->nim)->first();
     
                 if ($member) {
-                    UserCompetitionRegistrants::create([
-                        'user_id' => $member->id,
-                        'competition_id' => $competition->id,
-                        'created_at' => now(),
-                        'updated_at' => now(),
-                    ]);
+                    $competition->users()->attach($member->id);
                 } else {
                     // Handle the case where the user with the given NIM does not exist
                     return response()->json(['error' => "User with NIM $member does not exist."], 404);
@@ -78,14 +76,7 @@ class CompetitionRegistrantController extends Controller
             }        
         }
 
-        UserCompetitionRegistrants::create([
-            'user_id' => $user->id,
-            'competition_id' => $competition->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        $competition->load('users');
+        $competition->users()->attach($user->id);
 
         return redirect()->route('pendataanLomba')->with('success', 'Kompetisi berhasil ditambahkan');
     }

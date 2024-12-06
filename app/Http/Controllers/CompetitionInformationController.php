@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Competitions\CompetitionInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Post;
+use Inertia\Inertia;
 
 class CompetitionInformationController extends Controller
 {
@@ -38,6 +40,13 @@ class CompetitionInformationController extends Controller
 
         // Return a response
         return redirect()->route('tambahInfoLomba')->with('success', 'Informasi beasiswa berhasil ditambahkan');
+    }
+
+    public function show(CompetitionInformation $postId) {
+        return Inertia::render('User/Lomba/DetailLomba', [
+            'data' => [],
+            'postId' => $postId
+        ]);
     }
 }
 

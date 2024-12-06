@@ -4,8 +4,6 @@ import { Clock4 } from "lucide-react";
 import { formatDate } from "@/lib/helper";
 
 const CardLomba = ({ data }) => {
-
-
     return (
         <div>
             {/* Background Image */}
@@ -24,7 +22,7 @@ const CardLomba = ({ data }) => {
                         Informasi Lomba
                     </h1>
                     <Link
-                        href={route("lomba")}
+                        href={"lomba"}
                         className="text-orange-500 text-base font-normal text-right hover:font-bold"
                     >
                         Lihat Semua
@@ -33,7 +31,8 @@ const CardLomba = ({ data }) => {
 
                 <div className="w-full px-16 flex gap-6 overflow-x-auto">
                     {data.map((competition, index) => (
-                        <div
+                        <Link
+                            href={"/lomba/" + competition.id}
                             key={index}
                             className="w-[343px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-lg flex flex-col gap-2"
                         >
@@ -64,7 +63,7 @@ const CardLomba = ({ data }) => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ScholarshipInformation;
+use App\Models\Scholarships\ScholarshipInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

@@ -5,22 +5,23 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export const TabPartisipasiLomba = () => {
+
     const { data, setData, post, processing, errors, reset } = useForm({
-        is_group: false,
-        leader_nim: "",
-        ormawa_delegation: "",
-        mentor_name: "",
-        activity_name: "",
-        field: "",
-        degree: "",
-        organizer: "",
-        scope: "",
-        host_country: "",
-        location: "",
-        activity_date_start: "",
-        activity_date_end: "",
-        description: "",
-        poster_url: "",
+        is_group: true,
+        leader_nim: "123456789",
+        ormawa_delegation: "BI Corner",
+        mentor_name: "John Doe",
+        activity_name: "National Science Competition",
+        field: "Sains",
+        degree: "Sains",
+        organizer: "National Science Organization",
+        scope: "Nasional",
+        host_country: "Indonesia",
+        location: "Jakarta",
+        activity_date_start: "2024-01-15",
+        activity_date_end: "2024-01-20",
+        description: "A competition to showcase scientific talents.",
+        poster_url: "http://example.com/poster.jpg",
         members: [],
     });
     const [isGroup, setIsGroup] = useState(false);
@@ -54,6 +55,7 @@ export const TabPartisipasiLomba = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         post(route("competitions.store"), {
             onSuccess: (res) => {
                 reset();

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CompetitionWinner;
+use App\Models\Competitions\CompetitionWinner;
 use App\Models\User;
-use App\Models\UserCompetitionWinners;
+use App\Models\Pivot\UserCompetitionWinners;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

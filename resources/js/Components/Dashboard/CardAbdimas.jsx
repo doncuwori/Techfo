@@ -47,8 +47,6 @@ const CardAbdimas = ({ data }) => {
         },
     ];
 
-    console.log(data);
-
     return (
         <div className="relative">
             <div className="absolute inset-x-0 mt-6 z-0 flex justify-center">

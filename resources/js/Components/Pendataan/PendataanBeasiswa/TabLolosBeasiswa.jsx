@@ -1,8 +1,12 @@
 import PernyataanLegalitas from "@/Components/PernyataanLegalitas";
+import React, { useState } from "react";
 import { useForm } from "@inertiajs/react";
 import toast from "react-hot-toast";
 
 export const TabLolosBeasiswa = () => {
+    const [scanBukti, setScanBukti] = useState(null);
+    const [posterKegiatan, setPosterKegiatan] = useState(null);
+
     const { data, setData, post, processing, errors, reset } = useForm({
         name: "",
         type: "",
@@ -11,7 +15,20 @@ export const TabLolosBeasiswa = () => {
         event_date: "",
         description: "",
         created_by: "",
+        scan_bukti_url: "",
+        poster_kegiatan_url: "",
     });
+
+    const handleFileChange = (e, setFile) => {
+        const file = e.target.files[0];
+        if (file) {
+            setFile(file);
+        }
+    };
+
+    const handleRemoveFile = (setFile) => {
+        setFile(null);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -100,7 +117,6 @@ export const TabLolosBeasiswa = () => {
                         className="w-full border rounded-lg p-2"
                     >
                         <option>Pilih Negara Penyelenggara</option>
-
                         <option>Indonesia</option>
                         <option>Malaysia</option>
                     </select>
@@ -120,9 +136,6 @@ export const TabLolosBeasiswa = () => {
                         id="event_date"
                         className="w-full border rounded-lg p-2"
                     />
-                    <div className="flex items-center mt-2">
-                        <input type="calendar" className="mr-2" />
-                    </div>
                 </div>
 
                 <div className="mb-4">
@@ -141,8 +154,10 @@ export const TabLolosBeasiswa = () => {
                     ></textarea>
                 </div>
             </section>
+
             <section className="mb-8">
                 <h2 className="text-xl font-bold mb-4">Dokumen Pendukung</h2>
+                {/* Scan Bukti */}
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Scan Bukti
@@ -150,30 +165,35 @@ export const TabLolosBeasiswa = () => {
                     <div className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center">
                         <p>Click to upload or drag and drop</p>
                         <p className="text-gray-500">Max. file size: 10MB</p>
-                        <button
+                        <input
                             type="file"
-                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg"
+                            id="scan-bukti"
+                            className="hidden"
+                            onChange={(e) => handleFileChange(e, setScanBukti)}
+                        />
+                        <label
+                            htmlFor="scan-bukti"
+                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg cursor-pointer"
                         >
                             Browse File
-                        </button>
+                        </label>
                     </div>
-                    <p className="text-gray-500 mt-2">
-                        Ketentuan file scan bukti yang diunggah:
-                    </p>
-                    <ul className="text-gray-500 list-disc list-inside">
-                        <li>
-                            Detail scan berupa Piagam/Sertifikat/Penghargaan
-                            atau yang menunjukkan hasil prestasi yang diikuti
-                            dalam bentuk format berkas.
-                        </li>
-                        <li>
-                            Berkas yang diunggah dalam format file: .pdf, .jpeg,
-                            .png, .pdf.
-                        </li>
-                        <li>Ukuran maksimal setiap file maksimal 10MB.</li>
-                    </ul>
+                    {scanBukti && (
+                        <div className="flex items-center mt-2">
+                            <span className="text-gray-700">
+                                {scanBukti.name}
+                            </span>
+                            <button
+                                onClick={() => handleRemoveFile(setScanBukti)}
+                                className="ml-2 text-red-500 hover:text-red-700"
+                            >
+                                ✖
+                            </button>
+                        </div>
+                    )}
                 </div>
 
+                {/* Poster Kegiatan */}
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Poster Kegiatan
@@ -181,36 +201,48 @@ export const TabLolosBeasiswa = () => {
                     <div className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center">
                         <p>Click to upload or drag and drop</p>
                         <p className="text-gray-500">Max. file size: 10MB</p>
-                        <button
+                        <input
                             type="file"
-                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg"
+                            id="poster-kegiatan"
+                            className="hidden"
+                            onChange={(e) =>
+                                handleFileChange(e, setPosterKegiatan)
+                            }
+                        />
+                        <label
+                            htmlFor="poster-kegiatan"
+                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg cursor-pointer"
                         >
                             Browse File
-                        </button>
+                        </label>
                     </div>
-                    <p className="text-gray-500 mt-2">
-                        Ketentuan file Poster Kegiatan yang diunggah:
-                    </p>
-                    <ul className="text-gray-500 list-disc list-inside">
-                        <li>
-                            Poster Kegiatan lomba yang diikuti, menunjukkan nama
-                            lomba;
-                        </li>
-                        <li>
-                            Tipe file yang dapat diunggah antara lain: .jpg,
-                            .jpeg, .png;
-                        </li>
-                        <li>Ukuran file maksimal 1MB.</li>
-                    </ul>
+                    {posterKegiatan && (
+                        <div className="flex items-center mt-2">
+                            <span className="text-gray-700">
+                                {posterKegiatan.name}
+                            </span>
+                            <button
+                                onClick={() =>
+                                    handleRemoveFile(setPosterKegiatan)
+                                }
+                                className="ml-2 text-red-500 hover:text-red-700"
+                            >
+                                ✖
+                            </button>
+                        </div>
+                    )}
                 </div>
             </section>
+
             <PernyataanLegalitas />
+
             <div className="flex justify-end w-full">
                 <button
                     type="submit"
                     className="mt-2 bg-orange-500 text-white py-1 px-4 rounded-lg"
+                    disabled={processing}
                 >
-                    Submit
+                    {processing ? "Submitting..." : "Submit"}
                 </button>
             </div>
         </form>

@@ -1,14 +1,14 @@
+import { formatDate } from "@/lib/helper";
 import React from "react";
 
-const MainContent = () => {
+const MainContent = ({ data }) => {
+    console.log(data);
     return (
         <div
             className="md:w-2/3 p-8 overflow-y-auto"
             style={{ maxHeight: "90vh" }}
         >
-            <h1 className="text-3xl font-bold mb-4">
-                GDSC Forward: Pixels Challenge
-            </h1>
+            <h1 className="text-3xl font-bold mb-4">{data.name}</h1>
             <div className="mb-4">
                 <h2 className="text-lg mb-2">Diunggah oleh</h2>
                 <div className="flex items-center">
@@ -18,8 +18,9 @@ const MainContent = () => {
                         alt="Profile Picture"
                     />
                     <div>
-                        <p className="text-gray-700 font-bold">BEMF-IK UPNVJ</p>
-                        <p className="text-gray-500">1 Juni 2004</p>
+                        {/* CreatedBy */}
+                        <p className="text-gray-700 font-bold">{data.organizer}</p>
+                        <p className="text-gray-500">{formatDate(data.created_by)}</p>
                     </div>
                 </div>
             </div>
@@ -49,14 +50,11 @@ const MainContent = () => {
                     <p className="text-gray-700">1 Juni 2024 - 31 Juni 2024</p>
                 </div>
             </div>
-            <p className="text-gray-700 mb-4">
-                PIXELS Challenge merupakan sebuah acara yang bertujuan untuk
-                menggabungkan konsep desain UI/UX...
-            </p>
+            <p className="text-gray-700 mb-4">{data.description}</p>
             <div className="mb-4">
                 <h2 className="text-lg font-bold mb-2">Penyelenggara</h2>
                 <p className="text-gray-700">
-                    Google Developer Student Club STT-NF
+                    {data.organizer}
                 </p>
             </div>
         </div>

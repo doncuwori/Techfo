@@ -13,7 +13,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScholarshipInformationController;
 use App\Http\Controllers\ScholarshipRecipientController;
 use App\Http\Controllers\ScholarshipRegistrantController;
-use App\Models\CompetitionWinner;
+use App\Models\Competitions\CompetitionWinner;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -32,10 +32,6 @@ Route::get('/landingPage', function () {
 // Login
 Route::get('/loginUser', [LoginPageController::class, 'index'])->name('loginUser');
 
-// Lomba 
-Route::get('/lomba', function () {
-    return Inertia::render('User/Lomba/Lomba');
-})->name('lomba');
 
 Route::get('/detailLomba', function () {
     return Inertia::render(component: 'User/Lomba/DetailLomba');
@@ -84,6 +80,12 @@ Route::middleware(['auth', 'verified'])->group(function(){
         return Inertia::render('User/Pendataan/PendataanBeasiswa');
     })->name('pendataanBeasiswa');
 
+
+    // Lomba 
+    Route::get('/lomba', function () {
+        return Inertia::render('User/Lomba/Lomba');
+    })->name('lomba');
+
     Route::post('/pendataanDaftarLomba', [CompetitionRegistrantController::class, 'store'])
     ->name('competition.store');
 
@@ -101,6 +103,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
     })->name('pendataanLomba');
 
     Route::get('/dashboardUser', [DashboardUserController::class, 'index'])->name('dashboardUser');
+    Route::get('/lomba/{postId}', [CompetitionInformationController::class, 'show'])->name('competition.show');
 
     // Abdimas
     Route::get('/abdimas', function () {

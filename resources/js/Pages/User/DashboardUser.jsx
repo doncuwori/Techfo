@@ -14,6 +14,7 @@ const Dashboard = ({
     scholarships_information,
     abdimas_information = [],
 }) => {
+    
     return (
         <div>
             <Navbar />
