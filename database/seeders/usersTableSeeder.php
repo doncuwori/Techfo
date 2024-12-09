@@ -72,5 +72,45 @@ class usersTableSeeder extends Seeder
             'role' => 'user',
             'password' => Hash::make('password'),
         ]);
+
+        User::create([
+            'name' => 'Indira Dwi Febrian',
+            'nim' => '2310512062',
+            'prodi' => 'Sistem Informasi',
+            'angkatan' => '2023',
+            'email' => 'indira@example.com',
+            'role' => 'user',
+            'password' => Hash::make('password'),
+        ]);
+
+        User::create([
+            'name' => 'Diva Chintya Putri Nussandy',
+            'nim' => '2310511073',
+            'prodi' => 'Sistem Informasi',
+            'angkatan' => '2023',
+            'email' => 'diva@example.com',
+            'role' => 'user',
+            'password' => Hash::make('password'),
+        ]);
+
+        User::create([
+            'name' => 'Shabrina Rahmania',
+            'nim' => '2310512071',
+            'prodi' => 'Sistem Informasi',
+            'angkatan' => '2023',
+            'email' => 'shabrina@example.com',
+            'role' => 'user',
+            'password' => Hash::make('password'),
+        ]);
+
+        User::create([
+            'name' => 'Marsya Aurelia Syahkira',
+            'nim' => '2310512067',
+            'prodi' => 'Sistem Informasi',
+            'angkatan' => '2023',
+            'email' => 'marsya@example.com',
+            'role' => 'user',
+            'password' => Hash::make('password'),
+        ]);
     }
 }

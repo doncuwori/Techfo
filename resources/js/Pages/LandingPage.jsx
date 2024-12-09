@@ -5,7 +5,27 @@ import LaporanKeaktifan from "@/Components/LandingPage/LaporanKeaktifan";
 import Footer from "@/Components/Footer";
 import ScrollUpButton from "@/Components/ScrollUpButton";
 
-const LandingPage = () => {
+const LandingPage = ({
+    competitionRegistrantsCount,
+    competitionWinnersCount,
+    scholarshipRegistrantsCount,
+    scholarshipRecipientsCount,
+}) => {
+    console.log(
+        competitionRegistrantsCount,
+        competitionWinnersCount,
+        scholarshipRegistrantsCount,
+        scholarshipRecipientsCount
+    );
+
+    LandingPage.defaultProps = {
+        competitionRegistrantsCount: 0,
+        competitionWinnersCount: 0,
+        scholarshipRegistrantsCount: 0,
+        scholarshipRecipientsCount: 0,
+    };
+    
+
     return (
         <div>
             <Header />
@@ -17,7 +37,10 @@ const LandingPage = () => {
                     className="w-full max-h-[1500px] rounded-md"
                 />
             </div>
-            <LaporanKeaktifan />
+            <LaporanKeaktifan
+                competitionCount={`${competitionWinnersCount}/${competitionRegistrantsCount} `}
+                scholarshipCount={`${scholarshipRegistrantsCount}/${scholarshipRecipientsCount}`}
+            />
             <Footer />
             <ScrollUpButton />
         </div>

@@ -32,7 +32,7 @@ const DashboardAdmin = ({
                 <div className="container px-4 py-8 w-full">
                     <LaporanKeaktifan
                         competitionCount = {`${competitionWinnersCount}/${competitionRegistrantsCount} `}
-                        scholarshipCount = {`${scholarshipRegistrantsCount}/${scholarshipRecipientsCount}`}
+                        scholarshipCount = {`${scholarshipRecipientsCount}/${scholarshipRegistrantsCount}`}
                     />
                 </div>
             </main>

@@ -189,6 +189,7 @@ export const TabPartisipasiLomba = () => {
                         className="w-full border rounded-lg p-2"
                     >
                         <option>Bukan Delegasi dari ORMAWA</option>
+                        <option>Mandiri</option>
                         <option>
                             Badan Eksekutif Mahasiswa Fakultas Ilmu Komputer
                         </option>

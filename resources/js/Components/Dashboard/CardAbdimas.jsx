@@ -89,7 +89,7 @@ const CardAbdimas = ({ data }) => {
                                 }}
                             >
                                 <div className="absolute top-2 left-2 bg-yellow-500 text-white text-xs px-2 py-0.5 rounded-2xl">
-                                    Abdimas Abdimas
+                                    Abdimas
                                 </div>
                             </div>
 

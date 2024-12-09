@@ -214,7 +214,7 @@ const LaporanKeaktifan = ({ competitionCount, scholarshipCount }) => {
                                     className="bg-orange-100 border-2 border-neutral-200 rounded-lg p-6 flex items-center"
                                 >
                                     <div className="text-5xl">{icon}</div>
-                                    <div className="ml-16 text-center">
+                                    <div className="ml-10 text-center">
                                         <p className="font-semibold">{label}</p>
                                         <p className="text-[#2d3036] text-2xl font-medium leading-10">
                                             {count}

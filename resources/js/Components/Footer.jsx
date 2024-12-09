@@ -90,7 +90,7 @@ const Footer = () => {
                 </div>
 
                 {/* Technology Information Section */}
-                <div className="flex flex-col gap-3 lg:max-w-[400px]">
+                <div className="flex flex-col gap-3 lg:max-w-[410px]">
                     <div className="flex items-center gap-4">
                         <div className="w-14 h-14 bg-[#d9d9d9] rounded-full flex items-center justify-center border-2 border-[#fcfcfc]">
                             <img

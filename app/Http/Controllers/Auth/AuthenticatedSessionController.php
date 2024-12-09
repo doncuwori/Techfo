@@ -18,7 +18,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): RedirectResponse
     {
-        return redirect()->intended(default: '/loginUser');
+        return redirect()->intended(default: '/login');
     }
 
     /**
@@ -51,6 +51,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/loginUser');
+        return redirect('/login');
     }
 }

@@ -1,5 +1,5 @@
 import { useForm } from "@inertiajs/react";
-import React from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
 
 export const FormLombaBeasiswa = ({ type }) => {
@@ -10,6 +10,19 @@ export const FormLombaBeasiswa = ({ type }) => {
         description: "",
         poster_url: "",
     });
+
+    const [selectedFile, setSelectedFile] = useState(null);
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        setSelectedFile(file);
+    };
+
+    const handleRemoveFile = () => {
+        setSelectedFile(null);
+        // Clear the file input field
+        document.getElementById("fileInput").value = null;
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,16 +49,12 @@ export const FormLombaBeasiswa = ({ type }) => {
     return (
         <form onSubmit={handleSubmit}>
             <section className="mb-8">
-                <h2 className="text-xl font-bold mb-4">
-                    Tambah Informasi {type === "lomba" ? "Lomba" : "Beasiswa"}
-                </h2>
-
                 <div className="mb-4">
                     <label
                         htmlFor="name"
                         className="block text-gray-700 font-bold mb-2"
                     >
-                        Nama Kegiatan
+                        Nama Kegiatan<span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -62,7 +71,7 @@ export const FormLombaBeasiswa = ({ type }) => {
                         htmlFor="organizer"
                         className="block text-gray-700 font-bold mb-2"
                     >
-                        Penyelenggara
+                        Penyelenggara<span className="text-red-600">*</span>
                     </label>
                     <input
                         id="organizer"
@@ -73,13 +82,30 @@ export const FormLombaBeasiswa = ({ type }) => {
                         placeholder="Tuliskan penyelenggara kegiatan..."
                     />
                 </div>
-
                 <div className="mb-4">
                     <label
                         htmlFor="event_time"
                         className="block text-gray-700 font-bold mb-2"
                     >
-                        Waktu Pelaksanaan
+                        Waktu Pelaksanaan<span className="text-red-600">*</span>
+                    </label>
+                    <input
+                        id="event_time"
+                        type="date"
+                        value={data.event_time}
+                        onChange={(e) => setData("event_time", e.target.value)}
+                        className="w-full border rounded-lg p-2"
+                    />
+                    <div className="flex items-center mt-2">
+                        <input type="calendar" className="mr-2" />
+                    </div>
+                </div>
+                <div className="mb-4">
+                    <label
+                        htmlFor="event_time"
+                        className="block text-gray-700 font-bold mb-2"
+                    >
+                        Waktu Berakhir<span className="text-red-600">*</span>
                     </label>
                     <input
                         id="event_time"
@@ -97,7 +123,7 @@ export const FormLombaBeasiswa = ({ type }) => {
                         htmlFor="description"
                         className="block text-gray-700 font-bold mb-2"
                     >
-                        Deskripsi Kegiatan
+                        Deskripsi Kegiatan<span className="text-red-600">*</span>
                     </label>
                     <textarea
                         id="description"
@@ -111,17 +137,39 @@ export const FormLombaBeasiswa = ({ type }) => {
             <section className="mb-8">
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Poster Kegiatan
+                        Poster Kegiatan<span className="text-red-600">*</span>
                     </label>
                     <div className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center">
                         <p>Click to upload or drag and drop</p>
                         <p className="text-gray-500">Max. file size: 10MB</p>
-                        <button
+                        <input
                             type="file"
-                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg"
+                            accept=".jpg,.jpeg,.png"
+                            className="hidden"
+                            id="fileInput"
+                            onChange={handleFileChange}
+                        />
+                        <label
+                            htmlFor="fileInput"
+                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg cursor-pointer inline-block"
                         >
                             Browse File
-                        </button>
+                        </label>
+                        {selectedFile && (
+                            <div className="mt-4 flex items-center justify-center">
+                                <p className="text-green-500 mr-2">
+                                    {selectedFile.name}
+                                </p>
+                                <button
+                                    type="button"
+                                    className="text-red-500 hover:text-red-700"
+                                    onClick={handleRemoveFile}
+                                    aria-label="Remove file"
+                                >
+                                    &times;
+                                </button>
+                            </div>
+                        )}
                     </div>
                     <p className="text-gray-500 mt-2">
                         Ketentuan file Poster Kegiatan yang diunggah:

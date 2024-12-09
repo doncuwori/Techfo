@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\AbdimasInformationController;
 use App\Http\Controllers\Admin\AdminCompetitionRegistrantController;
 use App\Http\Controllers\Admin\DashboardAdminController;
@@ -31,7 +32,7 @@ Route::get('/landingPage', function () {
 
 
 // Login
-Route::get('/loginUser', [LoginPageController::class, 'index'])->name('loginUser');
+Route::get('/login', [LoginPageController::class, 'index'])->name('login');
 
 
 Route::get('/detailLomba', function () {
@@ -69,11 +70,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 // GROUPS ROUTES (USER & ADMIN)
-Route::middleware(['auth', 'verified'])->group(function(){
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/pendataanBeasiswa', function () {
         return Inertia::render('User/Pendataan/PendataanBeasiswa');
     })->name('pendataanBeasiswa');
-    
+
     // Lomba 
     Route::get('/lomba', function () {
         return Inertia::render('User/Lomba/Lomba');
@@ -147,17 +148,17 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     })->name('laporanLomba');
 
     Route::post('/pusatInformasi/tambahInfoLomba', [CompetitionInformationController::class, 'store'])
-    ->name('competitionInformation.store');
+        ->name('competitionInformation.store');
 
     Route::post('/pusatInformasi/tambahInfoBeasiswa', [ScholarshipInformationController::class, 'store'])
-    ->name('scholarshipInformation.store');
+        ->name('scholarshipInformation.store');
 
     Route::post('/pusatInformasi/tambahInfoAbdimas', [AbdimasInformationController::class, 'store'])
-    ->name('abdimasInformation.store');
+        ->name('abdimasInformation.store');
 
     Route::post('/pusatInformasi/tambahInfoPenelitian', [ResearchInformationController::class, 'store'])
-    ->name('researchInformation.store');
-    
+        ->name('researchInformation.store');
+
     Route::get('/laporanBeasiswa', function () {
         return Inertia::render('Admin/Laporan/LaporanBeasiswa');
     })->name('laporanBeasiswa');
@@ -173,18 +174,34 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('/pusatInformasi/tambahInfoLomba', function () {
         return Inertia::render('Admin/PusatInformasi/TambahInfoLomba');
     })->name('tambahInfoLomba');
-    
+
     Route::get('/pusatInformasi/tambahInfoBeasiswa', function () {
         return Inertia::render('Admin/PusatInformasi/TambahInfoBeasiswa');
-    })->name('tambahInfoBeasiswa')->name('tambahInfoBeasiswa');
+    })->name('tambahInfoBeasiswa');
 
     Route::get('/pusatInformasi/tambahInfoPenelitian', function () {
         return Inertia::render(component: 'Admin/PusatInformasi/TambahInfoPenelitian');
     })->name('tambahInfoPenelitian');
-    
+
     Route::get('/pusatInformasi/tambahInfoAbdimas', function () {
         return Inertia::render('Admin/PusatInformasi/TambahInfoAbdimas');
     })->name('tambahInfoAbdimas');
+
+    Route::get('/pusatLomba', function () {
+        return Inertia::render('Admin/PusatInformasi/PusatLomba');
+    })->name('pusatLomba');
+
+    Route::get('/pusatBeasiswa', function () {
+        return Inertia::render('Admin/PusatInformasi/PusatBeasiswa');
+    })->name('pusatBeasiswa');
+
+    Route::get('/pusatAbdimas', function () {
+        return Inertia::render('Admin/PusatInformasi/PusatAbdimas');
+    })->name('pusatAbdimas');
+
+    Route::get('/pusatPenelitian', function () {
+        return Inertia::render('Admin/PusatInformasi/PusatPenelitian');
+    })->name('pusatPenelitian');
 
     Route::get('/loginAdmin', function () {
         return Inertia::render('Admin/LoginAdmin');
@@ -195,8 +212,3 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 
 
 require __DIR__ . '/auth.php';
-
-
-
-
-
