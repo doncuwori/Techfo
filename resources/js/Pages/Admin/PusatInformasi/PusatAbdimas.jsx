@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "@inertiajs/react";
 import TabelPusatInformasi from "@/Components/PusatInformasi/TabelPusatInformasi";
 
-const PusatAbdimas = () => {
+const PusatAbdimas = ( {user} ) => {
     const data = [
         {
             no: 1,
@@ -19,7 +19,7 @@ const PusatAbdimas = () => {
 
     return (
         <div>
-            <NavbarAdmin />
+            <NavbarAdmin user={user} />
             <main className="pl-72 w-full z-0">
                 <div className="container px-4 py-8 w-full">
                     <div className="bg-white p-6 mt-14 rounded shadow-lg">

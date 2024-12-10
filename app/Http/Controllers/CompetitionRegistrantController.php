@@ -14,20 +14,21 @@ use Illuminate\Support\Facades\Auth;
 
 class CompetitionRegistrantController extends Controller
 {
-    
+
     /**
      * Show the form for creating a new resource.
      */
     public function store(Request $request)
-    {      
+    {
         $user = Auth::user();
-       
+
         $request->validate([
             'is_group' => 'required',
             "ormawa_delegation" => 'required',
-            "mentor_name" => 'required',
             "activity_name" => 'required',
+            "scope" => 'required',
             "field" => 'required',
+            "mentor_name" => 'required',
             "organizer" => 'required',
             "host_country" => 'required',
             "location" => 'required',
@@ -36,44 +37,46 @@ class CompetitionRegistrantController extends Controller
             "description" => 'required',
         ]);
 
-        $competition = CompetitionRegistrant::create([
-            'is_group' => $request->is_group,
-            'leader_nim' => $user->nim,
-            'ormawa_delegation' => $request->ormawa_delegation,
-            'mentor_name' => $request->mentor_name,
-            'activity_name' => $request->activity_name,
-            'field' => $request->field,
-            'organizer' => $request->organizer,
-            'host_country' => $request->host_country,
-            'location' => $request->location,
-            'activity_date_start' => $request->activity_date_start,
-            'activity_date_end' => $request->activity_date_end,
-            'description' => $request->description,
-            'poster_url' => $request->poster_url,
-            'created_at' => now(),
-            'updated_at' => now(),
+        $competition = CompetitionRegistrant::create(
+            [
+                'is_group' => $request->is_group,
+                'leader_nim' => $user->nim,
+                'ormawa_delegation' => $request->ormawa_delegation,
+                'activity_name' => $request->activity_name,
+                'scope' => $request->scope,
+                'field' => $request->field,
+                'mentor_name' => $request->mentor_name,
+                'organizer' => $request->organizer,
+                'host_country' => $request->host_country,
+                'location' => $request->location,
+                'activity_date_start' => $request->activity_date_start,
+                'activity_date_end' => $request->activity_date_end,
+                'description' => $request->description,
+                'poster_url' => $request->poster_url,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         );
 
-        if($request->is_group == true){
+        if ($request->is_group == true) {
             $request->validate([
                 'members' => 'required|array',
                 'members.*.nim' => 'required|exists:users,nim',
                 'members.*.name' => 'required|string',
             ]);
-    
+
             $members = $request->members;
-            
+
             foreach ($members as $memberData) {
                 $member = User::where('nim', operator: $memberData['nim'])->first();
-    
+
                 if ($member) {
                     $competition->users()->attach($member->id);
                 } else {
                     // Handle the case where the user with the given NIM does not exist
                     return response()->json(['error' => "User with NIM $member does not exist."], 404);
                 }
-            }        
+            }
         }
 
         $competition->users()->attach($user->id);
@@ -83,11 +86,10 @@ class CompetitionRegistrantController extends Controller
 
     /**
      * Display a listing of the resource.
-     */     
+     */
     public function index()
     {
         $competitions = CompetitionRegistrant::all();
         return response()->json($competitions, 201);
     }
-
 }

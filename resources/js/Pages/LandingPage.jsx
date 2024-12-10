@@ -17,15 +17,7 @@ const LandingPage = ({
         scholarshipRegistrantsCount,
         scholarshipRecipientsCount
     );
-
-    LandingPage.defaultProps = {
-        competitionRegistrantsCount: 0,
-        competitionWinnersCount: 0,
-        scholarshipRegistrantsCount: 0,
-        scholarshipRecipientsCount: 0,
-    };
     
-
     return (
         <div>
             <Header />

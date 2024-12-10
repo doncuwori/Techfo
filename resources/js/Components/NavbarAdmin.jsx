@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useForm } from "@inertiajs/react";
+import React, { useState, useEffect } from "react";
+import { Link, useForm, usePage } from "@inertiajs/react";
 import {
     LogOut,
     LayoutDashboard,
@@ -21,6 +21,8 @@ const NavbarAdmin = () => {
         useState(false);
 
     const { post } = useForm();
+    const { url } = usePage();
+    const { user } = usePage().props;
 
     const toggleProfileDropdown = () => {
         setIsProfileDropdownOpen(!isProfileDropdownOpen);
@@ -39,6 +41,29 @@ const NavbarAdmin = () => {
         setIsPusatInformasiDropdownOpen(!isPusatInformasiDropdownOpen);
         setIsChevronPusatInformasiRotated(!isChevronPusatInformasiRotated);
     };
+
+    // Use useEffect to keep dropdown open if the current route is part of that dropdown
+    useEffect(() => {
+        const laporanRoutes = [
+            "laporanLomba",
+            "laporanBeasiswa",
+            "laporanAbdimas",
+            "laporanPenelitian",
+        ];
+        const pusatInformasiRoutes = [
+            "pusatLomba",
+            "pusatBeasiswa",
+            "pusatAbdimas",
+            "pusatPenelitian",
+        ];
+
+        setIsLaporanDropdownOpen(
+            laporanRoutes.some((route) => url.includes(route))
+        );
+        setIsPusatInformasiDropdownOpen(
+            pusatInformasiRoutes.some((route) => url.includes(route))
+        );
+    }, [url]);
 
     return (
         <div>
@@ -74,7 +99,7 @@ const NavbarAdmin = () => {
                             alt="User Profile"
                         />
                         <div className="font-medium ml-2 hover:text-orange-600 cursor-pointer">
-                            Admin
+                            {user.name}
                         </div>
                     </button>
 
@@ -97,140 +122,192 @@ const NavbarAdmin = () => {
             {/* Sidebar */}
             <div className="fixed top-2 left-0 w-72 h-screen bg-white shadow-md p-4 mt-16 z-10 flex flex-col">
                 <ul className="flex-1">
+                    {/* Dashboard Menu */}
                     <li key="dashboard" className="mb-4">
                         <Link
                             href={route("dashboardAdmin")}
-                            className="text-gray-500 hover:text-orange-500 flex items-center w-full group"
+                            className={`${
+                                route().current("dashboardAdmin")
+                                    ? "text-white bg-orange-500 hover:font-bold"
+                                    : "text-gray-500 hover:text-orange-500"
+                            } flex items-center w-full group transition duration-150 px-2 py-1 rounded-md`}
                         >
-                            <LayoutDashboard className="w-5 h-5 mr-2" />
-                            <span className="group-hover:text-orange-500">
-                                Dashboard
-                            </span>
+                            <LayoutDashboard
+                                className={`w-5 h-5 mr-2 ${
+                                    route().current("dashboardAdmin")
+                                        ? "text-white group-hover:scale-105"
+                                        : "group-hover:text-orange-500"
+                                }`}
+                            />
+                            <span>Dashboard</span>
                         </Link>
                     </li>
 
-                    {[
-                        {
-                            name: "Laporan",
-                            icon: <Briefcase className="w-5 h-5 mr-2" />,
-                            onClick: toggleLaporanDropdown,
-                            dropdown: isLaporanDropdownOpen && (
-                                <ul className="pl-8 mt-2">
-                                    {[
-                                        {
-                                            name: "Lomba",
-                                            route: "laporanLomba",
-                                        },
-                                        {
-                                            name: "Beasiswa",
-                                            route: "laporanBeasiswa",
-                                        },
-                                        {
-                                            name: "Pengabdian Masyarakat",
-                                            route: "laporanAbdimas",
-                                        },
-                                        {
-                                            name: "Penelitian",
-                                            route: "laporanPenelitian",
-                                        },
-                                    ].map((subItem) => (
-                                        <li
-                                            key={subItem.name}
-                                            className="mb-2 flex items-center group hover:text-orange-500"
+                    {/* Laporan Menu */}
+                    <li key="laporan" className="mb-4">
+                        <button
+                            onClick={toggleLaporanDropdown}
+                            className={`${
+                                route().current("laporanLomba") ||
+                                route().current("laporanBeasiswa") ||
+                                route().current("laporanAbdimas") ||
+                                route().current("laporanPenelitian")
+                                    ? "text-white bg-orange-500 hover:font-bold"
+                                    : "text-gray-500 hover:text-orange-500"
+                            } flex items-center w-full group transition duration-150 px-2 py-1 rounded-md`}
+                        >
+                            <Briefcase
+                                className={`w-5 h-5 mr-2 ${
+                                    route().current("laporanLomba") ||
+                                    route().current("laporanBeasiswa") ||
+                                    route().current("laporanAbdimas") ||
+                                    route().current("laporanPenelitian")
+                                        ? "text-white group-hover:scale-105"
+                                        : "group-hover:text-orange-500"
+                                }`}
+                            />
+                            <span>Laporan</span>
+                            <ChevronDown
+                                className={`ml-auto w-5 h-5 transform transition-transform duration-200 ${
+                                    isChevronLaporanRotated ? "rotate-180" : ""
+                                }`}
+                            />
+                        </button>
+                        {isLaporanDropdownOpen && (
+                            <ul className="pl-8 mt-2">
+                                {[
+                                    {
+                                        name: "Lomba",
+                                        route: "laporanLomba",
+                                    },
+                                    {
+                                        name: "Beasiswa",
+                                        route: "laporanBeasiswa",
+                                    },
+                                    {
+                                        name: "Pengabdian Masyarakat",
+                                        route: "laporanAbdimas",
+                                    },
+                                    {
+                                        name: "Penelitian",
+                                        route: "laporanPenelitian",
+                                    },
+                                ].map((subItem) => (
+                                    <li
+                                        key={subItem.name}
+                                        className="mb-2 flex items-center group"
+                                    >
+                                        <Link
+                                            href={route(subItem.route)}
+                                            className={`${
+                                                route().current(subItem.route)
+                                                    ? "text-orange-500 hover:font-bold"
+                                                    : "text-gray-500 hover:text-orange-500"
+                                            } flex items-center`}
                                         >
-                                            <NotepadText className="w-4 h-4 mr-2 text-gray-500 group-hover:text-orange-500 transition-colors duration-200" />
-                                            <Link
-                                                href={route(subItem.route)}
-                                                className="text-gray-500 group-hover:text-orange-500"
-                                            >
-                                                {subItem.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            ),
-                            iconRight: (
-                                <ChevronDown
-                                    className={`ml-auto w-5 h-5 text-gray-500 transform transition-transform duration-200 group-hover:text-orange-500 ${
-                                        isChevronLaporanRotated
-                                            ? "rotate-180"
-                                            : ""
-                                    }`}
-                                />
-                            ),
-                        },
-                        {
-                            name: "Pusat Informasi",
-                            icon: <ChartBar className="w-5 h-5 mr-2" />,
-                            onClick: togglePusatInformasiDropdown,
-                            dropdown: isPusatInformasiDropdownOpen && (
-                                <ul className="pl-8 mt-2">
-                                    {[
-                                        {
-                                            name: "Lomba",
-                                            route: "pusatLomba",
-                                        },
-                                        {
-                                            name: "Beasiswa",
-                                            route: "pusatBeasiswa",
-                                        },
-                                        {
-                                            name: "Pengabdian Masyarakat",
-                                            route: "pusatAbdimas",
-                                        },
-                                        {
-                                            name: "Penelitian",
-                                            route: "pusatPenelitian",
-                                        },
-                                    ].map((subItem) => (
-                                        <li
-                                            key={subItem.name}
-                                            className="mb-2 flex items-center group hover:text-orange-500"
+                                            <NotepadText
+                                                className={`w-4 h-4 mr-2 ${
+                                                    route().current(
+                                                        subItem.route
+                                                    )
+                                                        ? "text-orange-500 group-hover:scale-105"
+                                                        : "text-gray-500 group-hover:text-orange-500"
+                                                }`}
+                                            />
+                                            {subItem.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </li>
+
+                    {/* Pusat Informasi Menu */}
+                    <li key="pusatInformasi" className="mb-4">
+                        <button
+                            onClick={togglePusatInformasiDropdown}
+                            className={`${
+                                route().current("pusatLomba") ||
+                                route().current("pusatBeasiswa") ||
+                                route().current("pusatAbdimas") ||
+                                route().current("pusatPenelitian")
+                                    ? "text-white bg-orange-500 hover:font-bold"
+                                    : "text-gray-500 hover:text-orange-500"
+                            } flex items-center w-full group transition duration-150 px-2 py-1 rounded-md`}
+                        >
+                            <ChartBar
+                                className={`w-5 h-5 mr-2 ${
+                                    route().current("pusatLomba") ||
+                                    route().current("pusatBeasiswa") ||
+                                    route().current("pusatAbdimas") ||
+                                    route().current("pusatPenelitian")
+                                        ? "text-white group-hover:scale-105"
+                                        : "group-hover:text-orange-500"
+                                }`}
+                            />
+                            <span>Pusat Informasi</span>
+                            <ChevronDown
+                                className={`ml-auto w-5 h-5 transform transition-transform duration-200 ${
+                                    isChevronPusatInformasiRotated
+                                        ? "rotate-180"
+                                        : ""
+                                }`}
+                            />
+                        </button>
+                        {isPusatInformasiDropdownOpen && (
+                            <ul className="pl-8 mt-2">
+                                {[
+                                    {
+                                        name: "Lomba",
+                                        route: "pusatLomba",
+                                    },
+                                    {
+                                        name: "Beasiswa",
+                                        route: "pusatBeasiswa",
+                                    },
+                                    {
+                                        name: "Pengabdian Masyarakat",
+                                        route: "pusatAbdimas",
+                                    },
+                                    {
+                                        name: "Penelitian",
+                                        route: "pusatPenelitian",
+                                    },
+                                ].map((subItem) => (
+                                    <li
+                                        key={subItem.name}
+                                        className="mb-2 flex items-center group"
+                                    >
+                                        <Link
+                                            href={route(subItem.route)}
+                                            className={`${
+                                                route().current(subItem.route)
+                                                    ? "text-orange-500 hover:font-bold"
+                                                    : "text-gray-500 hover:text-orange-500"
+                                            } flex items-center`}
                                         >
-                                            <NotepadText className="w-4 h-4 mr-2 text-gray-500 group-hover:text-orange-500 transition-colors duration-200" />
-                                            <Link
-                                                href={route(subItem.route)}
-                                                className="text-gray-500 group-hover:text-orange-500"
-                                            >
-                                                {subItem.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            ),
-                            iconRight: (
-                                <ChevronDown
-                                    className={`ml-auto w-5 h-5 text-gray-500 transform transition-transform duration-200 group-hover:text-orange-500 ${
-                                        isChevronPusatInformasiRotated
-                                            ? "rotate-180"
-                                            : ""
-                                    }`}
-                                />
-                            ),
-                        },
-                    ].map((item) => (
-                        <li key={item.name} className="mb-4">
-                            <button
-                                onClick={item.onClick}
-                                className="text-gray-500 hover:text-orange-500 flex items-center w-full group"
-                            >
-                                {item.icon && item.icon}{" "}
-                                <span className="group-hover:text-orange-500">
-                                    {item.name}
-                                </span>{" "}
-                                {item.iconRight && item.iconRight}{" "}
-                            </button>
-                            {item.dropdown && item.dropdown}{" "}
-                        </li>
-                    ))}
+                                            <NotepadText
+                                                className={`w-4 h-4 mr-2 ${
+                                                    route().current(
+                                                        subItem.route
+                                                    )
+                                                        ? "text-orange-500 group-hover:scale-105"
+                                                        : "text-gray-500 group-hover:text-orange-500"
+                                                }`}
+                                            />
+                                            {subItem.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </li>
                 </ul>
 
                 <div className="mt-auto mb-20">
                     <div>
                         <button
-                            onClick={() => {
-                                post(route("logout"));
-                            }}
+                            onClick={() => post(route("logout"))}
                             className="w-full px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-orange-700 flex items-center justify-center gap-2"
                         >
                             <span>Keluar</span>

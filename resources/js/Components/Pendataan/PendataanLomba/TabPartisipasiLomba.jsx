@@ -12,7 +12,6 @@ export const TabPartisipasiLomba = () => {
         mentor_name: "",
         activity_name: "",
         field: "",
-        degree: "",
         organizer: "",
         scope: "",
         host_country: "",
@@ -48,6 +47,19 @@ export const TabPartisipasiLomba = () => {
 
     const handleCheckbox = (e) => {
         setData("is_group", e.target.checked);
+    };
+
+    const [selectedFile, setSelectedFile] = useState(null);
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        setSelectedFile(file);
+    };
+
+    const handleRemoveFile = () => {
+        setSelectedFile(null);
+        // Clear the file input field
+        document.getElementById("fileInput").value = null;
     };
 
     const handleSubmit = (e) => {
@@ -179,7 +191,7 @@ export const TabPartisipasiLomba = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Delegasi ORMAWA
+                        Delegasi ORMAWA<span className="text-red-600">*</span>
                     </label>
                     <select
                         value={data.ormawa_delegation}
@@ -189,7 +201,6 @@ export const TabPartisipasiLomba = () => {
                         className="w-full border rounded-lg p-2"
                     >
                         <option>Bukan Delegasi dari ORMAWA</option>
-                        <option>Mandiri</option>
                         <option>
                             Badan Eksekutif Mahasiswa Fakultas Ilmu Komputer
                         </option>
@@ -222,7 +233,7 @@ export const TabPartisipasiLomba = () => {
 
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Nama Kegiatan
+                        Nama Kegiatan<span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -239,6 +250,7 @@ export const TabPartisipasiLomba = () => {
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">
                                 Tingkat Prestasi
+                                <span className="text-red-600">*</span>
                             </label>
                             <select
                                 onChange={(e) => {
@@ -253,35 +265,16 @@ export const TabPartisipasiLomba = () => {
                                 <option>Regional</option>
                                 <option>Wilayah</option>
                                 <option>Daerah/Provinsi</option>
-                                <option>Kabupaten/Kotan</option>
+                                <option>Kabupaten/Kota</option>
                                 <option>Kecamatan</option>
                                 <option>UPN "Veteran" Jakarta</option>
-                            </select>
-                        </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 font-bold mb-2">
-                                Gelar
-                            </label>
-                            <select
-                                onChange={(e) => {
-                                    setData("field", e.target.value);
-                                }}
-                                value={data.field}
-                                className="w-full border rounded-lg p-2"
-                            >
-                                <option>-- Pilih Gelar --</option>
-                                <option>Ilmiah/Penalaran/Akademik</option>
-                                <option>Minat Khusus</option>
-                                <option>Olahraga</option>
-                                <option>Sains</option>
-                                <option>Lainnya</option>
                             </select>
                         </div>
                     </div>
                     <div className="flex flex-col w-full">
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">
-                                Bidang
+                                Bidang<span className="text-red-600">*</span>
                             </label>
                             <select
                                 onChange={(e) => {
@@ -298,26 +291,28 @@ export const TabPartisipasiLomba = () => {
                                 <option>Lainnya</option>
                             </select>
                         </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 font-bold mb-2">
-                                Dosen Pembimbing/Pendamping
-                            </label>
-                            <input
-                                type="text"
-                                onChange={(e) => {
-                                    setData("mentor_name", e.target.value);
-                                }}
-                                value={data.mentor_name}
-                                className="w-full border rounded-lg p-2"
-                                placeholder="Tuliskan nama dosen pembimbing/pendamping..."
-                            />
-                        </div>
                     </div>
                 </div>
 
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Penyelenggara
+                        Dosen Pembimbing/Pendamping
+                        <span className="text-red-600">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        onChange={(e) => {
+                            setData("mentor_name", e.target.value);
+                        }}
+                        value={data.mentor_name}
+                        className="w-full border rounded-lg p-2"
+                        placeholder="Tuliskan nama dosen pembimbing/pendamping..."
+                    />
+                </div>
+
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-bold mb-2">
+                        Penyelenggara<span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -332,6 +327,7 @@ export const TabPartisipasiLomba = () => {
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Negara Penyelenggara
+                        <span className="text-red-600">*</span>
                     </label>
                     <select
                         onChange={(e) => {
@@ -348,6 +344,7 @@ export const TabPartisipasiLomba = () => {
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Tempat Pelaksanaan
+                        <span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -362,6 +359,7 @@ export const TabPartisipasiLomba = () => {
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Waktu Pelaksanaan Dimulai
+                        <span className="text-red-600">*</span>
                     </label>
                     <input
                         onChange={(e) => {
@@ -375,6 +373,7 @@ export const TabPartisipasiLomba = () => {
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Waktu Pelaksanaan Berakhir
+                        <span className="text-red-600">*</span>
                     </label>
                     <input
                         onChange={(e) => {
@@ -388,6 +387,7 @@ export const TabPartisipasiLomba = () => {
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Deskripsi Kegiatan
+                        <span className="text-red-600">*</span>
                     </label>
                     <textarea
                         onChange={(e) => {
@@ -400,6 +400,9 @@ export const TabPartisipasiLomba = () => {
                 </div>
             </section>
             <section className="mb-8">
+                <h2 className="text-xl font-bold mb-4">
+                    Dokumen Pendukung
+                </h2>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Poster Kegiatan
@@ -407,12 +410,34 @@ export const TabPartisipasiLomba = () => {
                     <div className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center">
                         <p>Click to upload or drag and drop</p>
                         <p className="text-gray-500">Max. file size: 10MB</p>
-                        <button
-                            type="button"
-                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg"
+                        <input
+                            type="file"
+                            accept=".jpg,.jpeg,.png"
+                            className="hidden"
+                            id="fileInput"
+                            onChange={handleFileChange}
+                        />
+                        <label
+                            htmlFor="fileInput"
+                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg cursor-pointer inline-block"
                         >
                             Browse File
-                        </button>
+                        </label>
+                        {selectedFile && (
+                            <div className="mt-4 flex items-center justify-center">
+                                <p className="text-green-500 mr-2">
+                                    {selectedFile.name}
+                                </p>
+                                <button
+                                    type="button"
+                                    className="text-red-500 hover:text-red-700"
+                                    onClick={handleRemoveFile}
+                                    aria-label="Remove file"
+                                >
+                                    &times;
+                                </button>
+                            </div>
+                        )}
                     </div>
                     <p className="text-gray-500 mt-2">
                         Ketentuan file Poster Kegiatan yang diunggah:

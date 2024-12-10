@@ -17,11 +17,10 @@ return new class extends Migration
             $table->boolean('is_group')->default(false); // Kompetisi kelompok
             $table->string('leader_nim', 20)->nullable(); // NIM ketua kelompok
             $table->string('ormawa_delegation')->nullable(); // Delegasi ORMAWA
-            $table->string('mentor_name')->nullable(); // Nama pembimbing
             $table->string('activity_name'); // Nama kegiatan
-            $table->string('field')->nullable(); // Bidang lomba
             $table->string('scope')->nullable(); // Tingkat Prestasi lomba
-            $table->string('degree')->nullable(); // Gelar lomba
+            $table->string('field')->nullable(); // Bidang lomba
+            $table->string('mentor_name')->nullable(); // Nama pembimbing
             $table->string('organizer')->nullable(); // Penyelenggara
             $table->string('host_country')->nullable(); // Negara penyelenggara
             $table->string('location')->nullable(); // Lokasi kegiatan
@@ -45,12 +44,11 @@ return new class extends Migration
             $table->boolean('is_group')->default(false); // Kompetisi kelompok
             $table->string('leader_nim', 20)->nullable(); // NIM ketua kelompok
             $table->string('ormawa_delegation')->nullable(); // Delegasi ORMAWA
-            $table->string('mentor_name')->nullable(); // Nama pembimbing
-            $table->string('achievement_level'); // Tingkat Prestasi 
             $table->string('activity_name'); // Nama kegiatan
-            $table->string('field')->nullable(); // Bidang lomba
             $table->string('scope')->nullable(); // Tingkat Prestasi lomba
+            $table->string('field')->nullable(); // Bidang lomba
             $table->string('degree')->nullable(); // Gelar lomba
+            $table->string('mentor_name')->nullable(); // Nama pembimbing
             $table->string('organizer')->nullable(); // Penyelenggara
             $table->string('host_country')->nullable(); // Negara penyelenggara
             $table->string('location')->nullable(); // Lokasi kegiatan

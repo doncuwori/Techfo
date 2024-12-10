@@ -1,4 +1,9 @@
+import { usePage } from "@inertiajs/react";
+import React from "react";
+
 const ProfileSection = () => {
+    const { user } = usePage().props.auth;
+
     return (
         <div className="flex flex-col items-start gap-6 py-8 px-8 w-full">
             <div className="flex items-center gap-8 w-full">
@@ -11,8 +16,8 @@ const ProfileSection = () => {
                     {/* Labels Column */}
                     <div className="min-w-[180px] bg-orange-100 rounded-tl-lg rounded-bl-lg px-4 py-3">
                         {["NIM", "Nama", "Program Studi", "Angkatan"].map(
-                            (label) => (
-                                <div key={label} className="py-2">
+                            (label, index) => (
+                                <div key={index} className="py-2">
                                     <div className="text-[#2d3036] text-sm font-semibold">
                                         {label}
                                     </div>
@@ -22,18 +27,15 @@ const ProfileSection = () => {
                     </div>
                     {/* Values Column */}
                     <div className="flex-grow px-4 py-3">
-                        {[
-                            "2110512020",
-                            "Khaliza Fania",
-                            "S1 Sistem Informasi",
-                            "2021",
-                        ].map((value) => (
-                            <div key={value} className="py-2">
-                                <div className="text-[#2d3036] text-sm font-normal">
-                                    {value}
+                        {[user.nim, user.name, user.prodi, user.angkatan].map(
+                            (value, index) => (
+                                <div key={index} className="py-2">
+                                    <div className="text-[#2d3036] text-sm font-normal">
+                                        {value || "-"}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            )
+                        )}
                     </div>
                 </div>
             </div>

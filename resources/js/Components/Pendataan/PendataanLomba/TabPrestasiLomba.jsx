@@ -25,7 +25,7 @@ export const TabPrestasiLomba = () => {
         event_photo_url: "",
         members: [],
     });
-    
+
     const [memberNim, setMemberNim] = useState("");
     const [fetchedUsers, setFetchedUsers] = useState([]);
 
@@ -51,6 +51,31 @@ export const TabPrestasiLomba = () => {
 
     const handleCheckbox = (e) => {
         setData("is_group", e.target.checked);
+    };
+
+    const [scanBuktiFile, setScanBuktiFile] = useState(null);
+    const [kegiatanFile, setKegiatanFile] = useState(null);
+
+    const handleFileScanBuktiChange = (event) => {
+        const file = event.target.files[0];
+        setScanBuktiFile(file);
+    };
+
+    const handleFileKegiatanChange = (event) => {
+        const file = event.target.files[0];
+        setKegiatanFile(file);
+    };
+
+    const handleRemoveScanBuktiFile = () => {
+        setScanBuktiFile(null);
+        // Clear the file input field for scan bukti
+        document.getElementById("scanBuktiInput").value = null;
+    };
+
+    const handleRemoveKegiatanFile = () => {
+        setKegiatanFile(null);
+        // Clear the file input field for file kegiatan
+        document.getElementById("kegiatanInput").value = null;
     };
 
     const handleSubmit = (e) => {
@@ -103,7 +128,6 @@ export const TabPrestasiLomba = () => {
                             <div className="flex flex-row">
                                 <input
                                     type="number"
-                            
                                     className="text-sm px-2.5 py-2 rounded-lg border-neutral-400 border-[1.5px]"
                                     placeholder="Tuliskan NIM"
                                     onChange={(e) => {
@@ -178,7 +202,7 @@ export const TabPrestasiLomba = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Delegasi ORMAWA
+                        Delegasi ORMAWA<span className="text-red-600">*</span>
                     </label>
                     <select
                         value={data.ormawa_delegation}
@@ -220,7 +244,7 @@ export const TabPrestasiLomba = () => {
 
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Nama Kegiatan
+                        Nama Kegiatan<span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -233,32 +257,12 @@ export const TabPrestasiLomba = () => {
                     />
                 </div>
 
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2">
-                        Prestasi
-                    </label>
-                    <select
-                        value={data.achievement_level}
-                        onChange={(e) => {
-                            setData("achievement_level", e.target.value);
-                        }}
-                        className="w-full border rounded-lg p-2"
-                    >
-                        <option>-- Pilih Prestasi --</option>
-                        <option>Juara 1</option>
-                        <option>Juara 2</option>
-                        <option>Juara 3</option>
-                        <option>Juara Umum</option>
-                        <option>Juara Favorit</option>
-                        <option>Juara Harapan</option>
-                    </select>
-                </div>
-
                 <div className="flex gap-4">
                     <div className="flex flex-col w-full">
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">
                                 Tingkat Prestasi
+                                <span className="text-red-600">*</span>
                             </label>
                             <select
                                 onChange={(e) => {
@@ -273,35 +277,41 @@ export const TabPrestasiLomba = () => {
                                 <option>Regional</option>
                                 <option>Wilayah</option>
                                 <option>Daerah/Provinsi</option>
-                                <option>Kabupaten/Kotan</option>
+                                <option>Kabupaten/Kota</option>
                                 <option>Kecamatan</option>
                                 <option>UPN "Veteran" Jakarta</option>
                             </select>
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">
-                                Gelar
+                                Gelar<span className="text-red-600">*</span>
                             </label>
                             <select
                                 onChange={(e) => {
-                                    setData("field", e.target.value);
+                                    setData("degree", e.target.value);
                                 }}
-                                value={data.field}
+                                value={data.degree}
                                 className="w-full border rounded-lg p-2"
                             >
                                 <option>-- Pilih Gelar --</option>
-                                <option>Ilmiah/Penalaran/Akademik</option>
-                                <option>Minat Khusus</option>
-                                <option>Olahraga</option>
-                                <option>Sains</option>
-                                <option>Lainnya</option>
+                                <option>Juara Harapan I</option>
+                                <option>Juara Harapan II</option>
+                                <option>Juara Harapan III</option>
+                                <option>Juara I</option>
+                                <option>Juara II</option>
+                                <option>Juara III</option>
+                                <option>Medali Emas</option>
+                                <option>Medali Perak</option>
+                                <option>Medali Perunggu</option>
+                                <option>Penerima Hibah</option>
+                                <option>Terbaik</option>
                             </select>
                         </div>
                     </div>
                     <div className="flex flex-col w-full">
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">
-                                Bidang
+                                Bidang<span className="text-red-600">*</span>
                             </label>
                             <select
                                 onChange={(e) => {
@@ -321,6 +331,7 @@ export const TabPrestasiLomba = () => {
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">
                                 Dosen Pembimbing/Pendamping
+                                <span className="text-red-600">*</span>
                             </label>
                             <input
                                 type="text"
@@ -337,7 +348,7 @@ export const TabPrestasiLomba = () => {
 
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Penyelenggara
+                        Penyelenggara<span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -352,6 +363,7 @@ export const TabPrestasiLomba = () => {
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Negara Penyelenggara
+                        <span className="text-red-600">*</span>
                     </label>
                     <select
                         onChange={(e) => {
@@ -368,6 +380,7 @@ export const TabPrestasiLomba = () => {
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Tempat Pelaksanaan
+                        <span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -382,6 +395,7 @@ export const TabPrestasiLomba = () => {
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Waktu Pelaksanaan Dimulai
+                        <span className="text-red-600">*</span>
                     </label>
                     <input
                         onChange={(e) => {
@@ -395,6 +409,7 @@ export const TabPrestasiLomba = () => {
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Waktu Pelaksanaan Berakhir
+                        <span className="text-red-600">*</span>
                     </label>
                     <input
                         onChange={(e) => {
@@ -408,6 +423,7 @@ export const TabPrestasiLomba = () => {
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Deskripsi Kegiatan
+                        <span className="text-red-600">*</span>
                     </label>
                     <textarea
                         onChange={(e) => {
@@ -420,7 +436,11 @@ export const TabPrestasiLomba = () => {
                 </div>
             </section>
             <section className="mb-8">
-                <h2 className="text-xl font-bold mb-4">Dokumen Pendukung</h2>
+                <h2 className="text-xl font-bold mb-4">
+                    Dokumen Pendukung
+                </h2>
+
+                {/* Upload Scan Bukti */}
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Scan Bukti
@@ -428,9 +448,34 @@ export const TabPrestasiLomba = () => {
                     <div className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center">
                         <p>Click to upload or drag and drop</p>
                         <p className="text-gray-500">Max. file size: 10MB</p>
-                        <button className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg">
+                        <input
+                            type="file"
+                            accept=".jpg,.jpeg,.png,.pdf"
+                            className="hidden"
+                            id="scanBuktiInput"
+                            onChange={handleFileScanBuktiChange}
+                        />
+                        <label
+                            htmlFor="scanBuktiInput"
+                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg cursor-pointer inline-block"
+                        >
                             Browse File
-                        </button>
+                        </label>
+                        {scanBuktiFile && (
+                            <div className="mt-4 flex items-center justify-center">
+                                <p className="text-green-500 mr-2">
+                                    {scanBuktiFile.name}
+                                </p>
+                                <button
+                                    type="button"
+                                    className="text-red-500 hover:text-red-700"
+                                    onClick={handleRemoveScanBuktiFile}
+                                    aria-label="Remove file"
+                                >
+                                    &times;
+                                </button>
+                            </div>
+                        )}
                     </div>
                     <p className="text-gray-500 mt-2">
                         Ketentuan file scan bukti yang diunggah:
@@ -438,16 +483,17 @@ export const TabPrestasiLomba = () => {
                     <ul className="text-gray-500 list-disc list-inside">
                         <li>
                             Detail scan berupa Piagam/Sertifikat/Penghargaan
-                            atau yang menunjukkan hasil prestasi yang diikuti
-                            dalam bentuk format berkas.
+                            atau dokumen hasil prestasi.
                         </li>
                         <li>
-                            Berkas yang diunggah dalam format file: .pdf, .jpeg,
-                            .png, .pdf.
+                            Berkas yang diunggah dalam format: .pdf, .jpeg,
+                            .png.
                         </li>
-                        <li>Ukuran maksimal setiap file maksimal 10MB.</li>
+                        <li>Ukuran maksimal setiap file adalah 10MB.</li>
                     </ul>
                 </div>
+
+                {/* Upload Foto Kegiatan */}
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Foto Kegiatan
@@ -455,18 +501,43 @@ export const TabPrestasiLomba = () => {
                     <div className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center">
                         <p>Click to upload or drag and drop</p>
                         <p className="text-gray-500">Max. file size: 10MB</p>
-                        <button className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg">
+                        <input
+                            type="file"
+                            accept=".jpg,.jpeg,.png"
+                            className="hidden"
+                            id="fotoKegiatanInput"
+                            onChange={handleFileKegiatanChange}
+                        />
+                        <label
+                            htmlFor="fotoKegiatanInput"
+                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg cursor-pointer inline-block"
+                        >
                             Browse File
-                        </button>
+                        </label>
+                        {kegiatanFile && (
+                            <div className="mt-4 flex items-center justify-center">
+                                <p className="text-green-500 mr-2">
+                                    {kegiatanFile.name}
+                                </p>
+                                <button
+                                    type="button"
+                                    className="text-red-500 hover:text-red-700"
+                                    onClick={handleRemoveKegiatanFile}
+                                    aria-label="Remove file"
+                                >
+                                    &times;
+                                </button>
+                            </div>
+                        )}
                     </div>
                     <p className="text-gray-500 mt-2">
                         Ketentuan file foto kegiatan yang diunggah:
                     </p>
                     <ul className="text-gray-500 list-disc list-inside">
                         <li>
-                            Foto kegiatan dalam format file: .jpeg, .png, .pdf.
+                            Berkas yang diunggah dalam format file: .jpeg, .png.
                         </li>
-                        <li>Ukuran maksimal setiap file maksimal 10MB.</li>
+                        <li>Ukuran maksimal setiap file adalah 10MB.</li>
                     </ul>
                 </div>
             </section>

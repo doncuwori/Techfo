@@ -1,8 +1,16 @@
 <?php
 
 use App\Http\Controllers\AbdimasInformationController;
-use App\Http\Controllers\Admin\AdminCompetitionRegistrantController;
+use App\Http\Controllers\Admin\AdminCompetitionController;
+use App\Http\Controllers\Admin\AdminScholarshipController;
+use App\Http\Controllers\Admin\AdminAbdimasController;
+use App\Http\Controllers\Admin\AdminResearchController;
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\PusatInformasiLombaController;
+use App\Http\Controllers\Admin\PusatInformasiBeasiswaController;
+use App\Http\Controllers\Admin\PusatInformasiAbdimasController;
+use App\Http\Controllers\Admin\PusatInformasiPenelitianController;
+use App\Http\Controllers\LandingPage\LandingPageController;
 use App\Http\Controllers\CompetitionInformationController;
 use App\Http\Controllers\CompetitionRegistrantController;
 use App\Http\Controllers\CompetitionsAchievementController;
@@ -26,9 +34,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // Landing Page
-Route::get('/landingPage', function () {
-    return Inertia::render('LandingPage');
-})->name(name: 'landingPage');
+Route::get('/landingPage', [LandingPageController::class, 'index'])->name(name: 'landingPage');
 
 
 // Login
@@ -141,11 +147,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     // Dashboard
     Route::get('/dashboardAdmin', [DashboardAdminController::class, 'index'])->name('dashboardAdmin');
-    Route::get('/dashboardAdmin', [DashboardAdminController::class, 'index'])->name('dashboardAdmin');
-
-    Route::get('/laporanLomba', function () {
-        return Inertia::render('Admin/Laporan/LaporanLomba');
-    })->name('laporanLomba');
 
     Route::post('/pusatInformasi/tambahInfoLomba', [CompetitionInformationController::class, 'store'])
         ->name('competitionInformation.store');
@@ -159,17 +160,13 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::post('/pusatInformasi/tambahInfoPenelitian', [ResearchInformationController::class, 'store'])
         ->name('researchInformation.store');
 
-    Route::get('/laporanBeasiswa', function () {
-        return Inertia::render('Admin/Laporan/LaporanBeasiswa');
-    })->name('laporanBeasiswa');
+    Route::get('/laporanLomba', [AdminCompetitionController::class, 'index'])->name('laporanLomba');
 
-    Route::get('/laporanAbdimas', function () {
-        return Inertia::render('Admin/Laporan/LaporanAbdimas');
-    })->name('laporanAbdimas');
+    Route::get('/laporanBeasiswa', [AdminScholarshipController::class, 'index'])->name('laporanBeasiswa');
 
-    Route::get('/laporanPenelitian', function () {
-        return Inertia::render('Admin/Laporan/LaporanPenelitian');
-    })->name('laporanPenelitian');
+    Route::get('/laporanAbdimas', [AdminAbdimasController::class, 'index'])->name('laporanAbdimas');
+
+    Route::get('/laporanPenelitian', [AdminResearchController::class, 'index'])->name('laporanPenelitian');
 
     Route::get('/pusatInformasi/tambahInfoLomba', function () {
         return Inertia::render('Admin/PusatInformasi/TambahInfoLomba');
@@ -187,21 +184,13 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
         return Inertia::render('Admin/PusatInformasi/TambahInfoAbdimas');
     })->name('tambahInfoAbdimas');
 
-    Route::get('/pusatLomba', function () {
-        return Inertia::render('Admin/PusatInformasi/PusatLomba');
-    })->name('pusatLomba');
+    Route::get('/pusatLomba', [PusatInformasiLombaController::class, 'index'])->name('pusatLomba');
 
-    Route::get('/pusatBeasiswa', function () {
-        return Inertia::render('Admin/PusatInformasi/PusatBeasiswa');
-    })->name('pusatBeasiswa');
+    Route::get('/pusatBeasiswa', [PusatInformasiBeasiswaController::class, 'index'])->name('pusatBeasiswa');
 
-    Route::get('/pusatAbdimas', function () {
-        return Inertia::render('Admin/PusatInformasi/PusatAbdimas');
-    })->name('pusatAbdimas');
+    Route::get('/pusatAbdimas', [PusatInformasiAbdimasController::class, 'index'])->name('pusatAbdimas');
 
-    Route::get('/pusatPenelitian', function () {
-        return Inertia::render('Admin/PusatInformasi/PusatPenelitian');
-    })->name('pusatPenelitian');
+    Route::get('/pusatPenelitian', [PusatInformasiPenelitianController::class, 'index'])->name('pusatPenelitian');
 
     Route::get('/loginAdmin', function () {
         return Inertia::render('Admin/LoginAdmin');

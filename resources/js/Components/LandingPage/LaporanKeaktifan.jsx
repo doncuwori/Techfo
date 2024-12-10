@@ -180,51 +180,65 @@ const LaporanKeaktifan = ({ competitionCount, scholarshipCount }) => {
 
     return (
         <div>
-            <main className="container mx-auto p-4 mb-20 mt-14 relative z-10">
+            <main className="container mx-auto px-4 py-8 relative z-10">
                 <div className="min-h-[360px] p-8 bg-white rounded-lg border-2 border-gray-300 shadow-lg flex flex-col gap-8">
                     <div className="w-full mt-6">
                         <h2 className="text-xl font-semibold">
                             Laporan Keaktifan
                         </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-4 pt-4 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 pt-4 gap-6">
                             {[
                                 {
                                     label: "LOMBA",
                                     icon: "🏆",
                                     count: competitionCount,
+                                    status1: "Menang",
+                                    status2: "Daftar",
                                 },
                                 {
                                     label: "BEASISWA",
                                     icon: "📝",
                                     count: scholarshipCount,
+                                    status1: "Penerima",
+                                    status2: "Daftar",
                                 },
                                 {
                                     label: "ABDIMAS",
                                     icon: "👥",
                                     count: "36/50",
+                                    status1: "Penerima",
+                                    status2: "Daftar",
                                 },
                                 {
                                     label: "PENELITIAN",
                                     icon: "🔍",
                                     count: "36/50",
+                                    status1: "Penerima",
+                                    status2: "Daftar",
                                 },
-                            ].map(({ label, icon, count }) => (
-                                <div
-                                    key={label}
-                                    className="bg-orange-100 border-2 border-neutral-200 rounded-lg p-6 flex items-center"
-                                >
-                                    <div className="text-5xl">{icon}</div>
-                                    <div className="ml-10 text-center">
-                                        <p className="font-semibold">{label}</p>
-                                        <p className="text-[#2d3036] text-2xl font-medium leading-10">
-                                            {count}
-                                        </p>
-                                        <p className="text-gray-600 text-xs">
-                                            Menang/Daftar
-                                        </p>
+                            ].map(
+                                ({ label, icon, count, status1, status2 }) => (
+                                    <div
+                                        key={label}
+                                        className="bg-orange-100 border-2 border-neutral-200 rounded-lg p-6 flex items-center flex-col sm:flex-row"
+                                    >
+                                        <div className="text-5xl ml-2">
+                                            {icon}
+                                        </div>
+                                        <div className="ml-0 sm:ml-12 text-center">
+                                            <p className="font-semibold">
+                                                {label}
+                                            </p>
+                                            <p className="text-[#2d3036] text-2xl font-medium leading-10">
+                                                {count}
+                                            </p>
+                                            <p className="text-gray-600 text-xs">
+                                                {status1}/{status2}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                )
+                            )}
                         </div>
                     </div>
 

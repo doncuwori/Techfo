@@ -55,7 +55,7 @@ export const TabLolosBeasiswa = () => {
                         htmlFor="name"
                         className="block text-gray-700 font-bold mb-2"
                     >
-                        Nama Beasiswa
+                        Nama Beasiswa<span className="text-red-600">*</span>
                     </label>
                     <input
                         value={data.name}
@@ -71,7 +71,7 @@ export const TabLolosBeasiswa = () => {
                         htmlFor="type"
                         className="block text-gray-700 font-bold mb-2"
                     >
-                        Jenis Beasiswa
+                        Jenis Beasiswa<span className="text-red-600">*</span>
                     </label>
                     <select
                         value={data.type}
@@ -90,7 +90,7 @@ export const TabLolosBeasiswa = () => {
 
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Penyelenggara
+                        Penyelenggara<span className="text-red-600">*</span>
                     </label>
                     <input
                         value={data.organizer}
@@ -107,6 +107,7 @@ export const TabLolosBeasiswa = () => {
                         className="block text-gray-700 font-bold mb-2"
                     >
                         Negara Penyelenggara
+                        <span className="text-red-600">*</span>
                     </label>
                     <select
                         value={data.host_country}
@@ -127,7 +128,7 @@ export const TabLolosBeasiswa = () => {
                         htmlFor="event_date"
                         className="block text-gray-700 font-bold mb-2"
                     >
-                        Waktu Pelaksanaan
+                        Waktu Pelaksanaan<span className="text-red-600">*</span>
                     </label>
                     <input
                         type="date"
@@ -144,6 +145,7 @@ export const TabLolosBeasiswa = () => {
                         className="block text-gray-700 font-bold mb-2"
                     >
                         Deskripsi Kegiatan
+                        <span className="text-red-600">*</span>
                     </label>
                     <textarea
                         id="description"
@@ -167,30 +169,48 @@ export const TabLolosBeasiswa = () => {
                         <p className="text-gray-500">Max. file size: 10MB</p>
                         <input
                             type="file"
-                            id="scan-bukti"
                             className="hidden"
+                            id="scan-bukti"
                             onChange={(e) => handleFileChange(e, setScanBukti)}
                         />
                         <label
                             htmlFor="scan-bukti"
-                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg cursor-pointer"
+                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg cursor-pointer inline-block"
                         >
                             Browse File
                         </label>
+                        {scanBukti && (
+                            <div className="mt-4 flex items-center justify-center">
+                                <p className="text-green-500 mr-2">
+                                    {scanBukti.name}
+                                </p>
+                                <button
+                                    type="button"
+                                    className="text-red-500 hover:text-red-700"
+                                    onClick={() =>
+                                        handleRemoveFile(setScanBukti)
+                                    }
+                                    aria-label="Remove file"
+                                >
+                                    &times;
+                                </button>
+                            </div>
+                        )}
                     </div>
-                    {scanBukti && (
-                        <div className="flex items-center mt-2">
-                            <span className="text-gray-700">
-                                {scanBukti.name}
-                            </span>
-                            <button
-                                onClick={() => handleRemoveFile(setScanBukti)}
-                                className="ml-2 text-red-500 hover:text-red-700"
-                            >
-                                ✖
-                            </button>
-                        </div>
-                    )}
+                    <p className="text-gray-500 mt-2">
+                        Ketentuan file Poster Kegiatan yang diunggah:
+                    </p>
+                    <ul className="text-gray-500 list-disc list-inside">
+                        <li>
+                            Detail scan berupa bukti
+                            atau dokumen penerima beasiswa.
+                        </li>
+                        <li>
+                            Tipe file yang dapat diunggah antara lain: .jpg,
+                            .jpeg, .png;
+                        </li>
+                        <li>Ukuran file maksimal 1MB.</li>
+                    </ul>
                 </div>
 
                 {/* Poster Kegiatan */}
@@ -203,34 +223,51 @@ export const TabLolosBeasiswa = () => {
                         <p className="text-gray-500">Max. file size: 10MB</p>
                         <input
                             type="file"
-                            id="poster-kegiatan"
+                            accept=".jpg,.jpeg,.png"
                             className="hidden"
+                            id="poster-kegiatan"
                             onChange={(e) =>
                                 handleFileChange(e, setPosterKegiatan)
                             }
                         />
                         <label
                             htmlFor="poster-kegiatan"
-                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg cursor-pointer"
+                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg cursor-pointer inline-block"
                         >
                             Browse File
                         </label>
+                        {posterKegiatan && (
+                            <div className="mt-4 flex items-center justify-center">
+                                <p className="text-green-500 mr-2">
+                                    {posterKegiatan.name}
+                                </p>
+                                <button
+                                    type="button"
+                                    className="text-red-500 hover:text-red-700"
+                                    onClick={() =>
+                                        handleRemoveFile(setPosterKegiatan)
+                                    }
+                                    aria-label="Remove file"
+                                >
+                                    &times;
+                                </button>
+                            </div>
+                        )}
                     </div>
-                    {posterKegiatan && (
-                        <div className="flex items-center mt-2">
-                            <span className="text-gray-700">
-                                {posterKegiatan.name}
-                            </span>
-                            <button
-                                onClick={() =>
-                                    handleRemoveFile(setPosterKegiatan)
-                                }
-                                className="ml-2 text-red-500 hover:text-red-700"
-                            >
-                                ✖
-                            </button>
-                        </div>
-                    )}
+                    <p className="text-gray-500 mt-2">
+                        Ketentuan file Poster Kegiatan yang diunggah:
+                    </p>
+                    <ul className="text-gray-500 list-disc list-inside">
+                        <li>
+                            Poster beasiswa yang diikuti, menunjukkan nama
+                            beasiswa;
+                        </li>
+                        <li>
+                            Tipe file yang dapat diunggah antara lain: .jpg,
+                            .jpeg, .png;
+                        </li>
+                        <li>Ukuran file maksimal 1MB.</li>
+                    </ul>
                 </div>
             </section>
 

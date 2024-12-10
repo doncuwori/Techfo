@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "@inertiajs/react";
 import TabelPusatInformasi from "@/Components/PusatInformasi/TabelPusatInformasi";
 
-const PusatLomba = () => {
+const PusatLomba = ( {user} ) => {
     const data = [
         { no: 1, name: "Lomba 1", date: "Apr 23, 2024 - Mei 23, 2024" },
         { no: 2, name: "Lomba 2", date: "Apr 25, 2024 - Mei 25, 2024" },
@@ -11,7 +11,7 @@ const PusatLomba = () => {
 
     return (
         <div>
-            <NavbarAdmin />
+            <NavbarAdmin user={user}/>
             <main className="pl-72 w-full z-0">
                 <div className="container px-4 py-8 w-full">
                     <div className="bg-white p-6 mt-14 rounded shadow-lg">

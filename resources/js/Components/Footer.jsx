@@ -128,11 +128,11 @@ const Footer = () => {
                     <div className="text-base font-normal">
                         <div className="flex items-center gap-3">
                             <UserRound className="w-5 h-5" />
-                            Erly Krisnanik, S.Kom., MM. - 197409082021212003
+                            Erly Krisnanik, S.Kom., MM. - 0308097401
                         </div>
                         <div className="flex items-center gap-3">
                             <UserRound className="w-5 h-5" />
-                            Ika Nurlaili, S.Kom., M.Sc. - 217121291
+                            Ika Nurlaili, S.Kom., M.Sc. - 0015039301
                         </div>
                     </div>
                 </div>

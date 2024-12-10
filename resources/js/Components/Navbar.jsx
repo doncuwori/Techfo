@@ -4,7 +4,7 @@ import { Link, useForm } from "@inertiajs/react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import { ChevronDown, Menu, X } from "lucide-react";
 
-const Navbar = () => {
+const Navbar = ( {data} ) => {
     const [isPendataanDropdownOpen, setIsPendataanDropdownOpen] =
         useState(false);
     const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
@@ -222,7 +222,7 @@ const Navbar = () => {
                             href={route("profile")}
                             className={`block px-4 py-2 text-gray-700 transition duration-150 ${
                                 route().current("profile")
-                                    ? "bg-orange-50 text-black font-bold"
+                                    ? "bg-orange-50 text-[#fe633e] font-bold"
                                     : "hover:bg-orange-50 hover:text-[#fe632e] hover:font-bold"
                             }`}
                         >

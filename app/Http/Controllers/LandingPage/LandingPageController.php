@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\LandingPage;
 
 use App\Http\Controllers\Controller;
 
@@ -10,7 +10,7 @@ use App\Models\Scholarships\ScholarshipRecipient;
 use App\Models\Scholarships\ScholarshipRegistrant;
 use Inertia\Inertia;
 
-class DashboardAdminController extends Controller
+class LandingPageController extends Controller
 {
     public function index(){
         $competitionRegistrantsCount = CompetitionRegistrant::count();
@@ -18,15 +18,13 @@ class DashboardAdminController extends Controller
         $scholarshipRegistrantsCount = ScholarshipRegistrant::count();
         $scholarshipRecipientsCount = ScholarshipRecipient::count();
 
-        $user = auth()->user();
 
-        return Inertia::render('Admin/DashboardAdmin', [
+
+        return Inertia::render('LandingPage', [
             'competitionRegistrantsCount' => $competitionRegistrantsCount,
             'competitionWinnersCount' => $competitionWinnersCount,
             'scholarshipRegistrantsCount' => $scholarshipRegistrantsCount,
             'scholarshipRecipientsCount' => $scholarshipRecipientsCount,
-            'user' => $user,
         ]);
-        
     }
 }

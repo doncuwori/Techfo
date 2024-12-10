@@ -3,11 +3,20 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import NavbarAdmin from "@/Components/NavbarAdmin";
 
-const LaporanLomba = () => {
-    const value = 0.3;
+const LaporanLomba = ({
+    competitionWinnersCount,
+    competitionRegistrantsCount,
+    user
+}) => {
+    console.log(competitionWinnersCount, competitionRegistrantsCount);
+
+    const maxValue = 365;  
+    const value = Math.min(competitionWinnersCount, maxValue);  
+    const percentage = (value / maxValue) * 100; 
+
     return (
         <body>
-            <NavbarAdmin />
+            <NavbarAdmin user={user}/>
             <div class="pl-72 w-full">
                 <div class="container px-4 py-8 w-full">
                     <h1 class="text-3xl font-bold text-black mb-6">
@@ -21,8 +30,8 @@ const LaporanLomba = () => {
                                         <CircularProgressbar
                                             className="h-24 w-24"
                                             value={value}
-                                            maxValue={1}
-                                            text={`${value * 100}%`}
+                                            maxValue={maxValue}
+                                            text={`${percentage.toFixed(2)}%`}
                                         />
                                     </div>
                                 </div>
@@ -40,8 +49,8 @@ const LaporanLomba = () => {
                                     <h2 class="text-xl font-semibold text-black mb-4">
                                         Pemenang Lomba
                                     </h2>
-                                    <div class="text-4xl font-bold text-black">
-                                        135
+                                    <div className="text-4xl font-bold text-black">
+                                        {`${competitionWinnersCount}`}
                                     </div>
                                 </div>
                             </div>
@@ -53,8 +62,8 @@ const LaporanLomba = () => {
                                     <h2 class="text-xl font-semibold text-black mb-4">
                                         Partisipan Lomba
                                     </h2>
-                                    <div class="text-4xl font-bold text-black">
-                                        135
+                                    <div className="text-4xl font-bold text-black">
+                                        {`${competitionRegistrantsCount}`}
                                     </div>
                                 </div>
                             </div>
