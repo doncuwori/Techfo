@@ -21,7 +21,8 @@ class CompetitionInformationController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'organizer' => 'required|string|max:255',
-            'event_time' => 'required|date',
+            'event_time_start' => 'required|date',
+            'event_time_end' => 'required|date',
             'description' => 'required|string',
             // 'poster_url' => 'required|url',
         ]);
@@ -30,7 +31,8 @@ class CompetitionInformationController extends Controller
         $competition = CompetitionInformation::create([
             'name' => $request->name,
             'organizer' => $request->organizer,
-            'event_time' => $request->event_time,
+            'event_time_start' => $request->event_time_start,
+            'event_time_end' => $request->event_time_end,
             'description' => $request->description,
             'poster_url' => $request->poster_url,
             'created_by' => $user->id,

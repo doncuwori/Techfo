@@ -112,7 +112,7 @@ const CardLomba = ({ data }) => {
                                             className="text-orange-500"
                                         />
                                         <span className="text-orange-500 text-xs font-medium leading-tight">
-                                            {formatDate(competition.event_time)}
+                                            {formatDate(competition.event_time_end)}
                                         </span>
                                     </div>
                                 </div>

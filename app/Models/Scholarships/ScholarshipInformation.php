@@ -13,7 +13,8 @@ class ScholarshipInformation extends Model
     protected $fillable = [
         'name',
         'organizer',
-        'event_time',
+        'event_time_start',
+        'event_time_end',
         'description',
         'poster_url',
         'created_by',

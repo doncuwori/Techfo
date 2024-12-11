@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('type');
             $table->string('organizer');
             $table->string('host_country');
-            $table->date('event_date');
+            $table->date('event_date_start');
+            $table->date('event_date_end');
             $table->text('description');
             $table->foreignId('created_by')->constrained('users');
             $table->timestamps();
@@ -37,12 +38,14 @@ return new class extends Migration
             $table->string('type');
             $table->string('organizer');
             $table->string('host_country');
-            $table->date('event_date');
+            $table->date('event_date_start');
+            $table->date('event_date_end');
             $table->text('description');
             $table->text('proof_scan_url')->nullable();
             $table->foreignId('created_by')->constrained('users');
             $table->timestamps();
         });
+        
         Schema::create('user_scholarship_recipients', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

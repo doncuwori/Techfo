@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@inertiajs/react";
+import { Clock5 } from 'lucide-react';
 
 const CompetionCard = ({ title, description, date, image, label }) => (
     <div className="w-[343px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-lg flex flex-col gap-2">

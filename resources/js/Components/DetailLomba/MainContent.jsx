@@ -13,7 +13,7 @@ const MainContent = ({ data }) => {
                 <h2 className="text-lg mb-2">Diunggah oleh</h2>
                 <div className="flex items-center">
                     <img
-                        src="img/logobem.png"
+                        src="/img/logobem.png"
                         className="w-10 h-10 rounded-full mr-2"
                         alt="Profile Picture"
                     />
@@ -38,16 +38,18 @@ const MainContent = ({ data }) => {
             </div>
             <div className="flex justify-start mb-4">
                 <img
-                    src="public/img/poster.jpeg"
+                    src="/img/posterlomba.jpg"
                     alt="Deskripsi gambar"
                     className="w-full max-h-[300px] object-cover rounded-md"
                 />
             </div>
             <div className="mb-4">
-                <h2 className="text-lg font-bold mb-2">Batas Pendaftaran</h2>
+                <h2 className="text-lg font-bold mb-2">Waktu Acara</h2>
                 <div className="flex items-center">
                     <Calendar />
-                    <p className="text-gray-700 ml-2">{formatDate(data.created_at)} - {formatDate(data.event_time)}</p>
+                    <p className="text-gray-700 ml-2">
+                        {formatDate(data.event_time_start)} - {formatDate(data.event_time_end)}
+                    </p>
                 </div>
             </div>
             <p className="text-gray-700 mb-4">{data.description}</p>
