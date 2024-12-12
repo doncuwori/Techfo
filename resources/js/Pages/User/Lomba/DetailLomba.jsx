@@ -20,7 +20,7 @@ const DetailLomba = ({ data }) => {
                     className="w-full max-h-[600px] object-cover rounded-md"
                 />
             </div>
-            <div className="relative z-0 mt-6 px-6">
+            <div className="relative z-0 mt-6 px-4">
                 <MainContent data={data} />
             </div>
         </div>

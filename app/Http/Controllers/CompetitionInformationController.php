@@ -13,6 +13,11 @@ class CompetitionInformationController extends Controller
     public function index()
     {
         // return view('competition-information');
+        $user = auth()->user();
+
+        return Inertia::render('Admin/PusatInformasi/TambahInfoLomba', [
+            'user' => $user,
+        ]);
     }
 
     public function store(Request $request){

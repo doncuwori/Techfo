@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "@inertiajs/react";
 import TabelPusatInformasi from "@/Components/PusatInformasi/TabelPusatInformasi";
 
-const PusatAbdimas = ( {user} ) => {
+const PusatAbdimas = ({ user }) => {
     const data = [
         {
             no: 1,

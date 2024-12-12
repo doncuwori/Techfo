@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "@inertiajs/react";
 import TabelPusatInformasi from "@/Components/PusatInformasi/TabelPusatInformasi";
 
-const PusatBeasiswa = ( {user} ) => {
+const PusatBeasiswa = ({ user }) => {
     const data = [
         { no: 1, name: "Beasiswa 1", date: "Apr 23, 2024 - Mei 23, 2024" },
         { no: 2, name: "Beasiswa 2", date: "Apr 25, 2024 - Mei 25, 2024" },

@@ -104,6 +104,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/dashboardUser', [DashboardUserController::class, 'index'])->name('dashboardUser');
     Route::get('/lomba/{postId}', [CompetitionInformationController::class, 'show'])->name('competition.show');
+    Route::get('/beasiswa/{postId}', [ScholarshipInformationController::class, 'show'])->name('scholarship.show');
 
     // Beasiswa
     Route::get('/beasiswa', function () {
@@ -168,21 +169,13 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 
     Route::get('/laporanPenelitian', [AdminResearchController::class, 'index'])->name('laporanPenelitian');
 
-    Route::get('/pusatInformasi/tambahInfoLomba', function () {
-        return Inertia::render('Admin/PusatInformasi/TambahInfoLomba');
-    })->name('tambahInfoLomba');
+    Route::get('/pusatInformasi/tambahInfoLomba', [CompetitionInformationController::class, 'index'])->name('tambahInfoLomba');
 
-    Route::get('/pusatInformasi/tambahInfoBeasiswa', function () {
-        return Inertia::render('Admin/PusatInformasi/TambahInfoBeasiswa');
-    })->name('tambahInfoBeasiswa');
+    Route::get('/pusatInformasi/tambahInfoBeasiswa', [ScholarshipInformationController::class, 'index'])->name('tambahInfoBeasiswa');
 
-    Route::get('/pusatInformasi/tambahInfoPenelitian', function () {
-        return Inertia::render(component: 'Admin/PusatInformasi/TambahInfoPenelitian');
-    })->name('tambahInfoPenelitian');
+    Route::get('/pusatInformasi/tambahInfoAbdimas', [AbdimasInformationController::class, 'index'])->name('tambahInfoAbdimas');
 
-    Route::get('/pusatInformasi/tambahInfoAbdimas', function () {
-        return Inertia::render('Admin/PusatInformasi/TambahInfoAbdimas');
-    })->name('tambahInfoAbdimas');
+    Route::get('/pusatInformasi/tambahInfoPenelitian', [ResearchInformationController::class, 'index'])->name('tambahInfoPenelitian');
 
     Route::get('/pusatLomba', [PusatInformasiLombaController::class, 'index'])->name('pusatLomba');
 

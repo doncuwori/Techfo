@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ResearchInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class ResearchInformationController extends Controller
 {
@@ -13,7 +14,12 @@ class ResearchInformationController extends Controller
      */
     public function index()
     {
-        //
+        // return view('competition-information');
+        $user = auth()->user();
+
+        return Inertia::render('Admin/PusatInformasi/TambahInfoPenelitian', [
+            'user' => $user,
+        ]);
     }
 
     /**

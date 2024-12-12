@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "@/Components/Navbar";
-import Sidebar from "@/Components/DetailBeasiswa/Sidebar";
 import MainContent from "@/Components/DetailBeasiswa/MainContent";
 
 const DetailBeasiswa = ({ data }) => {
@@ -9,19 +8,19 @@ const DetailBeasiswa = ({ data }) => {
             <Navbar />
             <div className="absolute inset-0 z-0 flex justify-center mt-16">
                 <img
-                    src="img/bgdetail1.png"
+                    src="/img/bgdetail1.png"
                     alt="Deskripsi gambar"
                     className="w-full max-h-[300px] object-cover rounded-md"
                 />
             </div>
             <div className="absolute inset-x-0 bottom-0 z-0 flex justify-center">
                 <img
-                    src="img/bgdetail2.png"
+                    src="/img/bgdetail2.png"
                     alt="Deskripsi gambar"
-                    className="w-full max-h-[300px] object-cover rounded-md"
+                    className="w-full max-h-[600px] object-cover rounded-md"
                 />
             </div>
-            <div className="relative z-10 flex flex-col md:flex-row mt-6">
+            <div className="relative z-0 mt-6 px-4">
                 <MainContent data={data} />
             </div>
         </div>

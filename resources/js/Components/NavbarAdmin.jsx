@@ -55,6 +55,10 @@ const NavbarAdmin = () => {
             "pusatBeasiswa",
             "pusatAbdimas",
             "pusatPenelitian",
+            "tambahInfoLomba",
+            "tambahInfoBeasiswa",
+            "tambahInfoAbdimas",
+            "tambahInfoPenelitian",
         ];
 
         setIsLaporanDropdownOpen(
@@ -202,7 +206,7 @@ const NavbarAdmin = () => {
                                             className={`${
                                                 route().current(subItem.route)
                                                     ? "text-orange-500 hover:font-bold"
-                                                    : "text-gray-500 hover:text-orange-500"
+                                                    : "text-gray-500 group-hover:text-orange-500"
                                             } flex items-center`}
                                         >
                                             <NotepadText
@@ -230,7 +234,11 @@ const NavbarAdmin = () => {
                                 route().current("pusatLomba") ||
                                 route().current("pusatBeasiswa") ||
                                 route().current("pusatAbdimas") ||
-                                route().current("pusatPenelitian")
+                                route().current("pusatPenelitian") ||
+                                route().current("tambahInfoLomba") ||
+                                route().current("tambahInfoBeasiswa") ||
+                                route().current("tambahInfoAbdimas") ||
+                                route().current("tambahInfoPenelitian") 
                                     ? "text-white bg-orange-500 hover:font-bold"
                                     : "text-gray-500 hover:text-orange-500"
                             } flex items-center w-full group transition duration-150 px-2 py-1 rounded-md`}
@@ -240,7 +248,11 @@ const NavbarAdmin = () => {
                                     route().current("pusatLomba") ||
                                     route().current("pusatBeasiswa") ||
                                     route().current("pusatAbdimas") ||
-                                    route().current("pusatPenelitian")
+                                    route().current("pusatPenelitian") ||
+                                    route().current("tambahInfoLomba") ||
+                                    route().current("tambahInfoBeasiswa") ||
+                                    route().current("tambahInfoAbdimas") ||
+                                    route().current("tambahInfoPenelitian") 
                                         ? "text-white group-hover:scale-105"
                                         : "group-hover:text-orange-500"
                                 }`}
@@ -259,19 +271,23 @@ const NavbarAdmin = () => {
                                 {[
                                     {
                                         name: "Lomba",
-                                        route: "pusatLomba",
+                                        route1: "pusatLomba",
+                                        route2: "tambahInfoLomba",
                                     },
                                     {
                                         name: "Beasiswa",
-                                        route: "pusatBeasiswa",
+                                        route1: "pusatBeasiswa",
+                                        route2: "tambahInfoBeasiswa",
                                     },
                                     {
                                         name: "Pengabdian Masyarakat",
-                                        route: "pusatAbdimas",
+                                        route1: "pusatAbdimas",
+                                        route2: "tambahInfoAbdimas",
                                     },
                                     {
                                         name: "Penelitian",
-                                        route: "pusatPenelitian",
+                                        route1: "pusatPenelitian",
+                                        route2: "tambahInfoPenelitian",
                                     },
                                 ].map((subItem) => (
                                     <li
@@ -279,17 +295,23 @@ const NavbarAdmin = () => {
                                         className="mb-2 flex items-center group"
                                     >
                                         <Link
-                                            href={route(subItem.route)}
+                                            href={route(subItem.route1)}
                                             className={`${
-                                                route().current(subItem.route)
+                                                route().current(
+                                                    subItem.route1
+                                                ) ||
+                                                route().current(subItem.route2)
                                                     ? "text-orange-500 hover:font-bold"
-                                                    : "text-gray-500 hover:text-orange-500"
+                                                    : "text-gray-500 group-hover:text-orange-500"
                                             } flex items-center`}
                                         >
                                             <NotepadText
                                                 className={`w-4 h-4 mr-2 ${
                                                     route().current(
-                                                        subItem.route
+                                                        subItem.route1
+                                                    ) ||
+                                                    route().current(
+                                                        subItem.route2
                                                     )
                                                         ? "text-orange-500 group-hover:scale-105"
                                                         : "text-gray-500 group-hover:text-orange-500"

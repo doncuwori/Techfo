@@ -112,6 +112,8 @@ class InformationSeeder extends Seeder
                 'event_time_start' => now()->addMonths(2),
                 'event_time_end' => now()->addMonths(2),
                 'description' => 'Kompetisi pengembangan solusi teknologi digital untuk permasalahan nasional.',
+                'activity_link' => 'https://www.kabarlomba.com/2024/12/gratis-kompetisi-menulis-nasional-forum.html',
+                'guidebook_link' => 'https://drive.google.com/file/d/14rXaED2I8mNRPgkWslb8Bq9hY8wkJOwy/view',
                 'poster_url' => 'competitions/hackathon-digital.jpg',
                 'created_by' => 1,
                 'created_at' => now(),
@@ -123,6 +125,8 @@ class InformationSeeder extends Seeder
                 'event_time_start' => now()->addMonths(3),
                 'event_time_end' => now()->addMonths(4),
                 'description' => 'Kompetisi desain arsitektur dengan konsep ramah lingkungan dan berkelanjutan.',
+                'activity_link' => 'https://example.com/kompetisi-arsitektur',
+                'guidebook_link' => 'https://example.com/guidebook-arsitektur',
                 'poster_url' => 'competitions/kompetisi-arsitektur.jpg',
                 'created_by' => 1,
                 'created_at' => now(),
@@ -134,6 +138,8 @@ class InformationSeeder extends Seeder
                 'event_time_start' => now()->addMonths(2),
                 'event_time_end' => now()->addMonths(5),
                 'description' => 'Kompetisi penulisan karya ilmiah untuk mahasiswa se-Indonesia.',
+                'activity_link' => 'https://example.com/lomba-karya-tulis',
+                'guidebook_link' => 'https://example.com/guidebook-karya-tulis',
                 'poster_url' => 'competitions/lomba-karya-tulis.jpg',
                 'created_by' => 2,
                 'created_at' => now(),
@@ -145,6 +151,8 @@ class InformationSeeder extends Seeder
                 'event_time_start' => now()->addMonths(2),
                 'event_time_end' => now()->addMonths(3),
                 'description' => 'Ajang kompetisi untuk mahasiswa dengan ide bisnis sosial yang inovatif.',
+                'activity_link' => 'https://example.com/kompetisi-wirausaha',
+                'guidebook_link' => 'https://example.com/guidebook-wirausaha',
                 'poster_url' => 'competitions/kompetisi-wirausaha.jpg',
                 'created_by' => 2,
                 'created_at' => now(),
@@ -156,6 +164,8 @@ class InformationSeeder extends Seeder
                 'event_time_start' => now()->addMonths(1),
                 'event_time_end' => now()->addMonths(2),
                 'description' => 'Kompetisi pengembangan robot dan aplikasi kecerdasan buatan.',
+                'activity_link' => 'https://example.com/lomba-robotik',
+                'guidebook_link' => 'https://example.com/guidebook-robotik',
                 'poster_url' => 'competitions/lomba-robotik.jpg',
                 'created_by' => 3,
                 'created_at' => now(),
@@ -167,6 +177,8 @@ class InformationSeeder extends Seeder
                 'event_time_start' => now()->addMonths(2),
                 'event_time_end' => now()->addMonths(3),
                 'description' => 'Kompetisi pembuatan film dokumenter bertema pelestarian lingkungan.',
+                'activity_link' => 'https://example.com/kompetisi-film',
+                'guidebook_link' => 'https://example.com/guidebook-film',
                 'poster_url' => 'competitions/kompetisi-film.jpg',
                 'created_by' => 3,
                 'created_at' => now(),
@@ -178,6 +190,8 @@ class InformationSeeder extends Seeder
                 'event_time_start' => now()->addMonths(2),
                 'event_time_end' => now()->addMonths(4),
                 'description' => 'Kompetisi sains tingkat nasional untuk mahasiswa dari berbagai bidang ilmu.',
+                'activity_link' => 'https://example.com/olimpiade-sains',
+                'guidebook_link' => 'https://example.com/guidebook-sains',
                 'poster_url' => 'competitions/olimpiade-sains.jpg',
                 'created_by' => 4,
                 'created_at' => now(),
@@ -189,13 +203,14 @@ class InformationSeeder extends Seeder
                 'event_time_start' => now()->addMonths(2),
                 'event_time_end' => now()->addMonths(5),
                 'description' => 'Kompetisi desain produk dengan fokus inovasi dan kebermanfaatan.',
+                'activity_link' => 'https://example.com/kompetisi-desain',
+                'guidebook_link' => 'https://example.com/guidebook-desain',
                 'poster_url' => 'competitions/kompetisi-desain.jpg',
                 'created_by' => 4,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
         ];
-
 
         // Insert data to database
         ScholarshipInformation::insert($scholarshipsData);

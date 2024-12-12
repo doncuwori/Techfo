@@ -5,9 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\AbdimasInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class AbdimasInformationController extends Controller
 {
+    public function index()
+    {
+        // return view('competition-information');
+        $user = auth()->user();
+
+        return Inertia::render('Admin/PusatInformasi/TambahInfoAbdimas', [
+            'user' => $user,
+        ]);
+    }
+
     public function store(Request $request){
         $user = Auth::user();
         $request->validate([

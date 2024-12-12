@@ -206,14 +206,14 @@ const LaporanKeaktifan = ({ competitionCount, scholarshipCount }) => {
                                     label: "ABDIMAS",
                                     icon: "👥",
                                     count: "36/50",
-                                    status1: "Penerima",
+                                    status1: "Lolos",
                                     status2: "Daftar",
                                 },
                                 {
                                     label: "PENELITIAN",
                                     icon: "🔍",
                                     count: "36/50",
-                                    status1: "Penerima",
+                                    status1: "Lolos",
                                     status2: "Daftar",
                                 },
                             ].map(

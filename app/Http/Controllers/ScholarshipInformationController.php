@@ -9,6 +9,16 @@ use Inertia\Inertia;
 
 class ScholarshipInformationController extends Controller
 {
+    public function index()
+    {
+        // return view('competition-information');
+        $user = auth()->user();
+
+        return Inertia::render('Admin/PusatInformasi/TambahInfoBeasiswa', [
+            'user' => $user,
+        ]);
+    }
+
     public function store(Request $request){
         $user = Auth::user();
         
