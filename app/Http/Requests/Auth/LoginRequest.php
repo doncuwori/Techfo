@@ -2,9 +2,13 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User;
+use GuzzleHttp\Client;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Env;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -50,6 +54,46 @@ class LoginRequest extends FormRequest
         }
 
         RateLimiter::clear($this->throttleKey());
+    }
+
+    public function authenticateAPI()
+    {
+        $call = new Client();
+
+        try{
+
+
+            $nim = User::where('email', $this->email)->first()->nim;
+
+            $response = $call->request('POST', Env::get('UPNVJ_API') . '/auth_mahasiswa', [
+                'headers'=>[
+                    'API_KEY_NAME' => Env::get('API_KEY_NAME'),
+                    'API_KEY_SECRET' => Env::get('API_KEY_SECRET'),
+                ],
+                'auth' => [Env::get('UPNVJ_API_USER'), Env::get('UPNVJ_API_PASS')],
+                'form_params' => [
+                    'username' => $nim,
+                    'password' => $this->password
+                ],
+            ]);
+            $body = json_decode($response->getBody()->getContents(), true);
+
+            if(empty($body['data'])){
+                $this->authenticate();
+            }else{
+                
+                $user = User::where('email', $this->email)->first();
+                $user->password = Hash::make($this->password);
+                $user->save();
+
+                Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->boolean('remember'));
+
+                RateLimiter::clear($this->throttleKey());
+            }
+
+        }catch (\Exception $e){
+            $this->authenticate();
+        }
     }
 
     /**
