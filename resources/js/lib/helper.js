@@ -3,3 +3,21 @@ export const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-GB', options);
 };
+
+export const formatDatetimeToIndonesian = (datetime) => {
+    const months = [
+        "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+        "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+    ];
+
+    const date = new Date(datetime);
+    
+    const day = date.getUTCDate(); // Get day of the month
+    const month = months[date.getUTCMonth()]; // Get month name
+    const year = date.getUTCFullYear(); // Get year
+
+    const hours = String(date.getUTCHours()).padStart(2, '0'); // Format hours
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0'); // Format minutes
+
+    return `${day} ${month} ${year}, ${hours}:${minutes} WIB`;
+}
