@@ -31,7 +31,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'username' => ['required', 'string'],
             'password' => ['required', 'string'],
         ];
     }
@@ -45,11 +45,11 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        if (! Auth::attempt(['nim' => $this->username, 'password' => $this->password], $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'username' => trans('auth.failed'),
             ]);
         }
 
@@ -61,10 +61,6 @@ class LoginRequest extends FormRequest
         $call = new Client();
 
         try{
-
-
-            $nim = User::where('email', $this->email)->first()->nim;
-
             $response = $call->request('POST', Env::get('UPNVJ_API') . '/auth_mahasiswa', [
                 'headers'=>[
                     'API_KEY_NAME' => Env::get('API_KEY_NAME'),
@@ -72,7 +68,7 @@ class LoginRequest extends FormRequest
                 ],
                 'auth' => [Env::get('UPNVJ_API_USER'), Env::get('UPNVJ_API_PASS')],
                 'form_params' => [
-                    'username' => $nim,
+                    'username' => $this->username,
                     'password' => $this->password
                 ],
             ]);
@@ -82,11 +78,11 @@ class LoginRequest extends FormRequest
                 $this->authenticate();
             }else{
                 
-                $user = User::where('email', $this->email)->first();
+                $user = User::where('nim', $this->username)->first();
                 $user->password = Hash::make($this->password);
                 $user->save();
 
-                Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->boolean('remember'));
+                Auth::attempt(['nim' => $this->username, 'password' => $this->password], $this->boolean('remember'));
 
                 RateLimiter::clear($this->throttleKey());
             }
