@@ -23,94 +23,94 @@ class usersTableSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
-        User::create([
-            'name' => 'Khaliza Fania',
-            'nim' => '2110511069',
-            'prodi' => 'Teknik Informatika',
-            'angkatan' => '2019',
-            'email' => 'user@example.com',
-            'role' => 'user',
-            'password' => Hash::make('password'),
-        ]);
+        // User::create([
+        //     'name' => 'Khaliza Fania',
+        //     'nim' => '2110511069',
+        //     'prodi' => 'Teknik Informatika',
+        //     'angkatan' => '2019',
+        //     'email' => 'user@example.com',
+        //     'role' => 'user',
+        //     'password' => Hash::make('password'),
+        // ]);
 
-        User::create([
-            'name' => 'Andi Johnson',
-            'nim' => '2210511070',
-            'prodi' => 'Sistem Informasi',
-            'angkatan' => '2020',
-            'email' => 'andi@example.com',
-            'role' => 'user',
-            'password' => Hash::make('password'),
-        ]);
+        // User::create([
+        //     'name' => 'Andi Johnson',
+        //     'nim' => '2210511070',
+        //     'prodi' => 'Sistem Informasi',
+        //     'angkatan' => '2020',
+        //     'email' => 'andi@example.com',
+        //     'role' => 'user',
+        //     'password' => Hash::make('password'),
+        // ]);
 
-        User::create([
-            'name' => 'Elmira White',
-            'nim' => '2310511071',
-            'prodi' => 'Teknik Komputer',
-            'angkatan' => '2021',
-            'email' => 'elmira@example.com',
-            'role' => 'user',
-            'password' => Hash::make('password'),
-        ]);
+        // User::create([
+        //     'name' => 'Elmira White',
+        //     'nim' => '2310511071',
+        //     'prodi' => 'Teknik Komputer',
+        //     'angkatan' => '2021',
+        //     'email' => 'elmira@example.com',
+        //     'role' => 'user',
+        //     'password' => Hash::make('password'),
+        // ]);
 
-        User::create([
-            'name' => 'Alice Johnson',
-            'nim' => '3344556677',
-            'prodi' => 'Teknik Elektro',
-            'angkatan' => '2022',
-            'email' => 'alice@example.com',
-            'role' => 'user',
-            'password' => Hash::make('password'),
-        ]);
+        // User::create([
+        //     'name' => 'Alice Johnson',
+        //     'nim' => '3344556677',
+        //     'prodi' => 'Teknik Elektro',
+        //     'angkatan' => '2022',
+        //     'email' => 'alice@example.com',
+        //     'role' => 'user',
+        //     'password' => Hash::make('password'),
+        // ]);
 
-        User::create([
-            'name' => 'Bob Brown',
-            'nim' => '4455667788',
-            'prodi' => 'Teknik Mesin',
-            'angkatan' => '2023',
-            'email' => 'bob@example.com',
-            'role' => 'user',
-            'password' => Hash::make('password'),
-        ]);
+        // User::create([
+        //     'name' => 'Bob Brown',
+        //     'nim' => '4455667788',
+        //     'prodi' => 'Teknik Mesin',
+        //     'angkatan' => '2023',
+        //     'email' => 'bob@example.com',
+        //     'role' => 'user',
+        //     'password' => Hash::make('password'),
+        // ]);
 
-        User::create([
-            'name' => 'Indira Dwi Febrian',
-            'nim' => '2310512062',
-            'prodi' => 'Sistem Informasi',
-            'angkatan' => '2023',
-            'email' => 'indira@example.com',
-            'role' => 'user',
-            'password' => Hash::make('password'),
-        ]);
+        // User::create([
+        //     'name' => 'Indira Dwi Febrian',
+        //     'nim' => '2310512062',
+        //     'prodi' => 'Sistem Informasi',
+        //     'angkatan' => '2023',
+        //     'email' => 'indira@example.com',
+        //     'role' => 'user',
+        //     'password' => Hash::make('password'),
+        // ]);
 
-        User::create([
-            'name' => 'Diva Chintya Putri Nussandy',
-            'nim' => '2310511073',
-            'prodi' => 'Sistem Informasi',
-            'angkatan' => '2023',
-            'email' => 'diva@example.com',
-            'role' => 'user',
-            'password' => Hash::make('password'),
-        ]);
+        // User::create([
+        //     'name' => 'Diva Chintya Putri Nussandy',
+        //     'nim' => '2310511073',
+        //     'prodi' => 'Sistem Informasi',
+        //     'angkatan' => '2023',
+        //     'email' => 'diva@example.com',
+        //     'role' => 'user',
+        //     'password' => Hash::make('password'),
+        // ]);
 
-        User::create([
-            'name' => 'Shabrina Rahmania',
-            'nim' => '2310512071',
-            'prodi' => 'Sistem Informasi',
-            'angkatan' => '2023',
-            'email' => 'shabrina@example.com',
-            'role' => 'user',
-            'password' => Hash::make('password'),
-        ]);
+        // User::create([
+        //     'name' => 'Shabrina Rahmania',
+        //     'nim' => '2310512071',
+        //     'prodi' => 'Sistem Informasi',
+        //     'angkatan' => '2023',
+        //     'email' => 'shabrina@example.com',
+        //     'role' => 'user',
+        //     'password' => Hash::make('password'),
+        // ]);
 
-        User::create([
-            'name' => 'Marsya Aurelia Syahkira',
-            'nim' => '2310512067',
-            'prodi' => 'Sistem Informasi',
-            'angkatan' => '2023',
-            'email' => 'marsya@example.com',
-            'role' => 'user',
-            'password' => Hash::make('password'),
-        ]);
+        // User::create([
+        //     'name' => 'Marsya Aurelia Syahkira',
+        //     'nim' => '2310512067',
+        //     'prodi' => 'Sistem Informasi',
+        //     'angkatan' => '2023',
+        //     'email' => 'marsya@example.com',
+        //     'role' => 'user',
+        //     'password' => Hash::make('password'),
+        // ]);
     }
 }
