@@ -40,6 +40,8 @@ class CompetitionInformationController extends Controller
             'event_time_end' => $request->event_time_end,
             'description' => $request->description,
             'poster_url' => $request->poster_url,
+            'activity_link' => $request->activity_link,
+            'guidebook_link' => $request->guidebook_link,
             'created_by' => $user->id,
             'created_at' => now(),
             'updated_at' => now(),
