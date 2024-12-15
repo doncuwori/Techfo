@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ResearchInformation;
+use App\Models\Researchs\ResearchInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -33,7 +33,8 @@ class ResearchInformationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $user = Auth::user();
         $request->validate([
             'name' => 'required|string|max:255',
@@ -49,8 +50,8 @@ class ResearchInformationController extends Controller
             'description' => 'required|string'
             // 'assignment_letter_url' => 'required|url',
         ]);
-        
-        
+
+
         // Create a new abdimas information record
         $abdimas = ResearchInformation::create([
             'name' => $request->name,
@@ -71,16 +72,18 @@ class ResearchInformationController extends Controller
             'updated_at' => now(),
         ]);
 
-        
+
         return redirect()->route('tambahInfoPenelitian')->with('success', 'Informasi penelitian berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(ResearchInformation $researchInformation)
+    public function show(ResearchInformation $postId)
     {
-        //
+        return Inertia::render('User/Penelitian/DetailPenelitian', [
+            'data' => $postId
+        ]);
     }
 
     /**

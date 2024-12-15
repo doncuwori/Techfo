@@ -99,7 +99,7 @@ const Navbar = ({ data }) => {
                     <Link
                         href={route("beasiswa")}
                         className={`${
-                            route().current("beasiswa")||
+                            route().current("beasiswa") ||
                             route().current("scholarship.show")
                                 ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
                                 : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
@@ -110,7 +110,8 @@ const Navbar = ({ data }) => {
                     <Link
                         href={route("abdimas")}
                         className={`${
-                            route().current("abdimas")
+                            route().current("abdimas") ||
+                            route().current("abdimas.show")
                                 ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
                                 : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
                         } text-sm md:text-base font-medium transition duration-150`}
@@ -120,7 +121,8 @@ const Navbar = ({ data }) => {
                     <Link
                         href={route("penelitian")}
                         className={`${
-                            route().current("penelitian")
+                            route().current("penelitian") ||
+                            route().current("research.show")
                                 ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
                                 : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
                         } text-sm md:text-base font-medium transition duration-150`}

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AbdimasInformation;
+use App\Models\Abdimas\AbdimasInformation;
 use App\Models\Competitions\CompetitionInformation;
-use App\Models\ResearchInformation;
+use App\Models\Researchs\ResearchInformation;
 use App\Models\Scholarships\ScholarshipInformation;
 
 use Inertia\Inertia;

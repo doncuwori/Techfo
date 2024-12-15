@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Competitions\CompetitionInformation;
 use App\Models\Scholarships\ScholarshipInformation;
 use App\Models\Abdimas\AbdimasInformation;
-use App\Models\Researh\ResearchInformation;
+use App\Models\Researchs\ResearchInformation;
 use Illuminate\Database\Seeder;
 
 class InformationSeeder extends Seeder
@@ -15,7 +15,6 @@ class InformationSeeder extends Seeder
      */
     public function run(): void
     {
-        // Data Competitions
         $competitionsData = [
             [
                 'name' => 'Hackathon Inovasi Digital Nasional',
@@ -216,139 +215,233 @@ class InformationSeeder extends Seeder
 
         $abdimasData = [
             [
-                'name' => 'Seminar Kecerdasan Buatan',
-                'location' => 'Ruang Seminar Lantai 3 Fakultas Teknik',
-                'registration_start' => '2024-12-01',
-                'registration_end' => '2024-12-10',
-                'total_students_required' => 100,
-                'lecturer_1' => 'Dr. Andi Wijaya',
+                'name' => 'Pelatihan Digital Marketing untuk UMKM',
+                'location' => 'Aula Lantai 2 Gedung Bisnis',
+                'registration_start' => '2024-11-20',
+                'registration_end' => '2024-12-01',
+                'total_students_required' => 50,
+                'lecturer_1' => 'Dr. Ahmad Fauzan',
                 'lecturer_2' => 'Prof. Bella Kartika',
                 'lecturer_3' => 'Dr. Clara Sutanto',
                 'lecturer_4' => 'Prof. David Hartono',
                 'lecturer_5' => 'Dr. Erwin Aditya',
-                'description' => 'Seminar ini membahas penerapan kecerdasan buatan dalam kehidupan sehari-hari.'
+                'description' => 'Pelatihan ini bertujuan untuk membantu UMKM dalam memahami strategi pemasaran digital.',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
-                'name' => 'Workshop Desain UI/UX',
-                'location' => 'Lab Komputer 2 Gedung B',
-                'registration_start' => '2024-11-20',
-                'registration_end' => '2024-11-30',
-                'total_students_required' => 40,
+                'name' => 'Penyuluhan Kesehatan di Desa Tertinggal',
+                'location' => 'Balai Desa Sukamaju',
+                'registration_start' => '2024-11-25',
+                'registration_end' => '2024-12-05',
+                'total_students_required' => 30,
                 'lecturer_1' => 'Dr. Fauzan Malik',
                 'lecturer_2' => 'Prof. Gita Aryani',
                 'lecturer_3' => 'Dr. Hana Surya',
                 'lecturer_4' => 'Prof. Irfan Maulana',
                 'lecturer_5' => 'Dr. Jelita Ramadhani',
-                'description' => 'Pelatihan ini membantu mahasiswa memahami dasar-dasar desain antarmuka pengguna dan pengalaman pengguna.'
+                'description' => 'Penyuluhan kesehatan kepada masyarakat terkait gizi dan kebersihan lingkungan.',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
-                'name' => 'Pelatihan Analisis Data',
-                'location' => 'Ruang Kelas 4.2 Gedung C',
-                'registration_start' => '2024-12-05',
-                'registration_end' => '2024-12-20',
-                'total_students_required' => 30,
+                'name' => 'Workshop Pembuatan Website untuk Pemuda Desa',
+                'location' => 'Lab Komputer Desa Mekarsari',
+                'registration_start' => '2024-12-01',
+                'registration_end' => '2024-12-10',
+                'total_students_required' => 40,
                 'lecturer_1' => 'Dr. Kelvin Santoso',
                 'lecturer_2' => 'Prof. Lestari Dewi',
                 'lecturer_3' => 'Dr. Muhammad Arif',
                 'lecturer_4' => 'Prof. Nadya Ismail',
                 'lecturer_5' => 'Dr. Olivia Kartini',
-                'description' => 'Pelatihan intensif ini akan mengajarkan teknik-teknik analisis data menggunakan tools modern.'
+                'description' => 'Workshop ini mengajarkan dasar-dasar pembuatan website untuk meningkatkan potensi desa.',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
-                'name' => 'Simposium Teknologi Blockchain',
-                'location' => 'Aula Universitas Gedung Pusat',
-                'registration_start' => '2024-12-10',
-                'registration_end' => '2024-12-25',
-                'total_students_required' => 80,
-                'lecturer_1' => 'Dr. Putra Pratama',
-                'lecturer_2' => 'Prof. Qistina Hana',
-                'lecturer_3' => 'Dr. Rahmat Satria',
-                'lecturer_4' => 'Prof. Siti Nurhaliza',
-                'lecturer_5' => 'Dr. Taufik Wijaya',
-                'description' => 'Simposium ini berfokus pada pengenalan teknologi blockchain dan penerapannya di berbagai bidang.'
-            ],
-            [
-                'name' => 'Kelas Intensif Pemrograman Python',
-                'location' => 'Lab Komputer 3 Gedung D',
+                'name' => 'Pelatihan Keterampilan Kriya untuk Ibu Rumah Tangga',
+                'location' => 'Gedung Serbaguna Kecamatan Sukamaju',
                 'registration_start' => '2024-11-15',
                 'registration_end' => '2024-11-25',
-                'total_students_required' => 60,
+                'total_students_required' => 25,
                 'lecturer_1' => 'Dr. Umar Hidayat',
                 'lecturer_2' => 'Prof. Vera Wulandari',
                 'lecturer_3' => 'Dr. Wahyu Anggara',
                 'lecturer_4' => 'Prof. Yuli Astuti',
                 'lecturer_5' => 'Dr. Zaki Fadillah',
-                'description' => 'Kelas ini dirancang untuk mahasiswa yang ingin memperdalam pemrograman Python dari dasar hingga mahir.'
+                'description' => 'Pelatihan keterampilan kriya seperti menjahit, merajut, dan membuat kerajinan tangan.',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Sosialisasi Pengelolaan Sampah di Sekolah',
+                'location' => 'SD Negeri 1 Sukamaju',
+                'registration_start' => '2024-12-05',
+                'registration_end' => '2024-12-15',
+                'total_students_required' => 20,
+                'lecturer_1' => 'Dr. Putra Pratama',
+                'lecturer_2' => 'Prof. Qistina Hana',
+                'lecturer_3' => 'Dr. Rahmat Satria',
+                'lecturer_4' => 'Prof. Siti Nurhaliza',
+                'lecturer_5' => 'Dr. Taufik Wijaya',
+                'description' => 'Sosialisasi kepada siswa tentang pentingnya pengelolaan sampah dan daur ulang.',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Pelatihan Keamanan Cyber untuk Guru Sekolah',
+                'location' => 'Lab Komputer SMA Negeri 1 Sukamaju',
+                'registration_start' => '2024-12-10',
+                'registration_end' => '2024-12-20',
+                'total_students_required' => 20,
+                'lecturer_1' => 'Dr. Andi Satria',
+                'lecturer_2' => 'Prof. Dina Lestari',
+                'lecturer_3' => 'Dr. Edwin Permana',
+                'lecturer_4' => 'Prof. Farah Anindya',
+                'lecturer_5' => 'Dr. Gunawan Pratama',
+                'description' => 'Pelatihan ini bertujuan memberikan wawasan kepada guru tentang keamanan informasi digital.',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Peningkatan Literasi Digital untuk Komunitas Perempuan',
+                'location' => 'Balai Desa Karangjati',
+                'registration_start' => '2024-11-30',
+                'registration_end' => '2024-12-10',
+                'total_students_required' => 35,
+                'lecturer_1' => 'Dr. Hana Purnamasari',
+                'lecturer_2' => 'Prof. Indra Wijaya',
+                'lecturer_3' => 'Dr. Jessica Kartika',
+                'lecturer_4' => 'Prof. Khalid Maulana',
+                'lecturer_5' => 'Dr. Laras Wibisono',
+                'description' => 'Kegiatan untuk meningkatkan keterampilan digital dalam menggunakan teknologi untuk pengembangan usaha.',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
             ]
-        ];
+        ];        
 
         $researchData = [
             [
-                'name' => 'Penelitian Efisiensi Energi di Bangunan Perkotaan',
-                'location' => 'Laboratorium Energi Gedung Teknik',
+                'name' => 'Penelitian Pengaruh Pupuk Organik terhadap Tanaman Padi',
+                'location' => 'Laboratorium Pertanian Gedung B',
                 'registration_start' => '2024-12-01',
                 'registration_end' => '2024-12-10',
-                'total_students_required' => 20,
+                'total_students_required' => 15,
                 'lecturer_1' => 'Prof. Ahmad Yusran',
                 'lecturer_2' => 'Dr. Budi Hermansyah',
                 'lecturer_3' => 'Dr. Citra Anindya',
                 'lecturer_4' => 'Prof. Diana Kartika',
                 'lecturer_5' => 'Dr. Eka Purnama',
-                'description' => 'Penelitian ini bertujuan untuk mengembangkan metode efisiensi energi di bangunan berbasis teknologi ramah lingkungan.'
+                'description' => 'Penelitian ini menguji efektivitas pupuk organik pada hasil panen padi.',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
-                'name' => 'Kajian Pemanfaatan AI dalam Diagnosa Medis',
-                'location' => 'Ruang Seminar Kesehatan Lantai 2',
+                'name' => 'Studi Pemanfaatan Energi Surya untuk Rumah Tangga',
+                'location' => 'Lab Energi Terbarukan Gedung Teknik',
                 'registration_start' => '2024-11-20',
-                'registration_end' => '2024-12-05',
-                'total_students_required' => 25,
+                'registration_end' => '2024-12-01',
+                'total_students_required' => 20,
                 'lecturer_1' => 'Dr. Faisal Anwar',
                 'lecturer_2' => 'Prof. Gita Harman',
                 'lecturer_3' => 'Dr. Hendra Setiawan',
                 'lecturer_4' => 'Prof. Iman Nurhadi',
                 'lecturer_5' => 'Dr. Joko Prasetyo',
-                'description' => 'Penelitian ini akan mengeksplorasi peran kecerdasan buatan dalam mendukung diagnosa medis yang lebih akurat.'
+                'description' => 'Penelitian tentang penggunaan panel surya untuk kebutuhan listrik rumah tangga.',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
-                'name' => 'Studi Pengaruh Teknologi Blockchain dalam Logistik',
-                'location' => 'Ruang Konferensi Gedung Ekonomi',
-                'registration_start' => '2024-12-01',
-                'registration_end' => '2024-12-15',
-                'total_students_required' => 30,
-                'lecturer_1' => 'Prof. Kurniawan Satria',
-                'lecturer_2' => 'Dr. Lestari Wibowo',
-                'lecturer_3' => 'Dr. Muhammad Arifin',
-                'lecturer_4' => 'Prof. Nina Kurniawati',
-                'lecturer_5' => 'Dr. Oki Iskandar',
-                'description' => 'Penelitian ini mempelajari bagaimana teknologi blockchain dapat meningkatkan efisiensi dalam rantai pasok logistik.'
-            ],
-            [
-                'name' => 'Pengembangan Algoritma Pembelajaran Mesin untuk Prediksi Cuaca',
+                'name' => 'Pengembangan Aplikasi Mobile untuk Diagnosa Kesehatan',
                 'location' => 'Lab Komputer AI Gedung Informatika',
                 'registration_start' => '2024-12-05',
-                'registration_end' => '2024-12-20',
-                'total_students_required' => 15,
-                'lecturer_1' => 'Dr. Putri Rahmawati',
-                'lecturer_2' => 'Prof. Qodratul Hasan',
-                'lecturer_3' => 'Dr. Ratna Dewi',
-                'lecturer_4' => 'Prof. Sulaiman Prasetyo',
-                'lecturer_5' => 'Dr. Tania Wulandari',
-                'description' => 'Penelitian ini bertujuan untuk mengembangkan algoritma pembelajaran mesin yang dapat memprediksi pola cuaca secara akurat.'
+                'registration_end' => '2024-12-15',
+                'total_students_required' => 25,
+                'lecturer_1' => 'Dr. Kelvin Santoso',
+                'lecturer_2' => 'Prof. Lestari Dewi',
+                'lecturer_3' => 'Dr. Muhammad Arif',
+                'lecturer_4' => 'Prof. Nadya Ismail',
+                'lecturer_5' => 'Dr. Olivia Kartini',
+                'description' => 'Penelitian untuk mengembangkan aplikasi diagnosa kesehatan berbasis AI.',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
-                'name' => 'Analisis Dampak Sosial dari Implementasi Smart City',
+                'name' => 'Analisis Pengaruh Teknologi IoT terhadap Efisiensi Pertanian',
+                'location' => 'Laboratorium IoT Gedung Teknik',
+                'registration_start' => '2024-12-01',
+                'registration_end' => '2024-12-10',
+                'total_students_required' => 30,
+                'lecturer_1' => 'Dr. Umar Hidayat',
+                'lecturer_2' => 'Prof. Vera Wulandari',
+                'lecturer_3' => 'Dr. Wahyu Anggara',
+                'lecturer_4' => 'Prof. Yuli Astuti',
+                'lecturer_5' => 'Dr. Zaki Fadillah',
+                'description' => 'Penelitian ini mengevaluasi pengaruh teknologi IoT pada peningkatan hasil pertanian.',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Kajian Dampak Smart City terhadap Infrastruktur Perkotaan',
                 'location' => 'Auditorium Gedung Pemerintahan',
                 'registration_start' => '2024-12-10',
-                'registration_end' => '2024-12-30',
+                'registration_end' => '2024-12-20',
                 'total_students_required' => 50,
-                'lecturer_1' => 'Prof. Umar Hidayat',
-                'lecturer_2' => 'Dr. Vina Melati',
-                'lecturer_3' => 'Dr. Wahyu Permadi',
-                'lecturer_4' => 'Prof. Yuliana Saraswati',
-                'lecturer_5' => 'Dr. Zulkifli Hakim',
-                'description' => 'Penelitian ini akan mengevaluasi dampak sosial yang dihasilkan dari penerapan konsep kota pintar di beberapa wilayah.'
+                'lecturer_1' => 'Dr. Putra Pratama',
+                'lecturer_2' => 'Prof. Qistina Hana',
+                'lecturer_3' => 'Dr. Rahmat Satria',
+                'lecturer_4' => 'Prof. Siti Nurhaliza',
+                'lecturer_5' => 'Dr. Taufik Wijaya',
+                'description' => 'Kajian dampak penerapan konsep Smart City terhadap pengelolaan infrastruktur perkotaan.',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Pengaruh Algoritma AI pada Sistem Rekomendasi E-commerce',
+                'location' => 'Lab AI dan Data Science Gedung Informatika',
+                'registration_start' => '2024-12-15',
+                'registration_end' => '2024-12-25',
+                'total_students_required' => 30,
+                'lecturer_1' => 'Prof. Budi Santoso',
+                'lecturer_2' => 'Dr. Clara Dewi',
+                'lecturer_3' => 'Dr. Erwin Saputra',
+                'lecturer_4' => 'Prof. Fitria Sasmita',
+                'lecturer_5' => 'Dr. Gita Pratami',
+                'description' => 'Penelitian tentang efektivitas algoritma AI dalam meningkatkan pengalaman pengguna di platform e-commerce.',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Studi Dampak Perubahan Iklim terhadap Keanekaragaman Hayati',
+                'location' => 'Hutan Lindung Taman Nasional Merapi',
+                'registration_start' => '2024-12-05',
+                'registration_end' => '2024-12-15',
+                'total_students_required' => 25,
+                'lecturer_1' => 'Dr. Hasan Basri',
+                'lecturer_2' => 'Prof. Ida Kusuma',
+                'lecturer_3' => 'Dr. Jaka Wijaya',
+                'lecturer_4' => 'Prof. Lina Prasetyo',
+                'lecturer_5' => 'Dr. Mulyadi Surya',
+                'description' => 'Penelitian ini bertujuan untuk mengidentifikasi dampak perubahan iklim terhadap flora dan fauna lokal.',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
             ]
-        ];
+        ];        
 
 
         // Insert data to database

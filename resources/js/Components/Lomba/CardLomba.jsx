@@ -66,9 +66,9 @@ const CardLomba = ({data}) => {
     ];
 
     return (
-        <div className="w-full flex flex-col gap-6 mb-12 relative z-10">
+        <div className="relative z-10 py-6 px-8">
             {/* Header */}
-            <div className="w-full px-6 md:px-16 flex justify-between items-center">
+            <div className="w-full px-8 flex justify-between items-center">
                 <h1 className="text-black text-2xl font-semibold">Informasi Lomba</h1>
                 <Link
                     href={route("abdimas")}
@@ -78,7 +78,7 @@ const CardLomba = ({data}) => {
                 </Link>
             </div>
             {/* Konten */}
-            <div className="w-full px-6 md:px-16 grid grid-cols-5 gap-6 overflow-x-auto">
+            <div className="w-full px-8 grid grid-cols-5 gap-6 overflow-x-auto">
                 {data.map((competition, index) => (
                     <CompetionCard
                         key={index}

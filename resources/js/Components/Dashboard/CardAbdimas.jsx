@@ -69,26 +69,26 @@ const CardAbdimas = ({ data }) => {
                 </Link>
             </div>
 
-            {/* Community Service Cards Section */}
+            {/* Community Abdimas Cards Section */}
             <div className="relative">
                 <div
                     ref={scrollRef}
                     className="flex gap-6 overflow-hidden pb-4"
                 >
-                    {data.map((service, index) => (
+                    {data.map((abdimas, index) => (
                         <Link
-                            href={"/abdimas/" + service.id}
+                            href={"/abdimas/" + abdimas.id}
                             key={index}
-                            className="w-[343px] min-w-[280px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
+                            className="w-[343px] min-w-[280px] h-[208px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
                         >
                             {/* Image Section */}
                             <div
-                                className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center object-cover"
+                                className="w-full h-14 relative"
                                 style={{
-                                    backgroundImage: `url(${service.image})`,
+                                    backgroundImage: `url(${abdimas.image})`,
                                 }}
                             >
-                                <div className="absolute top-2 left-2 bg-yellow-500 text-white text-xs px-2 py-0.5 rounded-2xl">
+                                <div className="absolute top-2 left-1 bg-yellow-500 text-white text-xs px-2 py-0.5 rounded-2xl">
                                     Abdimas
                                 </div>
                             </div>
@@ -96,10 +96,10 @@ const CardAbdimas = ({ data }) => {
                             {/* Content Section */}
                             <div className="flex flex-col gap-2">
                                 <h2 className="text-black text-lg font-medium line-clamp-1">
-                                    {service.name}
+                                    {abdimas.name}
                                 </h2>
                                 <p className="text-gray-500 text-sm line-clamp-2">
-                                    {service.description}
+                                    {abdimas.description}
                                 </p>
                                 <div className="flex items-center gap-2">
                                     <Clock4
@@ -107,9 +107,7 @@ const CardAbdimas = ({ data }) => {
                                         className="text-orange-500"
                                     />
                                     <span className="text-orange-500 text-xs font-medium leading-tight">
-                                        {formatDate(
-                                            service.registration_end
-                                        )}
+                                        {formatDate(abdimas.registration_end)}
                                     </span>
                                 </div>
                             </div>

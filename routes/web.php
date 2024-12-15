@@ -112,6 +112,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboardUser', [DashboardUserController::class, 'index'])->name('dashboardUser');
     Route::get('/lomba/{postId}', [CompetitionInformationController::class, 'show'])->name('competition.show');
     Route::get('/beasiswa/{postId}', [ScholarshipInformationController::class, 'show'])->name('scholarship.show');
+    Route::get('/abdimas/{postId}', [AbdimasInformationController::class, 'show'])->name('abdimas.show');
+    Route::get('/penelitian/{postId}', [ResearchInformationController::class, 'show'])->name('research.show');
 
     // Beasiswa
     Route::get('/beasiswa', function () {

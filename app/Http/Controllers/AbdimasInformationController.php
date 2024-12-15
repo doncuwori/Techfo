@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AbdimasInformation;
+use App\Models\Abdimas\AbdimasInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -59,5 +59,11 @@ class AbdimasInformationController extends Controller
 
         // Return a response
         return redirect()->route('tambahInfoAbdimas')->with('success', 'Informasi pengabdian Masyarakat berhasil ditambahkan');
+    }
+
+    public function show(AbdimasInformation $postId) {
+        return Inertia::render('User/Abdimas/DetailAbdimas', [
+            'data' => $postId
+        ]);
     }
 }

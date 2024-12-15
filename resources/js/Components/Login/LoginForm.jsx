@@ -98,7 +98,7 @@ const LoginForm = () => {
                             </label>
                             <input
                                 type="text"
-                                placeholder="ava.wright@gmail.com"
+                                placeholder="NIM"
                                 className="w-full px-4 py-3 bg-white border border-zinc-200 rounded-md text-base text-zinc-500 focus:outline-none"
                                 value={data.username}
                                 onChange={(e) =>
@@ -120,7 +120,7 @@ const LoginForm = () => {
                             </label>
                             <input
                                 type="password"
-                                placeholder="••••••••"
+                                placeholder="Password"
                                 className="w-full px-4 py-3 bg-white border border-zinc-200 rounded-md text-base text-zinc-500 focus:outline-none"
                                 value={data.password}
                                 onChange={(e) =>

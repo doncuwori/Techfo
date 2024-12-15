@@ -11,7 +11,7 @@ const MainContent = ({ data }) => {
                     <h2 className="text-lg mb-2">Diunggah oleh</h2>
                     <div className="flex items-center">
                         <img
-                            src="/img/logobem.png"
+                            src="/img/profile.png"
                             className="w-10 h-10 rounded-full mr-2"
                             alt="Profile Picture"
                         />
