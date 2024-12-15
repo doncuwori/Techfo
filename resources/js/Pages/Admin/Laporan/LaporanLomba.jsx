@@ -2,21 +2,23 @@ import React from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import NavbarAdmin from "@/Components/NavbarAdmin";
+import { formatDate, formatDatetimeToIndonesian } from "@/lib/helper";
 
 const LaporanLomba = ({
     competitionWinnersCount,
     competitionRegistrantsCount,
-    user
+    user,
+    registrant,
 }) => {
     console.log(competitionWinnersCount, competitionRegistrantsCount);
 
-    const maxValue = 365;  
-    const value = Math.min(competitionWinnersCount, maxValue);  
-    const percentage = (value / maxValue) * 100; 
+    const maxValue = 365;
+    const value = Math.min(competitionWinnersCount, maxValue);
+    const percentage = (value / maxValue) * 100;
 
     return (
         <body>
-            <NavbarAdmin user={user}/>
+            <NavbarAdmin user={user} />
             <div class="pl-72 w-full">
                 <div class="container px-4 py-8 w-full">
                     <h1 class="text-3xl font-bold text-black mb-6">
@@ -263,621 +265,49 @@ const LaporanLomba = ({
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            2
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            3
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>{" "}
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            4
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            5
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            6
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            7
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            8
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            9
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            10
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            11
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            12
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            13
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            15
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            1234567890
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            John Doe
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            KSM Android
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Erly Krisnanik S.Kom., MM.
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            UI/UX Designer
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Indonesia
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            PT. Cipta Karya
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            14 Desember 2024
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            lorem ipsum
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Bukti.png
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            Kegiatan.png
-                                        </td>
-                                    </tr>
+                                    {registrant.map((item, index) => (
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                               {index+1}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                1234567890
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                John Doe
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                {item.ormawa_delegation}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                {item.mentor_name}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                {item.field}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                {item.organizer}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                {item.host_country}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                {item.location}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                               {formatDate(item.activity_date_start)}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                {item.description}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                Bukti.png
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                Kegiatan.png
+                                            </td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
                         </div>

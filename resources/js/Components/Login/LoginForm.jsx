@@ -3,7 +3,7 @@ import { useForm } from "@inertiajs/react";
 
 const LoginForm = () => {
     const { data, setData, post, processing, errors, reset } = useForm({
-        email: "",
+        username: "",
         password: "",
     });
 
@@ -94,20 +94,20 @@ const LoginForm = () => {
                         {/* Email Field */}
                         <div>
                             <label className="block text-zinc-950 text-base font-medium mb-2">
-                                Email <span className="text-red-600">*</span>
+                                Username <span className="text-red-600">*</span>
                             </label>
                             <input
-                                type="email"
+                                type="text"
                                 placeholder="ava.wright@gmail.com"
                                 className="w-full px-4 py-3 bg-white border border-zinc-200 rounded-md text-base text-zinc-500 focus:outline-none"
-                                value={data.email}
+                                value={data.username}
                                 onChange={(e) =>
-                                    setData("email", e.target.value)
+                                    setData("username", e.target.value)
                                 }
                             />
-                            {errors.email && (
+                            {errors.username && (
                                 <span className="text-red-600">
-                                    {errors.email}
+                                    {errors.username}
                                 </span>
                             )}
                         </div>

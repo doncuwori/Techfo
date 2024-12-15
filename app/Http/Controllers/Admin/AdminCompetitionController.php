@@ -17,10 +17,13 @@ class AdminCompetitionController extends Controller
 
         $user = auth()->user();
 
+        $registrant = CompetitionRegistrant::with('users')->orderBy('created_at', 'desc')->get();
+
         return Inertia::render('Admin/Laporan/LaporanLomba', [
             'competitionRegistrantsCount' => $competitionRegistrantsCount,
             'competitionWinnersCount' => $competitionWinnersCount,
             'user' => $user,
+            'registrant' => $registrant
         ]);
     }
 }
