@@ -22,14 +22,20 @@ class CompetitionInformationController extends Controller
 
     public function store(Request $request){
         $user = Auth::user();
-        
+
+        if($request->hasFile('poster_url')) {
+            $file = $request->file('poster_url');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/'), $filename);
+            $filename = '/images/' . $filename;
+        }
+
         $request->validate([
             'name' => 'required|string|max:255',
             'organizer' => 'required|string|max:255',
             'event_time_start' => 'required|date',
             'event_time_end' => 'required|date',
             'description' => 'required|string',
-            // 'poster_url' => 'required|url',
         ]);
 
         // Create a new scholarship information record
@@ -39,7 +45,7 @@ class CompetitionInformationController extends Controller
             'event_time_start' => $request->event_time_start,
             'event_time_end' => $request->event_time_end,
             'description' => $request->description,
-            'poster_url' => $request->poster_url,
+            'poster_url' => $filename,
             'activity_link' => $request->activity_link,
             'guidebook_link' => $request->guidebook_link,
             'created_by' => $user->id,
