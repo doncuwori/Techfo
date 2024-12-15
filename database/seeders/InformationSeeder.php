@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Competitions\CompetitionInformation;
 use App\Models\Scholarships\ScholarshipInformation;
+use App\Models\Abdimas\AbdimasInformation;
+use App\Models\Researh\ResearchInformation;
 use Illuminate\Database\Seeder;
 
 class InformationSeeder extends Seeder
@@ -13,97 +15,6 @@ class InformationSeeder extends Seeder
      */
     public function run(): void
     {
-        $scholarshipsData = [
-            [
-                'name' => 'Beasiswa Prestasi Akademik Nasional',
-                'organizer' => 'Kementerian Pendidikan dan Kebudayaan',
-                'event_time_start' => now()->addMonths(2),
-                'event_time_end' => now()->addMonths(3),
-                'description' => 'Beasiswa untuk mahasiswa berprestasi dengan kriteria akademik tinggi dan berasal dari keluarga kurang mampu.',
-                'poster_url' => 'scholarships/beasiswa-prestasi.jpg',
-                'created_by' => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'name' => 'Beasiswa Riset Inovasi Teknologi',
-                'organizer' => 'Kementerian Riset dan Teknologi',
-                'event_time_start' => now()->addMonths(3),
-                'event_time_end' => now()->addMonths(4),
-                'description' => 'Program beasiswa untuk mahasiswa yang memiliki inovasi teknologi dan penelitian berkualitas.',
-                'poster_url' => 'scholarships/beasiswa-riset.jpg',
-                'created_by' => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'name' => 'Beasiswa Kepemimpinan Muda',
-                'organizer' => 'Yayasan Pemuda Inspiratif',
-                'event_time_start' => now()->addMonths(4),
-                'event_time_end' => now()->addMonths(5),
-                'description' => 'Beasiswa untuk mahasiswa yang memiliki potensi kepemimpinan dan kontribusi sosial.',
-                'poster_url' => 'scholarships/beasiswa-kepemimpinan.jpg',
-                'created_by' => 2,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'name' => 'Beasiswa Wirausaha Muda',
-                'organizer' => 'Kementerian Koperasi dan UKM',
-                'event_time_start' => now()->addMonths(5),
-                'event_time_end' => now()->addMonths(6),
-                'description' => 'Dukungan beasiswa untuk mahasiswa yang memiliki ide bisnis inovatif dan potensi kewirausahaan.',
-                'poster_url' => 'scholarships/beasiswa-wirausaha.jpg',
-                'created_by' => 2,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'name' => 'Beasiswa Internasional ASEAN',
-                'organizer' => 'Sekretariat ASEAN',
-                'event_time_start' => now()->addMonths(6),
-                'event_time_end' => now()->addMonths(7),
-                'description' => 'Program beasiswa pertukaran untuk mahasiswa dari negara-negara anggota ASEAN.',
-                'poster_url' => 'scholarships/beasiswa-asean.jpg',
-                'created_by' => 3,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'name' => 'Beasiswa Peduli Lingkungan',
-                'organizer' => 'Kementerian Lingkungan Hidup',
-                'event_time_start' => now()->addMonths(7),
-                'event_time_end' => now()->addMonths(8),
-                'description' => 'Beasiswa untuk mahasiswa yang memiliki kontribusi nyata dalam pelestarian lingkungan.',
-                'poster_url' => 'scholarships/beasiswa-lingkungan.jpg',
-                'created_by' => 3,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'name' => 'Beasiswa Penelitian Kesehatan',
-                'organizer' => 'Kementerian Kesehatan',
-                'event_time_start' => now()->addMonths(8),
-                'event_time_end' => now()->addMonths(9),
-                'description' => 'Program beasiswa untuk mahasiswa kedokteran dan kesehatan yang berprestasi.',
-                'poster_url' => 'scholarships/beasiswa-kesehatan.jpg',
-                'created_by' => 4,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'name' => 'Beasiswa Pengembangan Seni dan Budaya',
-                'organizer' => 'Kementerian Pendidikan Kebudayaan',
-                'event_time_start' => now()->addMonths(9),
-                'event_time_end' => now()->addMonths(10),
-                'description' => 'Beasiswa untuk mahasiswa yang memiliki talenta di bidang seni dan pelestarian budaya.',
-                'poster_url' => 'scholarships/beasiswa-seni.jpg',
-                'created_by' => 4,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ];
-
         // Data Competitions
         $competitionsData = [
             [
@@ -212,8 +123,238 @@ class InformationSeeder extends Seeder
             ]
         ];
 
+        $scholarshipsData = [
+            [
+                'name' => 'Beasiswa Prestasi Akademik Nasional',
+                'organizer' => 'Kementerian Pendidikan dan Kebudayaan',
+                'event_time_start' => now()->addMonths(2),
+                'event_time_end' => now()->addMonths(3),
+                'description' => 'Beasiswa untuk mahasiswa berprestasi dengan kriteria akademik tinggi dan berasal dari keluarga kurang mampu.',
+                'poster_url' => 'scholarships/beasiswa-prestasi.jpg',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Beasiswa Riset Inovasi Teknologi',
+                'organizer' => 'Kementerian Riset dan Teknologi',
+                'event_time_start' => now()->addMonths(3),
+                'event_time_end' => now()->addMonths(4),
+                'description' => 'Program beasiswa untuk mahasiswa yang memiliki inovasi teknologi dan penelitian berkualitas.',
+                'poster_url' => 'scholarships/beasiswa-riset.jpg',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Beasiswa Kepemimpinan Muda',
+                'organizer' => 'Yayasan Pemuda Inspiratif',
+                'event_time_start' => now()->addMonths(4),
+                'event_time_end' => now()->addMonths(5),
+                'description' => 'Beasiswa untuk mahasiswa yang memiliki potensi kepemimpinan dan kontribusi sosial.',
+                'poster_url' => 'scholarships/beasiswa-kepemimpinan.jpg',
+                'created_by' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Beasiswa Wirausaha Muda',
+                'organizer' => 'Kementerian Koperasi dan UKM',
+                'event_time_start' => now()->addMonths(5),
+                'event_time_end' => now()->addMonths(6),
+                'description' => 'Dukungan beasiswa untuk mahasiswa yang memiliki ide bisnis inovatif dan potensi kewirausahaan.',
+                'poster_url' => 'scholarships/beasiswa-wirausaha.jpg',
+                'created_by' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Beasiswa Internasional ASEAN',
+                'organizer' => 'Sekretariat ASEAN',
+                'event_time_start' => now()->addMonths(6),
+                'event_time_end' => now()->addMonths(7),
+                'description' => 'Program beasiswa pertukaran untuk mahasiswa dari negara-negara anggota ASEAN.',
+                'poster_url' => 'scholarships/beasiswa-asean.jpg',
+                'created_by' => 3,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Beasiswa Peduli Lingkungan',
+                'organizer' => 'Kementerian Lingkungan Hidup',
+                'event_time_start' => now()->addMonths(7),
+                'event_time_end' => now()->addMonths(8),
+                'description' => 'Beasiswa untuk mahasiswa yang memiliki kontribusi nyata dalam pelestarian lingkungan.',
+                'poster_url' => 'scholarships/beasiswa-lingkungan.jpg',
+                'created_by' => 3,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Beasiswa Penelitian Kesehatan',
+                'organizer' => 'Kementerian Kesehatan',
+                'event_time_start' => now()->addMonths(8),
+                'event_time_end' => now()->addMonths(9),
+                'description' => 'Program beasiswa untuk mahasiswa kedokteran dan kesehatan yang berprestasi.',
+                'poster_url' => 'scholarships/beasiswa-kesehatan.jpg',
+                'created_by' => 4,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Beasiswa Pengembangan Seni dan Budaya',
+                'organizer' => 'Kementerian Pendidikan Kebudayaan',
+                'event_time_start' => now()->addMonths(9),
+                'event_time_end' => now()->addMonths(10),
+                'description' => 'Beasiswa untuk mahasiswa yang memiliki talenta di bidang seni dan pelestarian budaya.',
+                'poster_url' => 'scholarships/beasiswa-seni.jpg',
+                'created_by' => 4,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ];
+
+        $abdimasData = [
+            [
+                'name' => 'Seminar Kecerdasan Buatan',
+                'location' => 'Ruang Seminar Lantai 3 Fakultas Teknik',
+                'registration_start' => '2024-12-01',
+                'registration_end' => '2024-12-10',
+                'total_students_required' => 100,
+                'lecturer_1' => 'Dr. Andi Wijaya',
+                'lecturer_2' => 'Prof. Bella Kartika',
+                'lecturer_3' => 'Dr. Clara Sutanto',
+                'lecturer_4' => 'Prof. David Hartono',
+                'lecturer_5' => 'Dr. Erwin Aditya',
+                'description' => 'Seminar ini membahas penerapan kecerdasan buatan dalam kehidupan sehari-hari.'
+            ],
+            [
+                'name' => 'Workshop Desain UI/UX',
+                'location' => 'Lab Komputer 2 Gedung B',
+                'registration_start' => '2024-11-20',
+                'registration_end' => '2024-11-30',
+                'total_students_required' => 40,
+                'lecturer_1' => 'Dr. Fauzan Malik',
+                'lecturer_2' => 'Prof. Gita Aryani',
+                'lecturer_3' => 'Dr. Hana Surya',
+                'lecturer_4' => 'Prof. Irfan Maulana',
+                'lecturer_5' => 'Dr. Jelita Ramadhani',
+                'description' => 'Pelatihan ini membantu mahasiswa memahami dasar-dasar desain antarmuka pengguna dan pengalaman pengguna.'
+            ],
+            [
+                'name' => 'Pelatihan Analisis Data',
+                'location' => 'Ruang Kelas 4.2 Gedung C',
+                'registration_start' => '2024-12-05',
+                'registration_end' => '2024-12-20',
+                'total_students_required' => 30,
+                'lecturer_1' => 'Dr. Kelvin Santoso',
+                'lecturer_2' => 'Prof. Lestari Dewi',
+                'lecturer_3' => 'Dr. Muhammad Arif',
+                'lecturer_4' => 'Prof. Nadya Ismail',
+                'lecturer_5' => 'Dr. Olivia Kartini',
+                'description' => 'Pelatihan intensif ini akan mengajarkan teknik-teknik analisis data menggunakan tools modern.'
+            ],
+            [
+                'name' => 'Simposium Teknologi Blockchain',
+                'location' => 'Aula Universitas Gedung Pusat',
+                'registration_start' => '2024-12-10',
+                'registration_end' => '2024-12-25',
+                'total_students_required' => 80,
+                'lecturer_1' => 'Dr. Putra Pratama',
+                'lecturer_2' => 'Prof. Qistina Hana',
+                'lecturer_3' => 'Dr. Rahmat Satria',
+                'lecturer_4' => 'Prof. Siti Nurhaliza',
+                'lecturer_5' => 'Dr. Taufik Wijaya',
+                'description' => 'Simposium ini berfokus pada pengenalan teknologi blockchain dan penerapannya di berbagai bidang.'
+            ],
+            [
+                'name' => 'Kelas Intensif Pemrograman Python',
+                'location' => 'Lab Komputer 3 Gedung D',
+                'registration_start' => '2024-11-15',
+                'registration_end' => '2024-11-25',
+                'total_students_required' => 60,
+                'lecturer_1' => 'Dr. Umar Hidayat',
+                'lecturer_2' => 'Prof. Vera Wulandari',
+                'lecturer_3' => 'Dr. Wahyu Anggara',
+                'lecturer_4' => 'Prof. Yuli Astuti',
+                'lecturer_5' => 'Dr. Zaki Fadillah',
+                'description' => 'Kelas ini dirancang untuk mahasiswa yang ingin memperdalam pemrograman Python dari dasar hingga mahir.'
+            ]
+        ];
+
+        $researchData = [
+            [
+                'name' => 'Penelitian Efisiensi Energi di Bangunan Perkotaan',
+                'location' => 'Laboratorium Energi Gedung Teknik',
+                'registration_start' => '2024-12-01',
+                'registration_end' => '2024-12-10',
+                'total_students_required' => 20,
+                'lecturer_1' => 'Prof. Ahmad Yusran',
+                'lecturer_2' => 'Dr. Budi Hermansyah',
+                'lecturer_3' => 'Dr. Citra Anindya',
+                'lecturer_4' => 'Prof. Diana Kartika',
+                'lecturer_5' => 'Dr. Eka Purnama',
+                'description' => 'Penelitian ini bertujuan untuk mengembangkan metode efisiensi energi di bangunan berbasis teknologi ramah lingkungan.'
+            ],
+            [
+                'name' => 'Kajian Pemanfaatan AI dalam Diagnosa Medis',
+                'location' => 'Ruang Seminar Kesehatan Lantai 2',
+                'registration_start' => '2024-11-20',
+                'registration_end' => '2024-12-05',
+                'total_students_required' => 25,
+                'lecturer_1' => 'Dr. Faisal Anwar',
+                'lecturer_2' => 'Prof. Gita Harman',
+                'lecturer_3' => 'Dr. Hendra Setiawan',
+                'lecturer_4' => 'Prof. Iman Nurhadi',
+                'lecturer_5' => 'Dr. Joko Prasetyo',
+                'description' => 'Penelitian ini akan mengeksplorasi peran kecerdasan buatan dalam mendukung diagnosa medis yang lebih akurat.'
+            ],
+            [
+                'name' => 'Studi Pengaruh Teknologi Blockchain dalam Logistik',
+                'location' => 'Ruang Konferensi Gedung Ekonomi',
+                'registration_start' => '2024-12-01',
+                'registration_end' => '2024-12-15',
+                'total_students_required' => 30,
+                'lecturer_1' => 'Prof. Kurniawan Satria',
+                'lecturer_2' => 'Dr. Lestari Wibowo',
+                'lecturer_3' => 'Dr. Muhammad Arifin',
+                'lecturer_4' => 'Prof. Nina Kurniawati',
+                'lecturer_5' => 'Dr. Oki Iskandar',
+                'description' => 'Penelitian ini mempelajari bagaimana teknologi blockchain dapat meningkatkan efisiensi dalam rantai pasok logistik.'
+            ],
+            [
+                'name' => 'Pengembangan Algoritma Pembelajaran Mesin untuk Prediksi Cuaca',
+                'location' => 'Lab Komputer AI Gedung Informatika',
+                'registration_start' => '2024-12-05',
+                'registration_end' => '2024-12-20',
+                'total_students_required' => 15,
+                'lecturer_1' => 'Dr. Putri Rahmawati',
+                'lecturer_2' => 'Prof. Qodratul Hasan',
+                'lecturer_3' => 'Dr. Ratna Dewi',
+                'lecturer_4' => 'Prof. Sulaiman Prasetyo',
+                'lecturer_5' => 'Dr. Tania Wulandari',
+                'description' => 'Penelitian ini bertujuan untuk mengembangkan algoritma pembelajaran mesin yang dapat memprediksi pola cuaca secara akurat.'
+            ],
+            [
+                'name' => 'Analisis Dampak Sosial dari Implementasi Smart City',
+                'location' => 'Auditorium Gedung Pemerintahan',
+                'registration_start' => '2024-12-10',
+                'registration_end' => '2024-12-30',
+                'total_students_required' => 50,
+                'lecturer_1' => 'Prof. Umar Hidayat',
+                'lecturer_2' => 'Dr. Vina Melati',
+                'lecturer_3' => 'Dr. Wahyu Permadi',
+                'lecturer_4' => 'Prof. Yuliana Saraswati',
+                'lecturer_5' => 'Dr. Zulkifli Hakim',
+                'description' => 'Penelitian ini akan mengevaluasi dampak sosial yang dihasilkan dari penerapan konsep kota pintar di beberapa wilayah.'
+            ]
+        ];
+
+
         // Insert data to database
-        ScholarshipInformation::insert($scholarshipsData);
         CompetitionInformation::insert($competitionsData);
+        ScholarshipInformation::insert($scholarshipsData);
+        AbdimasInformation::insert($abdimasData);
+        ResearchInformation::insert($researchData);
     }
 }

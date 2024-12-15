@@ -97,7 +97,6 @@ const CardAbdimas = ({ data }) => {
                             <div className="flex flex-col gap-2">
                                 <h2 className="text-black text-lg font-medium line-clamp-1">
                                     {service.name}
-                                    {service.name}
                                 </h2>
                                 <p className="text-gray-500 text-sm line-clamp-2">
                                     {service.description}
@@ -109,7 +108,7 @@ const CardAbdimas = ({ data }) => {
                                     />
                                     <span className="text-orange-500 text-xs font-medium leading-tight">
                                         {formatDate(
-                                            service.registration_deadline
+                                            service.registration_end
                                         )}
                                     </span>
                                 </div>

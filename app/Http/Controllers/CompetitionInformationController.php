@@ -48,7 +48,7 @@ class CompetitionInformationController extends Controller
         ]);
 
         // Return a response
-        return redirect()->route('tambahInfoLomba')->with('success', 'Informasi beasiswa berhasil ditambahkan');
+        return redirect()->route('tambahInfoLomba')->with('success', 'Informasi lomba berhasil ditambahkan');
     }
 
     public function show(CompetitionInformation $postId) {

@@ -28,7 +28,8 @@ class AbdimasInformationController extends Controller
             'lecturer_3' => 'required|string|max:255',
             'lecturer_4' => 'required|string|max:255',
             'lecturer_5' => 'required|string|max:255',
-            'registration_deadline' => 'required|date',
+            'registration_start' => 'required|date',
+            'registration_end' => 'required|date',
             'location' => 'required|string|max:255',
             'total_students_required' => 'required|integer',
             'description' => 'required|string'
@@ -44,7 +45,8 @@ class AbdimasInformationController extends Controller
             'lecturer_3' => $request->lecturer_3,
             'lecturer_4' => $request->lecturer_4,
             'lecturer_5' => $request->lecturer_5,
-            'registration_deadline' => $request->registration_deadline,
+            'registration_start' => $request->registration_start,
+            'registration_end' => $request->registration_end,
             'location' => $request->location,
             'total_students_required' => $request->total_students_required,
             'created_by' => $user->id,
@@ -56,6 +58,6 @@ class AbdimasInformationController extends Controller
         ]);
 
         // Return a response
-        return redirect()->route('tambahInfoAbdimas')->with('success', 'Informasi beasiswa berhasil ditambahkan');
+        return redirect()->route('tambahInfoAbdimas')->with('success', 'Informasi pengabdian Masyarakat berhasil ditambahkan');
     }
 }

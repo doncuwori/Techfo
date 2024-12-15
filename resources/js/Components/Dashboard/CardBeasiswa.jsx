@@ -85,7 +85,7 @@ const CardBeasiswa = ({ data }) => {
                     >
                         {data.map((scholarship, index) => (
                             <Link
-                                href={`/beasiswa/${scholarship.id}`}
+                                href={"/beasiswa/"+ scholarship.id}
                                 key={index}
                                 className="w-[343px] min-w-[280px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
                             >

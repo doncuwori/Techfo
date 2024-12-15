@@ -47,7 +47,7 @@ const FormPenelitianAbdimas = ({ type }) => {
                 <div>
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2">
-                            Nama Kegiatan
+                            Nama Kegiatan<span className="text-red-600">*</span>
                         </label>
                         <input
                             value={data.name}
@@ -60,7 +60,7 @@ const FormPenelitianAbdimas = ({ type }) => {
 
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2">
-                            Lokasi Kegiatan
+                            Lokasi Kegiatan<span className="text-red-600">*</span>
                         </label>
                         <input
                             value={data.location}
@@ -75,12 +75,12 @@ const FormPenelitianAbdimas = ({ type }) => {
 
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2">
-                            Batas Pendaftaran
+                            Waktu Mulai Pendaftaran<span className="text-red-600">*</span>
                         </label>
                         <input
-                            value={data.registration_deadline}
+                            value={data.registration_start}
                             onChange={(e) =>
-                                setData("registration_deadline", e.target.value)
+                                setData("registration_start", e.target.value)
                             }
                             type="date"
                             className="w-full border rounded-lg p-2"
@@ -92,7 +92,24 @@ const FormPenelitianAbdimas = ({ type }) => {
 
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2">
-                            Total Mahasiswa yang Dibutuhkan
+                            Waktu Berakhir Pendaftaran<span className="text-red-600">*</span>
+                        </label>
+                        <input
+                            value={data.registration_end}
+                            onChange={(e) =>
+                                setData("registration_end", e.target.value)
+                            }
+                            type="date"
+                            className="w-full border rounded-lg p-2"
+                        />
+                        <div className="flex items-center mt-2">
+                            <input type="calendar" className="mr-2" />
+                        </div>
+                    </div>
+
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">
+                            Total Mahasiswa yang Dibutuhkan<span className="text-red-600">*</span>
                         </label>
                         <input
                             value={data.total_students_required}
@@ -110,7 +127,7 @@ const FormPenelitianAbdimas = ({ type }) => {
 
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2">
-                            Nama Lengkap Dosen 1
+                            Nama Lengkap Dosen 1<span className="text-red-600">*</span>
                         </label>
                         <input
                             value={data.lecturer_1}
@@ -185,7 +202,7 @@ const FormPenelitianAbdimas = ({ type }) => {
 
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2">
-                            Deskripsi Kegiatan
+                            Deskripsi Kegiatan<span className="text-red-600">*</span>
                         </label>
                         <textarea
                             onChange={(e) => {
@@ -197,7 +214,7 @@ const FormPenelitianAbdimas = ({ type }) => {
                         ></textarea>
                     </div>
 
-                    <div className="mb-4">
+                    {/* <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2">
                             Surat Tugas
                         </label>
@@ -209,7 +226,7 @@ const FormPenelitianAbdimas = ({ type }) => {
                             Tipe file yang dapat diunggah adalah .pdf, dengan
                             ukuran file maksimal 1MB.
                         </p>
-                    </div>
+                    </div> */}
 
                     <div className="flex justify-end w-full">
                         <button
