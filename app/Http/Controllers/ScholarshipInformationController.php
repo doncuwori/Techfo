@@ -31,6 +31,14 @@ class ScholarshipInformationController extends Controller
             // 'poster_url' => 'required|url',
         ]);
 
+        if($request->hasFile('poster_url')) {
+            $file = $request->file('poster_url');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/'), $filename);
+            $filename = '/images/' . $filename;
+        }
+
+
         // Create a new scholarship information record
         $competition = ScholarshipInformation::create([
             'name' => $request->name,
@@ -38,7 +46,7 @@ class ScholarshipInformationController extends Controller
             'event_time_start' => $request->event_time_start,
             'event_time_end' => $request->event_time_end,
             'description' => $request->description,
-            'poster_url' => $request->poster_url,
+            'poster_url' => $filename,
             'created_by' => $user->id,
             'created_at' => now(),
             'updated_at' => now(),

@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "@inertiajs/react";
+import { formatDate } from "@/lib/helper";
 
 const ScholarshipCard = ({ title, description, date, image, label }) => (
-    <div className="w-[343px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-lg flex flex-col gap-2">
+    <div className="p-4 bg-white rounded-xl border border-neutral-200 shadow-lg flex flex-col gap-2">
         {/* Gambar */}
         <div
             className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center"
@@ -24,7 +25,7 @@ const ScholarshipCard = ({ title, description, date, image, label }) => (
     </div>
 );
 
-const CardBeasiswa = () => {
+const CardBeasiswa = ({data}) => {
     const competitions = [
         {
             title: "INSPACE UI/UX",
@@ -76,7 +77,19 @@ const CardBeasiswa = () => {
                 </Link>
             </div>
             {/* Konten */}
-            <div className="w-full px-6 md:px-16 flex gap-6 overflow-x-auto">
+            <div className="w-full px-6 md:px-16 gap-6 grid grid-cols-5 overflow-x-auto">
+                {data.map((competition, index) => (
+                    <ScholarshipCard
+                        key={index}
+                        title={competition.name}
+                        description={competition.description}
+                        date={formatDate(competition.created_at)}
+                        image={competition.poster_url}
+                        label='Beasiswa'
+                    />
+                ))}
+            </div>
+            {/* <div className="w-full px-6 md:px-16 flex gap-6 overflow-x-auto">
                 {competitions.map((competition, index) => (
                     <ScholarshipCard
                         key={index}
@@ -87,19 +100,7 @@ const CardBeasiswa = () => {
                         label={competition.label}
                     />
                 ))}
-            </div>
-            <div className="w-full px-6 md:px-16 flex gap-6 overflow-x-auto">
-                {competitions.map((competition, index) => (
-                    <ScholarshipCard
-                        key={index}
-                        title={competition.title}
-                        description={competition.description}
-                        date={competition.date}
-                        image={competition.image}
-                        label={competition.label}
-                    />
-                ))}
-            </div>
+            </div> */}
         </div>
     );
 };

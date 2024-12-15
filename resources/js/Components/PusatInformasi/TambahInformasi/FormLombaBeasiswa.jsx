@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 
 export const FormLombaBeasiswa = ({ type }) => {
+    const [selectedFile, setSelectedFile] = useState(null);
+
     const { data, setData, post, processing, errors, reset } = useForm({
         name: "",
         organizer: "",
@@ -14,15 +16,19 @@ export const FormLombaBeasiswa = ({ type }) => {
         guidebook_link: "",
     });
 
-    const [selectedFile, setSelectedFile] = useState(null);
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
+        
         if (file && file.size > 1048576) {
             toast.error("Ukuran file maksimal 1MB.");
             return;
         }
+
+        console.log(file);
         setSelectedFile(file);
+
+        setData("poster_url", file);
     };
 
     const handleRemoveFile = () => {
@@ -56,7 +62,7 @@ export const FormLombaBeasiswa = ({ type }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
             <section className="mb-8">
                 <div className="mb-4">
                     <label

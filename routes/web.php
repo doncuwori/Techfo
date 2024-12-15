@@ -23,7 +23,9 @@ use App\Http\Controllers\ResearchInformationController;
 use App\Http\Controllers\ScholarshipInformationController;
 use App\Http\Controllers\ScholarshipRecipientController;
 use App\Http\Controllers\ScholarshipRegistrantController;
+use App\Models\Competitions\CompetitionInformation;
 use App\Models\Competitions\CompetitionWinner;
+use App\Models\Scholarships\ScholarshipInformation;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -83,7 +85,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Lomba 
     Route::get('/lomba', function () {
-        return Inertia::render('User/Lomba/Lomba');
+
+        $data = CompetitionInformation::orderBy('created_at', 'desc')->get();
+
+        return Inertia::render('User/Lomba/Lomba', [
+            'data' => $data
+        ]);
     })->name('lomba');
 
     Route::post('/pendataanDaftarLomba', [CompetitionRegistrantController::class, 'store'])
@@ -108,7 +115,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Beasiswa
     Route::get('/beasiswa', function () {
-        return Inertia::render('User/Beasiswa/Beasiswa');
+
+        $data = ScholarshipInformation::orderBy('created_at', 'desc')->get();
+
+        return Inertia::render('User/Beasiswa/Beasiswa', [
+            'data' => $data
+        ]);
     })->name('beasiswa');
 
     Route::get('/detailBeasiswa', function () {
