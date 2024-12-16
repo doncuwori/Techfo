@@ -6,7 +6,7 @@ import Procedure from "@/Components/Abdimas/ProcedureAbdimas";
 import CardAbdimas from "@/Components/Abdimas/CardAbdimas";
 import ScrollUpButton from "@/Components/ScrollUpButton";
 
-const Abdimas = () => {
+const Abdimas = ({ data }) => {
     return (
         <div>
             <Navbar />
@@ -27,7 +27,7 @@ const Abdimas = () => {
                     className="w-full max-h-[500px] rounded-md"
                 />
             </div>
-            <CardAbdimas />
+            <CardAbdimas data={data}/>
             <Footer />
             <ScrollUpButton />
         </div>

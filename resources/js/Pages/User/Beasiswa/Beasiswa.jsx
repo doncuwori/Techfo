@@ -6,7 +6,7 @@ import Procedure from "@/Components/Beasiswa/ProcedureBeasiswa";
 import CardBeasiswa from "@/Components/Beasiswa/CardBeasiswa";
 import ScrollUpButton from "@/Components/ScrollUpButton";
 
-const Beasiswa = ({data}) => {
+const Beasiswa = ({ data }) => {
     return (
         <div>
             <Navbar />

@@ -82,17 +82,10 @@ const CardAbdimas = ({ data }) => {
                             className="w-[343px] min-w-[280px] h-[208px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
                         >
                             {/* Image Section */}
-                            <div
-                                className="w-full h-14 relative"
-                                style={{
-                                    backgroundImage: `url(${abdimas.image})`,
-                                }}
-                            >
-                                <div className="absolute top-2 left-1 bg-yellow-500 text-white text-xs px-2 py-0.5 rounded-2xl">
-                                    Abdimas
-                                </div>
+                            <div className="bg-yellow-500 text-white text-xs px-2 py-0.5 mb-6 rounded-2xl w-max">
+                                Abdimas
                             </div>
-
+                            
                             {/* Content Section */}
                             <div className="flex flex-col gap-2">
                                 <h2 className="text-black text-lg font-medium line-clamp-1">

@@ -76,18 +76,11 @@ const CardPenelitian = ({ data }) => {
                         <Link
                             href={"/penelitian/" + research.id}
                             key={index}
-                            className="w-[343px] min-w-[280px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
+                            className="w-[343px] min-w-[280px] h-[208px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
                         >
                             {/* Image Section */}
-                            <div
-                                className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center object-cover"
-                                style={{
-                                    backgroundImage: `url(${research.image})`,
-                                }}
-                            >
-                                <div className="absolute top-2 left-2 bg-purple-500 text-white text-xs px-2 py-0.5 rounded-2xl">
-                                    Penelitian
-                                </div>
+                            <div className="bg-purple-500 text-white text-xs px-2 py-0.5 mb-6 rounded-2xl w-max">
+                                Penelitan
                             </div>
 
                             {/* Content Section */}
@@ -104,9 +97,7 @@ const CardPenelitian = ({ data }) => {
                                         className="text-orange-500"
                                     />
                                     <span className="text-orange-500 text-xs font-medium leading-tight">
-                                        {formatDate(
-                                            research.registration_end
-                                        )}
+                                        {formatDate(research.registration_end)}
                                     </span>
                                 </div>
                             </div>

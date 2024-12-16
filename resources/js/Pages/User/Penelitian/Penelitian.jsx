@@ -6,7 +6,7 @@ import Procedure from "@/Components/Penelitian/ProcedurePenelitian";
 import CardPenelitian from "@/Components/Penelitian/CardPenelitian";
 import ScrollUpButton from "@/Components/ScrollUpButton";
 
-const Penelitian = () => {
+const Penelitian = ({ data }) => {
     return (
         <div>
             <Navbar />
@@ -27,7 +27,7 @@ const Penelitian = () => {
                     className="w-full max-h-[500px] rounded-md"
                 />
             </div>
-            <CardPenelitian />
+            <CardPenelitian data={data}/>
             <Footer />
             <ScrollUpButton />
         </div>

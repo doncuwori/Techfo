@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@inertiajs/react";
+import { Clock4 } from "lucide-react";
 import { formatDate } from "@/lib/helper";
 
 const ScholarshipCard = ({ title, description, date, image, label }) => (
@@ -15,92 +16,43 @@ const ScholarshipCard = ({ title, description, date, image, label }) => (
         </div>
         {/* Konten */}
         <div className="flex flex-col gap-2">
-            <h2 className="text-black text-lg font-medium">{title}</h2>
-            <p className="text-gray-500 text-sm">{description}</p>
+            <h2 className="text-black text-lg font-medium line-clamp-1">
+                {title}
+            </h2>
+            <p className="text-gray-500 text-sm line-clamp-2">{description}</p>
             <div className="flex items-center gap-2">
-                <img src="img/waktu.png" alt="Jam" className="w-4 h-4 object-contain" />
-                <span className="text-orange-500 text-xs font-medium leading-tight">{date}</span>
+                <Clock4 size={18} className="text-orange-500" />
+                <span className="text-orange-500 text-xs font-medium leading-tight">
+                    {date}
+                </span>
             </div>
         </div>
     </div>
 );
 
-const CardBeasiswa = ({data}) => {
-    const competitions = [
-        {
-            title: "INSPACE UI/UX",
-            description: "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/posterbeasiswa.jpg",
-            label: "Beasiswa",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description: "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/posterbeasiswa.jpg",
-            label: "Beasiswa",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description: "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/posterbeasiswa.jpg",
-            label: "Beasiswa",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description: "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/posterbeasiswa.jpg",
-            label: "Beasiswa",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description: "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/posterbeasiswa.jpg",
-            label: "Beasiswa",
-        },
-    ];
-
+const CardBeasiswa = ({ data }) => {
     return (
-        <div className="w-full flex flex-col gap-6 mb-12 relative z-10">
+        <div className="relative z-10 py-6 px-8 sm:px-6 lg:px-16">
             {/* Header */}
-            <div className="w-full px-6 md:px-16 flex justify-between items-center">
-                <h1 className="text-black text-2xl font-semibold">Informasi Beasiswa</h1>
-                <Link
-                    href={route("abdimas")}
-                    className="text-orange-500 text-base font-normal hover:font-bold"
-                >
-                    Lihat Semua
-                </Link>
+            <div className="w-full flex justify-between items-center mb-4">
+                <h1 className="text-black text-2xl font-semibold">
+                    Informasi <span className="text-[#fe632e]">Beasiswa</span>
+                </h1>
             </div>
             {/* Konten */}
-            <div className="w-full px-6 md:px-16 gap-6 grid grid-cols-5 overflow-x-auto">
-                {data.map((competition, index) => (
-                    <ScholarshipCard
-                        key={index}
-                        title={competition.name}
-                        description={competition.description}
-                        date={formatDate(competition.created_at)}
-                        image={competition.poster_url}
-                        label='Beasiswa'
-                    />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                {data.map((scholarship) => (
+                    <Link href={"/beasiswa/" + scholarship.id} key={scholarship.id}>
+                        <ScholarshipCard
+                            title={scholarship.name}
+                            description={scholarship.description}
+                            date={formatDate(scholarship.created_at)}
+                            image={scholarship.poster_url}
+                            label="Beasiswa"
+                        />
+                    </Link>
                 ))}
             </div>
-            {/* <div className="w-full px-6 md:px-16 flex gap-6 overflow-x-auto">
-                {competitions.map((competition, index) => (
-                    <ScholarshipCard
-                        key={index}
-                        title={competition.title}
-                        description={competition.description}
-                        date={competition.date}
-                        image={competition.image}
-                        label={competition.label}
-                    />
-                ))}
-            </div> */}
         </div>
     );
 };

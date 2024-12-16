@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "@inertiajs/react";
-import { Clock5 } from 'lucide-react';
+import { Clock4 } from "lucide-react";
 import { formatDate } from "@/lib/helper";
+import { Link } from "@inertiajs/react";
 
 const CompetionCard = ({ title, description, date, image, label }) => (
-    <div className=" p-4 bg-white rounded-xl border border-neutral-200 shadow-lg flex flex-col gap-2">
+    <div className="p-4 bg-white rounded-xl border border-neutral-200 shadow-lg flex flex-col gap-2">
         {/* Gambar */}
         <div
             className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center"
@@ -16,92 +16,43 @@ const CompetionCard = ({ title, description, date, image, label }) => (
         </div>
         {/* Konten */}
         <div className="flex flex-col gap-2">
-            <h2 className="text-black text-lg font-medium">{title}</h2>
-            <p className="text-gray-500 text-sm">{description}</p>
+            <h2 className="text-black text-lg font-medium line-clamp-1">
+                {title}
+            </h2>
+            <p className="text-gray-500 text-sm line-clamp-2">{description}</p>
             <div className="flex items-center gap-2">
-                <img src="img/waktu.png" alt="Jam" className="w-4 h-4 object-contain" />
-                <span className="text-orange-500 text-xs font-medium leading-tight">{date}</span>
+                <Clock4 size={18} className="text-orange-500" />
+                <span className="text-orange-500 text-xs font-medium leading-tight">
+                    {date}
+                </span>
             </div>
         </div>
     </div>
 );
 
-const CardLomba = ({data}) => {
-    const competitions = [
-        {
-            title: "INSPACE UI/UX",
-            description: "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/posterlomba.jpg",
-            label: "Lomba",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description: "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/posterlomba.jpg",
-            label: "Lomba",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description: "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/posterlomba.jpg",
-            label: "Lomba",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description: "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/posterlomba.jpg",
-            label: "Lomba",
-        },
-        {
-            title: "INSPACE UI/UX",
-            description: "Perlombaan UI/UX Design Nasional diadakan oleh Institut Teknologi Kalimantan",
-            date: "20 Sep 2024",
-            image: "img/posterlomba.jpg",
-            label: "Lomba",
-        },
-    ];
-
+const CardLomba = ({ data }) => {
     return (
-        <div className="relative z-10 py-6 px-8">
+        <div className="relative z-10 py-6 px-8 sm:px-6 lg:px-16">
             {/* Header */}
-            <div className="w-full px-8 flex justify-between items-center">
-                <h1 className="text-black text-2xl font-semibold">Informasi Lomba</h1>
-                <Link
-                    href={route("abdimas")}
-                    className="text-orange-500 text-base font-normal hover:font-bold"
-                >
-                    Lihat Semua
-                </Link>
+            <div className="w-full flex justify-between items-center mb-4">
+                <h1 className="text-black text-2xl font-semibold">
+                    Informasi <span className="text-[#fe632e]">Lomba</span>
+                </h1>
             </div>
             {/* Konten */}
-            <div className="w-full px-8 grid grid-cols-5 gap-6 overflow-x-auto">
-                {data.map((competition, index) => (
-                    <CompetionCard
-                        key={index}
-                        title={competition.name}
-                        description={competition.description}
-                        date={formatDate(competition.event_time_end)}
-                        image={competition.poster_url}
-                        label='Lomba'
-                    />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                {data.map((competition) => (
+                    <Link href={"/lomba/" + competition.id} key={competition.id}>
+                        <CompetionCard
+                            title={competition.name}
+                            description={competition.description}
+                            date={formatDate(competition.event_time_end)}
+                            image={competition.poster_url}
+                            label="Lomba"
+                        />
+                    </Link>
                 ))}
             </div>
-            {/* <div className="w-full px-6 md:px-16 flex gap-6 overflow-x-auto">
-                {competitions.map((competition, index) => (
-                    <CompetionCard
-                        key={index}
-                        title={competition.title}
-                        description={competition.description}
-                        date={competition.date}
-                        image={competition.image}
-                        label={competition.label}
-                    />
-                ))}
-            </div> */}
         </div>
     );
 };

@@ -23,8 +23,10 @@ use App\Http\Controllers\ResearchInformationController;
 use App\Http\Controllers\ScholarshipInformationController;
 use App\Http\Controllers\ScholarshipRecipientController;
 use App\Http\Controllers\ScholarshipRegistrantController;
+use App\Models\Abdimas\AbdimasInformation;
 use App\Models\Competitions\CompetitionInformation;
 use App\Models\Competitions\CompetitionWinner;
+use App\Models\Researchs\ResearchInformation;
 use App\Models\Scholarships\ScholarshipInformation;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -131,7 +133,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Abdimas
     Route::get('/abdimas', function () {
-        return Inertia::render('User/Abdimas/Abdimas');
+        $data = AbdimasInformation::orderBy('created_at', 'desc')->get();
+
+        return Inertia::render('User/Abdimas/Abdimas', [
+            'data' => $data
+        ]);
     })->name('abdimas');
 
     Route::get('/detailAbdimas', function () {
@@ -141,7 +147,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Penelitian
     Route::get('/penelitian', function () {
-        return Inertia::render('User/Penelitian/Penelitian');
+        $data = ResearchInformation::orderBy('created_at', 'desc')->get();
+
+        return Inertia::render('User/Penelitian/Penelitian', [
+            'data' => $data
+        ]);
     })->name('penelitian');
 
     Route::get('/detailPenelitian', function () {
