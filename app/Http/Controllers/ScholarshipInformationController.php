@@ -19,25 +19,26 @@ class ScholarshipInformationController extends Controller
         ]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $user = Auth::user();
-        
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'organizer' => 'required|string|max:255',
-            'event_time_start' => 'required|date',
-            'event_time_end' => 'required|date',
-            'description' => 'required|string',
-            // 'poster_url' => 'required|url',
-        ]);
 
-        if($request->hasFile('poster_url')) {
+        if ($request->hasFile('poster_url')) {
             $file = $request->file('poster_url');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('images/'), $filename);
             $filename = '/images/' . $filename;
         }
 
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'organizer' => 'required|string|max:255',
+            'event_time_start' => 'required|date',
+            'event_time_end' => 'required|date',
+            'description' => 'required|string',
+            'activity_link' => 'required|url',
+            'guidebook_link' => 'required|url',
+        ]);
 
         // Create a new scholarship information record
         $competition = ScholarshipInformation::create([
@@ -56,7 +57,8 @@ class ScholarshipInformationController extends Controller
         return redirect()->route('tambahInfoBeasiswa')->with('success', 'Informasi beasiswa berhasil ditambahkan');
     }
 
-    public function show(ScholarshipInformation $postId) {
+    public function show(ScholarshipInformation $postId)
+    {
         return Inertia::render('User/Beasiswa/DetailBeasiswa', [
             'data' => $postId
         ]);

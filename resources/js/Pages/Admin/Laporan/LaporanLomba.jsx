@@ -5,15 +5,15 @@ import NavbarAdmin from "@/Components/NavbarAdmin";
 import { formatDate, formatDatetimeToIndonesian } from "@/lib/helper";
 
 const LaporanLomba = ({
-    competitionWinnersCount,
+    competitionAchievementsCount,
     competitionRegistrantsCount,
     user,
     registrant,
 }) => {
-    console.log(competitionWinnersCount, competitionRegistrantsCount);
+    console.log(competitionAchievementsCount, competitionRegistrantsCount);
 
     const maxValue = 365;
-    const value = Math.min(competitionWinnersCount, maxValue);
+    const value = Math.min(competitionAchievementsCount, maxValue);
     const percentage = (value / maxValue) * 100;
 
     return (
@@ -52,7 +52,7 @@ const LaporanLomba = ({
                                         Pemenang Lomba
                                     </h2>
                                     <div className="text-4xl font-bold text-black">
-                                        {`${competitionWinnersCount}`}
+                                        {`${competitionAchievementsCount}`}
                                     </div>
                                 </div>
                             </div>

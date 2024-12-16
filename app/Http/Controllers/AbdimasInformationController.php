@@ -24,10 +24,10 @@ class AbdimasInformationController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'lecturer_1' => 'required|string|max:255',
-            'lecturer_2' => 'required|string|max:255',
-            'lecturer_3' => 'required|string|max:255',
-            'lecturer_4' => 'required|string|max:255',
-            'lecturer_5' => 'required|string|max:255',
+            'lecturer_2' => 'string|max:255',
+            'lecturer_3' => 'string|max:255',
+            'lecturer_4' => 'string|max:255',
+            'lecturer_5' => 'string|max:255',
             'registration_start' => 'required|date',
             'registration_end' => 'required|date',
             'location' => 'required|string|max:255',
@@ -52,7 +52,7 @@ class AbdimasInformationController extends Controller
             'created_by' => $user->id,
             'description' => $request->description,
             // TODO:
-            'assignment_letter_url' => "https://www.google.com",
+            // 'assignment_letter_url' => "https://www.google.com",
             'created_at' => now(),
             'updated_at' => now(),
         ]);

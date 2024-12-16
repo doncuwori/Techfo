@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Competitions\CompetitionRegistrant;
-use App\Models\Competitions\CompetitionWinner;
+use App\Models\Competitions\CompetitionAchievement;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -126,7 +126,7 @@ class CompetitionSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        CompetitionWinner::create([
+        CompetitionAchievement::create([
             'is_group' => false,
             'leader_nim' => '9988776655', // Alice Green
             'ormawa_delegation' => 'HIMTI',
@@ -147,7 +147,7 @@ class CompetitionSeeder extends Seeder
             'updated_at' => now(),
         ]);
         
-        CompetitionWinner::create([
+        CompetitionAchievement::create([
             'is_group' => true,
             'leader_nim' => '5566778899', // Charlie Black
             'ormawa_delegation' => 'ROBOTICS',
@@ -168,7 +168,7 @@ class CompetitionSeeder extends Seeder
             'updated_at' => now(),
         ]);
         
-        CompetitionWinner::create([
+        CompetitionAchievement::create([
             'is_group' => false,
             'leader_nim' => '1122334455', // David White
             'ormawa_delegation' => 'KSM Multimedia',
@@ -188,6 +188,6 @@ class CompetitionSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        
+
     }
 }

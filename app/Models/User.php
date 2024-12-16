@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Competitions\CompetitionRegistrant;
-use App\Models\Competitions\CompetitionWinner;
+use App\Models\Competitions\CompetitionAchievement;
 use App\Models\Scholarships\ScholarshipRecipient;
 use App\Models\Scholarships\ScholarshipRegistrant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -57,10 +57,10 @@ class User extends Authenticatable
         return $this->belongsToMany(ScholarshipRegistrant::class, 'user_scholarship_registrants');
     }
 
-    // Relasi dengan Competition Winners (pemenang lomba)`
-    public function competitionWinners()
+    // Relasi dengan Competition Achievements (pemenang lomba)`
+    public function competitionAchievements()
     {
-        return $this->belongsToMany(CompetitionWinner::class, 'user_competition_winners');
+        return $this->belongsToMany(CompetitionAchievement::class, 'user_competition_achievements');
     }
 
     // Relasi dengan Scholarship Recipients (penerima beasiswa)

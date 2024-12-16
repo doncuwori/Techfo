@@ -85,17 +85,14 @@ const CardBeasiswa = ({ data }) => {
                     >
                         {data.map((scholarship, index) => (
                             <Link
-                                href={"/beasiswa/"+ scholarship.id}
+                                href={"/beasiswa/" + scholarship.id}
                                 key={index}
                                 className="w-[343px] min-w-[280px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
                             >
                                 <div
                                     className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center "
                                     style={{
-                                        backgroundImage: `url(${
-                                            scholarship.image ||
-                                            "img/posterbeasiswa.jpg"
-                                        })`,
+                                        backgroundImage: `url(${scholarship.poster_url})`,
                                     }}
                                 >
                                     <div className="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-0.5 rounded-2xl">
@@ -116,7 +113,9 @@ const CardBeasiswa = ({ data }) => {
                                             className="text-orange-500"
                                         />
                                         <span className="text-orange-500 text-xs font-medium leading-tight">
-                                            {formatDate(scholarship.event_time_end)}
+                                            {formatDate(
+                                                scholarship.event_time_end
+                                            )}
                                         </span>
                                     </div>
                                 </div>

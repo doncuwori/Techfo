@@ -7,13 +7,13 @@ import ScrollUpButton from "@/Components/ScrollUpButton";
 
 const LandingPage = ({
     competitionRegistrantsCount,
-    competitionWinnersCount,
+    competitionAchievementsCount,
     scholarshipRegistrantsCount,
     scholarshipRecipientsCount,
 }) => {
     console.log(
         competitionRegistrantsCount,
-        competitionWinnersCount,
+        competitionAchievementsCount,
         scholarshipRegistrantsCount,
         scholarshipRecipientsCount
     );
@@ -30,7 +30,7 @@ const LandingPage = ({
                 />
             </div>
             <LaporanKeaktifan
-                competitionCount={`${competitionWinnersCount}/${competitionRegistrantsCount} `}
+                competitionCount={`${competitionAchievementsCount}/${competitionRegistrantsCount} `}
                 scholarshipCount={`${scholarshipRegistrantsCount}/${scholarshipRecipientsCount}`}
             />
             <Footer />

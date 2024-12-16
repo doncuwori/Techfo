@@ -6,14 +6,14 @@ import { Link } from "@inertiajs/react";
 
 const DashboardAdmin = ({
     competitionRegistrantsCount,
-    competitionWinnersCount,
+    competitionAchievementsCount,
     scholarshipRegistrantsCount,
     scholarshipRecipientsCount,
     user
 }) => {
     console.log(
         competitionRegistrantsCount,
-        competitionWinnersCount,
+        competitionAchievementsCount,
         scholarshipRegistrantsCount,
         scholarshipRecipientsCount
     );
@@ -50,7 +50,7 @@ const DashboardAdmin = ({
                     </div>
 
                     <LaporanKeaktifan
-                        competitionCount={`${competitionWinnersCount}/${competitionRegistrantsCount} `}
+                        competitionCount={`${competitionAchievementsCount}/${competitionRegistrantsCount} `}
                         scholarshipCount={`${scholarshipRecipientsCount}/${scholarshipRegistrantsCount}`}
                     />
                 </div>

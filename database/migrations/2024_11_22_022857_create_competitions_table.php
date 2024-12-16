@@ -39,7 +39,7 @@ return new class extends Migration
         });        
 
         // Pemenang Lomba
-        Schema::create('competition_winners', function (Blueprint $table) {
+        Schema::create('competition_achievements', function (Blueprint $table) {
             $table->id(); // ID kompetisi
             $table->boolean('is_group')->default(false); // Kompetisi kelompok
             $table->string('leader_nim', 20)->nullable(); // NIM ketua kelompok
@@ -60,10 +60,10 @@ return new class extends Migration
             $table->timestamps();
         });
         
-        Schema::create('user_competition_winners', function (Blueprint $table) {
+        Schema::create('user_competition_achievements', function (Blueprint $table) {
             $table->id(); // ID relasi
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Foreign key ke users
-            $table->foreignId('competition_winner_id')->constrained('competition_winners')->onDelete('cascade'); // Foreign key ke competitions
+            $table->foreignId('competition_achievement_id')->constrained('competition_achievements')->onDelete('cascade'); // Foreign key ke competitions
             $table->timestamps();
         });    
 

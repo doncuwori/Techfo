@@ -111,7 +111,8 @@ const Navbar = ({ data }) => {
                         href={route("abdimas")}
                         className={`${
                             route().current("abdimas") ||
-                            route().current("abdimas.show")
+                            route().current("abdimas.show") ||
+                            route().current("daftarAbdimas")
                                 ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
                                 : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
                         } text-sm md:text-base font-medium transition duration-150`}
@@ -122,7 +123,8 @@ const Navbar = ({ data }) => {
                         href={route("penelitian")}
                         className={`${
                             route().current("penelitian") ||
-                            route().current("research.show")
+                            route().current("research.show") ||
+                            route().current("daftarPenelitian")
                                 ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
                                 : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
                         } text-sm md:text-base font-medium transition duration-150`}

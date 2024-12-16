@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Models\Competitions\CompetitionRegistrant;
-use App\Models\Competitions\CompetitionWinner;
+use App\Models\Competitions\CompetitionAchievement;
 use App\Models\Scholarships\ScholarshipRecipient;
 use App\Models\Scholarships\ScholarshipRegistrant;
 use Inertia\Inertia;
@@ -14,7 +14,7 @@ class DashboardAdminController extends Controller
 {
     public function index(){
         $competitionRegistrantsCount = CompetitionRegistrant::count();
-        $competitionWinnersCount = CompetitionWinner::count();
+        $competitionAchievementsCount = CompetitionAchievement::count();
         $scholarshipRegistrantsCount = ScholarshipRegistrant::count();
         $scholarshipRecipientsCount = ScholarshipRecipient::count();
 
@@ -22,7 +22,7 @@ class DashboardAdminController extends Controller
 
         return Inertia::render('Admin/DashboardAdmin', [
             'competitionRegistrantsCount' => $competitionRegistrantsCount,
-            'competitionWinnersCount' => $competitionWinnersCount,
+            'competitionAchievementsCount' => $competitionAchievementsCount,
             'scholarshipRegistrantsCount' => $scholarshipRegistrantsCount,
             'scholarshipRecipientsCount' => $scholarshipRecipientsCount,
             'user' => $user,

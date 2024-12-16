@@ -20,10 +20,11 @@ class CompetitionInformationController extends Controller
         ]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $user = Auth::user();
 
-        if($request->hasFile('poster_url')) {
+        if ($request->hasFile('poster_url')) {
             $file = $request->file('poster_url');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('images/'), $filename);
@@ -36,6 +37,8 @@ class CompetitionInformationController extends Controller
             'event_time_start' => 'required|date',
             'event_time_end' => 'required|date',
             'description' => 'required|string',
+            'activity_link' => 'required|url',
+            'guidebook_link' => 'required|url',
         ]);
 
         // Create a new scholarship information record
@@ -57,7 +60,8 @@ class CompetitionInformationController extends Controller
         return redirect()->route('tambahInfoLomba')->with('success', 'Informasi lomba berhasil ditambahkan');
     }
 
-    public function show(CompetitionInformation $postId) {
+    public function show(CompetitionInformation $postId)
+    {
         return Inertia::render('User/Lomba/DetailLomba', [
             'data' => $postId
         ]);

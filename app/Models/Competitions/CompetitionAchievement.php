@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CompetitionWinner extends Model
+class CompetitionAchievement extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -31,6 +31,6 @@ class CompetitionWinner extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_competition_winners');
+        return $this->belongsToMany(User::class, 'user_competition_achivments');
     }
 }

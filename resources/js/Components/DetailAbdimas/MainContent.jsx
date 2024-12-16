@@ -1,6 +1,7 @@
 import React from "react";
 import { CalendarDays } from "lucide-react";
 import { formatDate } from "@/lib/helper";
+import { Link } from "@inertiajs/react";
 
 const MainContent = ({ data }) => {
     return (
@@ -27,12 +28,16 @@ const MainContent = ({ data }) => {
                     </div>
                 </div>
                 <div className="flex justify-start mb-4">
-                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                        Daftar
-                    </button>
-                    <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded ml-4">
-                        Buku Panduan
-                    </button>
+                    <Link href={route("daftarAbdimas")}>
+                        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                            Daftar
+                        </button>
+                    </Link>
+                    <Link href={route("faq")}>
+                        <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded ml-4">
+                            Buku Panduan
+                        </button>
+                    </Link>
                 </div>
                 <div className="mb-4">
                     <h2 className="text-lg font-bold mb-2">

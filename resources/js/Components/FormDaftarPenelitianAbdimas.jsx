@@ -4,7 +4,7 @@ import PernyataanLegalitas from "./PernyataanLegalitas";
 const FormDaftarPenelitianAbdimas = () => {
     return (
         <div>
-            <section className="mb-6">
+            <section>
                 <form>
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2">
@@ -35,7 +35,7 @@ const FormDaftarPenelitianAbdimas = () => {
                             type="file"
                             className="w-full border rounded-lg p-2"
                         />
-                        <p className="text-gray-500 text-sm">
+                        <p className="text-gray-500 text-sm mt-2">
                             Tipe file yang dapat diunggah adalah .pdf, dengan
                             ukuran file maksimal 1MB.
                         </p>
@@ -48,7 +48,7 @@ const FormDaftarPenelitianAbdimas = () => {
                             type="file"
                             className="w-full border rounded-lg p-2"
                         />
-                        <p className="text-gray-500 text-sm">
+                        <p className="text-gray-500 text-sm mt-2">
                             Tipe file yang dapat diunggah adalah .pdf, dengan
                             ukuran file maksimal 1MB.
                         </p>
@@ -61,7 +61,7 @@ const FormDaftarPenelitianAbdimas = () => {
                             type="file"
                             className="w-full border rounded-lg p-2"
                         />
-                        <p className="text-gray-500 text-sm">
+                        <p className="text-gray-500 text-sm mt-2">
                             Tipe file yang dapat diunggah adalah .pdf, dengan
                             ukuran file maksimal 1MB.
                         </p>
@@ -74,7 +74,7 @@ const FormDaftarPenelitianAbdimas = () => {
                             type="file"
                             className="w-full border rounded-lg p-2"
                         />
-                        <p className="text-gray-500 text-sm">
+                        <p className="text-gray-500 text-sm mt-2">
                             Tipe file yang dapat diunggah adalah .pdf, dengan
                             ukuran file maksimal 1MB.
                         </p>

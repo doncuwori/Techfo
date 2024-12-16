@@ -81,7 +81,7 @@ export const TabPrestasiLomba = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        post(route("competitionWinner.store"), {
+        post(route("competitionAchievement.store"), {
             onSuccess: (res) => {
                 console.log("success");
                 reset();

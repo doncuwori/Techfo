@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CompetitionAchievement;
+use App\Models\Competitions\CompetitionAchievement;
 use App\Models\CompetitionAchievementUser;
 use App\Models\User;
 use Illuminate\Http\Request;
