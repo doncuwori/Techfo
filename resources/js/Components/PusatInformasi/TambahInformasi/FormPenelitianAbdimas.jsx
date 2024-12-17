@@ -27,10 +27,9 @@ const FormPenelitianAbdimas = ({ type }) => {
         post(route(routeName), {
             onSuccess: (res) => {
                 reset();
-                console.log("hai");
                 type === "penelitian"
                     ? toast.success("Berhasil menambahkan informasi penelitian")
-                    : toast.success(" Berhasil menambahkan informasi abdimas");
+                    : toast.success("Berhasil menambahkan informasi abdimas");
             },
             onError: (errors) => {
                 type === "penelitian"
@@ -41,10 +40,11 @@ const FormPenelitianAbdimas = ({ type }) => {
             },
         });
     };
+
     return (
         <form onSubmit={handleSubmit}>
-            <section className="mb-6">
-                <div>
+            <section className="space-y-6">
+                <div className="space-y-4">
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2">
                             Nama Kegiatan<span className="text-red-600">*</span>
@@ -53,7 +53,7 @@ const FormPenelitianAbdimas = ({ type }) => {
                             value={data.name}
                             onChange={(e) => setData("name", e.target.value)}
                             type="text"
-                            className="w-full border rounded-lg p-2"
+                            className="w-full border rounded-lg p-3"
                             placeholder="Masukkan Nama Kegiatan"
                         />
                     </div>
@@ -68,7 +68,7 @@ const FormPenelitianAbdimas = ({ type }) => {
                                 setData("location", e.target.value)
                             }
                             type="text"
-                            className="w-full border rounded-lg p-2"
+                            className="w-full border rounded-lg p-3"
                             placeholder="Masukkan Lokasi Kegiatan"
                         />
                     </div>
@@ -78,16 +78,13 @@ const FormPenelitianAbdimas = ({ type }) => {
                             Waktu Mulai Pendaftaran<span className="text-red-600">*</span>
                         </label>
                         <input
-                            value={data.registration_start}
+                            value={data.event_time_start}
                             onChange={(e) =>
-                                setData("registration_start", e.target.value)
+                                setData("event_time_start", e.target.value)
                             }
                             type="date"
-                            className="w-full border rounded-lg p-2"
+                            className="w-full border rounded-lg p-3"
                         />
-                        <div className="flex items-center mt-2">
-                            <input type="calendar" className="mr-2" />
-                        </div>
                     </div>
 
                     <div className="mb-4">
@@ -95,16 +92,13 @@ const FormPenelitianAbdimas = ({ type }) => {
                             Waktu Berakhir Pendaftaran<span className="text-red-600">*</span>
                         </label>
                         <input
-                            value={data.registration_end}
+                            value={data.event_time_end}
                             onChange={(e) =>
-                                setData("registration_end", e.target.value)
+                                setData("event_time_end", e.target.value)
                             }
                             type="date"
-                            className="w-full border rounded-lg p-2"
+                            className="w-full border rounded-lg p-3"
                         />
-                        <div className="flex items-center mt-2">
-                            <input type="calendar" className="mr-2" />
-                        </div>
                     </div>
 
                     <div className="mb-4">
@@ -120,84 +114,86 @@ const FormPenelitianAbdimas = ({ type }) => {
                                 )
                             }
                             type="number"
-                            className="w-full border rounded-lg p-2"
+                            className="w-full border rounded-lg p-3"
                             placeholder="Masukkan Total Mahasiswa yang Dibutuhkan"
                         />
                     </div>
 
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2">
-                            Nama Lengkap Ketua<span className="text-red-600">*</span>
-                        </label>
-                        <input
-                            value={data.lecturer_1}
-                            onChange={(e) =>
-                                setData("lecturer_1", e.target.value)
-                            }
-                            type="text"
-                            className="w-full border rounded-lg p-2"
-                            placeholder="Hayyu Satya S.Kom., MM."
-                        />
-                    </div>
+                    <div className="space-y-4">
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-bold mb-2">
+                                Nama Lengkap Ketua<span className="text-red-600">*</span>
+                            </label>
+                            <input
+                                value={data.lecturer_1}
+                                onChange={(e) =>
+                                    setData("lecturer_1", e.target.value)
+                                }
+                                type="text"
+                                className="w-full border rounded-lg p-3"
+                                placeholder="Hayyu Satya S.Kom., MM."
+                            />
+                        </div>
 
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2">
-                            Nama Lengkap Dosen 2
-                        </label>
-                        <input
-                            value={data.lecturer_2}
-                            onChange={(e) =>
-                                setData("lecturer_2", e.target.value)
-                            }
-                            type="text"
-                            className="w-full border rounded-lg p-2"
-                            placeholder="Hayyu Satya S.Kom., MM."
-                        />
-                    </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-bold mb-2">
+                                Nama Lengkap Dosen 2
+                            </label>
+                            <input
+                                value={data.lecturer_2}
+                                onChange={(e) =>
+                                    setData("lecturer_2", e.target.value)
+                                }
+                                type="text"
+                                className="w-full border rounded-lg p-3"
+                                placeholder="Hayyu Satya S.Kom., MM."
+                            />
+                        </div>
 
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2">
-                            Nama Lengkap Dosen 3
-                        </label>
-                        <input
-                            value={data.lecturer_3}
-                            onChange={(e) =>
-                                setData("lecturer_3", e.target.value)
-                            }
-                            type="text"
-                            className="w-full border rounded-lg p-2"
-                            placeholder="Hayyu Satya S.Kom., MM."
-                        />
-                    </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-bold mb-2">
+                                Nama Lengkap Dosen 3
+                            </label>
+                            <input
+                                value={data.lecturer_3}
+                                onChange={(e) =>
+                                    setData("lecturer_3", e.target.value)
+                                }
+                                type="text"
+                                className="w-full border rounded-lg p-3"
+                                placeholder="Hayyu Satya S.Kom., MM."
+                            />
+                        </div>
 
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2">
-                            Nama Lengkap Dosen 4
-                        </label>
-                        <input
-                            value={data.lecturer_4}
-                            onChange={(e) =>
-                                setData("lecturer_4", e.target.value)
-                            }
-                            type="text"
-                            className="w-full border rounded-lg p-2"
-                            placeholder="Hayyu Satya S.Kom., MM."
-                        />
-                    </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-bold mb-2">
+                                Nama Lengkap Dosen 4
+                            </label>
+                            <input
+                                value={data.lecturer_4}
+                                onChange={(e) =>
+                                    setData("lecturer_4", e.target.value)
+                                }
+                                type="text"
+                                className="w-full border rounded-lg p-3"
+                                placeholder="Hayyu Satya S.Kom., MM."
+                            />
+                        </div>
 
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2">
-                            Nama Lengkap Dosen 5
-                        </label>
-                        <input
-                            value={data.lecturer_5}
-                            onChange={(e) =>
-                                setData("lecturer_5", e.target.value)
-                            }
-                            type="text"
-                            className="w-full border rounded-lg p-2"
-                            placeholder="Hayyu Satya S.Kom., MM."
-                        />
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-bold mb-2">
+                                Nama Lengkap Dosen 5
+                            </label>
+                            <input
+                                value={data.lecturer_5}
+                                onChange={(e) =>
+                                    setData("lecturer_5", e.target.value)
+                                }
+                                type="text"
+                                className="w-full border rounded-lg p-3"
+                                placeholder="Hayyu Satya S.Kom., MM."
+                            />
+                        </div>
                     </div>
 
                     <div className="mb-4">
@@ -209,31 +205,18 @@ const FormPenelitianAbdimas = ({ type }) => {
                                 setData("description", e.target.value);
                             }}
                             value={data.description}
-                            className="w-full border rounded-lg p-2"
-                            placeholder="Write text here..."
+                            className="w-full border rounded-lg p-3"
+                            placeholder="Tuliskan Deskripsi Kegiatan"
                         ></textarea>
                     </div>
 
-                    {/* <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2">
-                            Surat Tugas
-                        </label>
-                        <input
-                            type="file"
-                            className="w-full border rounded-lg p-2"
-                        />
-                        <p className="text-gray-500 text-sm">
-                            Tipe file yang dapat diunggah adalah .pdf, dengan
-                            ukuran file maksimal 1MB.
-                        </p>
-                    </div> */}
-
-                    <div className="flex justify-end w-full">
+                    <div className="flex justify-end">
                         <button
                             type="submit"
-                            className="mt-2 bg-orange-500 text-white py-1 px-4 rounded-lg"
+                            className="bg-orange-500 text-white py-2 px-6 rounded-lg mt-4"
+                            disabled={processing}
                         >
-                            Submit
+                            {processing ? "Submitting..." : "Submit"}
                         </button>
                     </div>
                 </div>

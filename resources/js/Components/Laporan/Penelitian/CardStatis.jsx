@@ -1,6 +1,6 @@
 import React from "react";
 
-const CardStatis = () => {
+const CardStatis = ({ researchRegistrantsCount, researchRecipientsCount }) => {
     return (
         <div class="flex flex-wrap -mx-4 mb-6">
             <div class="w-full md:w-1/2 px-4">
@@ -10,7 +10,7 @@ const CardStatis = () => {
                         <h2 class="text-xl font-semibold text-black mb-4">
                             Pendaftar Penelitian
                         </h2>
-                        <div class="text-4xl font-bold text-black">135</div>
+                        <div class="text-4xl font-bold text-black">{`${researchRegistrantsCount}`}</div>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@ const CardStatis = () => {
                         <h2 class="text-xl font-semibold text-black mb-4">
                             Lolos Penelitian
                         </h2>
-                        <div class="text-4xl font-bold text-black">135</div>
+                        <div class="text-4xl font-bold text-black">{`${researchRecipientsCount}`}</div>
                     </div>
                 </div>
             </div>

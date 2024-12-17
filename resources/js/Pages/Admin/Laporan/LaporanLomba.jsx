@@ -1,8 +1,8 @@
 import React from "react";
-import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import NavbarAdmin from "@/Components/NavbarAdmin";
 import { formatDate, formatDatetimeToIndonesian } from "@/lib/helper";
+import CardStatis from "@/Components/Laporan/Lomba/CardStatis";
 
 const LaporanLomba = ({
     competitionAchievementsCount,
@@ -12,10 +12,6 @@ const LaporanLomba = ({
 }) => {
     console.log(competitionAchievementsCount, competitionRegistrantsCount);
 
-    const maxValue = 365;
-    const value = Math.min(competitionAchievementsCount, maxValue);
-    const percentage = (value / maxValue) * 100;
-
     return (
         <body>
             <NavbarAdmin user={user} />
@@ -24,53 +20,14 @@ const LaporanLomba = ({
                     <h1 class="text-3xl font-bold text-black mb-6">
                         Pusat Informasi
                     </h1>
-                    <div class="flex flex-wrap -mx-4 mb-6">
-                        <div class="w-full md:w-1/3 px-4">
-                            <div class="bg-white rounded-lg border-2 border-neutral-100 p-4 flex items-center">
-                                <div class="w-[87px] h-[87px] relative">
-                                    <div class="absolute">
-                                        <CircularProgressbar
-                                            className="h-24 w-24"
-                                            value={value}
-                                            maxValue={maxValue}
-                                            text={`${percentage.toFixed(2)}%`}
-                                        />
-                                    </div>
-                                </div>
-                                <div class="flex-col justify-center items-center gap-1 inline-flex">
-                                    <div class="text-center text-[#2d3036] text-lg font-semibold leading-7 ml-8">
-                                        Prestasi Mahasiswa
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full md:w-1/3 px-4">
-                            <div class="bg-orange-100 rounded-lg border-2 border-neutral-100 p-4 flex items-center">
-                                <div class="text-5xl ml-2 mr-6">🏆</div>
-                                <div>
-                                    <h2 class="text-xl font-semibold text-black mb-4">
-                                        Pemenang Lomba
-                                    </h2>
-                                    <div className="text-4xl font-bold text-black">
-                                        {`${competitionAchievementsCount}`}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full md:w-1/3 px-4">
-                            <div class="bg-orange-100 rounded-lg border-2 border-neutral-100 p-4 flex items-center">
-                                <div class="text-5xl ml-2 mr-6">📄</div>
-                                <div>
-                                    <h2 class="text-xl font-semibold text-black mb-4">
-                                        Partisipan Lomba
-                                    </h2>
-                                    <div className="text-4xl font-bold text-black">
-                                        {`${competitionRegistrantsCount}`}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <CardStatis
+                        competitionAchievementsCount={
+                            competitionAchievementsCount
+                        }
+                        competitionRegistrantsCount={
+                            competitionRegistrantsCount
+                        }
+                    />
                     <div class="self-stretch h-[360px] p-6 bg-white rounded-lg border-2 border-neutral-100 flex-col justify-start items-start gap-8 flex">
                         <div class="justify-start items-start gap-3 inline-flex">
                             <div class="text-[#2d3036] text-xl font-semibold leading-7">
@@ -268,7 +225,7 @@ const LaporanLomba = ({
                                     {registrant.map((item, index) => (
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap text-center">
-                                               {index+1}
+                                                {index + 1}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-center">
                                                 1234567890
@@ -295,7 +252,9 @@ const LaporanLomba = ({
                                                 {item.location}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-center">
-                                               {formatDate(item.activity_date_start)}
+                                                {formatDate(
+                                                    item.activity_date_start
+                                                )}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-center">
                                                 {item.description}

@@ -3,19 +3,8 @@ import React from "react";
 import { Link } from "@inertiajs/react";
 import TabelPusatInformasi from "@/Components/PusatInformasi/TabelPusatInformasi";
 
-const PusatAbdimas = ({ user }) => {
-    const data = [
-        {
-            no: 1,
-            name: "Pengabdian Masyarakat 1",
-            date: "Apr 23, 2024 - Mei 23, 2024",
-        },
-        {
-            no: 2,
-            name: "Pengabdian Masyarakat 2",
-            date: "Apr 25, 2024 - Mei 25, 2024",
-        },
-    ];
+const PusatAbdimas = ({ user, data }) => {
+    console.log(data)
 
     return (
         <div>

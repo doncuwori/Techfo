@@ -4,17 +4,26 @@ import TabelTabPenerima from "@/Components/Laporan/Abdimas/TabelTabPenerima";
 import NavbarAdmin from "@/Components/NavbarAdmin";
 import React, { useState } from "react";
 
-const LaporanAbdimas = () => {
+const LaporanAbdimas = ({
+    abdimasRegistrantsCount,
+    abdimasRecipientsCount,
+    user,
+}) => {
+    console.log(abdimasRegistrantsCount, abdimasRecipientsCount);
     const [tabValue, settabValue] = useState("Penerima");
     return (
         <body>
-            <NavbarAdmin />
+            <NavbarAdmin user={user} />
             <div class="pl-72 w-full">
                 <div class="container px-4 py-8 w-full">
                     <h1 class="text-3xl font-bold text-black mb-6">
                         Pusat Informasi
                     </h1>
-                    <CardStatis />
+                    <CardStatis
+                        abdimasRegistrantsCount={abdimasRegistrantsCount}
+                        abdimasRecipientsCount={abdimasRecipientsCount}
+                    />
+
                     <div class="bg-white p-4 rounded-lg shadow-lg mb-6">
                         <div class="flex items-center mb-4">
                             <button

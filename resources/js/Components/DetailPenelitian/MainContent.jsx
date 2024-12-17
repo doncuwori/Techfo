@@ -46,8 +46,8 @@ const MainContent = ({ data }) => {
                     <div className="flex items-center">
                         <CalendarDays className="w-5 h-5 text-orange-600" />
                         <p className="text-gray-700 ml-2">
-                            {formatDate(data.registration_start)} -{" "}
-                            {formatDate(data.registration_end)}
+                            {formatDate(data.event_time_start)} -{" "}
+                            {formatDate(data.event_time_end)}
                         </p>
                     </div>
                 </div>

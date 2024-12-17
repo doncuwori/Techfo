@@ -13,7 +13,6 @@ class PusatInformasiLombaController extends Controller
 
         $data = CompetitionInformation::orderBy('created_at', 'desc')->get();
 
-
         return Inertia::render('Admin/PusatInformasi/PusatLomba', [
             'user' => $user,
             'data' => $data

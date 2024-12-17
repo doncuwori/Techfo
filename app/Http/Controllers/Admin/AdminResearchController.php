@@ -3,22 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Competitions\CompetitionRegistrant;
-use App\Models\Competitions\CompetitionAchievement;
+use App\Models\Researchs\ResearchRegistrant;
+use App\Models\Researchs\ResearchRecipient;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class AdminResearchController extends Controller
 {
     public function index(){
-        $competitionRegistrantsCount = CompetitionRegistrant::count();
-        $competitionAchievementsCount = CompetitionAchievement::count();
+        $researchRegistrantsCount = ResearchRegistrant::count();
+        $researchRecipientsCount = ResearchRecipient::count();
 
         $user = auth()->user();
 
         return Inertia::render('Admin/Laporan/LaporanPenelitian', [
-            'competitionRegistrantsCount' => $competitionRegistrantsCount,
-            'competitionAchievementsCount' => $competitionAchievementsCount,
+            'researchRegistrantsCount' => $researchRegistrantsCount,
+            'researchRecipientsCount' => $researchRecipientsCount,
             'user' => $user,
         ]);
     }

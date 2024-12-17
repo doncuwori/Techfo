@@ -20,7 +20,7 @@ const TabelPusatInformasi = ({ data }) => {
                     <tr key={index} className="border-t hover:bg-gray-50">
                         <td className="border p-2">{index+1}</td>
                         <td className="border p-2">{item.name}</td>
-                        <td className="border p-2">{ formatDatetimeToIndonesian(item.created_at)}</td>
+                        <td className="border p-2">{formatDatetimeToIndonesian(item.created_at)}</td>
                         <td className="border p-2">{formatDatetimeToIndonesian(item.event_time_end)}</td>
                         <td className="border p-2">
                             <div className="flex justify-center space-x-2 gap-8 ml-2">

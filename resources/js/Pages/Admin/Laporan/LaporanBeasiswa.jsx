@@ -20,12 +20,11 @@ const LaporanBeasiswa = ({
                         Pusat Informasi
                     </h1>
                     <CardStatis
-                        scholarshipRegistrantsCount={scholarshipRegistrantsCount}
-                        scholarshipRecipientsCount={
-                            scholarshipRecipientsCount
+                        scholarshipRegistrantsCount={
+                            scholarshipRegistrantsCount
                         }
+                        scholarshipRecipientsCount={scholarshipRecipientsCount}
                     />
-
                     <div class="bg-white p-4 rounded-lg shadow-lg mb-6">
                         <div class="flex items-center mb-4">
                             <button

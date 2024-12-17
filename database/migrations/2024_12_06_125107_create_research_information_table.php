@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('lecturer_4')->nullable(); 
             $table->string('lecturer_5')->nullable(); 
             $table->string('description'); 
-            $table->date('registration_start'); 
-            $table->date('registration_end'); 
+            $table->dateTime('event_time_start'); 
+            $table->dateTime('event_time_end'); 
             $table->string('location'); 
             $table->integer('total_students_required'); 
             // $table->string("assignment_letter_url");
