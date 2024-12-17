@@ -10,12 +10,20 @@ const LandingPage = ({
     competitionAchievementsCount,
     scholarshipRegistrantsCount,
     scholarshipRecipientsCount,
+    abdimasRegistrantsCount,
+    abdimasRecipientsCount,
+    researchRegistrantsCount,
+    researchRecipientsCount
 }) => {
     console.log(
         competitionRegistrantsCount,
         competitionAchievementsCount,
         scholarshipRegistrantsCount,
-        scholarshipRecipientsCount
+        scholarshipRecipientsCount,
+        abdimasRegistrantsCount,
+        abdimasRecipientsCount,
+        researchRegistrantsCount,
+        researchRecipientsCount,
     );
     
     return (
@@ -30,8 +38,10 @@ const LandingPage = ({
                 />
             </div>
             <LaporanKeaktifan
-                competitionCount={`${competitionAchievementsCount}/${competitionRegistrantsCount} `}
+                competitionCount={`${competitionAchievementsCount}/${competitionRegistrantsCount}`}
                 scholarshipCount={`${scholarshipRegistrantsCount}/${scholarshipRecipientsCount}`}
+                abdimasCount={`${abdimasRegistrantsCount}/${abdimasRecipientsCount}`}
+                researchCount={`${researchRegistrantsCount}/${researchRecipientsCount}`}
             />
             <Footer />
             <ScrollUpButton />

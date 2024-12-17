@@ -25,9 +25,7 @@ class ScholarshipRecipientController extends Controller
             
         ]);
 
-        
 
-        
         // Create new ScholarshipRecipient
         $scholarship = ScholarshipRecipient::create([
             'name' => $request->name,

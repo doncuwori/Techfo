@@ -91,7 +91,7 @@ const CardAbdimas = ({ data }) => {
                                 <h2 className="text-black text-lg font-medium line-clamp-1">
                                     {abdimas.name}
                                 </h2>
-                                <p className="text-gray-500 text-sm line-clamp-2">
+                                <p className="text-gray-500 text-sm line-clamp-3">
                                     {abdimas.description}
                                 </p>
                                 <div className="flex items-center gap-2">

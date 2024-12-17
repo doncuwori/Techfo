@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Pie, Bar, Line } from "react-chartjs-2";
 import {
     Chart as ChartJS,
@@ -12,6 +12,7 @@ import {
     LineElement,
     Title,
 } from "chart.js";
+import axios from "axios";
 
 // Registering the required Chart.js components
 ChartJS.register(
@@ -26,7 +27,7 @@ ChartJS.register(
     Title
 );
 
-const LaporanKeaktifan = ({ competitionCount, scholarshipCount }) => {
+const LaporanKeaktifan = ({ competitionCount, scholarshipCount, abdimasCount, researchCount }) => {
     const pieData = {
         labels: [
             "S-1 Informatika",
@@ -205,14 +206,14 @@ const LaporanKeaktifan = ({ competitionCount, scholarshipCount }) => {
                                 {
                                     label: "ABDIMAS",
                                     icon: "👥",
-                                    count: "36/50",
+                                    count: abdimasCount,
                                     status1: "Lolos",
                                     status2: "Daftar",
                                 },
                                 {
                                     label: "PENELITIAN",
                                     icon: "🔍",
-                                    count: "36/50",
+                                    count: researchCount,
                                     status1: "Lolos",
                                     status2: "Daftar",
                                 },

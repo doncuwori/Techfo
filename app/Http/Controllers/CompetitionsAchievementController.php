@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Competitions\CompetitionAchievement;
-use App\Models\CompetitionAchievementUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,20 +62,19 @@ class CompetitionsAchievementController extends Controller
                 $member = User::where('nim', $member->nim)->first();
 
                 if ($member) {
-                    CompetitionAchievementUser::create([
+                    CompetitionAchievement::create([
                         'user_id' => $member->id,
                         'competition_id' => $competition->id,
                         'created_at' => now(),
                         'updated_at' => now(),
                     ]);
                 } else {
-                    // Handle the case where the user with the given NIM does not exist
                     return response()->json(['error' => "User with NIM $member does not exist."], 404);
                 }
             }
         }
 
-        CompetitionAchievementUser::create([
+        CompetitionAchievement::create([
             'user_id' => $user->id,
             'competition_id' => $competition->id,
             'created_at' => now(),

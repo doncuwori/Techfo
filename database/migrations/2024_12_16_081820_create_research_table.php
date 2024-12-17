@@ -30,6 +30,27 @@ return new class extends Migration
             $table->foreignId('research_registrant_id')->constrained('abdimas_registrants')->onDelete('cascade');
             $table->timestamps();
         });
+
+        Schema::create('research_recipients', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('telephone');
+            $table->string('organizer');
+            $table->string('khs');
+            $table->string('cv');
+            $table->string('portofolio');
+            $table->string('foto');
+            $table->foreignId('created_by')->constrained('users');
+            $table->timestamps();
+        });
+
+        Schema::create('user_research_recipients', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('research_recipient_id')->constrained('abdimas_recipients')->onDelete('cascade');
+            $table->timestamps();
+        });
+
     }
 
     /**

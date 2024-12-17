@@ -127,7 +127,7 @@ const FormPenelitianAbdimas = ({ type }) => {
 
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2">
-                            Nama Lengkap Dosen 1<span className="text-red-600">*</span>
+                            Nama Lengkap Ketua<span className="text-red-600">*</span>
                         </label>
                         <input
                             value={data.lecturer_1}
