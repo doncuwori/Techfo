@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call(usersTableSeeder::class);
         $this->call(MahasiswaSeeder::class);
         $this->call(CompetitionSeeder::class);    
+        $this->call(ScholarshipSeeder::class);    
+        $this->call(AbdimasSeeder::class);    
+        $this->call(ResearchSeeder::class);    
         $this->call(UserCompetitionRegistrantSeeder::class);
         $this->call(InformationSeeder::class);
     }

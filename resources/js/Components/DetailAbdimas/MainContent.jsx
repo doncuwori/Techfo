@@ -35,7 +35,7 @@ const MainContent = ({ data }) => {
                     </Link>
                     <Link href={route("faq")}>
                         <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded ml-4">
-                            Buku Panduan
+                            Panduan
                         </button>
                     </Link>
                 </div>
@@ -53,8 +53,12 @@ const MainContent = ({ data }) => {
                 </div>
                 <p className="text-gray-700 mb-4">{data.description}</p>
                 <div className="mb-4">
-                    <h2 className="text-lg font-bold mb-2">Penyelenggara</h2>
+                    <h2 className="text-lg font-bold mb-2">Dosen Penyelenggara</h2>
                     <p className="text-gray-700">{data.lecturer_1}</p>
+                    <p className="text-gray-700">{data.lecturer_2}</p>
+                    <p className="text-gray-700">{data.lecturer_3}</p>
+                    <p className="text-gray-700">{data.lecturer_4}</p>
+                    <p className="text-gray-700">{data.lecturer_5}</p>
                 </div>
             </div>
         </div>

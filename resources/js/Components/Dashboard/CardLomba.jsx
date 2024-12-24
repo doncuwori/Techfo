@@ -86,21 +86,22 @@ const CardLomba = ({ data }) => {
                             <Link
                                 href={"/lomba/" + competition.id}
                                 key={index}
-                                className="w-[343px] min-w-[280px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
+                                className="group w-[343px] min-w-[280px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2 transition-transform transform hover:scale-95 hover:shadow-lg hover:shadow-orange-300"
                             >
                                 <div
-                                    className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center"
+                                    className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center overflow-hidden transition-opacity group-hover:opacity-90"
                                     style={{
                                         backgroundImage: `url(${competition.poster_url})`,
                                     }}
                                 >
+                                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-opacity"></div>
                                     <div className="absolute top-2 left-2 bg-blue-500 text-white text-xs px-2 py-0.5 rounded-2xl">
                                         Lomba
                                     </div>
                                 </div>
 
                                 <div className="flex flex-col gap-2">
-                                    <h2 className="text-black text-lg font-medium line-clamp-1">
+                                    <h2 className="text-black text-lg font-medium line-clamp-1 group-hover:text-orange-500 transition-colors">
                                         {competition.name}
                                     </h2>
                                     <p className="text-gray-500 text-sm line-clamp-2">
@@ -112,7 +113,9 @@ const CardLomba = ({ data }) => {
                                             className="text-orange-500"
                                         />
                                         <span className="text-orange-500 text-xs font-medium leading-tight">
-                                            {formatDate(competition.event_time_end)}
+                                            {formatDate(
+                                                competition.event_time_end
+                                            )}
                                         </span>
                                     </div>
                                 </div>

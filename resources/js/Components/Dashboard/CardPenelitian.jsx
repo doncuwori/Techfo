@@ -76,7 +76,7 @@ const CardPenelitian = ({ data }) => {
                         <Link
                             href={"/penelitian/" + research.id}
                             key={index}
-                            className="w-[343px] min-w-[280px] h-[208px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
+                            className="group w-[343px] min-w-[280px] h-[208px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2 transition-transform transform hover:scale-95 hover:shadow-lg hover:shadow-orange-300"
                         >
                             {/* Image Section */}
                             <div className="bg-purple-500 text-white text-xs px-2 py-0.5 mb-6 rounded-2xl w-max">
@@ -85,7 +85,7 @@ const CardPenelitian = ({ data }) => {
 
                             {/* Content Section */}
                             <div className="flex flex-col gap-2">
-                                <h2 className="text-black text-lg font-medium line-clamp-1">
+                                <h2 className="text-black text-lg font-medium line-clamp-1 group-hover:text-orange-500 transition-colors">
                                     {research.name}
                                 </h2>
                                 <p className="text-gray-500 text-sm line-clamp-3">
@@ -97,7 +97,7 @@ const CardPenelitian = ({ data }) => {
                                         className="text-orange-500"
                                     />
                                     <span className="text-orange-500 text-xs font-medium leading-tight">
-                                        {formatDate(research.registration_end)}
+                                        {formatDate(research.event_time_end)}
                                     </span>
                                 </div>
                             </div>

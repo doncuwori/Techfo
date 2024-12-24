@@ -4,19 +4,20 @@ import { Clock4 } from "lucide-react";
 import { formatDate } from "@/lib/helper";
 
 const ScholarshipCard = ({ title, description, date, image, label }) => (
-    <div className="p-4 bg-white rounded-xl border border-neutral-200 shadow-lg flex flex-col gap-2">
+    <div className="group p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2 transition-transform transform hover:scale-105 hover:shadow-lg hover:shadow-orange-300">
         {/* Gambar */}
         <div
-            className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center"
+            className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center overflow-hidden transition-opacity group-hover:opacity-90"
             style={{ backgroundImage: `url(${image})` }}
         >
+            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-opacity"></div>
             <div className="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-0.5 rounded-2xl">
                 {label}
             </div>
         </div>
         {/* Konten */}
         <div className="flex flex-col gap-2">
-            <h2 className="text-black text-lg font-medium line-clamp-1">
+            <h2 className="text-black text-lg font-medium line-clamp-1 group-hover:text-orange-500 transition-colors">
                 {title}
             </h2>
             <p className="text-gray-500 text-sm line-clamp-2">{description}</p>
@@ -42,7 +43,10 @@ const CardBeasiswa = ({ data }) => {
             {/* Konten */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                 {data.map((scholarship) => (
-                    <Link href={"/beasiswa/" + scholarship.id} key={scholarship.id}>
+                    <Link
+                        href={"/beasiswa/" + scholarship.id}
+                        key={scholarship.id}
+                    >
                         <ScholarshipCard
                             title={scholarship.name}
                             description={scholarship.description}

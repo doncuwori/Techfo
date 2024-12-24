@@ -79,16 +79,16 @@ const CardAbdimas = ({ data }) => {
                         <Link
                             href={"/abdimas/" + abdimas.id}
                             key={index}
-                            className="w-[343px] min-w-[280px] h-[208px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
+                            className="group w-[343px] min-w-[280px] h-[208px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2 transition-transform transform hover:scale-95 hover:shadow-lg hover:shadow-orange-300"
                         >
                             {/* Image Section */}
                             <div className="bg-yellow-500 text-white text-xs px-2 py-0.5 mb-6 rounded-2xl w-max">
                                 Abdimas
                             </div>
-                            
+
                             {/* Content Section */}
                             <div className="flex flex-col gap-2">
-                                <h2 className="text-black text-lg font-medium line-clamp-1">
+                                <h2 className="text-black text-lg font-medium line-clamp-1 group-hover:text-orange-500 transition-colors">
                                     {abdimas.name}
                                 </h2>
                                 <p className="text-gray-500 text-sm line-clamp-3">
@@ -100,7 +100,7 @@ const CardAbdimas = ({ data }) => {
                                         className="text-orange-500"
                                     />
                                     <span className="text-orange-500 text-xs font-medium leading-tight">
-                                        {formatDate(abdimas.registration_end)}
+                                        {formatDate(abdimas.event_time_end)}
                                     </span>
                                 </div>
                             </div>

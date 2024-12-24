@@ -4,14 +4,14 @@ import { formatDate } from "@/lib/helper";
 import { Link } from "@inertiajs/react";
 
 const ResearchCard = ({ title, description, date, label }) => (
-    <div className="p-4 bg-white rounded-xl border border-neutral-200 shadow-lg flex flex-col gap-2">
+    <div className="group p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2 transition-transform transform hover:scale-105 hover:shadow-lg hover:shadow-orange-300">
         {/* Label */}
         <div className="bg-purple-500 text-white text-xs px-2 py-0.5 mb-6 rounded-2xl w-max">
             {label}
         </div>
         {/* Konten */}
         <div className="flex flex-col gap-2">
-            <h2 className="text-black text-lg font-medium line-clamp-2">
+            <h2 className="text-black text-lg font-medium line-clamp-1 group-hover:text-orange-500 transition-colors">
                 {title}
             </h2>
             <p className="text-gray-500 text-sm line-clamp-3">{description}</p>
