@@ -1,8 +1,13 @@
-import Footer from "@/Components/Footer";
 import NavbarAdmin from "@/Components/NavbarAdmin";
 import React from "react";
+import TabelPusatInformasi from "@/Components/PusatInformasi/TabelPusatInformasi";
 
 const PusatLomba = () => {
+    const data = [
+        { no: 1, name: "Lomba 1", date: "Apr 23, 2024 - Mei 23, 2024" },
+        { no: 2, name: "Lomba 2", date: "Apr 25, 2024 - Mei 25, 2024" },
+    ];
+
     return (
         <div>
             <NavbarAdmin />
@@ -30,69 +35,13 @@ const PusatLomba = () => {
                         </div>
 
                         {/* Tabel */}
-                        <table className="w-full border-collapse text-sm">
-                            <thead>
-                                <tr className="bg-gray-100 text-left text-gray-700">
-                                    <th className="border p-2">NO</th>
-                                    <th className="border p-2">NAMA PROKER</th>
-                                    <th className="border p-2">
-                                        HARI & TANGGAL UPLOAD
-                                    </th>
-                                    <th className="border p-2">
-                                        DEADLINE KEGIATAN
-                                    </th>
-                                    <th className="border p-2">AKSI</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {[
-                                    {
-                                        no: 1,
-                                        name: "Lomba 1",
-                                        date: "Apr 23, 2024 - Mei 23, 2024",
-                                    },
-                                    {
-                                        no: 2,
-                                        name: "Lomba 2",
-                                        date: "Apr 25, 2024 - Mei 25, 2024",
-                                    },
-                                ].map((item, index) => (
-                                    <tr
-                                        key={index}
-                                        className="border-t hover:bg-gray-50"
-                                    >
-                                        <td className="border p-2">
-                                            {item.no}
-                                        </td>
-                                        <td className="border p-2">
-                                            {item.name}
-                                        </td>
-                                        <td className="border p-2">
-                                            {item.date}
-                                        </td>
-                                        <td className="border p-2">
-                                            {item.date}
-                                        </td>
-                                        <td className="border p-2">
-                                            <div className="flex space-x-2">
-                                                <button className="text-blue-500 hover:text-blue-600 transition">
-                                                    <i className="fas fa-edit"></i>
-                                                </button>
-                                                <button className="text-red-500 hover:text-red-600 transition">
-                                                    <i className="fas fa-trash"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                        <TabelPusatInformasi data={data} />
 
                         {/* Pagination */}
                         <div className="flex justify-between items-center mt-4 text-gray-600">
                             <div>
                                 Rows per page
-                                <select className="border border-gray-300 rounded py-1 px-2 ml-2 focus:ring-2 focus:ring-orange-500">
+                                <select className="border border-gray-300 rounded ml-2 focus:ring-2 focus:ring-orange-500">
                                     <option>10</option>
                                     <option>20</option>
                                     <option>30</option>
@@ -117,7 +66,6 @@ const PusatLomba = () => {
                     </div>
                 </div>
             </main>
-     
         </div>
     );
 };

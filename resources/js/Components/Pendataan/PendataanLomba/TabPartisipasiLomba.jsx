@@ -58,7 +58,7 @@ export const TabPartisipasiLomba = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Delegasi ORMAWA
+                        Delegasi ORMAWA <span className="text-red-600">*</span>
                     </label>
                     <select className="w-full border rounded-lg p-2">
                         <option>Bukan Delegasi dari ORMAWA</option>
@@ -94,7 +94,7 @@ export const TabPartisipasiLomba = () => {
 
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Nama Kegiatan
+                        Nama Kegiatan <span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -106,7 +106,8 @@ export const TabPartisipasiLomba = () => {
                     <div className="flex flex-col w-full">
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">
-                                Tingkat Prestasi
+                                Tingkat Lomba{" "}
+                                <span className="text-red-600">*</span>
                             </label>
                             <select className="w-full border rounded-lg p-2">
                                 <option>-- Pilih Tingkat Prestasi --</option>
@@ -122,10 +123,10 @@ export const TabPartisipasiLomba = () => {
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">
-                                Gelar
+                                Juara <span className="text-red-600">*</span>
                             </label>
                             <select className="w-full border rounded-lg p-2">
-                                <option>-- Pilih Gelar --</option>
+                                <option>-- Pilih Juara --</option>
                                 <option>Ilmiah/Penalaran/Akademik</option>
                                 <option>Minat Khusus</option>
                                 <option>Olahraga</option>
@@ -137,7 +138,7 @@ export const TabPartisipasiLomba = () => {
                     <div className="flex flex-col w-full">
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">
-                                Bidang
+                                Bidang <span className="text-red-600">*</span>
                             </label>
                             <select className="w-full border rounded-lg p-2">
                                 <option>-- Pilih Bidang Lomba --</option>
@@ -150,7 +151,8 @@ export const TabPartisipasiLomba = () => {
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">
-                                Dosen Pembimbing/Pendamping
+                                Dosen Pembimbing/Pendamping{" "}
+                                <span className="text-red-600">*</span>
                             </label>
                             <input
                                 type="text"
@@ -163,7 +165,7 @@ export const TabPartisipasiLomba = () => {
 
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Penyelenggara
+                        Penyelenggara <span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -173,7 +175,8 @@ export const TabPartisipasiLomba = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Negara Penyelenggara
+                        Negara Penyelenggara{" "}
+                        <span className="text-red-600">*</span>
                     </label>
                     <select className="w-full border rounded-lg p-2">
                         <option>Pilih Negara Penyelenggara</option>
@@ -181,7 +184,8 @@ export const TabPartisipasiLomba = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Tempat Pelaksanaan
+                        Tempat Pelaksanaan{" "}
+                        <span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -191,7 +195,8 @@ export const TabPartisipasiLomba = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Waktu Pelaksanaan
+                        Waktu Pelaksanaan{" "}
+                        <span className="text-red-600">*</span>
                     </label>
                     <input
                         type="date"
@@ -203,7 +208,8 @@ export const TabPartisipasiLomba = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Deskripsi Kegiatan
+                        Deskripsi Kegiatan{" "}
+                        <span className="text-red-600">*</span>
                     </label>
                     <textarea
                         className="w-full border rounded-lg p-2"
@@ -214,7 +220,7 @@ export const TabPartisipasiLomba = () => {
             <section className="mb-8">
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Poster Kegiatan
+                        Poster Kegiatan <span className="text-red-600">*</span>
                     </label>
                     <div className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center">
                         <p>Click to upload or drag and drop</p>

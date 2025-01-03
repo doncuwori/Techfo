@@ -24,7 +24,7 @@ export const TabDaftarBeasiswa = () => {
                 </h2>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Nama Beasiswa
+                        Nama Beasiswa <span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -34,7 +34,7 @@ export const TabDaftarBeasiswa = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Jenis Beasiswa
+                        Jenis Beasiswa <span className="text-red-600">*</span>
                     </label>
                     <select className="w-full border rounded-lg p-2">
                         <option>-- Pilih Jenis Beasiswa --</option>
@@ -47,7 +47,7 @@ export const TabDaftarBeasiswa = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Penyelenggara
+                        Penyelenggara <span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -57,7 +57,8 @@ export const TabDaftarBeasiswa = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Negara Penyelenggara
+                        Negara Penyelenggara{" "}
+                        <span className="text-red-600">*</span>
                     </label>
                     <select className="w-full border rounded-lg p-2">
                         <option>Pilih Negara Penyelenggara</option>
@@ -65,7 +66,8 @@ export const TabDaftarBeasiswa = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Waktu Pelaksanaan
+                        Waktu Pelaksanaan{" "}
+                        <span className="text-red-600">*</span>
                     </label>
                     <input
                         type="date"
@@ -74,7 +76,8 @@ export const TabDaftarBeasiswa = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Deskripsi Kegiatan
+                        Deskripsi Kegiatan{" "}
+                        <span className="text-red-600">*</span>
                     </label>
                     <textarea
                         className="w-full border rounded-lg p-2"
@@ -90,7 +93,7 @@ export const TabDaftarBeasiswa = () => {
                 {/* Poster Kegiatan */}
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Poster Kegiatan
+                        Poster Kegiatan <span className="text-red-600">*</span>
                     </label>
                     <div className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center">
                         <p>Click to upload or drag and drop</p>
