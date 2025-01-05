@@ -48,7 +48,7 @@ const PusatInformasiPenelitian = ({ user, research }) => {
                             </h3>
                             <a
                                 href={route("dashboardAdmin")}
-                                className="hover:scale-110 transform transition-transform flex items-center gap-3"
+                                className="transform transition-transform flex items-center gap-3"
                             >
                                 <FilePenLine className="ml-4 mb-12 text-black w-6 h-6 hover:text-orange-500" />
                             </a>
