@@ -28,7 +28,7 @@ class MahasiswaAccessSeeder extends Seeder
                 'nim' => '2310512059'
             ],
             [
-                'nama_akses' => 'ormawa',
+                'nama_akses' => 'ormawa',pendata
                 'nim' => '2110511015'
             ],
             [
