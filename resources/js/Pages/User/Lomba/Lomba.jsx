@@ -6,7 +6,7 @@ import Procedure from "@/Components/Lomba/ProcedureLomba";
 import CardLomba from "@/Components/Lomba/CardLomba";
 import ScrollUpButton from "@/Components/ScrollUpButton";
 
-const Lomba = () => {
+const Lomba = ({ data }) => {
     return (
         <div>
             <Navbar />
@@ -18,7 +18,7 @@ const Lomba = () => {
                 />
             </div>
             <HeaderSection />
-            <SearchBox />
+            {/* <SearchBox /> */}
             <Procedure />
             <div className="absolute inset-x-0 mt-6 z-0 flex justify-center">
                 <img
@@ -27,7 +27,7 @@ const Lomba = () => {
                     className="w-full max-h-[500px] rounded-md"
                 />
             </div>
-            <CardLomba />
+            <CardLomba data={data} />
             <Footer />
             <ScrollUpButton />
         </div>

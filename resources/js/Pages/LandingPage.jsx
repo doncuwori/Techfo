@@ -7,25 +7,25 @@ import ScrollUpButton from "@/Components/ScrollUpButton";
 
 const LandingPage = ({
     competitionRegistrantsCount,
-    competitionWinnersCount,
+    competitionAchievementsCount,
     scholarshipRegistrantsCount,
     scholarshipRecipientsCount,
+    abdimasRegistrantsCount,
+    abdimasRecipientsCount,
+    researchRegistrantsCount,
+    researchRecipientsCount,
+    rekapJuara,
+    rekapLomba,
+    rekapBeasiswa,
+    rekapAbdimas,
+    rekapResearch,
+    rekapAbdimasLolos,
+    rekapResearchLolos,
+    arrayFundingAbdimas,
+    arrayFundingPenelitian,
+    bidangPeserta,
+    bidangPemenang,
 }) => {
-    console.log(
-        competitionRegistrantsCount,
-        competitionWinnersCount,
-        scholarshipRegistrantsCount,
-        scholarshipRecipientsCount
-    );
-
-    LandingPage.defaultProps = {
-        competitionRegistrantsCount: 0,
-        competitionWinnersCount: 0,
-        scholarshipRegistrantsCount: 0,
-        scholarshipRecipientsCount: 0,
-    };
-    
-
     return (
         <div>
             <Header />
@@ -38,8 +38,21 @@ const LandingPage = ({
                 />
             </div>
             <LaporanKeaktifan
-                competitionCount={`${competitionWinnersCount}/${competitionRegistrantsCount} `}
-                scholarshipCount={`${scholarshipRegistrantsCount}/${scholarshipRecipientsCount}`}
+                competitionCount={`${competitionAchievementsCount}/${competitionRegistrantsCount} `}
+                scholarshipCount={`${scholarshipRecipientsCount}/${scholarshipRegistrantsCount}`}
+                abdimasCount={`${abdimasRecipientsCount}/${abdimasRegistrantsCount}`}
+                researchCount={`${researchRecipientsCount}/${researchRegistrantsCount}`}
+                rekapJuara={rekapJuara}
+                rekapLomba={rekapLomba}
+                rekapBeasiswa={rekapBeasiswa}
+                rekapAbdimas={rekapAbdimas}
+                rekapResearch={rekapResearch}
+                rekapAbdimasLolos={rekapAbdimasLolos}
+                rekapResearchLolos={rekapResearchLolos}
+                arrayFundingAbdimas={arrayFundingAbdimas}
+                arrayFundingPenelitian={arrayFundingPenelitian}
+                bidangPeserta={bidangPeserta}
+                bidangPemenang={bidangPemenang}
             />
             <Footer />
             <ScrollUpButton />

@@ -2,89 +2,211 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CompetitionAchievement;
-use App\Models\CompetitionAchievementUser;
-use App\Models\User;
+use App\Models\Competitions\CompetitionAchievement;
+use App\Models\Competitions\CompetitionRegistrant;
+use App\Models\Competitions\MahasiswaAchievement;
+use App\Models\Competitions\MahasiswaRegistrant;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class CompetitionsAchievementController extends Controller
 {
     public function store(Request $request)
     {
-        $user = Auth::user();
+        try {
+            $user = Auth::user();
+            $idMahasiswa = Mahasiswa::where('id_user', $user->id)->first()->id;
 
-        $request->validate([
-            'is_group' => 'required',
-            "ormawa_delegation" => 'required',
-            "mentor_name" => 'required',
-            "activity_name" => 'required',
-            "field" => 'required',
-            "organizer" => 'required',
-            "host_country" => 'required',
-            "location" => 'required',
-            "activity_date_start" => 'required',
-            "activity_date_end" => 'required',
-            "description" => 'required',
-            "achievement_level" => 'required',
-        ]);
+            $proof_scan_url = null;
+            if ($request->hasFile('proof_scan_url')) {
+                $file = $request->file('proof_scan_url');
+                $proof_scan_url = time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('images/'), $proof_scan_url);
+            }
 
-        $competition = CompetitionAchievement::create(
-            [
-                'is_group' => $request->is_group,
-                'leader_nim' => $user->nim,
-                'ormawa_delegation' => $request->ormawa_delegation,
-                'mentor_name' => $request->mentor_name,
-                'activity_name' => $request->activity_name,
-                'field' => $request->field,
-                'organizer' => $request->organizer,
-                'host_country' => $request->host_country,
-                'location' => $request->location,
-                'activity_date_start' => $request->activity_date_start,
-                'activity_date_end' => $request->activity_date_end,
-                'description' => $request->description,
-                'poster_url' => $request->poster_url,
-                'achievement_level' => $request->achievement_level,
-                'scan_evidence_url' => $request->scan_evidence_url,
-                'photo_activity_url' => $request->photo_activity_url,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
+            $event_photo_url = null;
+            if ($request->hasFile('event_photo_url')) {
+                $file = $request->file('event_photo_url');
+                $event_photo_url = time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('images/'), $event_photo_url);
+            }
 
-        if ($request->is_group == true) {
-            $request->validate([
-                'members' => 'required|array',
-                'members.*.nim' => 'required|exists:users,nim',
-                'members.*.name' => 'required|string',
+            $report_url = null;
+            if ($request->hasFile('report_url')) {
+                $file = $request->file('report_url');
+                $report_url = time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('images/'), $report_url);
+            }
+
+            $competition = CompetitionAchievement::create(
+                [
+                    'id_dosen' => $request->id_dosen,
+                    'id_country' => $request->id_country,
+                    'ormawa_delegation' => $request->ormawa_delegation,
+                    'activity_name' => $request->activity_name,
+                    'field' => $request->field,
+                    'type' => $request->type,
+                    'scope' => $request->scope,
+                    'organizer' => $request->organizer,
+                    'location' => $request->location,
+                    'activity_date_start' => $request->activity_date_start,
+                    'activity_date_end' => $request->activity_date_end,
+                    'description' => $request->description,
+                    'degree' => $request->degree,
+                    'proof_scan_url' => $proof_scan_url,
+                    'event_photo_url' => $event_photo_url,
+                    'report_url' => $report_url,
+                    'phone' => $request->phone,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]
+            );
+
+            $registrant = CompetitionRegistrant::create(
+                [
+                    'id_dosen' => $request->id_dosen,
+                    'id_country' => $request->id_country,
+                    'ormawa_delegation' => $request->ormawa_delegation,
+                    'activity_name' => $request->activity_name,
+                    'scope' => $request->scope,
+                    'field' => $request->field,
+                    'type' => $request->type,
+                    'organizer' => $request->organizer,
+                    'location' => $request->location,
+                    'activity_date_start' => $request->activity_date_start,
+                    'activity_date_end' => $request->activity_date_end,
+                    'description' => $request->description,
+                    'poster_url' => $event_photo_url,
+                    'phone' => $request->phone,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]
+            );
+
+            MahasiswaAchievement::create([
+                'id_competition_achievement' => $competition->id,
+                'id_mahasiswa' => $idMahasiswa,
+                'is_leader' => true
             ]);
 
-            foreach ($request->members as $member) {
-                $member = User::where('nim', $member->nim)->first();
+            if ($request->is_group == true) {
 
-                if ($member) {
-                    CompetitionAchievementUser::create([
-                        'user_id' => $member->id,
-                        'competition_id' => $competition->id,
-                        'created_at' => now(),
-                        'updated_at' => now(),
+                $members = $request->members;
+
+                foreach ($members as $memberData) {
+                    if ($memberData == null) {
+                        continue;
+                    };
+                    MahasiswaAchievement::create([
+                        'id_competition_achievement' => $competition->id,
+                        'id_mahasiswa' => $memberData,
+                        'is_leader' => false
                     ]);
-                } else {
-                    // Handle the case where the user with the given NIM does not exist
-                    return response()->json(['error' => "User with NIM $member does not exist."], 404);
                 }
             }
+
+            MahasiswaRegistrant::create([
+                'id_competition_registrant' => $registrant->id,
+                'id_mahasiswa' => $idMahasiswa,
+                'is_leader' => true
+            ]);
+
+            if ($request->is_group == true) {
+
+                $members = $request->members;
+
+                foreach ($members as $memberData) {
+                    if ($memberData == null) {
+                        continue;
+                    };
+                    MahasiswaRegistrant::create([
+                        'id_competition_registrant' => $registrant->id,
+                        'id_mahasiswa' => $memberData,
+                        'is_leader' => false
+                    ]);
+                }
+            }
+
+            return redirect()->route('pendataanLomba')->with('success', 'Pendataan pemenang lomba berhasil ditambahkan');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Pendataan pemenang lomba gagal ditambahkan!');
         }
+    }
 
-        CompetitionAchievementUser::create([
-            'user_id' => $user->id,
-            'competition_id' => $competition->id,
-            'created_at' => now(),
-            'updated_at' => now(),
+    public function fillCreate(string $id)
+    {
+        $data = CompetitionRegistrant::with(['dosen', 'mahasiswa', 'country'])->where('id', $id)->first();
+
+        return Inertia::render('User/Pendataan/PendataanLombaFill', [
+            'data' => $data
         ]);
+    }
 
-        $competition->load('users');
+    public function fillStore(Request $request)
+    {
+        try {
+            $data = CompetitionRegistrant::find($request->id_competition_registrant);
 
-        return redirect()->route('pendataanLomba')->with('success', 'Partisipasi berhasil ditambahkan');
+            $proof_scan_url = null;
+            if ($request->hasFile('proof_scan_url')) {
+                $file = $request->file('proof_scan_url');
+                $proof_scan_url = time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('images/'), $proof_scan_url);
+            }
+
+            $event_photo_url = null;
+            if ($request->hasFile('event_photo_url')) {
+                $file = $request->file('event_photo_url');
+                $event_photo_url = time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('images/'), $event_photo_url);
+            }
+
+            $report_url = null;
+            if ($request->hasFile('report_url')) {
+                $file = $request->file('report_url');
+                $report_url = time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('images/'), $report_url);
+            }
+
+            $competition = CompetitionAchievement::create(
+                [
+                    'id_dosen' => $data->id_dosen,
+                    'id_country' => $data->id_country,
+                    'ormawa_delegation' => $data->ormawa_delegation,
+                    'activity_name' => $data->activity_name,
+                    'field' => $data->field,
+                    'type' => $data->type,
+                    'scope' => $data->scope,
+                    'organizer' => $data->organizer,
+                    'location' => $data->location,
+                    'activity_date_start' => $data->activity_date_start,
+                    'activity_date_end' => $data->activity_date_end,
+                    'description' => $data->description,
+                    'degree' => $request->degree,
+                    'proof_scan_url' => $proof_scan_url,
+                    'event_photo_url' => $event_photo_url,
+                    'report_url' => $report_url,
+                    'phone' => $data->phone,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]
+            );
+
+            $participant = $data->participants;
+
+            foreach ($participant as $participantData) {
+                MahasiswaAchievement::create([
+                    'id_competition_achievement' => $competition->id,
+                    'id_mahasiswa' => $participantData->id_mahasiswa,
+                    'is_leader' => $participantData->is_leader
+                ]);
+            }
+
+            return redirect()->route('profile')->with('success', 'Prestasi berhasil ditambahkan');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Pendataan pemenang lomba gagal ditambahkan!');
+        }
     }
 }

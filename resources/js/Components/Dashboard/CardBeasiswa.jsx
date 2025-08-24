@@ -85,7 +85,7 @@ const CardBeasiswa = ({ data }) => {
                     >
                         {data.map((scholarship, index) => (
                             <Link
-                                href={`/beasiswa/${scholarship.id}`}
+                                href={"/beasiswa/" + scholarship.id}
                                 key={index}
                                 className="w-[343px] min-w-[280px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
                             >
@@ -93,7 +93,7 @@ const CardBeasiswa = ({ data }) => {
                                     className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center "
                                     style={{
                                         backgroundImage: `url(${
-                                            scholarship.image ||
+                                            scholarship.poster_url ||
                                             "img/posterbeasiswa.jpg"
                                         })`,
                                     }}
@@ -107,16 +107,21 @@ const CardBeasiswa = ({ data }) => {
                                     <h2 className="text-black text-lg font-medium line-clamp-1">
                                         {scholarship.name}
                                     </h2>
-                                    <p className="text-gray-500 text-sm line-clamp-2">
-                                        {scholarship.description}
-                                    </p>
+                                    <p
+                                        className="text-gray-500 text-sm line-clamp-2"
+                                        dangerouslySetInnerHTML={{
+                                            __html: scholarship.description,
+                                        }}
+                                    ></p>
                                     <div className="flex items-center gap-2">
                                         <Clock4
                                             size={18}
                                             className="text-orange-500"
                                         />
                                         <span className="text-orange-500 text-xs font-medium leading-tight">
-                                            {formatDate(scholarship.event_time)}
+                                            {formatDate(
+                                                scholarship.event_time_end
+                                            )}
                                         </span>
                                     </div>
                                 </div>

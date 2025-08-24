@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Scholarships\MahasiswaRegistrant;
 use App\Models\Scholarships\ScholarshipRegistrant;
+use App\Models\Mahasiswa;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,38 +13,50 @@ class ScholarshipRegistrantController extends Controller
 {
     public function store(Request $request)
     {
-        // Get the authenticated user
-        $user = Auth::user();
+        try {
+            $user = Auth::user();
 
-        // Validate incoming request data
-        $request->validate([
-            'name' => 'required|string|min:3',
-            'type' => 'required|string',
-            'organizer' => 'required|string',
-            'host_country' => 'required|string',
-            'event_date' => 'required|date',
-            'description' => 'required|string',
-            'poster_url' => 'nullable|url',
-        ]);
+            $idMahasiswa = Mahasiswa::where('id_user', $user->id)->first()->id;
 
-        // Create new ScholarshipRegistrant
-        $scholarship = ScholarshipRegistrant::create([
-            'name' => $request->name,
-            'type' => $request->type,
-            'organizer' => $request->organizer,
-            'host_country' => $request->host_country,
-            'event_date' => $request->event_date,
-            'description' => $request->description,
-            'poster_url' => $request->poster_url,
-            'created_by' => $user->id,  
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+            $filename = null;
+            if ($request->hasFile('poster_url')) {
+                $file = $request->file('poster_url');
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('images/'), $filename);
+            }
 
-        // Attach the user to the user registrant table
-        $scholarship->users()->attach($user->id);
+            $scholarship = ScholarshipRegistrant::create([
+                'id_country' => $request->id_country,
+                'name' => $request->name,
+                'type' => $request->type,
+                'organizer' => $request->organizer,
+                'event_date_start' => $request->event_date_start,
+                'event_date_end' => $request->event_date_end,
+                'description' => $request->description,
+                'poster_url' => $filename,
+                'phone' => $request->phone,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'amount' => $request->amount
+            ]);
 
-        // Return success response or redirect
-        return redirect()->route('pendataanBeasiswa')->with('success', 'Beasiswa berhasil ditambahkan');
+            MahasiswaRegistrant::create([
+                'id_scholarship_registrant' => $scholarship->id,
+                'id_mahasiswa' => $idMahasiswa,
+            ]);
+
+            return redirect()->route('profile')->with('success', 'Pendataan pendaftar beasiswa berhasil ditambahkan');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Pendataan pendaftar beasiswa gagal ditambahkan!');
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $scholarship = ScholarshipRegistrant::all();
+        return response()->json($scholarship, 201);
     }
 }

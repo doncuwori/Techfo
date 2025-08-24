@@ -1,14 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { usePage } from "@inertiajs/react";
+import toast, { Toaster } from "react-hot-toast";
 import Navbar from "@/Components/Navbar";
 import { BiodataUser } from "@/components/BiodataUser";
 import { TabDaftarBeasiswa } from "@/Components/Pendataan/PendataanBeasiswa/TabDaftarBeasiswa";
 import { TabLolosBeasiswa } from "@/Components/Pendataan/PendataanBeasiswa/TabLolosBeasiswa";
 import Footer from "@/Components/Footer";
 import ScrollUpButton from "@/Components/ScrollUpButton";
-import { Toaster } from "react-hot-toast";
 
-const PendataanBeasiswa = () => {
+const PendataanBeasiswa = ({ country, jenisBeasiswa }) => {
     const [tabValue, settabValue] = useState("Daftar");
+
+    const { flash } = usePage().props;
+
+    useEffect(() => {
+        toast.dismiss();
+        if (flash.success) {
+            toast.success(flash.success);
+        }else if (flash.error) {
+            toast.error(flash.error);
+        }
+    }, [flash])
+
     return (
         <div className="min-h-screen flex flex-col items-center">
             <Navbar />
@@ -45,14 +58,14 @@ const PendataanBeasiswa = () => {
                     </div>
                     <BiodataUser />
                     {tabValue === "Daftar" ? (
-                        <TabDaftarBeasiswa />
+                        <TabDaftarBeasiswa jenisBeasiswa={jenisBeasiswa} country={country} />
                     ) : (
-                        <TabLolosBeasiswa />
+                        <TabLolosBeasiswa jenisBeasiswa={jenisBeasiswa} country={country} />
                     )}
                 </div>
             </main>
             <Footer />
-            <Toaster position="top-right" />
+            <Toaster position="top-right" reverseOrder={false} />
             <ScrollUpButton />
         </div>
     );

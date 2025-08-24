@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class RoleMiddleware
 {
@@ -14,8 +15,13 @@ class RoleMiddleware
     {
         $user = Auth::user();
 
-        
-        if ($user && $user->role === $role) {
+        $role = str_ireplace('|', ',', $role);
+
+        $role = explode(',', $role);
+
+        $isOrmawa = Gate::check('ormawa');
+
+        if ($user && (in_array($user->role, $role) || $isOrmawa)) {
             return $next($request);
         }
 

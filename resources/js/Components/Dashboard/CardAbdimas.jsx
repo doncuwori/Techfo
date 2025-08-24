@@ -69,48 +69,41 @@ const CardAbdimas = ({ data }) => {
                 </Link>
             </div>
 
-            {/* Community Service Cards Section */}
+            {/* Community Abdimas Cards Section */}
             <div className="relative">
                 <div
                     ref={scrollRef}
                     className="flex gap-6 overflow-hidden pb-4"
                 >
-                    {data.map((service, index) => (
+                    {data.map((abdimas, index) => (
                         <Link
-                            href={"/abdimas/" + service.id}
+                            href={"/abdimas/" + abdimas.id}
                             key={index}
-                            className="w-[343px] min-w-[280px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
+                            className="w-[343px] min-w-[280px] h-[235px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
                         >
                             {/* Image Section */}
-                            <div
-                                className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center object-cover"
-                                style={{
-                                    backgroundImage: `url(${service.image})`,
-                                }}
-                            >
-                                <div className="absolute top-2 left-2 bg-yellow-500 text-white text-xs px-2 py-0.5 rounded-2xl">
-                                    Abdimas
-                                </div>
+                            <div className="bg-yellow-500 text-white text-xs px-2 py-0.5 mb-6 rounded-2xl w-max">
+                                Abdimas
                             </div>
 
                             {/* Content Section */}
                             <div className="flex flex-col gap-2">
-                                <h2 className="text-black text-lg font-medium line-clamp-1">
-                                    {service.name}
-                                    {service.name}
+                                <h2 className="text-black text-lg font-medium line-clamp-2">
+                                    {abdimas.name}
                                 </h2>
-                                <p className="text-gray-500 text-sm line-clamp-2">
-                                    {service.description}
-                                </p>
+                                <p
+                                    className="text-gray-500 text-sm line-clamp-3"
+                                    dangerouslySetInnerHTML={{
+                                        __html: abdimas.description,
+                                    }}
+                                ></p>
                                 <div className="flex items-center gap-2">
                                     <Clock4
                                         size={18}
                                         className="text-orange-500"
                                     />
                                     <span className="text-orange-500 text-xs font-medium leading-tight">
-                                        {formatDate(
-                                            service.registration_deadline
-                                        )}
+                                        {formatDate(abdimas.event_time_end)}
                                     </span>
                                 </div>
                             </div>

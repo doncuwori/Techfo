@@ -66,47 +66,41 @@ const CardPenelitian = ({ data }) => {
                 </Link>
             </div>
 
-            {/* Research Project Cards Section */}
+            {/* Research Research Cards Section */}
             <div className="relative">
                 <div
                     ref={scrollRef}
                     className="flex gap-6 overflow-hidden pb-4"
                 >
-                    {data.map((project, index) => (
+                    {data.map((research, index) => (
                         <Link
-                            href={"/penelitian/" + project.id}
+                            href={"/penelitian/" + research.id}
                             key={index}
-                            className="w-[343px] min-w-[280px] h-[308px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
+                            className="w-[343px] min-w-[280px] h-[235px] p-4 bg-white rounded-xl border border-neutral-200 shadow-md flex flex-col gap-2"
                         >
                             {/* Image Section */}
-                            <div
-                                className="w-full h-44 bg-gray-300 rounded-xl relative bg-cover bg-center object-cover"
-                                style={{
-                                    backgroundImage: `url(${project.image})`,
-                                }}
-                            >
-                                <div className="absolute top-2 left-2 bg-purple-500 text-white text-xs px-2 py-0.5 rounded-2xl">
-                                    Penelitian
-                                </div>
+                            <div className="bg-purple-500 text-white text-xs px-2 py-0.5 mb-6 rounded-2xl w-max">
+                                Penelitan
                             </div>
 
                             {/* Content Section */}
                             <div className="flex flex-col gap-2">
-                                <h2 className="text-black text-lg font-medium line-clamp-1">
-                                    {project.name}
+                                <h2 className="text-black text-lg font-medium line-clamp-2">
+                                    {research.name}
                                 </h2>
-                                <p className="text-gray-500 text-sm line-clamp-2">
-                                    {project.description}
-                                </p>
+                                <p
+                                    className="text-gray-500 text-sm line-clamp-3"
+                                    dangerouslySetInnerHTML={{
+                                        __html: research.description,
+                                    }}
+                                ></p>
                                 <div className="flex items-center gap-2">
                                     <Clock4
                                         size={18}
                                         className="text-orange-500"
                                     />
                                     <span className="text-orange-500 text-xs font-medium leading-tight">
-                                        {formatDate(
-                                            project.registration_deadline
-                                        )}
+                                        {formatDate(research.event_time_end)}
                                     </span>
                                 </div>
                             </div>

@@ -30,7 +30,7 @@ const Navbar = () => {
                 className="flex items-center gap-2 text-[#2d3036] group hover:text-[#fe632e] transition-all duration-200 transform group-hover:scale-105"
             >
                 <UserRound className="text-2xl group-hover:scale-105" />
-                <span className="text-xl font-semibold leading-loose group-hover:scale-105">
+                <span className="text-xl font-normal leading-loose group-hover:scale-105">
                     Login
                 </span>
             </Link>

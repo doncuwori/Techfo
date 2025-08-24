@@ -6,7 +6,7 @@ import Procedure from "@/Components/Beasiswa/ProcedureBeasiswa";
 import CardBeasiswa from "@/Components/Beasiswa/CardBeasiswa";
 import ScrollUpButton from "@/Components/ScrollUpButton";
 
-const Beasiswa = () => {
+const Beasiswa = ({ data }) => {
     return (
         <div>
             <Navbar />
@@ -18,7 +18,7 @@ const Beasiswa = () => {
                 />
             </div>
             <HeaderSection pageType="beasiswa" />
-            <SearchBox />
+            {/* <SearchBox /> */}
             <Procedure />
             <div className="absolute inset-x-0 mt-6 z-0 flex justify-center">
                 <img
@@ -27,7 +27,7 @@ const Beasiswa = () => {
                     className="w-full max-h-[500px] rounded-md"
                 />
             </div>
-            <CardBeasiswa />
+            <CardBeasiswa data={data}/>
             <Footer />
             <ScrollUpButton />
         </div>

@@ -1,33 +1,35 @@
 import React, { useState } from "react";
-
-import { Link, useForm } from "@inertiajs/react";
-import ApplicationLogo from "@/Components/ApplicationLogo";
+import { Link, useForm, usePage } from "@inertiajs/react";
 import { ChevronDown, Menu, X } from "lucide-react";
+import ApplicationLogo from "@/Components/ApplicationLogo";
 
 const Navbar = () => {
+    // State untuk dropdown dan menu navigasi
     const [isPendataanDropdownOpen, setIsPendataanDropdownOpen] =
         useState(false);
     const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMobilePendataanDropdownOpen, setIsMobilePendataanDropdownOpen] =
         useState(false);
+    const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
+    const { ormawa } = usePage().props.auth;
+
+    // Fungsi untuk mengontrol interaksi dropdown Pendataan
     const handlePendataanMouseEnter = () => {
         setIsPendataanDropdownOpen(true);
     };
-
     const handlePendataanMouseLeave = () => {
         setIsPendataanDropdownOpen(false);
     };
-
     const togglePendataanDropdown = () => {
         setIsPendataanDropdownOpen((prev) => !prev);
     };
 
+    // Fungsi untuk mengontrol interaksi dropdown Profil
     const handleProfileMouseLeave = () => {
         setIsProfileDropdownOpen(false);
     };
-
     const toggleProfileDropdown = () => {
         setIsProfileDropdownOpen((prev) => !prev);
         if (isPendataanDropdownOpen) {
@@ -35,23 +37,32 @@ const Navbar = () => {
         }
     };
 
+    // Fungsi untuk mengontrol tampilan menu Mobile
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen((prev) => !prev);
     };
-
     const toggleMobilePendataanDropdown = () => {
         setIsMobilePendataanDropdownOpen((prev) => !prev);
     };
 
-    // Form handling for logout
+    // Fungsi untuk logout
     const { post } = useForm();
 
     const handleLogout = () => {
         post(route("logout"));
     };
 
+    const toggleLogoutModal = () => {
+        setIsLogoutModalOpen((prev) => !prev);
+    };
+
+    const handleCloseModal = () => {
+        setIsLogoutModalOpen(false);
+    };
+
     return (
         <header className="w-full h-16 px-4 md:px-10 py-4 bg-white shadow-md flex items-center justify-between">
+            {/* Logo dan judul aplikasi */}
             <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2 md:gap-4">
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center overflow-hidden">
@@ -88,7 +99,8 @@ const Navbar = () => {
                     <Link
                         href={route("lomba")}
                         className={`${
-                            route().current("lomba")
+                            route().current("lomba") ||
+                            route().current("competition.show")
                                 ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
                                 : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
                         } text-sm md:text-base font-medium transition duration-150`}
@@ -98,7 +110,8 @@ const Navbar = () => {
                     <Link
                         href={route("beasiswa")}
                         className={`${
-                            route().current("beasiswa")
+                            route().current("beasiswa") ||
+                            route().current("scholarship.show")
                                 ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
                                 : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
                         } text-sm md:text-base font-medium transition duration-150`}
@@ -108,7 +121,9 @@ const Navbar = () => {
                     <Link
                         href={route("abdimas")}
                         className={`${
-                            route().current("abdimas")
+                            route().current("abdimas") ||
+                            route().current("abdimas.show") ||
+                            route().current("daftarAbdimas")
                                 ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
                                 : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
                         } text-sm md:text-base font-medium transition duration-150`}
@@ -118,7 +133,9 @@ const Navbar = () => {
                     <Link
                         href={route("penelitian")}
                         className={`${
-                            route().current("penelitian")
+                            route().current("penelitian") ||
+                            route().current("research.show") ||
+                            route().current("daftarPenelitian")
                                 ? "bg-[#fe632e] text-white rounded-lg px-3 py-1 hover:font-bold"
                                 : "text-gray-900 hover:text-[#fe632e] hover:font-bold"
                         } text-sm md:text-base font-medium transition duration-150`}
@@ -155,7 +172,7 @@ const Navbar = () => {
                                     className={`block px-4 py-2 ${
                                         route().current("pendataanLomba")
                                             ? "bg-[#fe632e] text-white font-bold rounded-t-xl hover:font-bold"
-                                            : "hover:bg-orange-100 hover:text-[#fe632e] font-bold"
+                                            : "hover:bg-orange-100 hover:text-[#fe632e] font-bold hover:rounded-t-xl"
                                     }`}
                                 >
                                     <div className="text-base font-semibold leading-normal">
@@ -171,7 +188,7 @@ const Navbar = () => {
                                     className={`block px-4 py-2 ${
                                         route().current("pendataanBeasiswa")
                                             ? "bg-[#fe632e] text-white font-bold rounded-b-lg hover:font-bold"
-                                            : "hover:bg-orange-100 hover:text-[#fe632e] font-bold"
+                                            : "hover:bg-orange-100 hover:text-[#fe632e] font-bold hover:rounded-b-l"
                                     }`}
                                 >
                                     <div className="text-base font-semibold leading-normal">
@@ -204,12 +221,12 @@ const Navbar = () => {
                     className={`flex items-center space-x-2 transition duration-150 hover:scale-105 hover:border-4 hover:border-orange-400 hover:rounded-full ${
                         route().current("profile")
                             ? "border-4 border-orange-400 rounded-full"
-                            : ""
+                            : "border-4 rounded-full"
                     }`}
                 >
                     <img
                         className="w-9 h-9 md:w-9 md:h-9 rounded-full ml-auto cursor-pointer"
-                        src="/img/profile.png"
+                        src="/img/profiledefault.png"
                         alt="User Profile"
                     />
                 </button>
@@ -222,14 +239,33 @@ const Navbar = () => {
                             href={route("profile")}
                             className={`block px-4 py-2 text-gray-700 transition duration-150 ${
                                 route().current("profile")
-                                    ? "bg-orange-50 text-black font-bold"
+                                    ? "bg-orange-50 text-[#fe632e] font-bold"
                                     : "hover:bg-orange-50 hover:text-[#fe632e] hover:font-bold"
                             }`}
+                            style={{
+                                color: route().current("profile")
+                                    ? "#fe632e"
+                                    : "",
+                            }} // Fallback color
                         >
                             Profil Saya
                         </Link>
+                        {ormawa ? (
+                            <Link
+                                href={route("dashboardAdmin")}
+                                className={`block px-4 py-2 text-gray-700 transition duration-150 ${
+                                    route().current("profile")
+                                        ? "bg-orange-50 text-[#fe631e] font-bold"
+                                        : "hover:bg-orange-50 hover:text-[#fe632e] hover:font-bold"
+                                }`}
+                            >
+                                Dashboard Admin
+                            </Link>
+                        ) : (
+                            ""
+                        )}
                         <button
-                            onClick={handleLogout}
+                            onClick={toggleLogoutModal}
                             className="block w-full text-left px-4 py-2 text-gray-700 transition duration-150 hover:bg-orange-50 hover:text-[#fe632e] hover:font-bold hover:rounded-b-md"
                         >
                             Keluar
@@ -342,15 +378,55 @@ const Navbar = () => {
                                 Profil Saya
                             </Link>
                         </div>
+                        {ormawa ? (
+                            <div className="w-full hover:bg-orange-50 transition duration-150">
+                                <Link
+                                    href={route("dashboardAdmin")}
+                                    className="px-4 py-2 text-gray-900 text-lg font-medium transition duration-150 hover:text-[#fe632e] hover:font-bold w-full block text-center"
+                                >
+                                    DashboardAdmin
+                                </Link>
+                            </div>
+                        ) : (
+                            ""
+                        )}
                         <div className="w-full hover:bg-orange-50 transition duration-150">
                             <button
-                                onClick={handleLogout}
+                                onClick={toggleLogoutModal}
                                 className="px-4 py-2 text-gray-900 text-lg font-medium transition duration-150 hover:text-[#fe632e] hover:font-bold w-full block text-center"
                             >
                                 Keluar
                             </button>
                         </div>
                     </nav>
+                </div>
+            )}
+
+            {/* Modal Popup for Logout Confirmation */}
+            {isLogoutModalOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                    <div className="bg-white rounded-lg p-6 w-96 shadow-lg">
+                        <h2 className="text-lg font-semibold text-gray-800">
+                            Konfirmasi Keluar
+                        </h2>
+                        <p className="mt-2 text-gray-600">
+                            Apakah Anda yakin ingin keluar?
+                        </p>
+                        <div className="mt-4 flex justify-end gap-4">
+                            <button
+                                onClick={handleCloseModal}
+                                className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+                            >
+                                Batal
+                            </button>
+                            <button
+                                onClick={handleLogout}
+                                className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+                            >
+                                Keluar
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
         </header>

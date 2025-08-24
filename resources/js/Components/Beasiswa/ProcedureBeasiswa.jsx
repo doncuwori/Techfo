@@ -15,7 +15,7 @@ const ProcedureBeasiswa = () => {
             imgSrc: "img/prosedurbeasiswa.png",
             imgAlt: "Prosedur Pendataan Beasiswa",
             title: "Prosedur Pendataan Penerima Beasiswa",
-            description: "Pelajari prosedur beasiswa agar setiap langkah menuju prestasimu selalu tercatat!",
+            description: "Pelajari prosedur beasiswa agar setiap langkahmu selalu tercatat!",
         },
     ];
 
@@ -32,7 +32,7 @@ const ProcedureBeasiswa = () => {
     );
 
     return (
-        <div className="w-full px-8 py-8 mt-10 mb-12 relative z-10">
+        <div className="w-full px-8 sm:px-8 md:px-16 py-8 mt-16 mb-12 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
                 {procedures.map((procedure, index) => (
                     <ProcedureCard

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ResearchInformation;
+use App\Models\Researchs\DosenResearch;
+use App\Models\Researchs\ResearchInformation;
+use App\Models\Dosen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class ResearchInformationController extends Controller
 {
@@ -13,89 +16,161 @@ class ResearchInformationController extends Controller
      */
     public function index()
     {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        $user = auth()->user();
+        $dosen = Dosen::all();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request){
-        $user = Auth::user();
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'lecturer_1' => 'required|string|max:255',
-            'lecturer_2' => 'required|string|max:255',
-            'lecturer_3' => 'required|string|max:255',
-            'lecturer_4' => 'required|string|max:255',
-            'lecturer_5' => 'required|string|max:255',
-            'registration_deadline' => 'required|date',
-            'location' => 'required|string|max:255',
-            'total_students_required' => 'required|integer',
-            'description' => 'required|string'
-            // 'assignment_letter_url' => 'required|url',
+        return Inertia::render('Admin/PusatInformasi/TambahInfoPenelitian', [
+            'user' => $user,
+            'dosen' => $dosen
         ]);
+    }
+
+    public function edit(string $id)
+    {
         
-        
-        // Create a new abdimas information record
-        $abdimas = ResearchInformation::create([
-            'name' => $request->name,
-            'lecturer_1' => $request->lecturer_1,
-            'lecturer_2' => $request->lecturer_2,
-            'lecturer_3' => $request->lecturer_3,
-            'lecturer_4' => $request->lecturer_4,
-            'lecturer_5' => $request->lecturer_5,
-            'registration_deadline' => $request->registration_deadline,
-            'location' => $request->location,
-            'total_students_required' => $request->total_students_required,
-            'created_by' => $user->id,
-            'description' => $request->description,
-            // TODO:
-            'assignment_letter_url' => "https://www.google.com",
-            'created_at' => now(),
-            'updated_at' => now(),
+        $user = auth()->user();
+        $dosen = Dosen::all();
+        $data = ResearchInformation::with('dosen')->where('id', $id)->first();
+
+        return Inertia::render('Admin/PusatInformasi/EditInfoPenelitian', [
+            'user' => $user,
+            'dosen' => $dosen,
+            'data' => $data
         ]);
+    }
 
+    public function store(Request $request)
+    {
+        try{
+            
+            $dosenFilter = array_filter($request->dosens, function($val) {
+                return $val != null;
+            });
+
+            $dosenFilter = array_values($dosenFilter);
+
+            $user = Auth::user();
+
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'event_time_start' => 'required|date',
+                'event_time_end' => 'required|date',
+                'location' => 'required|string|max:255',
+                'total_students_required' => 'required|integer',
+                'description' => 'required|string'
+            ]);
+    
+    
+            $research = ResearchInformation::create([
+                'name' => $request->name,
+                'event_time_start' => $request->event_time_start,
+                'event_time_end' => $request->event_time_end,
+                'location' => $request->location,
+                'total_students_required' => $request->total_students_required,
+                'created_by' => $user->id,
+                'description' => $request->description,
+                'funding' => $request->funding,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+    
+            foreach($dosenFilter as  $index => $d) {
+                if($d!= null){
+                    DosenResearch::create([
+                        'id_dosen' => $d,
+                        'id_research_information' => $research->id,
+                        'is_leader' => $index == 0 ? true : false
+                    ]);
+                }
+            }
+    
+            return redirect()->route('pusatPenelitian')->with('success', 'Informasi penelitian berhasil ditambahkan');
+        }catch(\Exception $e){
+            return redirect()->back()->with('error', 'Informasi penelitian gagal ditambahkan : ');
+        }
         
-        return redirect()->route('tambahInfoPenelitian')->with('success', 'Informasi beasiswa berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(ResearchInformation $researchInformation)
-    {
-        //
+    public function update(string $id, Request $request){
+        try{
+            $research = ResearchInformation::where('id', $id)->first();
+            $user = Auth::user();
+    
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'event_time_start' => 'required|date',
+                'event_time_end' => 'required|date',
+                'location' => 'required|string|max:255',
+                'total_students_required' => 'required|integer',
+                'description' => 'required|string'
+            ]);
+
+            
+            $dosenFilter = array_filter($request->dosens, function($val) {
+                return $val != null;
+            });
+
+            $dosenFilter = array_values($dosenFilter);
+            
+            $research->update([
+                'name' => $request->name,
+                'event_time_start' => $request->event_time_start,
+                'event_time_end' => $request->event_time_end,
+                'location' => $request->location,
+                'total_students_required' => $request->total_students_required,
+                'funding' => $request->funding,
+                'description' => $request->description,
+            ]);
+    
+            $current = DosenResearch::where('id_research_information', $research->id)->get();
+            $requested = $dosenFilter;
+    
+            foreach($current as $c){
+                if(!in_array($c->id_dosen, $requested)){
+                    DosenResearch::where('id_dosen', $c->id_dosen)->where('id_research_information', $research->id)->delete();
+                }
+            }
+    
+            foreach($dosenFilter as  $index => $d) {
+                
+                $exist = DosenResearch::where('id_dosen', $d)->where('id_research_information', $research->id)->first();
+    
+                if($exist){
+                    continue;
+                }
+    
+                if($d!= null){
+                    DosenResearch::create([
+                        'id_dosen' => $d,
+                        'id_research_information' => $research->id,
+                        'is_leader' => $index == 0 ? true : false
+                    ]);
+                }
+            }
+    
+            return redirect()->route('pusatPenelitian')->with('success', 'Informasi penelitian berhasil diubah');
+        }catch(\Exception $e){
+            return redirect()->back()->with('error', 'Informasi penelitian gagal diubah : ');
+        }
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ResearchInformation $researchInformation)
-    {
-        //
+    public function show(string $postId) {
+
+        $postId = ResearchInformation::with(['dosen', 'user'])->where('id', $postId)->first();
+
+        return Inertia::render('User/Penelitian/DetailPenelitian', [
+            'data' => $postId
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, ResearchInformation $researchInformation)
-    {
-        //
-    }
+    
+    public function destroy(string $id) {
+        $research = ResearchInformation::where('id', $id)->first();
+        DosenResearch::where('id_research_information', $research->id)->delete();
+        $research->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(ResearchInformation $researchInformation)
-    {
-        //
+        return redirect()->route('pusatPenelitian')->with('success', 'Informasi penelitian berhasil dihapus');
     }
 }

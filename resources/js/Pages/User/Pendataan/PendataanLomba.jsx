@@ -1,14 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { usePage } from "@inertiajs/react";
+import toast, { Toaster } from "react-hot-toast";
 import Navbar from "@/Components/Navbar";
 import { BiodataUser } from "@/components/BiodataUser";
 import { TabPrestasiLomba } from "@/Components/Pendataan/PendataanLomba/TabPrestasiLomba";
 import { TabPartisipasiLomba } from "@/Components/Pendataan/PendataanLomba/TabPartisipasiLomba";
 import Footer from "@/Components/Footer";
 import ScrollUpButton from "@/Components/ScrollUpButton";
-import toast, { Toaster } from "react-hot-toast";
 
-const PendataanLomba = () => {
+const PendataanLomba = ({ mahasiswa, dosen, country }) => {
     const [tabValue, settabValue] = useState("Partisipasi");
+
+    const { flash } = usePage().props;
+
+    useEffect(() => {
+        toast.dismiss();
+        if (flash.success) {
+            toast.success(flash.success);
+        } else if (flash.error) {
+            toast.error(flash.error);
+        }
+    }, [flash]);
 
     return (
         <div className="min-h-screen flex flex-col items-center">
@@ -46,14 +58,22 @@ const PendataanLomba = () => {
                     </div>
                     <BiodataUser />
                     {tabValue === "Partisipasi" ? (
-                        <TabPartisipasiLomba />
+                        <TabPartisipasiLomba
+                            mahasiswa={mahasiswa}
+                            dosen={dosen}
+                            country={country}
+                        />
                     ) : (
-                        <TabPrestasiLomba />
+                        <TabPrestasiLomba
+                            mahasiswa={mahasiswa}
+                            dosen={dosen}
+                            country={country}
+                        />
                     )}
                 </div>
             </main>
             <Footer />
-            <Toaster position="top-right" />
+            <Toaster position="top-right" reverseOrder={false} />
             <ScrollUpButton />
         </div>
     );

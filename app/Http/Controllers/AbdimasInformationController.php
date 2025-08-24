@@ -2,49 +2,172 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AbdimasInformation;
+use App\Models\Abdimas\AbdimasInformation;
+use App\Models\Abdimas\DosenAbdimas;
+use App\Models\Dosen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class AbdimasInformationController extends Controller
 {
-    public function store(Request $request){
-        $user = Auth::user();
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'lecturer_1' => 'required|string|max:255',
-            'lecturer_2' => 'required|string|max:255',
-            'lecturer_3' => 'required|string|max:255',
-            'lecturer_4' => 'required|string|max:255',
-            'lecturer_5' => 'required|string|max:255',
-            'registration_deadline' => 'required|date',
-            'location' => 'required|string|max:255',
-            'total_students_required' => 'required|integer',
-            'description' => 'required|string'
-            // 'assignment_letter_url' => 'required|url',
-        ]);
-        
-        
-        // Create a new abdimas information record
-        $abdimas = AbdimasInformation::create([
-            'name' => $request->name,
-            'lecturer_1' => $request->lecturer_1,
-            'lecturer_2' => $request->lecturer_2,
-            'lecturer_3' => $request->lecturer_3,
-            'lecturer_4' => $request->lecturer_4,
-            'lecturer_5' => $request->lecturer_5,
-            'registration_deadline' => $request->registration_deadline,
-            'location' => $request->location,
-            'total_students_required' => $request->total_students_required,
-            'created_by' => $user->id,
-            'description' => $request->description,
-            // TODO:
-            'assignment_letter_url' => "https://www.google.com",
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+    public function index()
+    {
 
-        // Return a response
-        return redirect()->route('tambahInfoAbdimas')->with('success', 'Informasi beasiswa berhasil ditambahkan');
+        $user = auth()->user();
+        $dosen = Dosen::all();
+
+        return Inertia::render('Admin/PusatInformasi/TambahInfoAbdimas', [
+            'user' => $user,
+            'dosen' => $dosen
+        ]);
+    }
+
+    public function edit(string $id)
+    {
+
+        $user = auth()->user();
+        $dosen = Dosen::all();
+        $data = AbdimasInformation::with('dosen')->where('id', $id)->first();
+
+        return Inertia::render('Admin/PusatInformasi/EditInfoAbdimas', [
+            'user' => $user,
+            'dosen' => $dosen,
+            'data' => $data
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        try {
+            $dosenFilter = array_filter($request->dosens, function($val) {
+                return $val != null;
+            });
+
+            $dosenFilter = array_values($dosenFilter);
+
+            $user = Auth::user();
+
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'event_time_start' => 'required|date',
+                'event_time_end' => 'required|date',
+                'location' => 'required|string|max:255',
+                'total_students_required' => 'required|integer',
+                'description' => 'required|string'
+            ]);
+
+
+            $abdimas = AbdimasInformation::create([
+                'name' => $request->name,
+                'event_time_start' => $request->event_time_start,
+                'event_time_end' => $request->event_time_end,
+                'location' => $request->location,
+                'total_students_required' => $request->total_students_required,
+                'created_by' => $user->id,
+                'description' => $request->description,
+                'funding' => $request->funding,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            foreach ($dosenFilter as  $index => $d) {
+                if ($d != null) {
+                    DosenAbdimas::create([
+                        'id_dosen' => $d,
+                        'id_abdimas_information' => $abdimas->id,
+                        'is_leader' => $index == 0 ? true : false
+                    ]);
+                }
+            }
+
+            return redirect()->route('pusatAbdimas')->with('success', 'Informasi pengabdian Masyarakat berhasil ditambahkan');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Informasi pengabdian Masyarakat gagal ditambahkan :'. $e->getMessage());
+        }
+    }
+
+    public function update(string $id, Request $request)
+    {
+        try{
+            $abdimas = AbdimasInformation::where('id', $id)->first();
+            $user = Auth::user();
+
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'event_time_start' => 'required|date',
+                'event_time_end' => 'required|date',
+                'location' => 'required|string|max:255',
+                'total_students_required' => 'required|integer',
+                'description' => 'required|string'
+            ]);
+
+            $dosenFilter = array_filter($request->dosens, function($val) {
+                return $val != null;
+            });
+
+            $dosenFilter = array_values($dosenFilter);
+    
+    
+            $abdimas->update([
+                'name' => $request->name,
+                'event_time_start' => $request->event_time_start,
+                'event_time_end' => $request->event_time_end,
+                'location' => $request->location,
+                'total_students_required' => $request->total_students_required,
+                'funding' => $request->funding,
+                'description' => $request->description,
+            ]);
+    
+            $current = DosenAbdimas::where('id_abdimas_information', $abdimas->id)->get();
+            $requested = $dosenFilter;
+    
+            foreach ($current as $c) {
+                if (!in_array($c->id_dosen, $requested)) {
+                    DosenAbdimas::where('id_dosen', $c->id_dosen)->where('id_abdimas_information', $abdimas->id)->delete();
+                }
+            }
+    
+            foreach ($dosenFilter as  $index => $d) {
+    
+                $exist = DosenAbdimas::where('id_dosen', $d)->where('id_abdimas_information', $abdimas->id)->first();
+    
+                if ($exist) {
+                    continue;
+                }
+    
+                if ($d != null) {
+                    DosenAbdimas::create([
+                        'id_dosen' => $d,
+                        'id_abdimas_information' => $abdimas->id,
+                        'is_leader' => $index == 0 ? true : false
+                    ]);
+                }
+            }
+    
+            return redirect()->route('pusatAbdimas')->with('success', 'Informasi pengabdian Masyarakat berhasil diubah');
+        }catch (\Exception $e){
+            return redirect()->back()->with('error', 'Informasi pengabdian Masyarakat gagal diubah :');
+        }
+        
+    }
+
+    public function show(string $postId)
+    {
+
+        $postId = AbdimasInformation::with(['dosen', 'user'])->where('id', $postId)->first();
+
+        return Inertia::render('User/Abdimas/DetailAbdimas', [
+            'data' => $postId
+        ]);
+    }
+
+
+    public function destroy(string $id)
+    {
+        $abdimas = AbdimasInformation::where('id', $id)->first();
+        DosenAbdimas::where('id_abdimas_information', $abdimas->id)->delete();
+        $abdimas->delete();
+        return redirect()->route('pusatAbdimas')->with('success', 'Informasi pengabdian Masyarakat berhasil dihapus');
     }
 }

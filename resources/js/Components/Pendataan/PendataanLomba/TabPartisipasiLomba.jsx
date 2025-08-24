@@ -1,30 +1,71 @@
-import PernyataanLegalitas from "@/Components/PernyataanLegalitas";
 import { useForm, usePage } from "@inertiajs/react";
-import { Plus, Search, X } from "lucide-react";
+import { Minus, Plus, Trash, Upload } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import SearchableSelect from "@/Components/SearchableSelect";
+import PernyataanLegalitas from "@/Components/PernyataanLegalitas";
 
-export const TabPartisipasiLomba = () => {
+export const TabPartisipasiLomba = ({ mahasiswa, dosen, country }) => {
+    const [member, setMember] = useState([]);
     const { data, setData, post, processing, errors, reset } = useForm({
-        is_group: false,
-        leader_nim: "",
+        id_country: "",
+        id_dosen: "",
         ormawa_delegation: "",
         mentor_name: "",
         activity_name: "",
         field: "",
-        degree: "",
+        type: "",
         organizer: "",
         scope: "",
-        host_country: "",
         location: "",
         activity_date_start: "",
         activity_date_end: "",
         description: "",
         poster_url: "",
+        phone: "",
         members: [],
     });
+
     const [memberNim, setMemberNim] = useState("");
     const [fetchedUsers, setFetchedUsers] = useState([]);
+    const user = usePage().props.auth.user;
+
+    const mahasiswaOption = mahasiswa.map((val) => {
+        return { value: val.id, label: `${val.nama} - ${val.nim}` };
+    });
+
+    const dosenOption = dosen.map((val) => {
+        return {
+            value: val.id,
+            label: `${val.nama} - ${val.nidn} - Kuota : ${val.max_dosen_competition}/3`,
+        };
+    });
+
+    const countryOption = country.map((val) => {
+        return { value: val.id, label: val.country_name };
+    });
+
+    const [fields, setFields] = useState([{ value: "" }]);
+
+    const addField = () => {
+        setFields([...fields, { value: "" }]);
+    };
+
+    const removeField = (e, index) => {
+        e.preventDefault();
+        if (fields.length > 1) {
+            setFields(fields.slice(0, -1));
+
+            setTimeout(() => {
+                const input = document.querySelectorAll(
+                    'input[name="members[]"]'
+                );
+                const member = Array.from(input).map((input) => input.value);
+                console.log(member);
+                setData("members", member);
+            }, 100);
+        }
+    };
 
     const fetchUsers = async () => {
         try {
@@ -41,13 +82,58 @@ export const TabPartisipasiLomba = () => {
         if (memberNim != "") fetchUsers();
     }, [memberNim]);
 
-    const onAddMember = (member) => {
-        setData("members", [...data.members, member]);
-        setMemberNim("");
-    };
-
     const handleCheckbox = (e) => {
         setData("is_group", e.target.checked);
+    };
+
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [isChecked, setIsChecked] = useState(false);
+    const [fileURL, setFileURL] = useState(null);
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+
+        if (file && file.size > 2 * 1024 * 1024) {
+            toast.error("File tidak valid atau melebihi ukuran maksimal 2MB.");
+            return;
+        }
+
+        if (file) {
+            setSelectedFile(file);
+            const url = URL.createObjectURL(file);
+            setFileURL(url);
+            setData("poster_url", file);
+        }
+    };
+
+    const handleDropFile = (e) => {
+        e.preventDefault();
+        const file = e.dataTransfer.files[0];
+
+        if (
+            file &&
+            file.size <= 2 * 1024 * 1024 &&
+            /\.(jpg|jpeg|png)$/i.test(file.name)
+        ) {
+            const url = URL.createObjectURL(file);
+            setSelectedFile(file);
+            setFileURL(url);
+            setData("poster_url", file);
+        } else {
+            toast.error("File tidak valid atau melebihi ukuran maksimal 2MB.");
+        }
+    };
+
+    const handleRemoveFile = () => {
+        setSelectedFile(null);
+        setFileURL(null);
+        setData("poster_url", null);
+        const fileInput = document.getElementById("fileInput");
+        if (fileInput) fileInput.value = null;
+    };
+
+    const handleCheckboxChange = () => {
+        setIsChecked(!isChecked);
     };
 
     const handleSubmit = (e) => {
@@ -56,16 +142,31 @@ export const TabPartisipasiLomba = () => {
         post(route("competitions.store"), {
             onSuccess: (res) => {
                 reset();
-                toast.success("Partisipasi Lomba Berhasil Dibuat");
+                toast.success("Pendataan Partisipasi Lomba Berhasil Dibuat!");
             },
             onError: (errors) => {
+                toast.error("Pendataan Partisipasi Lomba Gagal Dibuat!");
                 console.error(errors);
             },
         });
     };
 
+    const handleMember = (value) => {
+        const input = document.querySelectorAll('input[name="members[]"]');
+        const member = Array.from(input).map((input) => input.value);
+        setData("members", [...member, value.value]);
+    };
+
+    const handleCountry = (value) => {
+        setData("id_country", value.value);
+    };
+
+    const handleDosen = (value) => {
+        setData("id_dosen", value.value);
+    };
+
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
             <section className="mb-8">
                 <h2 className="text-xl font-bold mb-4">
                     Data Partisipasi Mahasiswa
@@ -95,83 +196,79 @@ export const TabPartisipasiLomba = () => {
                                     ini prestasi mahasiswa.
                                 </p>
                             </div>
-                            <div className="flex flex-row">
-                                <input
-                                    type="number"
-                                    className="text-sm px-2.5 py-2 rounded-lg border-neutral-400 border-[1.5px]"
-                                    placeholder="Tuliskan NIM"
-                                    onChange={(e) => {
-                                        setMemberNim(e.target.value);
-                                    }}
-                                    value={memberNim}
-                                />
-                                {/* <button
-                                    type="button"
-                                    onClick={() => onAddMember()}
-                                    className="bg-green-500 p-2 rounded-r-lg text-white"
-                                >
-                                    <Search size={20} />
-                                </button> */}
-                            </div>
-
-                            {data.members.length > 0 && (
-                                <div className="flex gap-2">
-                                    {data.members.map((member, index) => (
-                                        <div
-                                            key={member + index}
-                                            className="bg-gray-300 w-fit px-2 py-1 rounded-lg flex gap-2 "
+                            <div className="flex flex-col gap-2">
+                                <div className="flex gap-2 flex-wrap">
+                                    <input
+                                        className="text-md px-4 py-2 rounded-lg border-neutral-400 border-[1.5px] bg-gray-200 md:w-96"
+                                        placeholder="Tuliskan NIM"
+                                        disabled={true}
+                                        value={
+                                            user.name + " - " + user.username
+                                        }
+                                    />
+                                    <input
+                                        className="text-sm px-2.5 py-2 rounded-lg border-neutral-400 border-[1.5px] bg-gray-200"
+                                        value={"Ketua Regu"}
+                                        disabled={true}
+                                    />
+                                </div>
+                                {fields.map((field, index) => (
+                                    <div className="flex gap-2" key={index + 1}>
+                                        {/* <select
+                                            className="text-sm px-2.5 py-2 rounded-lg border-neutral-400 border-[1.5px] w-96"
+                                            placeholder="Tuliskan NIM"
                                         >
-                                            <button
-                                                type="button"
-                                                onClick={() => {
-                                                    setData(
-                                                        "members",
-                                                        data.members.filter(
-                                                            (u) =>
-                                                                u.nim !==
-                                                                member.nim
-                                                        )
-                                                    );
-                                                }}
-                                                className="flex gap-2 items-center"
-                                            >
-                                                {member.name} ({member.nim})
-                                                <X size={20} />
-                                            </button>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
+                                            <option disabled={true} selected={true}>- Pilih Mahasiswa -</option>
+                                            {
+                                                mahasiswa.map((val)=>{
+                                                    return(
+                                                        <option>{val.nama} - {val.nim}</option>
+                                                    )
+                                                })
+                                            }
 
-                            {fetchedUsers.length > 0 && memberNim && (
-                                <div className="mt-4">
-                                    <h3 className="text-lg font-semibold mb-2">
-                                        Pilih Anggota:
-                                    </h3>
-                                    <ul className="list-disc pl-5">
-                                        {fetchedUsers.map((user) => (
-                                            <li
-                                                key={user.id}
-                                                className="mb-2 flex gap-2"
+                                        </select> */}
+
+                                        <div className="w-96">
+                                            <SearchableSelect
+                                                name={"members[]"}
+                                                onChange={handleMember}
+                                                options={mahasiswaOption}
+                                                placeholder={
+                                                    "- Pilih Mahasiswa -"
+                                                }
+                                            />
+                                        </div>
+
+                                        <input
+                                            className="text-sm px-2.5 py-2 rounded-lg border-neutral-400 border-[1.5px] bg-gray-200"
+                                            value={"Anggota " + (index + 1)}
+                                            disabled={true}
+                                        />
+                                        {index != 0 ? (
+                                            <button
+                                                onClick={(e) =>
+                                                    removeField(e, index)
+                                                }
+                                                className="bg-red-500 text-white px-4 py-2 rounded"
                                             >
-                                                {user.name} ({user.nim})
-                                                <button
-                                                    type="button"
-                                                    className="bg-green-500 flex gap-1.5 px-1.5 py-1 text-white rounded"
-                                                    onClick={() => {
-                                                        onAddMember(user);
-                                                    }}
-                                                >
-                                                    <Plus size={16} />
-                                                    <p className="text-xs">
-                                                        Tambahkan
-                                                    </p>
-                                                </button>
-                                            </li>
-                                        ))}
-                                    </ul>
+                                                <Trash size={20} />
+                                            </button>
+                                        ) : (
+                                            ""
+                                        )}
+                                    </div>
+                                ))}
+                                <div className="flex">
+                                    <button
+                                        type="button"
+                                        className="bg-green-500 p-2 rounded-lg text-white"
+                                        onClick={addField}
+                                    >
+                                        <Plus size={20} />
+                                    </button>
                                 </div>
-                            )}
+                            </div>
 
                             <div></div>
                         </div>
@@ -179,17 +276,29 @@ export const TabPartisipasiLomba = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Delegasi ORMAWA
+                        Nomor Telepon (WhatsApp)
+                        <span className="text-red-600">*</span>
+                    </label>
+                    <input
+                        type="number"
+                        className="w-full border rounded-lg p-2"
+                        placeholder="Masukkan Nomor Telepon Anda"
+                        onChange={(e) => setData("phone", e.target.value)}
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-bold mb-2">
+                        Delegasi ORMAWA<span className="text-red-600">*</span>
                     </label>
                     <select
                         value={data.ormawa_delegation}
                         onChange={(e) => {
                             setData("ormawa_delegation", e.target.value);
                         }}
-                        className="w-full border rounded-lg p-2"
+                        className="w-full border rounded-lg px-4"
                     >
+                        <option>-- Pilih Delegasi --</option>
                         <option>Bukan Delegasi dari ORMAWA</option>
-                        <option>Mandiri</option>
                         <option>
                             Badan Eksekutif Mahasiswa Fakultas Ilmu Komputer
                         </option>
@@ -222,7 +331,7 @@ export const TabPartisipasiLomba = () => {
 
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Nama Kegiatan
+                        Nama Kegiatan<span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -230,7 +339,7 @@ export const TabPartisipasiLomba = () => {
                             setData("activity_name", e.target.value);
                         }}
                         value={data.activity_name}
-                        className="w-full border rounded-lg p-2"
+                        className="w-full border rounded-lg px-4"
                         placeholder="Contoh: Lomba Karya Tulis Ilmiah Nasional Tahun 2017"
                     />
                 </div>
@@ -239,13 +348,14 @@ export const TabPartisipasiLomba = () => {
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">
                                 Tingkat Prestasi
+                                <span className="text-red-600">*</span>
                             </label>
                             <select
                                 onChange={(e) => {
                                     setData("scope", e.target.value);
                                 }}
                                 value={data.scope}
-                                className="w-full border rounded-lg p-2"
+                                className="w-full border rounded-lg px-4"
                             >
                                 <option>-- Pilih Tingkat Prestasi --</option>
                                 <option>International</option>
@@ -253,42 +363,23 @@ export const TabPartisipasiLomba = () => {
                                 <option>Regional</option>
                                 <option>Wilayah</option>
                                 <option>Daerah/Provinsi</option>
-                                <option>Kabupaten/Kotan</option>
+                                <option>Kabupaten/Kota</option>
                                 <option>Kecamatan</option>
                                 <option>UPN "Veteran" Jakarta</option>
-                            </select>
-                        </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 font-bold mb-2">
-                                Gelar
-                            </label>
-                            <select
-                                onChange={(e) => {
-                                    setData("field", e.target.value);
-                                }}
-                                value={data.field}
-                                className="w-full border rounded-lg p-2"
-                            >
-                                <option>-- Pilih Gelar --</option>
-                                <option>Ilmiah/Penalaran/Akademik</option>
-                                <option>Minat Khusus</option>
-                                <option>Olahraga</option>
-                                <option>Sains</option>
-                                <option>Lainnya</option>
                             </select>
                         </div>
                     </div>
                     <div className="flex flex-col w-full">
                         <div className="mb-4">
                             <label className="block text-gray-700 font-bold mb-2">
-                                Bidang
+                                Bidang Lomba<span className="text-red-600">*</span>
                             </label>
                             <select
                                 onChange={(e) => {
                                     setData("field", e.target.value);
                                 }}
                                 value={data.field}
-                                className="w-full border rounded-lg p-2"
+                                className="w-full border rounded-lg px-4"
                             >
                                 <option>-- Pilih Bidang Lomba --</option>
                                 <option>Ilmiah/Penalaran/Akademik</option>
@@ -298,26 +389,74 @@ export const TabPartisipasiLomba = () => {
                                 <option>Lainnya</option>
                             </select>
                         </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 font-bold mb-2">
-                                Dosen Pembimbing/Pendamping
-                            </label>
-                            <input
-                                type="text"
-                                onChange={(e) => {
-                                    setData("mentor_name", e.target.value);
-                                }}
-                                value={data.mentor_name}
-                                className="w-full border rounded-lg p-2"
-                                placeholder="Tuliskan nama dosen pembimbing/pendamping..."
-                            />
-                        </div>
                     </div>
                 </div>
 
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Penyelenggara
+                        Jenis Lomba<span className="text-red-600">*</span>
+                    </label>
+                    <select
+                        onChange={(e) => {
+                            setData("type", e.target.value);
+                        }}
+                        value={data.type}
+                        className="w-full border rounded-lg px-4"
+                    >
+                        <option>-- Pilih Jenis Lomba --</option>
+                        <option>UI/UX Design</option>
+                        <option>Front-End Development</option>
+                        <option>Back-End Development</option>
+                        <option>Business Plan</option>
+                        <option>Cybersecurity</option>
+                        <option>Data Science & Machine Learning</option>
+                        <option>Mobile App Development</option>
+                        <option>Game Development</option>
+                        <option>Internet of Things (IoT)</option>
+                        <option>Hackathon</option>
+                        <option>Software Engineering</option>
+                        <option>Cloud Computing</option>
+                        <option>Robotics and Automation</option>
+                        <option>
+                            Augmented Reality (AR) / Virtual Reality (VR)
+                        </option>
+                        <option>Blockchain Development</option>
+                        <option>Digital Marketing</option>
+                        <option>Artificial Intelligence (AI)</option>
+                        <option>Big Data Analytics</option>
+                        <option>DevOps</option>
+                        <option>Virtual Assistant Management</option>
+                        <option>Web Development</option>
+                        <option>Digital Animation</option>
+                        <option>Full-Stack Development</option>
+                        <option>Lainnya</option>
+                    </select>
+                </div>
+
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-bold mb-2">
+                        Dosen Pembimbing/Pendamping
+                        <span className="text-red-600">*</span>
+                    </label>
+                    <SearchableSelect
+                        onChange={handleDosen}
+                        options={dosenOption}
+                        placeholder={"- Pilih Dosen -"}
+                    />
+                    {/* <input
+                        type="text"
+                        onChange={(e) => {
+                            setData("mentor_name", e.target.value);
+                        }}
+                        value={data.mentor_name}
+                        className="w-full border rounded-lg px-4"
+                        placeholder="Tuliskan nama dosen pembimbing/pendamping..."
+                    /> */}
+                </div>
+
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-bold mb-2">
+                        Penyelenggara<span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -325,29 +464,36 @@ export const TabPartisipasiLomba = () => {
                             setData("organizer", e.target.value);
                         }}
                         value={data.organizer}
-                        className="w-full border rounded-lg p-2"
+                        className="w-full border rounded-lg px-4"
                         placeholder="Tuliskan penyelenggara kegiatan..."
                     />
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Negara Penyelenggara
+                        <span className="text-red-600">*</span>
                     </label>
-                    <select
+                    <SearchableSelect
+                        onChange={handleCountry}
+                        options={countryOption}
+                        placeholder={"-- Pilih Negara Penyelenggara --"}
+                    />
+                    {/* <select
                         onChange={(e) => {
                             setData("host_country", e.target.value);
                         }}
                         value={data.host_country}
-                        className="w-full border rounded-lg p-2"
+                        className="w-full border rounded-lg px-4"
                     >
                         <option>Pilih Negara Penyelenggara</option>
                         <option>Indonesia</option>
                         <option>Malaysia</option>
-                    </select>
+                    </select> */}
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Tempat Pelaksanaan
+                        <span className="text-red-600">*</span>
                     </label>
                     <input
                         type="text"
@@ -355,13 +501,14 @@ export const TabPartisipasiLomba = () => {
                             setData("location", e.target.value);
                         }}
                         value={data.location}
-                        className="w-full border rounded-lg p-2"
+                        className="w-full border rounded-lg px-4"
                         placeholder="Tuliskan tempat pelaksanaan kegiatan..."
                     />
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Waktu Pelaksanaan Dimulai
+                        <span className="text-red-600">*</span>
                     </label>
                     <input
                         onChange={(e) => {
@@ -369,12 +516,13 @@ export const TabPartisipasiLomba = () => {
                         }}
                         value={data.activity_date_start}
                         type="date"
-                        className="w-full border rounded-lg p-2"
+                        className="w-full border rounded-lg px-4"
                     />
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Waktu Pelaksanaan Berakhir
+                        <span className="text-red-600">*</span>
                     </label>
                     <input
                         onChange={(e) => {
@@ -382,63 +530,123 @@ export const TabPartisipasiLomba = () => {
                         }}
                         value={data.activity_date_end}
                         type="date"
-                        className="w-full border rounded-lg p-2"
+                        className="w-full border rounded-lg px-4"
                     />
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
                         Deskripsi Kegiatan
+                        <span className="text-red-600">*</span>
                     </label>
                     <textarea
                         onChange={(e) => {
                             setData("description", e.target.value);
                         }}
                         value={data.description}
-                        className="w-full border rounded-lg p-2"
-                        placeholder="Write text here..."
+                        className="w-full border rounded-lg px-4"
+                        placeholder="Tulis teks disini..."
                     ></textarea>
                 </div>
             </section>
             <section className="mb-8">
+                <h2 className="text-xl font-bold mb-4">Dokumen Pendukung</h2>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2">
-                        Poster Kegiatan
+                        Poster Kegiatan<span className="text-red-600">*</span>
                     </label>
-                    <div className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center">
-                        <p>Click to upload or drag and drop</p>
-                        <p className="text-gray-500">Max. file size: 10MB</p>
-                        <button
-                            type="button"
-                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg"
+                    <div
+                        className="border-dashed border-2 border-gray-300 rounded-lg p-4 text-center"
+                        onDragOver={(e) => e.preventDefault()}
+                        onDrop={handleDropFile}
+                    >
+                        <div className="flex flex-col items-center justify-center">
+                            <Upload className="text-gray-500 w-7 h-7 mb-2" />
+                            <p>Click to upload or drag and drop</p>
+                        </div>
+                        <p className="text-gray-500">Max. file size: 2MB</p>
+                        <input
+                            type="file"
+                            accept=".jpg,.jpeg,.png"
+                            className="hidden"
+                            id="fileInput"
+                            onChange={handleFileChange}
+                        />
+                        <label
+                            htmlFor="fileInput"
+                            className="mt-2 bg-green-500 text-white py-1 px-4 rounded-lg cursor-pointer inline-block"
                         >
                             Browse File
-                        </button>
+                        </label>
+                        {selectedFile && fileURL && (
+                            <div className="mt-4 flex items-center justify-center">
+                                <div>
+                                    <a
+                                        href={fileURL}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <img
+                                            src={fileURL}
+                                            alt="Preview"
+                                            className="mb-2 max-w-xs mx-auto cursor-pointer"
+                                        />
+                                    </a>
+                                    <div className="flex items-center justify-center space-x-1 mb-2">
+                                        <p className="text-green-500">
+                                            {selectedFile.name}
+                                        </p>
+                                        <button
+                                            type="button"
+                                            className="text-red-500 hover:text-red-700 ml-4"
+                                            onClick={handleRemoveFile}
+                                            aria-label="Remove file"
+                                        >
+                                            &times;
+                                        </button>
+                                    </div>
+                                    {/* <a
+                                        href={fileURL}
+                                        download={selectedFile.name}
+                                        className="bg-blue-500 text-white py-1 px-4 rounded-lg"
+                                    >
+                                        Download File
+                                    </a> */}
+                                </div>
+                            </div>
+                        )}
                     </div>
                     <p className="text-gray-500 mt-2">
-                        Ketentuan file Poster Kegiatan yang diunggah:
+                        Ketentuan file poster kegiatan yang diunggah:
                     </p>
                     <ul className="text-gray-500 list-disc list-inside">
                         <li>
-                            Poster Kegiatan lomba yang diikuti, menunjukkan nama
+                            Poster kegiatan lomba yang diikuti, menunjukkan nama
                             lomba;
                         </li>
                         <li>
-                            Tipe file yang dapat diunggah antara lain: .jpg,
-                            .jpeg, .png;
+                            Berkas yang diunggah dalam format: .jpg, .jpeg,
+                            .png;
                         </li>
-                        <li>Ukuran file maksimal 1MB.</li>
+                        <li>Ukuran file maksimal 2MB.</li>
                     </ul>
                 </div>
             </section>
-            <PernyataanLegalitas />
+
+            <PernyataanLegalitas
+                isChecked={isChecked}
+                onCheckboxChange={handleCheckboxChange}
+            />
             <div className="flex justify-end w-full">
                 <button
                     type="submit"
                     className={`mt-2 ${
-                        processing ? "bg-gray-400" : "bg-orange-500"
-                    }  text-white py-1 px-4 rounded-lg`}
+                        processing || !isChecked
+                            ? "bg-gray-400"
+                            : "bg-orange-500"
+                    } text-white py-1 px-4 rounded-lg`}
+                    disabled={processing || !isChecked}
                 >
-                    {processing ? "Loading..." : "Submit"}
+                    {processing ? "Submitting..." : "Submit"}
                 </button>
             </div>
         </form>
